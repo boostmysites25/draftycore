@@ -1,0 +1,65 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+/* Octin College Font - Regular */
+@font-face {
+  font-family: 'Octin College';
+  src: url('/octin_college_free/Octin College Rg.otf') format('opentype');
+  font-weight: normal;
+  font-style: normal;
+  font-display: swap;
+}
+
+/* Octin College Font - Bold */
+@font-face {
+  font-family: 'Octin College';
+  src: url('/octin_college_free/Octin College Bold.ttf') format('truetype');
+  font-weight: bold;
+  font-style: normal;
+  font-display: swap;
+}
+
+:root {
+  font-family: Inter, system-ui, Avenir, Helvetica, Arial, sans-serif;
+  line-height: 1.5;
+  font-weight: 400;
+
+  color-scheme: light;
+  color: #213547;
+  background-color: #ffffff;
+
+  font-synthesis: none;
+  text-rendering: optimizeLegibility;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+}
+
+/* Apply Octin College to all headings */
+h1, h2, h3, h4, h5, h6 {
+  font-family: 'Octin College', sans-serif;
+}
+
+/* Use Bold weight for main headings */
+h1, h2, h3 {
+  font-weight: bold;
+}
+
+/* Use Regular weight for subheadings */
+h4, h5, h6 {
+  font-weight: normal;
+}
+
+body {
+  margin: 0;
+  display: flex;
+  place-items: center;
+  min-width: 320px;
+  min-height: 100vh;
+}
+
+#root {
+  width: 100%;
+  margin: 0 auto;
+  text-align: center;
+}
