@@ -21,8 +21,8 @@ const Preloader = () => {
 
         // 0. Text Entrance (Falling from Top)
         tl.fromTo(words,
-            { y: -window.innerHeight / 2, opacity: 0 },
-            { y: 0, opacity: 1, duration: 1.2, ease: 'bounce.out', stagger: 0.2 }
+            { y: -window.innerHeight + 50, opacity: 1 },
+            { y: 0, opacity: 1, duration: 1.2, ease: 'bounce.out', stagger: 0.7 }
         );
 
         // 1. Loading Animation
@@ -34,12 +34,13 @@ const Preloader = () => {
 
         // 2. Text & Bar Exit (Fall Down One by One)
         tl.to([...words, progressContainerRef.current, progressTrackRef.current], {
-            y: window.innerHeight / 2, // Fall down off screen
-            opacity: 0,
-            duration: 0.8,
+            y: window.innerHeight + 100, // Fall down off screen
+            // y: window.innerHeight / 2, // Fall down off screen
+            // opacity: 0,
+            duration: 0.5,
             ease: 'power2.in',
-            stagger: 0.3
-        });
+            stagger: 0.2
+        }, "-=0.4");
 
         // 3. Shutter Reveal (Slide Up)
         tl.to(containerRef.current, {
