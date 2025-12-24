@@ -1,10 +1,10 @@
 import { useRef, useLayoutEffect } from 'react'
-import heroImg from '../../assets/images/hero.webp'
+// import heroImg from '../../assets/images/hero.webp'
 import gsap from 'gsap'
 import { ScrollTrigger } from 'gsap/ScrollTrigger'
 import SplashCursor from '../ui/SplashCursor'
-import Aurora from '../ui/Aurora'
-import Antigravity from '../ui/Antigravity'
+// import Aurora from '../ui/Aurora'
+// import Antigravity from '../ui/Antigravity'
 import PulseGrid from '../ui/PulseGrid'
 
 gsap.registerPlugin(ScrollTrigger)
