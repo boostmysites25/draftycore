@@ -5,7 +5,7 @@ import { ScrollTrigger } from 'gsap/ScrollTrigger'
 
 gsap.registerPlugin(ScrollTrigger)
 
-const HeroCopy = () => {
+const Hero = () => {
     const containerRef = useRef<HTMLDivElement>(null)
     const lettersRef = useRef<(HTMLSpanElement | null)[]>([])
 
@@ -17,43 +17,75 @@ const HeroCopy = () => {
             // Initial setup: hide letters and move them up immediately
             gsap.set(lettersRef.current, { y: -window.innerHeight * 1.5, opacity: 0 });
 
-            const tl = gsap.timeline({
+            // ScrollTrigger 1: ENTER & PIN
+            // Letters drop from sky to center. Hero is pinned.
+            const tlEnter = gsap.timeline({
                 scrollTrigger: {
                     trigger: containerRef.current,
-                    start: "top top", // Start when top of hero hits top of viewport
-                    end: "+=300%", // Increased scroll distance to accommodate second phase
-                    scrub: 1, // Smooth scrubbing
-                    pin: true, // Pin the hero section during animation
+                    start: "top top",
+                    end: "+=100%", // Pin for 1 screen height
+                    pin: true,
+                    scrub: 1,
+                    invalidateOnRefresh: true,
                 }
-            })
+            });
 
-            // Phase 1: Drop in straight and CENTER
-            tl.to(lettersRef.current, {
+            tlEnter.to(lettersRef.current, {
                 y: 0,
                 opacity: 1,
                 stagger: 0.1,
                 ease: "power2.out",
                 duration: 1
-            })
+            });
 
-                // Phase 2: Move DOWN together + Jump/Scatter
-                // This happens as the user scrolls further down
-                .to(lettersRef.current, {
-                    y: (i) => {
-                        // Base move down (e.g., 20vh) + the scatter offsets
-                        const baseDrop = window.innerHeight * 0.2; // Move down by 20% of screen
-                        const yOffsets = [15, -40, 20, -30, 25, -20];
-                        return baseDrop + (yOffsets[i] * (window.innerWidth < 768 ? 0.6 : 1));
-                    },
-                    rotation: (i) => {
-                        const rots = [-15, 12, -18, 15, -10, 18];
-                        return rots[i];
-                    },
-                    x: 0,
-                    scale: 1,
-                    duration: 0.5, // Faster jump
-                    ease: "elastic.out(1, 0.4)",
-                }, "+=0.5") // Wait a bit (pin duration) before dropping/scattering
+
+            // ScrollTrigger 2: EXIT & SCATTER
+            // Used absolute scroll values to avoid pinning conflicts.
+            // Pin ends at 1.0 viewport height.
+            // We trigger this drop at 1.25 (25% scrolled out).
+            // ScrollTrigger 2: EXIT & SCATTER
+            // Triggered using callbacks for custom "Reverse" behavior (Smooth instead of Jerky Elastic)
+            ScrollTrigger.create({
+                trigger: document.body,
+                start: () => window.innerHeight * 1.10,
+                invalidateOnRefresh: true,
+                onEnter: () => {
+                    const baseDrop = window.innerHeight * 0.20;
+
+                    // Play Drop & Bounce
+                    const tl = gsap.timeline();
+                    tl.to(lettersRef.current, {
+                        y: baseDrop,
+                        rotation: 0,
+                        duration: 0.5,
+                        ease: "power2.in"
+                    })
+                        .to(lettersRef.current, {
+                            y: (i) => {
+                                const yOffsets = [10, -50, 15, -40, 15, -30];
+                                return baseDrop + (yOffsets[i] * (window.innerWidth < 768 ? 0.6 : 1));
+                            },
+                            rotation: (i) => {
+                                const rots = [-15, 12, -18, 15, -10, 18];
+                                return rots[i];
+                            },
+                            duration: 1.2,
+                            ease: "elastic.out(1, 0.3)"
+                        });
+                },
+                onLeaveBack: () => {
+                    // Smooth Return to Alignment (Overwrites the elastic bounce)
+                    gsap.to(lettersRef.current, {
+                        y: 0,
+                        rotation: 0,
+                        duration: 0.5,
+                        ease: "power2.out",
+                        overwrite: true
+                    });
+                }
+            });
+
+
         }, containerRef)
 
         return () => ctx.revert()
@@ -71,7 +103,7 @@ const HeroCopy = () => {
             }}
         >
             {/* Overlay for better text visibility */}
-            <div className="absolute inset-0 bg-brandlimegreen/40"></div>
+            <div className="absolute inset-0 bg-white/70"></div>
 
             <div className="relative z-10 flex items-baseline gap-1 sm:gap-2 flex-wrap justify-center px-4">
                 {word.split("").map((char, i) => (
@@ -91,4 +123,4 @@ const HeroCopy = () => {
     )
 }
 
-export default HeroCopy 
+export default Hero 
