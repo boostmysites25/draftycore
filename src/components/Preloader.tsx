@@ -22,7 +22,7 @@ const Preloader = () => {
         // 0. Text Entrance (Falling from Top)
         tl.fromTo(words,
             { y: -window.innerHeight + 50, opacity: 1 },
-            { y: 0, opacity: 1, duration: 1.2, ease: 'bounce.out', stagger: 0.7 }
+            { y: 0, opacity: 1, duration: 1.2, ease: 'bounce.out', stagger: 0.9 }
         );
 
         // 1. Loading Animation
@@ -45,7 +45,7 @@ const Preloader = () => {
         // 3. Shutter Reveal (Slide Up)
         tl.to(containerRef.current, {
             yPercent: -100, // Slide the whole container UP
-            duration: 1.2,
+            duration: 1.6,
             ease: 'power4.inOut',
         }, "-=0.4");
 
@@ -59,7 +59,7 @@ const Preloader = () => {
     return (
         <div
             ref={containerRef}
-            className="fixed inset-0 z-50 flex items-center justify-center overflow-hidden bg-white" // White Background
+            className="fixed inset-0 z-[999] flex items-center justify-center overflow-hidden bg-white border-b-4 border-brandlimegreen" // White Background
         >
             {/* Content Layer */}
             <div className="relative z-10 flex flex-col items-center w-full h-full justify-center">
@@ -69,9 +69,9 @@ const Preloader = () => {
                     className="text-5xl sm:text-6xl md:text-9xl font-black tracking-widest uppercase mb-8 flex gap-4 sm:gap-6"
                     style={{ fontFamily: "'Octin College', sans-serif", perspective: '1000px' }}
                 >
-                    <span style={{ color: '#ADFF2F', display: 'inline-block', opacity: 0 }}>LETS</span> {/* Parrot Green - Visible on White */}
-                    <span style={{ color: '#FFBF00', display: 'inline-block', opacity: 0 }}>SET</span>  {/* Mustard */}
-                    <span style={{ color: '#30D5C8', display: 'inline-block', opacity: 0 }}>GO</span>   {/* Blue */}
+                    <span className="text-brandlimegreen" style={{ display: 'inline-block', opacity: 0 }}>LETS</span> {/* Parrot Green - Visible on White */}
+                    <span className="text-brandyellow" style={{ display: 'inline-block', opacity: 0 }}>SET</span>  {/* Mustard */}
+                    <span className="text-brandturquoise" style={{ display: 'inline-block', opacity: 0 }}>GO</span>   {/* Blue */}
                 </h1>
 
                 {/* Loading Bar Container - Positioned at Bottom like Reference */}

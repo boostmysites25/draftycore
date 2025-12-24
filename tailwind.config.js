@@ -17,6 +17,8 @@ export default {
             fontFamily: {
                 'big-shoulders': ['Big Shoulders', 'sans-serif'],
                 'octin-college': ['Octin College', 'sans-serif'],
+                'f37-judge': ['F37 Judge', 'sans-serif'],
+                'f37-judge-condensed': ['F37 Judge Condensed', 'sans-serif'],
             },
         },
     },

@@ -15,6 +15,7 @@
   font-display: swap;
 }
 
+
 /* Octin College Font - Bold */
 @font-face {
   font-family: 'Octin College';
@@ -22,6 +23,58 @@
   font-weight: bold;
   font-style: normal;
   font-display: swap;
+}
+
+/* F37 Judge Font Definitions */
+
+@font-face {
+    font-family: 'F37 Judge';
+    src: url('/F37 Judge/F37Judge-Regular.woff2') format('woff2'),
+         url('/F37 Judge/F37Judge-Regular.woff') format('woff'),
+         url('/F37 Judge/F37Judge-Regular.ttf') format('truetype');
+    font-weight: normal;
+    font-style: normal;
+    font-display: swap;
+}
+
+@font-face {
+    font-family: 'F37 Judge';
+    src: url('/F37 Judge/F37Judge-Medium.woff2') format('woff2'),
+         url('/F37 Judge/F37Judge-Medium.woff') format('woff'),
+         url('/F37 Judge/F37Judge-Medium.ttf') format('truetype');
+    font-weight: 500;
+    font-style: normal;
+    font-display: swap;
+}
+
+@font-face {
+    font-family: 'F37 Judge';
+    src: url('/F37 Judge/F37Judge-Bold.woff2') format('woff2'),
+         url('/F37 Judge/F37Judge-Bold.woff') format('woff'),
+         url('/F37 Judge/F37Judge-Bold.ttf') format('truetype');
+    font-weight: bold;
+    font-style: normal;
+    font-display: swap;
+}
+
+@font-face {
+    font-family: 'F37 Judge Condensed';
+    src: url('/F37 Judge/F37Judge-RegularCondensed.woff2') format('woff2'),
+         url('/F37 Judge/F37Judge-RegularCondensed.woff') format('woff'),
+         url('/F37 Judge/F37Judge-RegularCondensed.ttf') format('truetype');
+    font-weight: normal;
+    font-style: normal;
+    font-display: swap;
+}
+
+@font-face {
+    font-family: 'F37 Judge Condensed';
+    src: url('/F37 Judge/F37Judge-BoldCondensed.woff2') format('woff2'),
+         url('/F37 Judge/F37Judge-BoldCondensed.woff') format('woff'),
+         url('/F37 Judge/F37Judge-BoldCondensed.ttf') format('truetype');
+    font-weight: bold;
+    font-style: normal;
+    font-display: swap;
 }
 
 
@@ -66,7 +119,6 @@ body {
 #root {
   width: 100%;
   margin: 0 auto;
-  text-align: center;
 }
 
 @layer utilities {
