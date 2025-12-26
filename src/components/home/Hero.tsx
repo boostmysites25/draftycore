@@ -92,11 +92,11 @@ const Hero = () => {
             <div className="absolute inset-0 z-0 opacity-40">
                 <PulseGrid
                     gridColor="rgba(0, 0, 0, 0.08)"
-                    beamColors={['#FF7A00', '#000000']}
+                    beamColors={['#FF7A00', '#FFC300', "#FF2D95", '#B8F135', '#2ED9C3']}
                     beamSpeed={1.5}
                     beamLength={100}
                     gridSize={80}
-                    pulseFrequency={0.02}
+                    pulseFrequency={0.10}
                 />
             </div>
 

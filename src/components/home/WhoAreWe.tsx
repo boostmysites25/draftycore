@@ -54,8 +54,6 @@ const WhoAreWe = () => {
 
     return (
         <section ref={containerRef} className="min-h-screen bg-brandyellow flex items-center py-24 relative overflow-hidden">
-           
-
             {/* Decorative Architectural Elements */}
             <div className="absolute top-10 left-1/3 pointer-events-none opacity-20 hidden lg:block">
                 <svg width="200" height="200" viewBox="0 0 200 200" fill="none" xmlns="http://www.w3.org/2000/svg" className="animate-[spin_20s_linear_infinite]">
@@ -78,9 +76,9 @@ const WhoAreWe = () => {
             <div className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-[800px] h-[800px] border border-black/5 rounded-full pointer-events-none z-0"></div>
             <div className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-[600px] h-[600px] border border-black/5 rounded-full pointer-events-none z-0"></div>
 
-            <div className="flex flex-wrap wrapper gap-1 md:gap-12 w-full relative z-10">
+            <div className="flex flex-col md:flex-row wrapper gap-1 md:gap-12 w-full relative z-10">
                 {/* Left Column: Title */}
-                <div className="md:w-1/3 flex flex-col justify-center mx-auto">
+                <div className="md:w-1/3 flex flex-col items-center mx-auto">
                     <div className="sticky top-32">
                         {/* Decorative marker for title */}
                         <div className="mb-4 text-xs font-mono font-bold tracking-widest text-black/40 uppercase hidden md:block">
@@ -102,7 +100,7 @@ const WhoAreWe = () => {
                         {paragraphs.map((paragraph, pIndex) => (
                             <div key={pIndex} className="relative">
                                 {/* Small decorative number for each paragraph */}
-                                <span className="absolute -left-8 top-1 text-xs font-mono text-black/30 hidden md:block">
+                                <span className="absolute -left-8 top-1 text-xs text-black/30 hidden md:block">
                                     0{pIndex + 1}
                                 </span>
                                 <p>
