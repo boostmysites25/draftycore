@@ -49,7 +49,7 @@ const IndustriesWeFocusUpon = () => {
 
     useEffect(() => {
         const ctx = gsap.context(() => {
-            document.querySelectorAll(".image").forEach((image, index) => {
+            document.querySelectorAll(".image").forEach((image) => {
                 if (!image) return;
 
                 // Animate borders or simple fade up
