@@ -1,7 +1,9 @@
+import FeaturedWork from '../components/home/FeaturedWork'
 import Hero from '../components/home/Hero'
 // import HeroReverse from '../components/home/HeroReverse'
 import WhoAreWe from '../components/home/WhoAreWe'
 import Preloader from '../components/Preloader'
+import IndustriesWeFocusUpon from '../components/home/IndustriesWeFocusUpon'
 
 const Home = () => {
     return (
@@ -9,7 +11,8 @@ const Home = () => {
             <Preloader />
             <Hero />
             <WhoAreWe />
-            <div className="h-screen"></div>
+            <FeaturedWork />
+            <IndustriesWeFocusUpon />
         </>
     )
 }
