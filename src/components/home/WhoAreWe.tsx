@@ -84,10 +84,10 @@ const WhoAreWe = () => {
                         <div className="mb-4 text-xs font-mono font-bold tracking-widest text-black/40 uppercase hidden md:block">
                             // SECTION 01: IDENTITY
                         </div>
-                        <h2 className="text-4xl sm:text-5xl md:text-7xl lg:text-8xl font-octin-college font-bold text-secondary uppercase tracking-tighter leading-none text-center md:text-left">
+                        <h2 className="text-4xl sm:text-5xl md:text-7xl lg:text-8xl font-octin-college font-bold text-secondary uppercase tracking-tighter leading-none text-center">
                             Who <br className='md:block hidden'/>Are <br className='md:block hidden'/>We
                         </h2>
-                        <div className="mt-6 flex items-center gap-4 justify-center md:justify-start">
+                        <div className="mt-6 flex items-center gap-4 justify-center">
                             <span className="w-16 h-1 bg-black"></span>
                             <span className="w-1.5 h-1.5 rounded-full bg-black"></span>
                         </div>

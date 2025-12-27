@@ -1,6 +1,7 @@
 import { useEffect, useRef } from "react";
 import gsap from "gsap";
 import { ScrollTrigger } from "gsap/ScrollTrigger";
+import CyberCircuit from "../ui/CyberCircuit";
 
 gsap.registerPlugin(ScrollTrigger);
 
@@ -81,12 +82,17 @@ const IndustriesWeFocusUpon = () => {
         }
     };
 
+
+
     return (
-        <section ref={containerRef} className="py-24 bg-[#F5F5F0]">
-            <div className="wrapper">
+        <section ref={containerRef} className="py-24 bg-[#f1f1f1] relative overflow-hidden">
+            {/* Futuristic Background */}
+            <CyberCircuit className="z-0 opacity-20" color="#000000" />
+
+            <div className="wrapper relative z-10">
                 {/* Header */}
                 <div className="mb-20">
-                    <h2 className="text-5xl md:text-7xl font-bold tracking-tighter leading-none font-octin-college uppercase">
+                    <h2 className="text-5xl md:text-7xl font-bold font-octin-college text-secondary uppercase tracking-tighter mb-6">
                         Industries <br /> We Focus Upon
                     </h2>
                 </div>
@@ -97,7 +103,7 @@ const IndustriesWeFocusUpon = () => {
                         <div
                             key={service.id}
                             ref={(el) => addToRefs(el, index)}
-                            className="group flex flex-col md:flex-row border-t border-black/10 py-12 md:py-16 transition-colors duration-500 px-5 -mx-5 rounded-3xl wrapper"
+                            className="group flex flex-col md:flex-row border border-black/10 py-12 md:py-16 transition-colors duration-500 px-5 -mx-5 rounded-3xl wrapper"
                             onMouseEnter={(e) => e.currentTarget.style.backgroundColor = service.color}
                             onMouseLeave={(e) => e.currentTarget.style.backgroundColor = 'transparent'}
                         >
