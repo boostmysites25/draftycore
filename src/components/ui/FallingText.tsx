@@ -142,9 +142,9 @@ const FallingText: React.FC<FallingTextProps> = ({
         const mouse = Mouse.create(containerRef.current);
 
         // Allow scrolling by removing the wheel listener that Matter.js adds
-        mouse.element.removeEventListener("mousewheel", mouse.mousewheel);
-        mouse.element.removeEventListener("DOMMouseScroll", mouse.mousewheel);
-        mouse.element.removeEventListener("wheel", mouse.mousewheel); // Modern standard
+        mouse.element.removeEventListener("mousewheel", (mouse as any).mousewheel);
+        mouse.element.removeEventListener("DOMMouseScroll", (mouse as any).mousewheel);
+        mouse.element.removeEventListener("wheel", (mouse as any).mousewheel); // Modern standard
         const mouseConstraint = MouseConstraint.create(engine, {
             mouse,
             constraint: {
