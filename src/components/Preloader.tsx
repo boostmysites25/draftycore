@@ -45,7 +45,7 @@ const Preloader = () => {
         // 3. Shutter Reveal (Slide Up)
         tl.to(containerRef.current, {
             yPercent: -100, // Slide the whole container UP
-            duration: 1.6,
+            duration: 1.3,
             ease: 'power4.inOut',
         }, "-=0.4");
 

@@ -5,6 +5,7 @@ import Preloader from '../components/Preloader'
 import IndustriesWeFocusUpon from '../components/home/IndustriesWeFocusUpon'
 import WhatWeStandFor from '../components/home/WhatWeStandFor'
 import NextStep from '../components/home/NextStep'
+import Testimonials from '../components/home/Testimonials'
 
 const Home = () => {
     return (
@@ -16,6 +17,7 @@ const Home = () => {
             <IndustriesWeFocusUpon />
             <WhatWeStandFor />
             <NextStep />
+            <Testimonials />
         </>
     )
 }
