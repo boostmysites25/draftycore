@@ -1,4 +1,4 @@
-import React, { useEffect, useRef } from 'react';
+import { useEffect, useRef } from 'react';
 
 const BRAND_COLORS = ["#FF7A00", "#FFC300", "#FF2D95", "#B8F135", "#2ED9C3"];
 
