@@ -18,9 +18,9 @@ interface Testimonial {
 const testimonialsData: Testimonial[] = [
     {
         id: 1,
-        quote: "They took the time to understand my brand and developed a marketing strategy that perfectly captured our essence. Their creative campaigns led to a significant increase in sales.",
-        author: "Michael Mahanay",
-        role: "Designer",
+        quote: "DraftyCore allowed us to take on two massive projects simultaneously without worrying about staffing. The drawing quality was indistinguishable from our in-house team.",
+        author: "Sarah Jenkins",
+        role: "Principal Architect",
         bgColor: "bg-brandorange", // #FF7A00
         textColor: "text-white",
         rotation: -4,
@@ -28,9 +28,9 @@ const testimonialsData: Testimonial[] = [
     },
     {
         id: 2,
-        quote: "Their mission is to empower the brands we believe in with tailor-made approaches that ignite creativity and growth without limits. We discovered truly quality work.",
-        author: "Daryl Mitchell",
-        role: "Lead Developer",
+        quote: "The turnaround time on our construction documents was incredible. They followed our standards perfectly, and the redlines were minimal. A true game-changer for our firm.",
+        author: "David Ross",
+        role: "Structural Engineer",
         bgColor: "bg-brandpink", // #FF2D95
         textColor: "text-white",
         rotation: 3,
@@ -38,9 +38,9 @@ const testimonialsData: Testimonial[] = [
     },
     {
         id: 3,
-        quote: "Redox acts as a partner for forward-thinking organizations, using design and technology to tackle today's challenges. I offer creative solutions that connect, engage, and drive results.",
-        author: "Tom Banton",
-        role: "Digital Marketer",
+        quote: "We were skeptical about outsourcing, but DraftyCore's pilot project convinced us. They integrated seamlessly with our workflow and handled the BIM modeling expertely.",
+        author: "Elena Rodriguez",
+        role: "Design Director",
         bgColor: "bg-brandlimegreen", // #B8F135
         textColor: "text-black",
         rotation: -2,
@@ -48,9 +48,9 @@ const testimonialsData: Testimonial[] = [
     },
     {
         id: 4,
-        quote: "Design is a team effort, and I believe in a true partnership. By working closely with you and understanding your vision, we can create something that truly resonates.",
-        author: "Lance Petter",
-        role: "Web Designer",
+        quote: "Their ability to scale up during our busy season saved us. Efficient, professional, and highly skilled in Revit. effectively extended our studio's capabilities.",
+        author: "James Chen",
+        role: "Project Manager",
         bgColor: "bg-brandturquoise", // #2ED9C3
         textColor: "text-black",
         rotation: 4,
@@ -87,11 +87,11 @@ const Testimonials = () => {
     };
 
     return (
-        <section ref={containerRef} className="pt-10 pb-40 bg-white relative">
+        <section ref={containerRef} className="pt-16 pb-40 bg-white relative">
             <div className="wrapper relative z-10">
                 <div className="mb-32 text-center">
                     <h2 className="text-5xl md:text-7xl font-bold font-octin-college text-secondary uppercase tracking-tighter">
-                        Our Service.
+                        Testimonials
                     </h2>
                 </div>
 

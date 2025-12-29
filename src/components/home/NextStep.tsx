@@ -72,7 +72,7 @@ const NextStep = () => {
     };
 
     return (
-        <section ref={sectionRef} className="py-24 bg-white relative overflow-hidden">
+        <section ref={sectionRef} className="py-24 bg-[#f1f1f1] relative overflow-hidden">
             {/* Background Decoration (Subtle) */}
             <div className="absolute top-0 left-0 w-full h-full pointer-events-none opacity-30">
                 <div className="absolute top-[-10%] right-[-5%] w-[500px] h-[500px] bg-secondary/10 rounded-full blur-3xl z-[1]"></div>

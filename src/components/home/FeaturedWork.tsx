@@ -88,7 +88,7 @@ const FeaturedWork = () => {
             </div>
 
             {/* Background Particles */}
-            <div className="absolute inset-0 z-0">
+            {/* <div className="absolute inset-0 z-0">
                 <Particles
                     className="absolute inset-0"
                     particleCount={500}
@@ -102,14 +102,14 @@ const FeaturedWork = () => {
                     sizeRandomness={1}
                     cameraDistance={25}
                 />
-            </div>
+            </div> */}
 
             <div className="wrapper w-full relative z-10">
                 {/* Main Card Container */}
                 <div className="relative w-full wrapper aspect-[4/3] md:aspect-video bg-black shadow-2xl border border-white/10 flex flex-col justify-center items-center">
 
                     {/* 1. TOP MARQUEE (Left) */}
-                    <div ref={topMarqueeRef} className="absolute top-0 left-0 w-full h-[35px] sm:h-[50px] md:h-[80px] bg-brandyellow text-black z-20 overflow-hidden flex items-center">
+                    <div ref={topMarqueeRef} className="absolute top-0 left-0 w-full h-[35px] sm:h-[50px] md:h-[80px] bg-white text-black z-20 overflow-hidden flex items-center">
                         <div className="marquee-track flex w-max will-change-transform">
                             <HorizontalSet />
                             <HorizontalSet />
@@ -117,7 +117,7 @@ const FeaturedWork = () => {
                     </div>
 
                     {/* 2. RIGHT MARQUEE (Down) */}
-                    <div ref={rightMarqueeRef} className="absolute top-0 right-0 w-[35px] sm:w-[50px] md:w-[80px] h-full bg-brandyellow text-black z-20 overflow-hidden flex flex-col items-center">
+                    <div ref={rightMarqueeRef} className="absolute top-0 right-0 w-[35px] sm:w-[50px] md:w-[80px] h-full bg-white text-black z-20 overflow-hidden flex flex-col items-center">
                         <div className="marquee-track flex flex-col h-max will-change-transform">
                             <VerticalSet />
                             <VerticalSet />
@@ -125,7 +125,7 @@ const FeaturedWork = () => {
                     </div>
 
                     {/* 3. BOTTOM MARQUEE (Right) */}
-                    <div ref={bottomMarqueeRef} className="absolute bottom-0 left-0 w-full h-[35px] sm:h-[50px] md:h-[80px] bg-brandyellow text-black z-20 overflow-hidden flex items-center">
+                    <div ref={bottomMarqueeRef} className="absolute bottom-0 left-0 w-full h-[35px] sm:h-[50px] md:h-[80px] bg-white text-black z-20 overflow-hidden flex items-center">
                         <div className="marquee-track flex w-max will-change-transform">
                             <HorizontalSet />
                             <HorizontalSet />
@@ -133,7 +133,7 @@ const FeaturedWork = () => {
                     </div>
 
                     {/* 4. LEFT MARQUEE (Up) */}
-                    <div ref={leftMarqueeRef} className="absolute top-0 left-0 w-[35px] sm:w-[50px] md:w-[80px] h-full bg-brandyellow text-black z-20 overflow-hidden flex flex-col items-center">
+                    <div ref={leftMarqueeRef} className="absolute top-0 left-0 w-[35px] sm:w-[50px] md:w-[80px] h-full bg-white text-black z-20 overflow-hidden flex flex-col items-center">
                         <div className="marquee-track flex flex-col h-max will-change-transform">
                             <VerticalSet />
                             <VerticalSet />
