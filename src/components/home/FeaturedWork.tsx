@@ -1,7 +1,7 @@
 
 import { useEffect, useRef } from "react";
 import gsap from "gsap";
-import Particles from "../ui/Particles";
+// import Particles from "../ui/Particles";
 
 const MarqueeItem = ({ text }: { text: string }) => (
     <div className="flex items-center gap-4 px-5 md:px-10">
