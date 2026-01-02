@@ -103,7 +103,7 @@ const IndustriesWeFocusUpon = () => {
                         <div
                             key={service.id}
                             ref={(el) => addToRefs(el, index)}
-                            className="group flex flex-col md:flex-row border border-black/10 py-12 md:py-16 transition-colors duration-500 px-5 -mx-5 rounded-3xl wrapper"
+                            className="group flex flex-col md:flex-row border border-black/10 py-12 md:py-16 transition-colors duration-500 px-5 -mx-5 rounded-3xl wrapper w-full"
                             onMouseEnter={(e) => e.currentTarget.style.backgroundColor = service.color}
                             onMouseLeave={(e) => e.currentTarget.style.backgroundColor = 'transparent'}
                         >
