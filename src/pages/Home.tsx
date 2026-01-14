@@ -1,17 +1,19 @@
-import FeaturedWork from '../components/home/FeaturedWork'
-import Hero from '../components/home/Hero'
-import WhoAreWe from '../components/home/WhoAreWe'
-import Preloader from '../components/Preloader'
-import IndustriesWeFocusUpon from '../components/home/IndustriesWeFocusUpon'
-import WhatWeStandFor from '../components/home/WhatWeStandFor'
-import ScrollingText from '../components/ui/ScrollingText'
-import NextStep from '../components/home/NextStep'
-import Testimonials from '../components/home/Testimonials'
+import { lazy } from "react"
+
+const FeaturedWork = lazy(() => import('../components/home/FeaturedWork'))
+const Hero = lazy(() => import('../components/home/Hero'))
+const WhoAreWe = lazy(() => import('../components/home/WhoAreWe'))
+const Preloader = lazy(() => import('../components/Preloader'))
+const IndustriesWeFocusUpon = lazy(() => import('../components/home/IndustriesWeFocusUpon'))
+const WhatWeStandFor = lazy(() => import('../components/home/WhatWeStandFor'))
+const ScrollingText = lazy(() => import('../components/ui/ScrollingText'))
+const NextStep = lazy(() => import('../components/home/NextStep'))
+const Testimonials = lazy(() => import('../components/home/Testimonials'))
 
 const Home = () => {
     return (
         <>
-            <Preloader />
+            {/* <Preloader /> */}
             <Hero />
             <WhoAreWe />
             <FeaturedWork />

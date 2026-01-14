@@ -101,7 +101,7 @@ const Hero = () => {
             </div>
 
             {/* Splash Cursor for interactivity */}
-            <SplashCursor />
+            {/* <SplashCursor /> */}
 
             {/* Architectural HUD Elements */}
             <div className="absolute top-0 left-0 w-full h-full pointer-events-none z-20 mix-blend-multiply">

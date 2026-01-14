@@ -44,9 +44,11 @@ const Preloader = () => {
 
         // 3. Shutter Reveal (Slide Up)
         tl.to(containerRef.current, {
-            yPercent: -100, // Slide the whole container UP
-            duration: 1.3,
-            ease: 'power4.inOut',
+            yPercent: -150, // Move further up to ensure curved edges clear the screen
+            borderBottomLeftRadius: '100% 40%',
+            borderBottomRightRadius: '100% 40%',
+            duration: 1.2,
+            ease: 'back.in(0.6)', // Slight anticipation ("bounce" effect before lifting)
         }, "-=0.4");
 
         // 4. Cleanup (optional, display: none handled by sliding out of view)
@@ -59,19 +61,27 @@ const Preloader = () => {
     return (
         <div
             ref={containerRef}
-            className="fixed inset-0 z-[999] flex items-center justify-center overflow-hidden bg-white border-b-4 border-brandlimegreen" // White Background
+            className="fixed inset-0 z-[999] flex items-center justify-center overflow-hidden bg-white border-b-4 border-brandturquoise" // White Background
         >
             {/* Content Layer */}
-            <div className="relative z-10 flex flex-col items-center w-full h-full justify-center">
+            <div className="relative z-10 flex flex-col items-center w-full h-full justify-center px-3">
                 {/* Text */}
                 <h1
                     ref={textRef}
                     className="text-5xl sm:text-6xl md:text-9xl font-black tracking-widest uppercase mb-8 flex gap-4 sm:gap-6"
                     style={{ fontFamily: "'Octin College', sans-serif", perspective: '1000px' }}
                 >
-                    <span className="text-brandlimegreen" style={{ display: 'inline-block', opacity: 0 }}>LETS</span> {/* Parrot Green - Visible on White */}
-                    <span className="text-brandyellow" style={{ display: 'inline-block', opacity: 0 }}>SET</span>  {/* Mustard */}
-                    <span className="text-brandturquoise" style={{ display: 'inline-block', opacity: 0 }}>GO</span>   {/* Blue */}
+                    {/* Parrot Green - Visible on White */}
+                    {/* <span className="text-brandlimegreen" style={{ display: 'inline-block', opacity: 0 }}>LETS</span> */}
+                    <img src="/images/preloader/Let.png" alt="" className="h-[3.5rem] sm:h-[6rem] lg:h-[10rem] object-contain" />
+
+                    {/* Mustard */}
+                    {/* <span className="text-brandyellow" style={{ display: 'inline-block', opacity: 0 }}>SET</span>   */}
+                    <img src="/images/preloader/Set.png" alt="" className="h-[3.5rem] sm:h-[6rem] lg:h-[10rem] object-contain" />
+
+                    {/* Blue */}
+                    {/* <span className="text-brandturquoise" style={{ display: 'inline-block', opacity: 0 }}>GO</span>   */}
+                    <img src="/images/preloader/Go.png" alt="" className="h-[3.5rem] sm:h-[6rem] lg:h-[10rem] object-contain" />
                 </h1>
 
                 {/* Loading Bar Container - Positioned at Bottom like Reference */}
@@ -79,13 +89,13 @@ const Preloader = () => {
                     {/* Thin Track Line */}
                     <div
                         ref={progressTrackRef}
-                        className="absolute bottom-0 left-0 w-full h-[1.5px] bg-[#ADFF2F] opacity-30"
+                        className="absolute bottom-0 left-0 w-full h-[1.5px] bg-brandturquoise opacity-30"
                     ></div>
 
                     {/* Fill Bar */}
                     <div
                         ref={progressBarRef}
-                        className="h-[5px] bg-[#ADFF2F] rounded-r-full" // 5px height, Parrot Green
+                        className="h-[5px] bg-brandturquoise rounded-r-full" // 5px height, Parrot Green
                         style={{ borderRadius: '0 30px 30px 0' }}
                     ></div>
                 </div>
