@@ -15,7 +15,7 @@ const HeroCopy = () => {
     const lettersRef = useRef<(HTMLSpanElement | null)[]>([])
     const [isAligned, setIsAligned] = useState(false)
 
-    const word = "DRAFTY"
+    // const word = "DRAFTY"
 
     useLayoutEffect(() => {
         const ctx = gsap.context(() => {
