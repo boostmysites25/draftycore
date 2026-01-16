@@ -138,8 +138,8 @@ const WhoAreWe = () => {
                         scrub: true,
                         // markers: true,
                         animation: gsap.to(card, {
-                            scale: 0.9,
-                            opacity: 0.4, // Fade out as it goes up/behind
+                            scale: 0.7,
+                            opacity: 0, // Fade out as it goes up/behind
                             filter: "blur(5px)",
                             ease: "none"
                         })
