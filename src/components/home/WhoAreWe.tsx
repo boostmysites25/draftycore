@@ -48,6 +48,29 @@ const WhoAreWe = () => {
     const decoration1Ref = useRef<HTMLDivElement>(null);
     const decoration2Ref = useRef<HTMLDivElement>(null);
     const cardsRef = useRef<(HTMLDivElement | null)[]>([]);
+    const cursorRef = useRef<HTMLDivElement>(null);
+
+    const handleCardHover = () => {
+        if (!cursorRef.current) return;
+        gsap.to(cursorRef.current, {
+            scale: 4,
+            backgroundColor: "rgba(0,0,0,0.1)",
+            border: "1px solid rgba(0,0,0,0)", // Optional: hide border or keep it. User img checks.
+            duration: 0.3,
+            ease: "power2.out"
+        });
+    };
+
+    const handleCardLeave = () => {
+        if (!cursorRef.current) return;
+        gsap.to(cursorRef.current, {
+            scale: 1,
+            backgroundColor: "transparent",
+            border: "1px solid rgba(0,0,0,0.5)",
+            duration: 0.3,
+            ease: "power2.out"
+        });
+    };
 
     const cards = [
         {
@@ -140,7 +163,7 @@ const WhoAreWe = () => {
                         animation: gsap.to(card, {
                             scale: 0.7,
                             opacity: 0, // Fade out as it goes up/behind
-                            filter: "blur(5px)",
+                            // filter: "blur(5px)",
                             ease: "none"
                         })
                     });
@@ -165,11 +188,17 @@ const WhoAreWe = () => {
             });
 
             // --- MOUSE PARALLAX (Kept from before, high sensitivity) ---
+            // --- MOUSE PARALLAX (Kept from before, high sensitivity) ---
             if (!isMobile) {
+                // Parallax Refs
                 const xTo1 = gsap.quickTo(decoration1Ref.current, "x", { duration: 0.8, ease: "power3" });
                 const yTo1 = gsap.quickTo(decoration1Ref.current, "y", { duration: 0.8, ease: "power3" });
                 const xTo2 = gsap.quickTo(decoration2Ref.current, "x", { duration: 1.2, ease: "power3" });
                 const yTo2 = gsap.quickTo(decoration2Ref.current, "y", { duration: 1.2, ease: "power3" });
+
+                // Cursor Refs
+                const xToCursor = gsap.quickTo(cursorRef.current, "x", { duration: 0.2, ease: "power3" });
+                const yToCursor = gsap.quickTo(cursorRef.current, "y", { duration: 0.2, ease: "power3" });
 
                 const onMouseMove = (e: MouseEvent) => {
                     const { clientX, clientY } = e;
@@ -181,6 +210,10 @@ const WhoAreWe = () => {
                     yTo1(yPos);
                     xTo2(xPos * -1.5);
                     yTo2(yPos * -1.5);
+
+                    // Update cursor position directly to clientX/Y
+                    xToCursor(clientX);
+                    yToCursor(clientY);
                 };
 
                 window.addEventListener("mousemove", onMouseMove);
@@ -202,7 +235,7 @@ const WhoAreWe = () => {
     );
 
     return (
-        <section ref={containerRef} className="min-h-screen flex items-stretch py-24 relative bg-[#f1f1f5]">
+        <section ref={containerRef} className="min-h-screen flex items-stretch py-24 relative bg-[#f1f1f5] cursor-none">
             {/* Background Container for Overflow Management */}
             <div className="absolute inset-0 overflow-hidden pointer-events-none z-0">
                 {/* Background Layer (Yellow Reveal) */}
@@ -235,6 +268,12 @@ const WhoAreWe = () => {
                 <div className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-[800px] h-[800px] border border-black/5 rounded-full z-0"></div>
             </div>
 
+            {/* Custom Cursor */}
+            <div
+                ref={cursorRef}
+                className="fixed top-0 left-0 w-8 h-8 rounded-full border border-black/50 pointer-events-none z-50 hidden md:block -translate-x-1/2 -translate-y-1/2"
+            ></div>
+
             <div className="flex flex-col md:flex-row wrapper gap-1 md:gap-12 w-full relative z-10">
                 {/* Left Column: Title (Sticky) */}
                 <div className="md:w-1/3 flex flex-col items-center mx-auto relative z-20">
@@ -266,6 +305,8 @@ const WhoAreWe = () => {
                         <div
                             key={index}
                             ref={el => cardsRef.current[index] = el}
+                            onMouseEnter={handleCardHover}
+                            onMouseLeave={handleCardLeave}
                             // Min-height calc logic from example: calc(100vh - offset)
                             // We can approximate or use h-screen to ensure they fill enough space to pin
                             className={`
@@ -273,6 +314,7 @@ const WhoAreWe = () => {
                                 ${card.bgClass} 
                                 border ${card.borderClass}
                                 flex flex-col justify-center min-h-[50vh]
+                                cursor-none
                             `}
                         >
                             <span className="text-sm font-mono opacity-50 mb-6 block">0{index + 1}</span>
