@@ -1,25 +1,68 @@
 
-import { useEffect, useRef } from "react";
+import { useEffect, useRef, forwardRef } from "react";
 import gsap from "gsap";
-// import Particles from "../ui/Particles";
+import { ScrollTrigger } from "gsap/ScrollTrigger";
 
+
+gsap.registerPlugin(ScrollTrigger);
+
+// --- MARQUEE COMPONENTS (Unchanged) ---
 const MarqueeItem = ({ text }: { text: string }) => (
     <div className="flex items-center gap-4 px-5 md:px-10">
         <span className="text-xl sm:text-2xl md:text-5xl flex font-octin-college items-center gap-2 font-bold tracking-widest uppercase whitespace-nowrap">
             {text}
         </span>
-        {/* <div className="w-1.5 h-1.5 bg-current rounded-full"></div> */}
     </div>
 );
 
-const FeaturedWork = () => {
+const HorizontalSet = ({ text }: { text: string }) => (
+    <div className="flex shrink-0 items-center">
+        {Array(4).fill(null).map((_, i) => (
+            <MarqueeItem key={i} text={text} />
+        ))}
+    </div>
+);
+
+const VerticalSet = ({ text }: { text: string }) => (
+    <div className="flex flex-col shrink-0 items-center">
+        {Array(4).fill(null).map((_, i) => (
+            <div key={i} className="flex flex-col items-center justify-center gap-4 py-5 md:py-10" style={{ writingMode: 'vertical-rl' }}>
+                <span className="text-xl sm:text-2xl md:text-5xl flex items-center gap-2 font-bold tracking-widest uppercase whitespace-nowrap rotate-180 font-octin-college">
+                    {text}
+                </span>
+            </div>
+        ))}
+    </div>
+);
+
+// --- PROJECT CARD COMPONENT ---
+interface ProjectProps {
+    id: number;
+    title: string;
+    videoSrc: string;
+}
+
+const ProjectCard = forwardRef<HTMLDivElement, { project: ProjectProps }>(({ project }, ref) => {
     const topMarqueeRef = useRef<HTMLDivElement>(null);
     const bottomMarqueeRef = useRef<HTMLDivElement>(null);
     const leftMarqueeRef = useRef<HTMLDivElement>(null);
     const rightMarqueeRef = useRef<HTMLDivElement>(null);
+    const internalRef = useRef<HTMLDivElement>(null);
+    const videoRef1 = useRef<HTMLVideoElement>(null);
+    const videoRef2 = useRef<HTMLVideoElement>(null);
+
+    // Sync external ref
+    useEffect(() => {
+        if (!ref) return;
+        if (typeof ref === 'function') {
+            ref(internalRef.current);
+        } else {
+            (ref as React.MutableRefObject<HTMLDivElement | null>).current = internalRef.current;
+        }
+    }, [ref]);
 
     useEffect(() => {
-        const duration = 60;
+        const duration = 20;
         const ease = "linear";
 
         const createMarquee = (element: HTMLDivElement | null, direction: 'left' | 'right' | 'up' | 'down') => {
@@ -27,15 +70,9 @@ const FeaturedWork = () => {
             const track = element.querySelector('.marquee-track');
             if (!track) return;
 
-            // Seamless loop logic:
-            // The track contains two identical sets of items.
-            // We animate the track by -50% of its size (which equals exactly 1 set).
-            // When it reaches -50%, it looks identical to 0%, so we reset (or loop).
-
             if (direction === 'left') {
                 gsap.to(track, { xPercent: -50, duration, ease, repeat: -1 });
             } else if (direction === 'right') {
-                // For right: start at -50% and move to 0%
                 gsap.fromTo(track, { xPercent: -50 }, { xPercent: 0, duration, ease, repeat: -1 });
             } else if (direction === 'up') {
                 gsap.to(track, { yPercent: -50, duration, ease, repeat: -1 });
@@ -49,110 +86,335 @@ const FeaturedWork = () => {
             createMarquee(bottomMarqueeRef.current, 'right');
             createMarquee(leftMarqueeRef.current, 'up');
             createMarquee(rightMarqueeRef.current, 'down');
-        });
+
+            // MOUSE PARALLAX (Apply to both videos)
+            const videoRefs = [videoRef1.current, videoRef2.current];
+            const hasVideos = videoRefs.every(v => v);
+
+            if (hasVideos && internalRef.current) {
+                const xTo1 = gsap.quickTo(videoRef1.current, "x", { duration: 0.3, ease: "power3" });
+                const yTo1 = gsap.quickTo(videoRef1.current, "y", { duration: 0.3, ease: "power3" });
+                const xTo2 = gsap.quickTo(videoRef2.current, "x", { duration: 0.3, ease: "power3" });
+                const yTo2 = gsap.quickTo(videoRef2.current, "y", { duration: 0.3, ease: "power3" });
+
+                const onMouseMove = (e: MouseEvent) => {
+                    if (!internalRef.current) return;
+                    const { left, top, width, height } = internalRef.current.getBoundingClientRect();
+                    const x = (e.clientX - left - width / 2) * 0.05;
+                    const y = (e.clientY - top - height / 2) * 0.05;
+                    xTo1(x); yTo1(y);
+                    xTo2(x); yTo2(y);
+                };
+
+                internalRef.current.addEventListener("mousemove", onMouseMove);
+                internalRef.current.addEventListener("mouseleave", () => {
+                    xTo1(0); yTo1(0);
+                    xTo2(0); yTo2(0);
+                });
+            }
+        }, internalRef);
 
         return () => ctx.revert();
     }, []);
 
-    // Increased count significantly to ensure one set is ALWAYS larger than any screen dimension
-    const REPEAT_COUNT = 12;
-    const WORD = "FEATURED WORK";
-
-    const HorizontalSet = () => (
-        <div className="flex shrink-0 items-center">
-            {Array(REPEAT_COUNT).fill(null).map((_, i) => (
-                <MarqueeItem key={i} text={WORD} />
-            ))}
-        </div>
-    );
-
-    const VerticalSet = () => (
-        <div className="flex flex-col shrink-0 items-center">
-            {Array(REPEAT_COUNT).fill(null).map((_, i) => (
-                <div key={i} className="flex flex-col items-center justify-center gap-4 py-5 md:py-10" style={{ writingMode: 'vertical-rl' }}>
-                    <span className="text-xl sm:text-2xl md:text-5xl flex items-center gap-2 font-bold tracking-widest uppercase whitespace-nowrap rotate-180 font-octin-college">
-                        {WORD}
-                        {/* <div className="w-1.5 h-1.5 bg-current rounded-full"></div> */}
-                    </span>
-                </div>
-            ))}
-        </div>
-    );
+    const videoClass = "w-full h-full object-cover opacity-90 group-hover:opacity-100 scale-100 transition-opacity duration-700 ease-out grayscale group-hover:grayscale-0 will-change-transform";
 
     return (
-        <section className="md:min-h-screen bg-white/5 py-24 flex items-center justify-center relative overflow-hidden">
+        <div ref={internalRef} className="project-card relative w-[80vw] md:w-[60vw] aspect-[9/16] md:aspect-[16/9] shrink-0 bg-transparent shadow-2xl flex flex-col justify-center items-center overflow-visible mx-4 md:mx-10 group will-change-[width,margin]">
 
-            {/* Background Context */}
-            <div className="absolute inset-0 pointer-events-none opacity-5">
-                <div className="w-full h-full bg-[radial-gradient(circle_at_center,_var(--tw-gradient-stops))] from-black via-transparent to-transparent"></div>
+            {/* MARQUEES (Note: These might need to be hidden/faded out during expansion if they overlay the split) */}
+            {/* 1. TOP MARQUEE (Left) */}
+            <div ref={topMarqueeRef} className="absolute top-0 left-0 w-full h-[30px] sm:h-[40px] md:h-[60px] bg-white text-black z-20 overflow-hidden flex items-center transition-opacity duration-300 opacity-100 border border-white/10">
+                <div className="marquee-track flex w-max will-change-transform">
+                    <HorizontalSet text={project.title} />
+                    <HorizontalSet text={project.title} />
+                    <HorizontalSet text={project.title} />
+                    <HorizontalSet text={project.title} />
+                </div>
             </div>
 
-            {/* Background Particles */}
-            {/* <div className="absolute inset-0 z-0">
-                <Particles
-                    className="absolute inset-0"
-                    particleCount={500}
-                    particleSpread={10}
-                    speed={0.3}
-                    particleColors={["#FF7A00", "#FF2D95", "#B8F135", "#2ED9C3"]}
-                    moveParticlesOnHover={true}
-                    particleHoverFactor={2}
-                    alphaParticles={false}
-                    particleBaseSize={100}
-                    sizeRandomness={1}
-                    cameraDistance={25}
-                />
-            </div> */}
+            {/* 2. RIGHT MARQUEE (Down) */}
+            <div ref={rightMarqueeRef} className="absolute top-0 right-0 w-[30px] sm:w-[40px] md:w-[60px] h-full bg-white text-black z-20 overflow-hidden flex flex-col items-center transition-opacity duration-300 opacity-100 border border-white/10">
+                <div className="marquee-track flex flex-col h-max will-change-transform">
+                    <VerticalSet text={project.title} />
+                    <VerticalSet text={project.title} />
+                    <VerticalSet text={project.title} />
+                    <VerticalSet text={project.title} />
+                </div>
+            </div>
 
-            <div className="wrapper w-full relative z-10">
-                {/* Main Card Container */}
-                <div className="relative w-full wrapper aspect-[4/3] md:aspect-video bg-black shadow-2xl border border-white/10 flex flex-col justify-center items-center">
+            {/* 3. BOTTOM MARQUEE (Right) */}
+            <div ref={bottomMarqueeRef} className="absolute bottom-0 left-0 w-full h-[30px] sm:h-[40px] md:h-[60px] bg-white text-black z-20 overflow-hidden flex items-center transition-opacity duration-300 opacity-100 border border-white/10">
+                <div className="marquee-track flex w-max will-change-transform">
+                    <HorizontalSet text={project.title} />
+                    <HorizontalSet text={project.title} />
+                    <HorizontalSet text={project.title} />
+                    <HorizontalSet text={project.title} />
+                </div>
+            </div>
 
-                    {/* 1. TOP MARQUEE (Left) */}
-                    <div ref={topMarqueeRef} className="absolute top-0 left-0 w-full h-[35px] sm:h-[50px] md:h-[80px] bg-white text-black z-20 overflow-hidden flex items-center">
-                        <div className="marquee-track flex w-max will-change-transform">
-                            <HorizontalSet />
-                            <HorizontalSet />
-                        </div>
-                    </div>
+            {/* 4. LEFT MARQUEE (Up) */}
+            <div ref={leftMarqueeRef} className="absolute top-0 left-0 w-[30px] sm:w-[40px] md:w-[60px] h-full bg-white text-black z-20 overflow-hidden flex flex-col items-center transition-opacity duration-300 opacity-100 border border-white/10">
+                <div className="marquee-track flex flex-col h-max will-change-transform">
+                    <VerticalSet text={project.title} />
+                    <VerticalSet text={project.title} />
+                    <VerticalSet text={project.title} />
+                    <VerticalSet text={project.title} />
+                </div>
+            </div>
 
-                    {/* 2. RIGHT MARQUEE (Down) */}
-                    <div ref={rightMarqueeRef} className="absolute top-0 right-0 w-[35px] sm:w-[50px] md:w-[80px] h-full bg-white text-black z-20 overflow-hidden flex flex-col items-center">
-                        <div className="marquee-track flex flex-col h-max will-change-transform">
-                            <VerticalSet />
-                            <VerticalSet />
-                        </div>
-                    </div>
-
-                    {/* 3. BOTTOM MARQUEE (Right) */}
-                    <div ref={bottomMarqueeRef} className="absolute bottom-0 left-0 w-full h-[35px] sm:h-[50px] md:h-[80px] bg-white text-black z-20 overflow-hidden flex items-center">
-                        <div className="marquee-track flex w-max will-change-transform">
-                            <HorizontalSet />
-                            <HorizontalSet />
-                        </div>
-                    </div>
-
-                    {/* 4. LEFT MARQUEE (Up) */}
-                    <div ref={leftMarqueeRef} className="absolute top-0 left-0 w-[35px] sm:w-[50px] md:w-[80px] h-full bg-white text-black z-20 overflow-hidden flex flex-col items-center">
-                        <div className="marquee-track flex flex-col h-max will-change-transform">
-                            <VerticalSet />
-                            <VerticalSet />
-                        </div>
-                    </div>
-
-                    {/* VIDEO CONTAINER (Inset) */}
-                    <div className="absolute inset-[35px] sm:inset-[50px] md:inset-[80px] bg-neutral-900 overflow-hidden group">
+            {/* VIDEO CONTAINER (Split) */}
+            <div className="shutter-wrapper absolute inset-0 z-10 flex w-full h-full overflow-hidden">
+                {/* LEFT HALF */}
+                <div className="mask-left relative w-1/2 h-full overflow-hidden bg-neutral-900 border-black/50 will-change-transform">
+                    <div className="absolute top-0 left-0 w-[200%] h-full">
                         <video
-                            className="w-full h-full object-cover opacity-90 group-hover:opacity-100 group-hover:scale-105 transition-all duration-700 ease-out grayscale group-hover:grayscale-0"
-                            src="https://rrdevs.net/project-video/group-meeting.mp4"
+                            ref={videoRef1}
+                            className={videoClass}
+                            src={project.videoSrc}
                             autoPlay
                             muted
                             loop
                             playsInline
                         />
-
-                        <div className="absolute inset-0 bg-black/20 group-hover:bg-transparent transition-colors duration-500"></div>
+                        <div className="absolute inset-0 bg-black/20 group-hover:bg-transparent transition-colors duration-500 pointer-events-none"></div>
                     </div>
+                </div>
+
+                {/* RIGHT HALF */}
+                <div className="mask-right relative w-1/2 h-full overflow-hidden bg-neutral-900 border-black/50 will-change-transform">
+                    <div className="absolute top-0 left-[-100%] w-[200%] h-full">
+                        <video
+                            ref={videoRef2}
+                            className={videoClass}
+                            src={project.videoSrc}
+                            autoPlay
+                            muted
+                            loop
+                            playsInline
+                        />
+                        <div className="absolute inset-0 bg-black/20 group-hover:bg-transparent transition-colors duration-500 pointer-events-none"></div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    );
+});
+
+ProjectCard.displayName = "ProjectCard";
+
+// --- DATA ---
+const PROJECTS: ProjectProps[] = [
+    { id: 1, title: "FEATURED WORK", videoSrc: "/videos/showreel-1920.webm" }
+];
+
+const FeaturedWork = () => {
+    const sectionRef = useRef<HTMLElement>(null);
+    const triggerRef = useRef<HTMLDivElement>(null);
+    const headingRef = useRef<HTMLDivElement>(null);
+    const cardRef = useRef<HTMLDivElement>(null);
+    const bgRef = useRef<HTMLDivElement>(null);
+
+    useEffect(() => {
+        const ctx = gsap.context(() => {
+            if (!triggerRef.current || !sectionRef.current || !headingRef.current || !cardRef.current) return;
+
+            const mm = gsap.matchMedia();
+
+            // DESKTOP ANIMATION (min-width: 768px)
+            mm.add("(min-width: 768px)", () => {
+                // 1. REVEAL ANIMATION (Initial)
+                gsap.set(sectionRef.current, {
+                    clipPath: "inset(0% 0% 0% 0%)",
+                    opacity: 1
+                });
+
+                // 2. SETUP PINNING
+                const nextSection = sectionRef.current?.nextElementSibling as HTMLElement;
+                const scrollDistance = "300%"; // 300vh total scroll
+
+                // Pin Industries Section (Underneath)
+                if (nextSection) {
+                    ScrollTrigger.create({
+                        trigger: nextSection,
+                        start: "top top",
+                        end: "+=200%", // Pin for the remaining 2/3rds of rotation
+                        pin: true,
+                        pinSpacing: true, // Hold space so we can finish animation
+                    });
+                }
+
+                // Pin FeaturedWork (Overlay)
+                const timeline = gsap.timeline({
+                    scrollTrigger: {
+                        trigger: sectionRef.current,
+                        pin: true,
+                        pinSpacing: false, // Allow Industries to slide up underneath
+                        scrub: 1,
+                        start: "top top",
+                        end: `+=${scrollDistance}`,
+                        invalidateOnRefresh: true,
+                        anticipatePin: 1
+                    }
+                });
+
+                const headingWidth = headingRef.current?.offsetWidth ? headingRef.current.offsetWidth + (window.innerWidth * 0.05) : 0;
+
+                // PHASE 1: Scroll 0% - 33% (approx 0vh to 100vh scroll)
+                timeline.to(triggerRef.current, {
+                    x: () => -headingWidth - 100, // Ensure it moves completely off-screen
+                    ease: "power1.inOut",
+                    duration: 1 // 1 unit of time
+                })
+                    .to(cardRef.current, {
+                        width: "150vw",
+                        marginLeft: '-13%',
+                        marginRight: 0,
+                        borderWidth: 0,
+                        ease: "power1.inOut",
+                        duration: 1
+                    }, "<")
+
+                    // PHASE 2: Scroll 33% - 100% (next 200vh)
+                    // Fade out background slightly before split
+                    .to(bgRef.current, {
+                        autoAlpha: 0,
+                        duration: 0.5,
+                        ease: "none"
+                    }, ">")
+
+                    // Shutter Split
+                    .to(".mask-left", {
+                        xPercent: -101,
+                        ease: "power2.inOut",
+                        duration: 2 // 2 units of time (2/3rds of timeline)
+                    }, "<")
+                    .to(".mask-right", {
+                        xPercent: 101,
+                        ease: "power2.inOut",
+                        duration: 2
+                    }, "<")
+                    .to(".marquee-track", {
+                        opacity: 0,
+                        duration: 0.5
+                    }, "<")
+
+                    // Final Step: Pointer events
+                    .set(sectionRef.current, { pointerEvents: "none" });
+            });
+
+            // MOBILE ANIMATION (max-width: 767px)
+            mm.add("(max-width: 767px)", () => {
+                // 1. REVEAL ANIMATION (Initial)
+                gsap.set(sectionRef.current, {
+                    clipPath: "inset(0% 0% 0% 0%)",
+                    opacity: 1
+                });
+
+                // 2. SETUP PINNING
+                const nextSection = sectionRef.current?.nextElementSibling as HTMLElement;
+                const scrollDistance = "300%";
+
+                if (nextSection) {
+                    ScrollTrigger.create({
+                        trigger: nextSection,
+                        start: "top top",
+                        end: "+=200%",
+                        pin: true,
+                        pinSpacing: true,
+                    });
+                }
+
+                const timeline = gsap.timeline({
+                    scrollTrigger: {
+                        trigger: sectionRef.current,
+                        pin: true,
+                        pinSpacing: false,
+                        scrub: 1,
+                        start: "top top",
+                        end: `+=${scrollDistance}`,
+                        invalidateOnRefresh: true,
+                        anticipatePin: 1
+                    }
+                });
+
+                // PHASE 1: Move Heading Up & Expand Card
+                timeline
+                    .to(headingRef.current, {
+                        y: -100,
+                        opacity: 0,
+                        duration: 1,
+                        ease: "power1.inOut"
+                    })
+                    .to(cardRef.current, {
+                        width: "100vw", // Full viewport width
+                        height: "100vh", // Full viewport height
+                        y: -100, // Move up to cover space
+                        marginLeft: 0,
+                        marginRight: 0,
+                        borderWidth: 0,
+                        ease: "power1.inOut",
+                        duration: 1
+                    }, "<")
+
+                    // PHASE 2: Split
+                    .to(bgRef.current, {
+                        autoAlpha: 0,
+                        duration: 0.5,
+                        ease: "none"
+                    }, ">")
+                    .to(".mask-left", {
+                        xPercent: -101,
+                        ease: "power2.inOut",
+                        duration: 2
+                    }, "<")
+                    .to(".mask-right", {
+                        xPercent: 101,
+                        ease: "power2.inOut",
+                        duration: 2
+                    }, "<")
+                    .to(".marquee-track", {
+                        opacity: 0,
+                        duration: 0.5
+                    }, "<")
+                    .set(sectionRef.current, { pointerEvents: "none" });
+            });
+
+        }, sectionRef);
+
+        return () => ctx.revert();
+    }, []);
+
+    return (
+        <section
+            ref={sectionRef}
+            className="h-screen py-24 flex items-center relative overflow-hidden cursor-none z-10"
+        >
+
+            {/* Opaque Background Layer - fades out during split */}
+            <div ref={bgRef} className="absolute inset-0 bg-[#f1f1f5] z-0">
+                <div className="absolute inset-0 pointer-events-none opacity-5">
+                    <div className="w-full h-full bg-[radial-gradient(circle_at_center,_var(--tw-gradient-stops))] from-black via-transparent to-transparent"></div>
+                </div>
+            </div>
+
+            {/* Sticky Wrapper/Trigger Area */}
+            <div className="w-full h-full flex items-start md:items-center relative z-10 md:justify-start justify-center pt-20 md:pt-0">
+                <div
+                    ref={triggerRef}
+                    className="flex flex-col md:flex-row flex-nowrap items-center pl-[5vw] pr-[5vw] gap-10 md:gap-20 will-change-transform w-full md:w-auto"
+                >
+                    {/* Header Card */}
+                    <div ref={headingRef} className="shrink-0 w-full md:w-[20vw] text-center md:text-left">
+                        <h2 className="text-4xl md:text-[5rem] font-black font-octin-college leading-none text-black">
+                            FEATURED <br /> WORK
+                        </h2>
+                        <div className="w-20 h-2 bg-brandturquoise mt-8 mx-auto md:mx-0"></div>
+                    </div>
+
+                    {PROJECTS.map((project) => (
+                        <ProjectCard key={project.id} ref={cardRef} project={project} />
+                    ))}
 
                 </div>
             </div>

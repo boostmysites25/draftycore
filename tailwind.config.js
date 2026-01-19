@@ -15,10 +15,14 @@ export default {
                 brandturquoise: "#2ED9C3"
             },
             fontFamily: {
-                'big-shoulders': ['Big Shoulders', 'sans-serif'],
-                'octin-college': ['Octin College', 'sans-serif'],
-                'f37-judge': ['F37 Judge', 'sans-serif'],
-                'f37-judge-condensed': ['F37 Judge Condensed', 'sans-serif'],
+                'big-shoulders': ['Coolvetica', 'sans-serif'],
+                // 'big-shoulders': ['Big Shoulders', 'sans-serif'],
+                'octin-college': ['Academy Filled 3D', 'sans-serif'], // Replaced Octin College with Academy
+                'f37-judge': ['Coolvetica', 'sans-serif'],
+                'f37-judge-condensed': ['Coolvetica', 'sans-serif'],
+                // 'f37-judge': ['F37 Judge', 'sans-serif'],
+                // 'f37-judge-condensed': ['F37 Judge Condensed', 'sans-serif'],
+                'coolvetica': ['Coolvetica', 'sans-serif'],
             },
         },
     },

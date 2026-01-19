@@ -14,19 +14,35 @@ const Navbar = () => {
     const { pathname } = useLocation()
     const [isScrolled, setIsScrolled] = useState(false)
     const [isMenuOpen, setIsMenuOpen] = useState(false)
+    const [showNavbar, setShowNavbar] = useState(true)
 
     // GSAP Refs
     const menuRef = useRef<HTMLDivElement>(null)
     const linkRefs = useRef<(HTMLAnchorElement | null)[]>([])
     const bgLineRefs = useRef<(HTMLDivElement | null)[]>([])
+    const lastScrollY = useRef(0)
 
     useEffect(() => {
+        lastScrollY.current = window.scrollY; // Initialize with current position
+
         const handleScroll = () => {
-            if (window.scrollY > 50) {
+            const currentScrollY = window.scrollY
+
+            // Background Logic
+            if (currentScrollY > 50) {
                 setIsScrolled(true)
             } else {
                 setIsScrolled(false)
             }
+
+            // Visibility Logic (Hide on scroll down, Show on scroll up)
+            if (currentScrollY > lastScrollY.current && currentScrollY > 100) {
+                setShowNavbar(false)
+            } else {
+                setShowNavbar(true)
+            }
+
+            lastScrollY.current = currentScrollY
         }
         window.addEventListener('scroll', handleScroll)
         return () => {
@@ -113,7 +129,7 @@ const Navbar = () => {
 
     return (
         <>
-            <nav className={`fixed top-0 left-0 right-0 z-50 transition-all duration-300 ${isScrolled ? "backdrop-blur-md bg-white/5" : ""}`}>
+            <nav className={`fixed top-0 left-0 right-0 z-50 transition-all duration-300 ${isScrolled ? "backdrop-blur-md bg-white/5" : ""} ${showNavbar ? "translate-y-0" : "-translate-y-0"}`}>
                 <div className="wrapper py-2">
                     <div className="grid grid-cols-2 md:grid-cols-3 gap-10 items-center">
                         {/* Logo Section */}

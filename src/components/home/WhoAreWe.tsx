@@ -1,4 +1,5 @@
-import { useEffect, useRef } from 'react';
+import { useEffect, useRef, useState } from 'react';
+import { CircleCursor } from '../ui/Cursors';
 import gsap from 'gsap';
 import { ScrollTrigger } from 'gsap/ScrollTrigger';
 
@@ -43,6 +44,7 @@ const JellyLetter = ({ char }: { char: string }) => {
 
 
 const WhoAreWe = () => {
+    const [isHovering, setIsHovering] = useState(false);
     const containerRef = useRef<HTMLDivElement>(null);
     const bgRef = useRef<HTMLDivElement>(null);
     const decoration1Ref = useRef<HTMLDivElement>(null);
@@ -55,7 +57,7 @@ const WhoAreWe = () => {
         gsap.to(cursorRef.current, {
             scale: 4,
             backgroundColor: "rgba(0,0,0,0.1)",
-            border: "1px solid rgba(0,0,0,0)", // Optional: hide border or keep it. User img checks.
+            border: "1px solid rgba(0,0,0,0)",
             duration: 0.3,
             ease: "power2.out"
         });
@@ -80,12 +82,12 @@ const WhoAreWe = () => {
         },
         {
             text: "We plug into your workflow seamlessly as a quiet extension of your team, helping you deliver more without stretching internal bandwidth.",
-            bgClass: "bg-brandorange text-black",
+            bgClass: "bg-brandturquoise text-black",
             borderClass: "border-black/10"
         },
         {
             text: "Our custom-built platform makes it ridiculously easy to brief, review, and deliver drawings, no email chains, no chaos. Just smooth, scalable drafting support.",
-            bgClass: "bg-brandpink text-black",
+            bgClass: "bg-brandorange text-black",
             borderClass: "border-black/10"
         }
     ];
@@ -105,13 +107,10 @@ const WhoAreWe = () => {
                 // Text Reveal Logic
                 const words = card.querySelectorAll('.word');
 
-                // Determine gradient colors based on card background
-                // We check the card definition to see if it's a dark card (requiring white text)
                 const cardDef = cards[index];
                 const isDarkCard = cardDef.bgClass.includes('text-white');
 
                 const activeColor = isDarkCard ? "#ffffff" : "#000000";
-                // Original used 0.2 opacity for dim text. adhering to that.
                 const dimColor = isDarkCard ? "rgba(255,255,255,0.2)" : "rgba(0,0,0,0.2)";
 
                 gsap.set(words, {
@@ -120,8 +119,6 @@ const WhoAreWe = () => {
                     webkitBackgroundClip: "text",
                     backgroundClip: "text",
                     color: "transparent",
-                    // Layer 1 (Top): Active Color (Starts at 0% width)
-                    // Layer 2 (Bottom): Dim Color (Always 100% width)
                     backgroundImage: `linear-gradient(to right, ${activeColor} 0%, ${activeColor} 100%), linear-gradient(to right, ${dimColor} 0%, ${dimColor} 100%)`,
                     backgroundSize: "0% 100%, 100% 100%",
                     scale: 0.9,
@@ -130,40 +127,36 @@ const WhoAreWe = () => {
                     transformOrigin: "top center"
                 });
 
-                // Original logic used scrub. Let's replicate that per card.
                 const revealTl = gsap.timeline({
                     scrollTrigger: {
                         trigger: card,
                         start: "top 80%",
                         end: "center center",
-                        scrub: 1, // Smoothing adds a bit of weight to the scrub
+                        scrub: 1,
                     }
                 });
 
                 revealTl.to(words, {
-                    backgroundSize: "100% 100%, 100% 100%", // Reveal top layer
+                    backgroundSize: "100% 100%, 100% 100%",
                     scale: 1,
                     y: 0,
-                    stagger: 1, // Sequential reveal across the scroll distance
+                    stagger: 1,
                     duration: 1,
-                    ease: "elastic.out(1, 0.5)" // The bounce!
+                    ease: "elastic.out(1, 0.5)"
                 });
 
 
-                // Stacking Logic (only if not last card)
                 if (!isLast) {
                     ScrollTrigger.create({
                         trigger: card,
-                        start: "top top+=140", // Offset for sticky title area or just aesthetic padding
-                        end: "bottom top+=40", // End when bottom of this card reaches near top
+                        start: "top top+=140",
+                        end: "bottom top+=40",
                         pin: true,
                         pinSpacing: false,
                         scrub: true,
-                        // markers: true,
                         animation: gsap.to(card, {
                             scale: 0.7,
-                            opacity: 0, // Fade out as it goes up/behind
-                            // filter: "blur(5px)",
+                            opacity: 0,
                             ease: "none"
                         })
                     });
@@ -171,8 +164,8 @@ const WhoAreWe = () => {
             });
 
 
-            // --- BACKGROUND REVEAL (Kept from before) ---
-            const centerPos = isMobile ? "50% 50%" : "25% 40%";
+            // --- BACKGROUND REVEAL ---
+            const centerPos = isMobile ? "50% 50%" : "25% 20%";
             gsap.set(bgRef.current, { clipPath: `circle(0% at ${centerPos})` });
 
             gsap.to(bgRef.current, {
@@ -187,18 +180,12 @@ const WhoAreWe = () => {
                 }
             });
 
-            // --- MOUSE PARALLAX (Kept from before, high sensitivity) ---
-            // --- MOUSE PARALLAX (Kept from before, high sensitivity) ---
+            // --- MOUSE PARALLAX ---
             if (!isMobile) {
-                // Parallax Refs
                 const xTo1 = gsap.quickTo(decoration1Ref.current, "x", { duration: 0.8, ease: "power3" });
                 const yTo1 = gsap.quickTo(decoration1Ref.current, "y", { duration: 0.8, ease: "power3" });
                 const xTo2 = gsap.quickTo(decoration2Ref.current, "x", { duration: 1.2, ease: "power3" });
                 const yTo2 = gsap.quickTo(decoration2Ref.current, "y", { duration: 1.2, ease: "power3" });
-
-                // Cursor Refs
-                const xToCursor = gsap.quickTo(cursorRef.current, "x", { duration: 0.2, ease: "power3" });
-                const yToCursor = gsap.quickTo(cursorRef.current, "y", { duration: 0.2, ease: "power3" });
 
                 const onMouseMove = (e: MouseEvent) => {
                     const { clientX, clientY } = e;
@@ -210,10 +197,6 @@ const WhoAreWe = () => {
                     yTo1(yPos);
                     xTo2(xPos * -1.5);
                     yTo2(yPos * -1.5);
-
-                    // Update cursor position directly to clientX/Y
-                    xToCursor(clientX);
-                    yToCursor(clientY);
                 };
 
                 window.addEventListener("mousemove", onMouseMove);
@@ -225,7 +208,6 @@ const WhoAreWe = () => {
         return () => ctx.revert();
     }, []);
 
-    // Helper to render title with JellyLetters
     const renderTitle = (text: string) => (
         <div className="flex justify-center">
             {text.split("").map((char, i) => (
@@ -235,7 +217,12 @@ const WhoAreWe = () => {
     );
 
     return (
-        <section ref={containerRef} className="min-h-screen flex items-stretch py-24 relative bg-[#f1f1f5] cursor-none">
+        <section
+            ref={containerRef}
+            className="min-h-screen flex items-stretch py-24 relative bg-[#f1f1f5] cursor-none"
+            onMouseEnter={() => setIsHovering(true)}
+            onMouseLeave={() => setIsHovering(false)}
+        >
             {/* Background Container for Overflow Management */}
             <div className="absolute inset-0 overflow-hidden pointer-events-none z-0">
                 {/* Background Layer (Yellow Reveal) */}
@@ -246,17 +233,17 @@ const WhoAreWe = () => {
                 </div>
 
                 {/* Decoration 1 */}
-                <div ref={decoration1Ref} className="absolute top-10 left-1/3 opacity-20 hidden lg:block">
+                {/* <div ref={decoration1Ref} className="absolute top-10 left-1/3 opacity-20 hidden lg:block">
                     <svg width="200" height="200" viewBox="0 0 200 200" fill="none" xmlns="http://www.w3.org/2000/svg" className="animate-[spin_20s_linear_infinite]">
                         <circle cx="100" cy="100" r="90" stroke="black" strokeWidth="2" strokeDasharray="10 10" />
                         <circle cx="100" cy="100" r="40" stroke="black" strokeWidth="1" />
                         <line x1="100" y1="10" x2="100" y2="190" stroke="black" strokeWidth="1" />
                         <line x1="10" y1="100" x2="190" y2="100" stroke="black" strokeWidth="1" />
                     </svg>
-                </div>
+                </div> */}
 
                 {/* Decoration 2 */}
-                <div ref={decoration2Ref} className="absolute -bottom-10 -left-10 opacity-20 hidden md:block animate-bounce">
+                <div ref={decoration2Ref} className="absolute -bottom-10 -left-10 opacity-20 block animate-bounce">
                     <svg width="300" height="300" viewBox="0 0 300 300" fill="none" xmlns="http://www.w3.org/2000/svg">
                         <rect x="50" y="50" width="200" height="200" stroke="black" strokeWidth="2" />
                         <line x1="50" y1="50" x2="250" y2="250" stroke="black" strokeWidth="1" />
@@ -269,19 +256,30 @@ const WhoAreWe = () => {
             </div>
 
             {/* Custom Cursor */}
-            <div
-                ref={cursorRef}
-                className="fixed top-0 left-0 w-8 h-8 rounded-full border border-black/50 pointer-events-none z-50 hidden md:block -translate-x-1/2 -translate-y-1/2"
-            ></div>
+            <CircleCursor ref={cursorRef} isActive={isHovering} />
 
-            <div className="flex flex-col md:flex-row wrapper gap-1 md:gap-12 w-full relative z-10">
+            <div className="flex flex-col md:flex-row wrapper gap-6 md:gap-12 w-full relative z-10">
+
+                <div className="absolute top-0 h-screen left-1/3 w-full">
+                    {/* Decoration 1 */}
+                    <div ref={decoration1Ref} className="sticky top-20 opacity-20 block z-0">
+                        <svg width="200" height="200" viewBox="0 0 200 200" fill="none" xmlns="http://www.w3.org/2000/svg" className="animate-[spin_20s_linear_infinite]">
+                            <circle cx="100" cy="100" r="90" stroke="black" strokeWidth="2" strokeDasharray="10 10" />
+                            <circle cx="100" cy="100" r="40" stroke="black" strokeWidth="1" />
+                            <line x1="100" y1="10" x2="100" y2="190" stroke="black" strokeWidth="1" />
+                            <line x1="10" y1="100" x2="190" y2="100" stroke="black" strokeWidth="1" />
+                        </svg>
+                    </div>
+                </div>
+
                 {/* Left Column: Title (Sticky) */}
                 <div className="md:w-1/3 flex flex-col items-center mx-auto relative z-20">
                     <div className="sticky top-32">
+
                         <div className="mb-4 text-xs font-mono font-bold tracking-widest text-black/40 uppercase hidden md:block">
                             // SECTION 01: IDENTITY
                         </div>
-                        <h2 className="text-4xl sm:text-5xl md:text-7xl lg:text-8xl font-octin-college font-bold text-secondary uppercase tracking-tighter leading-none text-center cursor-pointer select-none">
+                        <h2 className="text-5xl sm:text-5xl md:text-7xl lg:text-8xl font-octin-college font-bold text-secondary uppercase tracking-tighter leading-none text-center cursor-pointer select-none">
                             {renderTitle("Who")}
                             <div className="flex justify-center md:hidden">Are</div>
                             <div className="hidden md:flex justify-center">
@@ -307,8 +305,6 @@ const WhoAreWe = () => {
                             ref={el => cardsRef.current[index] = el}
                             onMouseEnter={handleCardHover}
                             onMouseLeave={handleCardLeave}
-                            // Min-height calc logic from example: calc(100vh - offset)
-                            // We can approximate or use h-screen to ensure they fill enough space to pin
                             className={`
                                 relative p-8 md:p-12 rounded-3xl shadow-2xl 
                                 ${card.bgClass} 
@@ -318,9 +314,9 @@ const WhoAreWe = () => {
                             `}
                         >
                             <span className="text-sm font-mono opacity-50 mb-6 block">0{index + 1}</span>
-                            <p className="text-xl sm:text-2xl md:text-3xl font-medium leading-tight tracking-tight">
+                            <p className="text-xl sm:text-2xl md:text-3xl leading-tight tracking-tight">
                                 {card.text.split(" ").map((word, wIndex) => (
-                                    <span key={wIndex} className="word inline-block mr-2 leading-snug">
+                                    <span key={wIndex} className="word inline-block mr-2 leading-snug font-coolvetica tracking-wide">
                                         {word}
                                     </span>
                                 ))}

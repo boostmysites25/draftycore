@@ -94,13 +94,25 @@ export default function SplashCursor({
             TRANSPARENT
         };
 
-        const { gl, ext } = getWebGLContext(canvas);
+        let gl: WebGL2RenderingContext = null as any;
+        let ext: any = null;
+
+        try {
+            const context = getWebGLContext(canvas);
+            gl = context.gl;
+            ext = context.ext;
+        } catch (e) {
+            console.error('WebGL initialization failed:', e);
+            return;
+        }
+
         if (!gl || !ext) return;
 
         if (!ext.supportLinearFiltering) {
             config.DYE_RESOLUTION = 256;
             config.SHADING = false;
         }
+
 
         function getWebGLContext(canvas: HTMLCanvasElement) {
             const params = {

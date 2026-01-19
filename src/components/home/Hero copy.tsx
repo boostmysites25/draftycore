@@ -1,21 +1,16 @@
 import { useRef, useLayoutEffect, useState } from 'react'
-// import heroImg from '../../assets/images/hero.webp'
 import gsap from 'gsap'
 import { ScrollTrigger } from 'gsap/ScrollTrigger'
-import SplashCursor from '../ui/SplashCursor'
-// import Aurora from '../ui/Aurora'
-// import Antigravity from '../ui/Antigravity'
 import PulseGrid from '../ui/PulseGrid'
-import video from '../../assets/logo-vid.mp4'
 
 gsap.registerPlugin(ScrollTrigger)
 
-const HeroCopy = () => {
+const Hero = () => {
     const containerRef = useRef<HTMLDivElement>(null)
     const lettersRef = useRef<(HTMLSpanElement | null)[]>([])
     const [isAligned, setIsAligned] = useState(false)
 
-    // const word = "DRAFTY"
+    const word = "DRAFTY"
 
     useLayoutEffect(() => {
         const ctx = gsap.context(() => {
@@ -86,7 +81,7 @@ const HeroCopy = () => {
 
     return (
         <div
-            // ref={containerRef}
+            ref={containerRef}
             className='h-screen w-full flex items-center justify-center overflow-hidden relative bg-[#F5F5F0]'
         >
             {/* Background Animation: Pulse Grid with lower opacity for subtlety */}
@@ -102,7 +97,7 @@ const HeroCopy = () => {
             </div>
 
             {/* Splash Cursor for interactivity */}
-            <SplashCursor />
+            {/* <SplashCursor /> */}
 
             {/* Architectural HUD Elements */}
             <div className="absolute top-0 left-0 w-full h-full pointer-events-none z-20 mix-blend-multiply">
@@ -164,7 +159,23 @@ const HeroCopy = () => {
                         <span className="h-2 w-[1px] bg-black/30"></span>
                     </div>
 
-                    <video src={video} autoPlay loop muted className="w-full h-full object-cover"></video>
+                    {word.split("").map((char, i) => {
+                        // High contrast slate-900 for that bold architectural feel
+                        const colorClass = "text-slate-900";
+
+                        return (
+                            <span
+                                key={i}
+                                ref={el => lettersRef.current[i] = el}
+                                className={`font-octin-college font-bold drop-shadow-sm inline-block leading-none opacity-0 ${colorClass}`}
+                                style={{
+                                    fontSize: `clamp(5rem, ${15 + (i * 2.10)}vw, 35rem)`
+                                }}
+                            >
+                                {char}
+                            </span>
+                        )
+                    })}
                 </div>
 
                 {/* Sub-headline */}
@@ -178,4 +189,4 @@ const HeroCopy = () => {
     )
 }
 
-export default HeroCopy
+export default Hero

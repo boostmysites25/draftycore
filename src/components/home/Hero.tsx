@@ -2,10 +2,12 @@ import { useRef, useLayoutEffect, useState } from 'react'
 // import heroImg from '../../assets/images/hero.webp'
 import gsap from 'gsap'
 import { ScrollTrigger } from 'gsap/ScrollTrigger'
-// import SplashCursor from '../ui/SplashCursor'
 // import Aurora from '../ui/Aurora'
 // import Antigravity from '../ui/Antigravity'
 import PulseGrid from '../ui/PulseGrid'
+import video from '../../assets/logo-vid.webm'
+import video2 from '../../assets/scroll-down-vid.webm'
+import { CircleCursor } from '../ui/Cursors'
 
 gsap.registerPlugin(ScrollTrigger)
 
@@ -13,8 +15,12 @@ const Hero = () => {
     const containerRef = useRef<HTMLDivElement>(null)
     const lettersRef = useRef<(HTMLSpanElement | null)[]>([])
     const [isAligned, setIsAligned] = useState(false)
+    const cursorRef = useRef<HTMLDivElement>(null);
+    const [isHovering, setIsHovering] = useState(false);
+    const [currentVideo, setCurrentVideo] = useState({ id: 1, video });
 
-    const word = "DRAFTY"
+
+    // const word = "DRAFTY"
 
     useLayoutEffect(() => {
         const ctx = gsap.context(() => {
@@ -41,6 +47,7 @@ const Hero = () => {
                 start: () => window.innerHeight * 0.20, // Trigger at 10% scroll
                 invalidateOnRefresh: true,
                 onEnter: () => {
+                    setCurrentVideo({ id: 2, video: video2 });
                     const baseDrop = window.innerHeight * 0.20;
 
                     // Play Drop & Bounce
@@ -66,6 +73,7 @@ const Hero = () => {
                         })
                 },
                 onLeaveBack: () => {
+                    setCurrentVideo({ id: 1, video });
                     setIsAligned(true);
                     // Smooth Return to Alignment (Overwrites the elastic bounce)
                     gsap.to(lettersRef.current, {
@@ -85,8 +93,9 @@ const Hero = () => {
 
     return (
         <div
-            ref={containerRef}
-            className='h-screen w-full flex items-center justify-center overflow-hidden relative bg-[#F5F5F0]'
+            // ref={containerRef}
+            className='h-screen w-full flex items-center justify-center overflow-hidden relative bg-[#F5F5F0] cursor-none'
+             onMouseEnter={() => setIsHovering(true)} onMouseLeave={() => setIsHovering(false)}
         >
             {/* Background Animation: Pulse Grid with lower opacity for subtlety */}
             <div className="absolute inset-0 z-0 opacity-40">
@@ -100,8 +109,7 @@ const Hero = () => {
                 />
             </div>
 
-            {/* Splash Cursor for interactivity */}
-            {/* <SplashCursor /> */}
+            <CircleCursor ref={cursorRef} isActive={isHovering} />
 
             {/* Architectural HUD Elements */}
             <div className="absolute top-0 left-0 w-full h-full pointer-events-none z-20 mix-blend-multiply">
@@ -163,23 +171,7 @@ const Hero = () => {
                         <span className="h-2 w-[1px] bg-black/30"></span>
                     </div>
 
-                    {word.split("").map((char, i) => {
-                        // High contrast slate-900 for that bold architectural feel
-                        const colorClass = "text-slate-900";
-
-                        return (
-                            <span
-                                key={i}
-                                ref={el => lettersRef.current[i] = el}
-                                className={`font-octin-college font-bold drop-shadow-sm inline-block leading-none opacity-0 ${colorClass}`}
-                                style={{
-                                    fontSize: `clamp(5rem, ${15 + (i * 2.10)}vw, 35rem)`
-                                }}
-                            >
-                                {char}
-                            </span>
-                        )
-                    })}
+                    <video src={currentVideo.video} autoPlay loop muted className={`w-full h-full object-cover ${currentVideo.id === 2 ? "-translate-y-[14rem]" : ""}`}></video>
                 </div>
 
                 {/* Sub-headline */}
