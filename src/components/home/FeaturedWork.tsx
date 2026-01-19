@@ -120,7 +120,7 @@ const ProjectCard = forwardRef<HTMLDivElement, { project: ProjectProps }>(({ pro
     const videoClass = "w-full h-full object-cover opacity-90 group-hover:opacity-100 scale-100 transition-opacity duration-700 ease-out grayscale group-hover:grayscale-0 will-change-transform";
 
     return (
-        <div ref={internalRef} className="project-card relative w-[80vw] md:w-[60vw] aspect-[16/9] shrink-0 bg-transparent shadow-2xl flex flex-col justify-center items-center overflow-visible mx-4 md:mx-10 group will-change-[width,margin]">
+        <div ref={internalRef} className="project-card relative w-[80vw] md:w-[60vw] aspect-[9/16] md:aspect-[16/9] shrink-0 bg-transparent shadow-2xl flex flex-col justify-center items-center overflow-visible mx-4 md:mx-10 group will-change-[width,margin]">
 
             {/* MARQUEES (Note: These might need to be hidden/faded out during expansion if they overlay the split) */}
             {/* 1. TOP MARQUEE (Left) */}
@@ -205,7 +205,7 @@ ProjectCard.displayName = "ProjectCard";
 
 // --- DATA ---
 const PROJECTS: ProjectProps[] = [
-    { id: 1, title: "FEATURED WORK", videoSrc: "/videos/showreel-1920.webm" }
+    { id: 1, title: "UNIFIED ECOSYSTEM", videoSrc: "/videos/showreel-1920.webm" }
 ];
 
 const FeaturedWork = () => {
@@ -216,180 +216,177 @@ const FeaturedWork = () => {
     const bgRef = useRef<HTMLDivElement>(null);
 
     useEffect(() => {
-        const ctx = gsap.context(() => {
-            if (!triggerRef.current || !sectionRef.current || !headingRef.current || !cardRef.current) return;
+        if (!triggerRef.current || !sectionRef.current || !headingRef.current || !cardRef.current) return;
 
-            const mm = gsap.matchMedia();
+        const mm = gsap.matchMedia();
 
-            // DESKTOP ANIMATION (min-width: 768px)
-            mm.add("(min-width: 768px)", () => {
-                // 1. REVEAL ANIMATION (Initial)
-                gsap.set(sectionRef.current, {
-                    clipPath: "inset(0% 0% 0% 0%)",
-                    opacity: 1
+        // DESKTOP ANIMATION (min-width: 768px)
+        mm.add("(min-width: 768px)", () => {
+            // 1. REVEAL ANIMATION (Initial)
+            gsap.set(sectionRef.current, {
+                clipPath: "inset(0% 0% 0% 0%)",
+                opacity: 1
+            });
+
+            // 2. SETUP PINNING
+            const nextSection = sectionRef.current?.nextElementSibling as HTMLElement;
+            const scrollDistance = "300%"; // 300vh total scroll
+
+            // Pin Industries Section (Underneath)
+            if (nextSection) {
+                ScrollTrigger.create({
+                    trigger: nextSection,
+                    start: "top top",
+                    end: "+=200%", // Pin for the remaining 2/3rds of rotation
+                    pin: true,
+                    pinSpacing: true, // Hold space so we can finish animation
                 });
+            }
 
-                // 2. SETUP PINNING
-                const nextSection = sectionRef.current?.nextElementSibling as HTMLElement;
-                const scrollDistance = "300%"; // 300vh total scroll
-
-                // Pin Industries Section (Underneath)
-                if (nextSection) {
-                    ScrollTrigger.create({
-                        trigger: nextSection,
-                        start: "top top",
-                        end: "+=200%", // Pin for the remaining 2/3rds of rotation
-                        pin: true,
-                        pinSpacing: true, // Hold space so we can finish animation
-                    });
+            // Pin FeaturedWork (Overlay)
+            const timeline = gsap.timeline({
+                scrollTrigger: {
+                    trigger: sectionRef.current,
+                    pin: true,
+                    pinSpacing: false, // Allow Industries to slide up underneath
+                    scrub: 1,
+                    start: "top top",
+                    end: `+=${scrollDistance}`,
+                    invalidateOnRefresh: true,
+                    anticipatePin: 1
                 }
+            });
 
-                // Pin FeaturedWork (Overlay)
-                const timeline = gsap.timeline({
-                    scrollTrigger: {
-                        trigger: sectionRef.current,
-                        pin: true,
-                        pinSpacing: false, // Allow Industries to slide up underneath
-                        scrub: 1,
-                        start: "top top",
-                        end: `+=${scrollDistance}`,
-                        invalidateOnRefresh: true,
-                        anticipatePin: 1
-                    }
-                });
+            const headingWidth = headingRef.current?.offsetWidth ? headingRef.current.offsetWidth + (window.innerWidth * 0.05) : 0;
 
-                const headingWidth = headingRef.current?.offsetWidth ? headingRef.current.offsetWidth + (window.innerWidth * 0.05) : 0;
-
-                // PHASE 1: Scroll 0% - 33% (approx 0vh to 100vh scroll)
-                timeline.to(triggerRef.current, {
-                    x: () => -headingWidth - 100, // Ensure it moves completely off-screen
+            // PHASE 1: Scroll 0% - 33% (approx 0vh to 100vh scroll)
+            timeline.to(triggerRef.current, {
+                x: () => -headingWidth - 100, // Ensure it moves completely off-screen
+                ease: "power1.inOut",
+                duration: 1 // 1 unit of time
+            })
+                .to(cardRef.current, {
+                    width: "150vw",
+                    marginLeft: '-13%',
+                    marginRight: 0,
+                    borderWidth: 0,
                     ease: "power1.inOut",
-                    duration: 1 // 1 unit of time
-                })
-                    .to(cardRef.current, {
-                        width: "150vw",
-                        marginLeft: '-13%',
-                        marginRight: 0,
-                        borderWidth: 0,
-                        ease: "power1.inOut",
-                        duration: 1
-                    }, "<")
+                    duration: 1
+                }, "<")
 
-                    // PHASE 2: Scroll 33% - 100% (next 200vh)
-                    // Fade out background slightly before split
-                    .to(bgRef.current, {
-                        autoAlpha: 0,
-                        duration: 0.5,
-                        ease: "none"
-                    }, ">")
+                // PHASE 2: Scroll 33% - 100% (next 200vh)
+                // Fade out background slightly before split
+                .to(bgRef.current, {
+                    autoAlpha: 0,
+                    duration: 0.5,
+                    ease: "none"
+                }, ">")
 
-                    // Shutter Split
-                    .to(".mask-left", {
-                        xPercent: -101,
-                        ease: "power2.inOut",
-                        duration: 2 // 2 units of time (2/3rds of timeline)
-                    }, "<")
-                    .to(".mask-right", {
-                        xPercent: 101,
-                        ease: "power2.inOut",
-                        duration: 2
-                    }, "<")
-                    .to(".marquee-track", {
-                        opacity: 0,
-                        duration: 0.5
-                    }, "<")
+                // Shutter Split
+                .to(".mask-left", {
+                    xPercent: -101,
+                    ease: "power2.inOut",
+                    duration: 2 // 2 units of time (2/3rds of timeline)
+                }, "<")
+                .to(".mask-right", {
+                    xPercent: 101,
+                    ease: "power2.inOut",
+                    duration: 2
+                }, "<")
+                .to(".marquee-track", {
+                    opacity: 0,
+                    duration: 0.5
+                }, "<")
 
-                    // Final Step: Pointer events
-                    .set(sectionRef.current, { pointerEvents: "none" });
+                // Final Step: Pointer events
+                .set(sectionRef.current, { pointerEvents: "none" });
+        });
+
+        // MOBILE ANIMATION (max-width: 767px)
+        mm.add("(max-width: 767px)", () => {
+            // 1. REVEAL ANIMATION (Initial)
+            gsap.set(sectionRef.current, {
+                clipPath: "inset(0% 0% 0% 0%)",
+                opacity: 1
             });
 
-            // MOBILE ANIMATION (max-width: 767px)
-            mm.add("(max-width: 767px)", () => {
-                // 1. REVEAL ANIMATION (Initial)
-                gsap.set(sectionRef.current, {
-                    clipPath: "inset(0% 0% 0% 0%)",
-                    opacity: 1
+            // 2. SETUP PINNING
+            const nextSection = sectionRef.current?.nextElementSibling as HTMLElement;
+            const scrollDistance = "300%";
+
+            if (nextSection) {
+                ScrollTrigger.create({
+                    trigger: nextSection,
+                    start: "top top",
+                    end: "+=200%",
+                    pin: true,
+                    pinSpacing: true,
                 });
+            }
 
-                // 2. SETUP PINNING
-                const nextSection = sectionRef.current?.nextElementSibling as HTMLElement;
-                const scrollDistance = "300%";
-
-                if (nextSection) {
-                    ScrollTrigger.create({
-                        trigger: nextSection,
-                        start: "top top",
-                        end: "+=200%",
-                        pin: true,
-                        pinSpacing: true,
-                    });
+            const timeline = gsap.timeline({
+                scrollTrigger: {
+                    trigger: sectionRef.current,
+                    pin: true,
+                    pinSpacing: false,
+                    scrub: 1,
+                    start: "top top",
+                    end: `+=${scrollDistance}`,
+                    invalidateOnRefresh: true,
+                    anticipatePin: 1
                 }
-
-                const timeline = gsap.timeline({
-                    scrollTrigger: {
-                        trigger: sectionRef.current,
-                        pin: true,
-                        pinSpacing: false,
-                        scrub: 1,
-                        start: "top top",
-                        end: `+=${scrollDistance}`,
-                        invalidateOnRefresh: true,
-                        anticipatePin: 1
-                    }
-                });
-
-                // PHASE 1: Move Heading Up & Expand Card
-                timeline
-                    .to(headingRef.current, {
-                        y: -100,
-                        opacity: 0,
-                        duration: 1,
-                        ease: "power1.inOut"
-                    })
-                    .to(cardRef.current, {
-                        width: "120vw", // Full viewport width
-                        height: "120vh", // Full viewport height
-                        y: () => -(cardRef.current?.getBoundingClientRect().top || 0), // Move up dynamically to top of viewport
-                        marginLeft: 0,
-                        marginRight: 0,
-                        borderWidth: 0,
-                        borderRadius: 0,
-                        ease: "power1.inOut",
-                        duration: 1
-                    }, "<")
-
-                    // PHASE 2: Split
-                    .to(bgRef.current, {
-                        autoAlpha: 0,
-                        duration: 0.5,
-                        ease: "none"
-                    }, ">")
-                    .to(".mask-left", {
-                        xPercent: -101,
-                        ease: "power2.inOut",
-                        duration: 2
-                    }, "<")
-                    .to(".mask-right", {
-                        xPercent: 101,
-                        ease: "power2.inOut",
-                        duration: 2
-                    }, "<")
-                    .to(".marquee-track", {
-                        opacity: 0,
-                        duration: 0.5
-                    }, "<")
-                    .set(sectionRef.current, { pointerEvents: "none" });
             });
 
-        }, sectionRef);
+            // PHASE 1: Move Heading Up & Expand Card
+            timeline
+                .to(headingRef.current, {
+                    y: -100,
+                    opacity: 0,
+                    duration: 1,
+                    ease: "power1.inOut"
+                })
+                .to(cardRef.current, {
+                    width: "120vw", // Full viewport width
+                    height: "120vh", // Full viewport height
+                    y: () => -(cardRef.current?.getBoundingClientRect().top || 0), // Move up dynamically to top of viewport
+                    marginLeft: 0,
+                    marginRight: 0,
+                    borderWidth: 0,
+                    borderRadius: 0,
+                    ease: "power1.inOut",
+                    duration: 1
+                }, "<")
 
-        return () => ctx.revert();
+                // PHASE 2: Split
+                .to(bgRef.current, {
+                    autoAlpha: 0,
+                    duration: 0.5,
+                    ease: "none"
+                }, ">")
+                .to(".mask-left", {
+                    xPercent: -101,
+                    ease: "power2.inOut",
+                    duration: 2
+                }, "<")
+                .to(".mask-right", {
+                    xPercent: 101,
+                    ease: "power2.inOut",
+                    duration: 2
+                }, "<")
+                .to(".marquee-track", {
+                    opacity: 0,
+                    duration: 0.5
+                }, "<")
+                .set(sectionRef.current, { pointerEvents: "none" });
+        });
+
+        return () => mm.revert();
     }, []);
 
     return (
         <section
             ref={sectionRef}
-            className="h-screen py-24 flex items-center relative overflow-hidden cursor-none z-10"
+            className="w-full h-[100dvh] py-24 flex items-center relative overflow-hidden cursor-none z-40"
         >
 
             {/* Opaque Background Layer - fades out during split */}
@@ -407,8 +404,8 @@ const FeaturedWork = () => {
                 >
                     {/* Header Card */}
                     <div ref={headingRef} className="shrink-0 w-full md:w-[20vw] text-center md:text-left">
-                        <h2 className="text-4xl md:text-[5rem] font-black font-octin-college leading-none text-black">
-                            FEATURED <br /> WORK
+                        <h2 className="text-4xl md:text-[4.5rem] font-black font-octin-college leading-none text-black">
+                            UNIFIED  <br /> ECOSYSTEM
                         </h2>
                         <div className="w-20 h-2 bg-brandturquoise mt-8 mx-auto md:mx-0"></div>
                     </div>
