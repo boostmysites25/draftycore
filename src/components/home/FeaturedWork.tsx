@@ -205,7 +205,7 @@ ProjectCard.displayName = "ProjectCard";
 
 // --- DATA ---
 const PROJECTS: ProjectProps[] = [
-    { id: 1, title: "UNIFIED ECOSYSTEM", videoSrc: "/videos/showreel-1920.webm" }
+    { id: 1, title: "UNIFIED ECOSYSTEM", videoSrc: "/videos/showreel-1920.mp4" }
 ];
 
 const FeaturedWork = () => {
