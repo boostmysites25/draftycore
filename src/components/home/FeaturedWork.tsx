@@ -120,7 +120,7 @@ const ProjectCard = forwardRef<HTMLDivElement, { project: ProjectProps }>(({ pro
     const videoClass = "w-full h-full object-cover opacity-90 group-hover:opacity-100 scale-100 transition-opacity duration-700 ease-out grayscale group-hover:grayscale-0 will-change-transform";
 
     return (
-        <div ref={internalRef} className="project-card relative w-[80vw] md:w-[60vw] aspect-[9/16] md:aspect-[16/9] shrink-0 bg-transparent shadow-2xl flex flex-col justify-center items-center overflow-visible mx-4 md:mx-10 group will-change-[width,margin]">
+        <div ref={internalRef} className="project-card relative w-[80vw] md:w-[60vw] aspect-[16/9] shrink-0 bg-transparent shadow-2xl flex flex-col justify-center items-center overflow-visible mx-4 md:mx-10 group will-change-[width,margin]">
 
             {/* MARQUEES (Note: These might need to be hidden/faded out during expansion if they overlay the split) */}
             {/* 1. TOP MARQUEE (Left) */}
@@ -347,12 +347,13 @@ const FeaturedWork = () => {
                         ease: "power1.inOut"
                     })
                     .to(cardRef.current, {
-                        width: "100vw", // Full viewport width
-                        height: "100vh", // Full viewport height
-                        y: -100, // Move up to cover space
+                        width: "120vw", // Full viewport width
+                        height: "120vh", // Full viewport height
+                        y: () => -(cardRef.current?.getBoundingClientRect().top || 0), // Move up dynamically to top of viewport
                         marginLeft: 0,
                         marginRight: 0,
                         borderWidth: 0,
+                        borderRadius: 0,
                         ease: "power1.inOut",
                         duration: 1
                     }, "<")
