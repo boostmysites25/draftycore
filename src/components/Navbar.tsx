@@ -176,7 +176,7 @@ const Navbar = () => {
             {createPortal(
                 <div
                     ref={menuRef}
-                    className="fixed inset-0 bg-white z-[60] flex flex-col items-center justify-center overflow-hidden invisible"
+                    className="fixed inset-0 bg-white z-[60] flex flex-col items-center justify-center overflow-hidden invisible w-screen h-screen overflow-hidden"
                 >
                     {/* Close Button */}
                     <div className="absolute top-6 right-6 z-50">
