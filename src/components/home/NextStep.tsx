@@ -1,131 +1,160 @@
-import { useEffect, useRef } from 'react';
+import { useEffect, useRef, useState } from 'react';
 import gsap from 'gsap';
 import { ScrollTrigger } from 'gsap/ScrollTrigger';
-import Magnet from '../ui/Magnet';
 
 gsap.registerPlugin(ScrollTrigger);
 
 const NextStep = () => {
     const sectionRef = useRef<HTMLElement>(null);
-    const titleRef = useRef<HTMLHeadingElement>(null);
-    const subTitleRef = useRef<HTMLParagraphElement>(null);
-    const itemsRef = useRef<(HTMLDivElement | null)[]>([]);
+    const followerRef = useRef<HTMLDivElement>(null);
+    const cursorX = useRef(0);
+    const cursorY = useRef(0);
+
+    // Track active index for image swap
+    const [activeImage, setActiveImage] = useState<string | null>(null);
 
     const steps = [
         {
-            text: "Start with a free consultation",
+            text: "Free Consultation",
+            sub: "Let's talk about your needs",
             image: "/consultation_collage.png",
-            alt: "Consultation Collage"
         },
         {
-            text: "Try a pilot project",
+            text: "Pilot Project",
+            sub: "Test our capabilities risk-free",
             image: "/pilot_project_collage.png",
-            alt: "Pilot Project Collage"
         },
         {
-            text: "Let's discuss how DraftyCo can support your firm",
+            text: "Full Partnership",
+            sub: "Scale your drafting capacity",
             image: "/support_firm_collage.png",
-            alt: "Support Collage"
         }
     ];
 
     useEffect(() => {
-        const ctx = gsap.context(() => {
-            const timeline = gsap.timeline({
-                scrollTrigger: {
-                    trigger: sectionRef.current,
-                    start: "top 70%",
-                    toggleActions: "play none none reverse"
-                }
-            });
+        // QuickTo for performant mouse following
+        const xTo = gsap.quickTo(followerRef.current, "x", { duration: 0.6, ease: "power3" });
+        const yTo = gsap.quickTo(followerRef.current, "y", { duration: 0.6, ease: "power3" });
 
-            timeline
-                .from(titleRef.current, {
-                    y: 50,
-                    opacity: 0,
-                    duration: 0.8,
-                    ease: "power3.out"
-                })
-                .from(subTitleRef.current, {
-                    y: 30,
-                    opacity: 0,
-                    duration: 0.8,
-                    ease: "power3.out"
-                }, "-=0.6")
-                .from(itemsRef.current, {
-                    y: 50,
-                    opacity: 0,
-                    duration: 0.8,
-                    stagger: 0.2,
-                    ease: "back.out(1.7)"
-                }, "-=0.4");
+        const onMouseMove = (e: MouseEvent) => {
+            if (!sectionRef.current) return;
+            const bounds = sectionRef.current.getBoundingClientRect();
 
-        }, sectionRef);
+            // Calculate position relative to the section
+            const x = e.clientX - bounds.left;
+            const y = e.clientY - bounds.top;
 
-        return () => ctx.revert();
+            xTo(x);
+            yTo(y);
+
+            // Store for velocity/tilt calculations if needed later
+            cursorX.current = x;
+            cursorY.current = y;
+        };
+
+        const section = sectionRef.current;
+        if (section) {
+            section.addEventListener("mousemove", onMouseMove);
+        }
+
+        return () => {
+            if (section) {
+                section.removeEventListener("mousemove", onMouseMove);
+            }
+        };
     }, []);
 
-    const addToRefs = (el: HTMLDivElement | null, index: number) => {
-        if (el && !itemsRef.current.includes(el)) {
-            itemsRef.current[index] = el;
-        }
+    // Hover Animations
+    const handleMouseEnter = (image: string) => {
+        setActiveImage(image);
+        gsap.to(followerRef.current, {
+            scale: 1,
+            opacity: 1,
+            duration: 0.4,
+            ease: "back.out(1.7)"
+        });
+    };
+
+    const handleMouseLeave = () => {
+        gsap.to(followerRef.current, {
+            scale: 0,
+            opacity: 0,
+            duration: 0.3,
+            ease: "power2.in"
+        });
     };
 
     return (
-        <section ref={sectionRef} className="py-24 bg-[#f1f1f1] relative overflow-hidden">
-            {/* Background Decoration (Subtle) */}
-            <div className="absolute top-0 left-0 w-full h-full pointer-events-none opacity-30">
-                <div className="absolute top-[-10%] right-[-5%] w-[500px] h-[500px] bg-secondary/10 rounded-full blur-3xl z-[1]"></div>
-                <div className="absolute bottom-[-10%] left-[-5%] w-[500px] h-[500px] bg-primary/5 rounded-full blur-3xl z-[1]"></div>
+        <section
+            ref={sectionRef}
+            className="py-32 bg-[#f1f1f1] relative overflow-hidden cursor-none"
+        >
+            {/* FLOATING CURSOR FOLLOWER */}
+            <div
+                ref={followerRef}
+                className="absolute top-0 left-0 w-80 h-80 rounded-full overflow-hidden pointer-events-none z-20 -translate-x-1/2 -translate-y-1/2 shadow-2xl scale-0 opacity-0 border-4 border-white"
+            >
+                {activeImage && (
+                    <img
+                        src={activeImage}
+                        alt="Preview"
+                        className="w-full h-full object-cover animate-pulse-slow"
+                    />
+                )}
             </div>
 
-            <div className="wrapper relative z-10">
+            <div className="wrapper relative z-10 flex flex-col items-center">
                 {/* Header */}
-                <div className="text-center mb-20">
-                    <h2 ref={titleRef} className="text-5xl md:text-7xl font-bold font-octin-college text-secondary uppercase tracking-tighter mb-6">
-                        Next Step
+                <div className="text-center mb-24">
+                    <h2 className="text-5xl md:text-8xl font-black font-octin-college text-secondary uppercase tracking-tighter mb-4 opacity-100 transition-opacity duration-500">
+                        What's Next?
                     </h2>
-                    <p ref={subTitleRef} className="text-xl md:text-2xl text-neutral-500 font-medium max-w-3xl mx-auto">
-                        Ready to Scale Your Drafting Capacity Without Overhead?
-                    </p>
                 </div>
 
-                {/* Steps Grid */}
-                <div className="grid grid-cols-1 md:grid-cols-3 gap-10 md:gap-8">
+                {/* Interactive Menu List */}
+                <div className="flex flex-col gap-8 w-full max-w-5xl">
                     {steps.map((step, index) => (
-                        <div key={index} ref={(el) => addToRefs(el, index)} className="flex flex-col items-center text-center group"
+                        <div
+                            key={index}
+                            className="group relative grid grid-cols-1 md:grid-cols-12 items-center gap-6 py-12 border-b border-black/10 transition-all duration-500 hover:border-black/50"
+                            onMouseEnter={() => handleMouseEnter(step.image)}
+                            onMouseLeave={handleMouseLeave}
                         >
-                            {/* Circular Image Container */}
-                            <Magnet padding={30} disabled={false} magnetStrength={30}>
-                                <div className="relative mb-8 w-64 h-64 md:w-72 md:h-72">
-                                    {/* <div className="absolute inset-0 rounded-full border-2 border-black/5 group-hover:border-secondary/30 transition-colors duration-500"></div> */}
-                                    <div className="absolute inset-2 rounded-full overflow-hidden bg-gray-100 shadow-xl group-hover:scale-[1.02] transition-transform duration-500">
-                                        <img
-                                            src={step.image}
-                                            alt={step.alt}
-                                            className="w-full h-full object-cover"
-                                        />
-                                    </div>
+                            {/* Step Number */}
+                            <div className="col-span-1 md:col-span-1">
+                                <span className="text-xl font-bold font-mono text-neutral-300 group-hover:text-black transition-colors duration-300">
+                                    0{index + 1}
+                                </span>
+                            </div>
+
+                            {/* Main Text & Sub Text */}
+                            <div className="col-span-1 md:col-span-11 flex flex-col justify-center">
+                                <div className="relative overflow-hidden">
+                                    <h3
+                                        className="text-4xl md:text-8xl font-black font-octin-college uppercase tracking-tighter transition-all duration-500 z-30 relative"
+                                        style={{
+                                            WebkitTextStroke: "1px black",
+                                            color: "transparent",
+                                        }}
+                                    >
+                                        {/* Filled Version Overlay */}
+                                        <span className="absolute top-0 left-0 w-full h-full text-black opacity-0 group-hover:opacity-100 transition-opacity duration-300 -translate-y-full group-hover:translate-y-0 block">
+                                            {step.text}
+                                        </span>
+                                        {/* Outline Version */}
+                                        <span className="block group-hover:translate-y-full transition-transform duration-500">
+                                            {step.text}
+                                        </span>
+                                    </h3>
                                 </div>
-                            </Magnet>
-                            {/* Text */}
-                            <p className="text-xl font-bold text-neutral-800 max-w-xs group-hover:text-secondary transition-colors duration-300">
-                                {step.text}
-                            </p>
+                                <p className="text-lg font-medium text-neutral-400 group-hover:text-black transition-colors duration-300 transform translate-y-4 opacity-0 group-hover:translate-y-0 group-hover:opacity-100 ease-out mt-2">
+                                    {step.sub}
+                                </p>
+                            </div>
+
+
                         </div>
                     ))}
-                </div>
-
-                {/* Bottom Star Icon */}
-                <div className="mt-20 flex justify-end opacity-20">
-                    <div className="animate-[spin_4s_linear_infinite]"><svg width="60" height="60" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="1" strokeLinecap="round" strokeLinejoin="round">
-                        <path d="M12 2L15.09 8.26L22 9.27L17 14.14L18.18 21.02L12 17.77L5.82 21.02L7 14.14L2 9.27L8.91 8.26L12 2Z" />
-                    </svg></div>
-                </div>
-                <div className="absolute z-[2] top-0 left-6 opacity-20 animate-[spin_4s_linear_infinite]">
-                    <svg width="60" height="60" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="1" strokeLinecap="round" strokeLinejoin="round">
-                        <path d="M12 2L15.09 8.26L22 9.27L17 14.14L18.18 21.02L12 17.77L5.82 21.02L7 14.14L2 9.27L8.91 8.26L12 2Z" />
-                    </svg>
                 </div>
             </div>
         </section>
