@@ -21,9 +21,7 @@ const Home = () => {
             <WhatWeStandFor />
             <ScrollingText
                 text="READY TO LEVEL UP"
-                strip1Colors="bg-brandlimegreen text-black"
-                strip2Colors="bg-brandyellow text-black"
-                className='!bg-[#F5F5F0]'
+                className="my-2"
             />
             <NextStep />
             <Testimonials />

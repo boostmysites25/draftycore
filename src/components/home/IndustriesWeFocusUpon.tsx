@@ -87,7 +87,7 @@ const IndustriesWeFocusUpon = () => {
 
             // MOBILE: Simple Vertical Stagger (Existing logic simplified)
             mm.add("(max-width: 767px)", () => {
-                document.querySelectorAll(".image").forEach((image) => {
+                document.querySelectorAll(".image").forEach((_image) => {
                     // ... keep existing simple fade if needed or just let it scroll
                 });
             });

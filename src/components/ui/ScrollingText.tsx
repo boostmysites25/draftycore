@@ -6,133 +6,134 @@ gsap.registerPlugin(ScrollTrigger);
 
 interface ScrollingTextProps {
     text: string;
-    scrollSpeed?: number;
     className?: string;
-    strip1Colors?: string;
-    strip2Colors?: string;
 }
 
 const ScrollingText: React.FC<ScrollingTextProps> = ({
     text = "Ready to level up",
-    scrollSpeed = 50,
     className = "",
-    strip1Colors = "bg-white text-black",
-    strip2Colors = "bg-black text-white"
 }) => {
-    const containerRef = useRef<HTMLDivElement>(null);
-    const strip1Ref = useRef<HTMLDivElement>(null);
-    const strip2Ref = useRef<HTMLDivElement>(null);
+    const sectionRef = useRef<HTMLDivElement>(null);
+    const plane1 = useRef<HTMLDivElement>(null);
+    const plane2 = useRef<HTMLDivElement>(null);
+    const plane3 = useRef<HTMLDivElement>(null);
 
-    // Separator Icon
+    useEffect(() => {
+        let requestAnimationFrameId = 0;
+        let xPercent = 0;
+
+        const ctx = gsap.context(() => {
+            const planes = [plane1.current, plane2.current, plane3.current];
+            if (!planes[0]) return;
+
+            // ANIMATION LOOP
+            const animate = () => {
+                if (xPercent <= -100) {
+                    xPercent = 0;
+                }
+                if (xPercent > 0) {
+                    xPercent = -100;
+                }
+
+                // Base speed + Scroll Acceleration
+                gsap.set(planes, { xPercent: xPercent });
+
+                // Track 1 & 3 move Left (-), Track 2 moves Right (+)
+                gsap.set(plane1.current, { xPercent: xPercent });
+                gsap.set(plane2.current, { xPercent: -100 - xPercent }); // Reverse direction
+                gsap.set(plane3.current, { xPercent: xPercent });
+
+                // Constant movement
+                xPercent -= 0.05;
+
+                requestAnimationFrameId = requestAnimationFrame(animate);
+            };
+            requestAnimationFrameId = requestAnimationFrame(animate);
+
+
+            // SCROLL VELOCITY SKEW
+            ScrollTrigger.create({
+                trigger: sectionRef.current,
+                start: "top bottom",
+                end: "bottom top",
+                onUpdate: (self) => {
+                    const velocity = self.getVelocity();
+                    const skewAmount = velocity / 300;
+                    const clampedSkew = gsap.utils.clamp(-20, 20, skewAmount);
+
+                    // Apply Skew: Only skew when scrolling
+                    gsap.to(planes, {
+                        skewX: clampedSkew,
+                        overwrite: true,
+                        duration: 0.1,
+                        ease: "power3.out"
+                    });
+
+                    // Return to 0 skew when stopped
+                    gsap.to(planes, {
+                        skewX: 0,
+                        delay: 0.1, // Wait briefly before resetting
+                        duration: 0.5,
+                        ease: "power3.out",
+                        overwrite: "auto"
+                    });
+
+                    // Add scroll speed boost
+                    xPercent += velocity * 0.0005;
+                }
+            });
+
+        }, sectionRef);
+
+        return () => {
+            cancelAnimationFrame(requestAnimationFrameId);
+            ctx.revert();
+        };
+    }, []);
+
+    // Helper: Separator Icon
     const Separator = () => (
-        <span className="scrt-separator mx-[3vw] flex items-center justify-center">
-            <svg viewBox="0 0 24 24" fill="currentColor" className="h-[calc(20px+2.5vw)] w-auto fill-current">
-                <path d="M13.025 1l-2.847 2.828 6.176 6.176h-16.354v3.992h16.354l-6.176 6.176 2.847 2.828 10.975-11z"></path>
+        <span className="mx-6 md:mx-12 opacity-50">
+            <svg width="40" height="40" viewBox="0 0 24 24" fill="currentColor" className="w-6 h-6 md:w-10 md:h-10">
+                <path d="M12 2L15.09 8.26L22 9.27L17 14.14L18.18 21.02L12 17.77L5.82 21.02L7 14.14L2 9.27L8.91 8.26L12 2Z" />
             </svg>
         </span>
     );
 
-    useEffect(() => {
-        const strips = [
-            { ref: strip1Ref, dir: 1, rotate: 8 },
-            { ref: strip2Ref, dir: -1, rotate: -8 }
-        ];
-
-        const ctx = gsap.context(() => {
-            strips.forEach(({ ref, dir }) => {
-                if (!ref.current) return;
-
-                const content = ref.current.querySelector('.scrt-content');
-                if (!content) return;
-
-                // GSAP Animation
-                // For valid infinite loop:
-                // Left move (dir=1): start at 0, move to -50% (show right half), reset to 0.
-                // Right move (dir=-1): start at -50% (show right half), move to 0 (show left half), reset to -50%.
-                const tween = gsap.fromTo(content,
-                    { xPercent: dir === 1 ? 0 : -50 },
-                    {
-                        xPercent: dir === 1 ? -50 : 0,
-                        duration: scrollSpeed,
-                        ease: "none",
-                        repeat: -1
-                    }
-                ).totalProgress(0.5);
-
-                let lastDirection = 0;
-
-                // Scroll Direction Change
-                ScrollTrigger.create({
-                    trigger: containerRef.current,
-                    start: "top bottom",
-                    end: "bottom top",
-                    onUpdate: (self) => {
-                        if (self.direction !== lastDirection) {
-                            lastDirection = self.direction;
-                            const isScrollingDown = self.direction === 1;
-
-                            gsap.to(tween, {
-                                timeScale: isScrollingDown ? 1 : -1,
-                                duration: 0.5,
-                                overwrite: true
-                            });
-
-                            // Rotate Separators
-                            const separators = ref.current?.querySelectorAll('.scrt-separator');
-                            if (separators) {
-                                gsap.to(separators, {
-                                    scaleX: isScrollingDown ? 1 : -1,
-                                    duration: 0.3,
-                                    overwrite: true
-                                });
-                            }
-                        }
-                    }
-                });
-            });
-        }, containerRef);
-
-        return () => ctx.revert();
-    }, [scrollSpeed]);
-
-    // Helper to render text multiple times
-    const renderContent = (count = 30) => (
-        <div className="scrt-content flex items-center whitespace-nowrap will-change-transform">
-            {Array.from({ length: count }).map((_, i) => (
-                <React.Fragment key={i}>
-                    <span className="flex items-center px-[2vw] md:px-[1vw]">
-                        {text} <Separator />
+    // Render a single track content (Needs duplication for loop)
+    const TrackContent = ({ outline = false }) => (
+        <div className="flex items-center whitespace-nowrap will-change-transform">
+            {Array.from({ length: 12 }).map((_, i) => (
+                <div key={i} className="flex items-center">
+                    <span
+                        className={`text-[6rem] md:text-[10rem] font-black font-octin-college uppercase leading-none px-4 ${outline ? 'text-transparent stroke-text' : 'text-black'}`}
+                        style={outline ? { WebkitTextStroke: "2px black" } : {}}
+                    >
+                        {text}
                     </span>
-                </React.Fragment>
+                    <Separator />
+                </div>
             ))}
         </div>
     );
 
     return (
-        <div ref={containerRef} className={`tt-scrolling-text-crossed py-[calc(30px+3vw)] overflow-hidden bg-transparent ${className}`}>
-            <div className="tt-scrolling-text-crossed-inner -mx-[50px] relative">
-
-                {/* Strip 1 */}
-                <div
-                    ref={strip1Ref}
-                    className={`tt-scrolling-text py-5 ${strip1Colors} flex overflow-hidden lg:rotate-[8deg] lg:translate-y-[50%] rotate-[12deg] translate-y-[50%] origin-center font-octin-college text-[calc(21px+3.5vw)] font-bold leading-none uppercase`}
-                >
-                    <div className="tt-scrt-inner flex flex-auto w-fit">
-                        {renderContent()}
-                    </div>
-                </div>
-
-                {/* Strip 2 */}
-                <div
-                    ref={strip2Ref}
-                    className={`tt-scrolling-text py-5 ${strip2Colors} flex overflow-hidden lg:rotate-[-8deg] lg:-translate-y-[50%] rotate-[-12deg] -translate-y-[50%] origin-center font-octin-college text-[calc(21px+3.5vw)] font-bold leading-none uppercase`}
-                >
-                    <div className="tt-scrt-inner flex flex-auto w-fit">
-                        {renderContent()}
-                    </div>
-                </div>
+        <section ref={sectionRef} className={`relative py-32 overflow-hidden bg-white/50 backdrop-blur-sm ${className}`}>
+            {/* TRACK 1 (Solid) */}
+            <div ref={plane1} className="relative flex w-[200%] border-t border-b border-black/10 py-6 bg-white/50">
+                <TrackContent outline={false} />
             </div>
-        </div>
+
+            {/* TRACK 2 (Outline - Reverse) */}
+            <div ref={plane2} className="relative flex w-[200%] border-b border-black/10 py-6 bg-neutral-100">
+                <TrackContent outline={true} />
+            </div>
+
+            {/* TRACK 3 (Solid) */}
+            <div ref={plane3} className="relative flex w-[200%] border-b border-black/10 py-6 bg-white/50">
+                <TrackContent outline={false} />
+            </div>
+        </section>
     );
 };
 
