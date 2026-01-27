@@ -93,8 +93,8 @@ const ScrollingText: React.FC<ScrollingTextProps> = ({
 
     // Helper: Separator Icon
     const Separator = () => (
-        <span className="mx-6 md:mx-12 opacity-50">
-            <svg width="40" height="40" viewBox="0 0 24 24" fill="currentColor" className="w-6 h-6 md:w-10 md:h-10">
+        <span className="mx-3 md:mx-6 lg:mx-12 opacity-50">
+            <svg width="40" height="40" viewBox="0 0 24 24" fill="currentColor" className="w-4 h-4 md:w-6 md:h-6 lg:w-10 lg:h-10">
                 <path d="M12 2L15.09 8.26L22 9.27L17 14.14L18.18 21.02L12 17.77L5.82 21.02L7 14.14L2 9.27L8.91 8.26L12 2Z" />
             </svg>
         </span>
@@ -106,8 +106,8 @@ const ScrollingText: React.FC<ScrollingTextProps> = ({
             {Array.from({ length: 12 }).map((_, i) => (
                 <div key={i} className="flex items-center">
                     <span
-                        className={`text-[6rem] md:text-[10rem] font-black font-octin-college uppercase leading-none px-4 ${outline ? 'text-transparent stroke-text' : 'text-black'}`}
-                        style={outline ? { WebkitTextStroke: "2px black" } : {}}
+                        className={`text-[3rem] md:text-[6rem] lg:text-[10rem] font-black font-octin-college uppercase leading-none px-2 md:px-4 ${outline ? 'text-transparent stroke-text' : 'text-black'}`}
+                        style={outline ? { WebkitTextStroke: "1px black" } : {}}
                     >
                         {text}
                     </span>
@@ -118,19 +118,19 @@ const ScrollingText: React.FC<ScrollingTextProps> = ({
     );
 
     return (
-        <section ref={sectionRef} className={`relative py-32 overflow-hidden bg-white/50 backdrop-blur-sm ${className}`}>
+        <section ref={sectionRef} className={`relative py-12 md:py-32 overflow-hidden bg-white/50 backdrop-blur-sm ${className}`}>
             {/* TRACK 1 (Solid) */}
-            <div ref={plane1} className="relative flex w-[200%] border-t border-b border-black/10 py-6 bg-white/50">
+            <div ref={plane1} className="relative flex w-[200%] border-t border-b border-black/10 py-2 md:py-6 bg-white/50">
                 <TrackContent outline={false} />
             </div>
 
             {/* TRACK 2 (Outline - Reverse) */}
-            <div ref={plane2} className="relative flex w-[200%] border-b border-black/10 py-6 bg-neutral-100">
+            <div ref={plane2} className="relative flex w-[200%] border-b border-black/10 py-2 md:py-6 bg-neutral-100">
                 <TrackContent outline={true} />
             </div>
 
             {/* TRACK 3 (Solid) */}
-            <div ref={plane3} className="relative flex w-[200%] border-b border-black/10 py-6 bg-white/50">
+            <div ref={plane3} className="relative flex w-[200%] border-b border-black/10 py-2 md:py-6 bg-white/50">
                 <TrackContent outline={false} />
             </div>
         </section>

@@ -141,7 +141,7 @@ const Testimonials = () => {
                 <h2 className="text-4xl md:text-6xl font-black font-octin-college uppercase tracking-tighter text-secondary">
                     Approved By
                 </h2>
-                <p className="text-neutral-500 font-mono text-sm mt-2">SCROLL TO REVIEW DOCUMENTS</p>
+                <p className="text-neutral-500 text-sm mt-2">SCROLL TO REVIEW DOCUMENTS</p>
             </div>
 
             {/* STACK WRAPPER */}
@@ -165,11 +165,11 @@ const Testimonials = () => {
                         {/* Content */}
                         <div className="flex flex-col h-full gap-6">
                             <div className="border-b border-current opacity-30 pb-4 flex justify-between items-center">
-                                <span className="font-mono text-xs opacity-70">DOC_ID: {item.id.toString().padStart(4, '0')}</span>
-                                <span className="font-mono text-xs opacity-70">CLASSIFIED: PUBLIC</span>
+                                <span className="text-xs opacity-70">DOC_ID: {item.id.toString().padStart(4, '0')}</span>
+                                <span className="text-xs opacity-70">CLASSIFIED: PUBLIC</span>
                             </div>
 
-                            <p className="text-xl md:text-3xl font-medium leading-tight font-serif opacity-95">
+                            <p className="text-xl md:text-3xl font-medium leading-tight opacity-95">
                                 "{item.quote}"
                             </p>
 
@@ -179,7 +179,7 @@ const Testimonials = () => {
                                 </div>
                                 <div>
                                     <h4 className="font-bold text-lg leading-none">{item.author}</h4>
-                                    <p className="text-sm opacity-80 font-mono mt-1">{item.role}, {item.company}</p>
+                                    <p className="text-sm opacity-80 mt-1">{item.role}, {item.company}</p>
                                 </div>
                             </div>
                         </div>
@@ -188,7 +188,7 @@ const Testimonials = () => {
             </div>
 
             {/* Instructions */}
-            <div className="absolute bottom-8 text-neutral-400 font-mono text-xs animate-pulse">
+            <div className="absolute bottom-8 text-neutral-400 text-xs animate-pulse">
                 ▼ KEEP SCROLLING TO DISMISS
             </div>
         </section>
