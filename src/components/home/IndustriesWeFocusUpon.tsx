@@ -2,6 +2,7 @@ import { useEffect, useRef } from "react";
 import gsap from "gsap";
 import { ScrollTrigger } from "gsap/ScrollTrigger";
 import CyberCircuit from "../ui/CyberCircuit";
+import { FeaturedCursor } from "../ui/Cursors";
 
 gsap.registerPlugin(ScrollTrigger);
 
@@ -11,7 +12,15 @@ interface ServiceItem {
     services: string[];
     image: string;
     color: string;
+    shape: string;
 }
+
+const SHAPES = {
+    circle: "circle(50% at 50% 50%)",
+    octagon: "polygon(30% 0%, 70% 0%, 100% 30%, 100% 70%, 70% 100%, 30% 100%, 0% 70%, 0% 30%)",
+    hexagon: "polygon(50% 0%, 100% 25%, 100% 75%, 50% 100%, 0% 75%, 0% 25%)",
+    starburst: "polygon(50% 0%, 61% 10%, 75% 6%, 80% 20%, 93% 25%, 89% 39%, 98% 50%, 89% 61%, 93% 75%, 80% 80%, 75% 94%, 61% 90%, 50% 100%, 39% 90%, 25% 94%, 20% 80%, 7% 75%, 11% 61%, 2% 50%, 11% 39%, 7% 25%, 20% 20%, 25% 6%, 39% 10%)"
+};
 
 const services: ServiceItem[] = [
     {
@@ -19,153 +28,205 @@ const services: ServiceItem[] = [
         title: "Branding",
         services: ["Creative Direction", "Brand Identity", "Branding Strategy", "Graphic Design", "Startup"],
         image: "https://images.unsplash.com/photo-1600607686527-6fb886090705?q=80&w=2700&auto=format&fit=crop",
-        color: "#FF7A00"
+        color: "#FF7A00",
+        shape: "starburst"
     },
     {
         id: "02",
         title: "UI-UX Design",
         services: ["Website Design", "App Design", "Wireframing", "Prototyping", "User Research"],
         image: "https://images.unsplash.com/photo-1581291518633-83b4ebd1d83e?q=80&w=2700&auto=format&fit=crop",
-        color: "#FFC300"
+        color: "#FFC300",
+        shape: "octagon"
     },
     {
         id: "03",
         title: "Development",
         services: ["Frontend Dev", "Backend Dev", "Full Stack", "CMS Integration", "E-commerce"],
         image: "https://images.unsplash.com/photo-1555066931-4365d14bab8c?q=80&w=2700&auto=format&fit=crop",
-        color: "#FF2D95"
+        color: "#FF2D95",
+        shape: "hexagon"
     },
     {
         id: "04",
         title: "Digital Marketing",
         services: ["SEO Optimization", "Social Media", "Content Strategy", "Email Marketing", "Analytics"],
         image: "https://images.unsplash.com/photo-1557838923-2985c318be48?q=80&w=2700&auto=format&fit=crop",
-        color: "#B8F135"
+        color: "#B8F135",
+        shape: "starburst"
     }
 ];
 
 const IndustriesWeFocusUpon = () => {
     const sectionRef = useRef<HTMLElement>(null);
     const trackRef = useRef<HTMLDivElement>(null);
-    const rowsRef = useRef<(HTMLDivElement | null)[]>([]);
+    const circlesRef = useRef<(HTMLDivElement | null)[]>([]);
+    const contentRef = useRef<(HTMLDivElement | null)[]>([]);
 
     useEffect(() => {
         const ctx = gsap.context(() => {
             const mm = gsap.matchMedia();
 
-            // DESKTOP: Horizontal Scroll
+            // DESKTOP: Horizontal Scroll with Rolling Physics
             mm.add("(min-width: 768px)", () => {
-                const scrollDistance = "300%"; // Duration match for FeaturedWork
-                const horizontalScrollLength = "500%"; // Duration for Horizontal (Header + 4 services)
+                const track = trackRef.current;
 
-                const tl = gsap.timeline({
-                    scrollTrigger: {
-                        trigger: sectionRef.current,
-                        start: "top top",
-                        end: "+=" + (parseInt(scrollDistance) + parseInt(horizontalScrollLength)) + "%",
-                        pin: true,
-                        scrub: 1,
-                        // pinSpacing: true // Default
-                    }
-                });
+                // FeaturedWork is pinned for 300% (approx). 
+                // We overlap because pinSpacing=false.
+                // So we need to WAIT for that 300% before we start moving.
+                const waitDuration = 100; // Relative units for timeline
+                const scrollDuration = 100; // Relative units for timeline
 
-                // 1. WAIT PHASE (While FeaturedWork Curtain opens)
-                // We just hold for the duration of the previous section's effect (300vh)
-                tl.to({}, { duration: 3 });
+                // Total distance: We need to pin for (Wait + Scroll)
+                // However, the "Wait" part is effectively covering the FeaturedWork pin duration.
+                // Let's assume FeaturedWork takes ~300vh.
+                const totalScroll = "400%";
 
-                // 2. HORIZONTAL SCROLL PHASE
-                if (trackRef.current) {
-                    const sections = 5; // Header + 4 services
-                    // We want to move (sections - 1) * 100vw
-                    tl.to(trackRef.current, {
-                        xPercent: -100 * (sections - 1) / sections, // Move to show the last item
+                if (track) {
+                    const sections = services.length + 1; // Header + 4 services
+
+                    // Main Timeline
+                    const tl = gsap.timeline({
+                        scrollTrigger: {
+                            trigger: sectionRef.current,
+                            start: "top top",
+                            end: "+=" + totalScroll,
+                            pin: true,
+                            scrub: 0.5,
+                        }
+                    });
+
+                    // 1. WAIT PHASE (Synced with FeaturedWork)
+                    // We hold everything static for the first half of the scroll
+                    tl.to({}, { duration: waitDuration });
+
+                    // 2. MOVE PHASE (Horizontal Scroll)
+                    tl.addLabel("move");
+
+                    tl.to(track, {
+                        xPercent: -100 * (sections - 1) / sections,
                         ease: "none",
-                        duration: 5 // Relative to Wait phase
+                        duration: scrollDuration
+                    }, "move");
+
+                    // 3. ROLLING ANIMATION (Synced with Move Phase)
+                    circlesRef.current.forEach((circle, i) => {
+                        if (circle) {
+                            tl.to(circle, {
+                                rotation: 360 * 2,
+                                ease: "none",
+                                duration: scrollDuration
+                            }, "move");
+                        }
+                    });
+
+                    // Counter-Rotation (Synced with Move Phase)
+                    contentRef.current.forEach((content, i) => {
+                        if (content) {
+                            tl.to(content, {
+                                rotation: -360 * 2,
+                                ease: "none",
+                                duration: scrollDuration
+                            }, "move");
+                        }
                     });
                 }
             });
-
-            // MOBILE: Simple Vertical Stagger (Existing logic simplified)
-            mm.add("(max-width: 767px)", () => {
-                document.querySelectorAll(".image").forEach((_image) => {
-                    // ... keep existing simple fade if needed or just let it scroll
-                });
-            });
-
         }, sectionRef);
 
         return () => ctx.revert();
     }, []);
 
     const addToRefs = (el: HTMLDivElement | null, index: number) => {
-        if (el && !rowsRef.current.includes(el)) {
-            rowsRef.current[index] = el;
+        if (el && !circlesRef.current.includes(el)) {
+            circlesRef.current[index] = el;
+        }
+    };
+
+    const addToContentRefs = (el: HTMLDivElement | null, index: number) => {
+        if (el && !contentRef.current.includes(el)) {
+            contentRef.current[index] = el;
         }
     };
 
     return (
-        <section ref={sectionRef} className="py-24 md:py-0 md:h-screen bg-[#f1f1f1] relative overflow-hidden flex items-center z-10">
-            {/* Futuristic Background */}
-            <CyberCircuit className="z-0 opacity-20" color="#000000" />
+        <section ref={sectionRef} className="bg-[#f1f1f1] relative overflow-hidden md:h-screen w-full flex flex-col md:flex-row items-center py-20 md:py-0">
+            <FeaturedCursor isActive={true} />
 
-            <div className="relative z-10 w-full h-full md:flex md:items-center">
-                {/* Mobile Header (Hidden on Desktop interaction or part of first slide?) 
-                     Lets make the Header part of the first slide or stick it.
-                     For horizontal scroll usually "Header" is first item or overlays.
-                     Let's put Header absolute or part of the flow.
-                 */}
+            {/* Background */}
+            <CyberCircuit className="z-0 opacity-10 absolute inset-0 pointer-events-none" color="#000000" />
 
-                {/* TRACK */}
-                <div ref={trackRef} className="flex flex-col md:flex-row w-full md:w-[500vw] h-full">
-                    {/* SLIDE 1: HEADER */}
-                    <div className="w-full md:w-screen h-full flex justify-center items-center shrink-0 p-10 border-b md:border-b-0 md:border-r border-black/10">
-                        <h2 className="text-5xl md:text-[8rem] font-bold font-octin-college text-secondary uppercase tracking-tighter text-center leading-none">
-                            Industries <br /> We Focus Upon
-                        </h2>
+            <div ref={trackRef} className="flex flex-col md:flex-row w-full md:h-full items-center gap-20 md:gap-0 md:w-[max-content] z-10 pl-5 md:pl-0">
+
+                {/* Header Section (Intro) - Now just a lead-in */}
+                <div className="w-full md:w-[40vw] shrink-0 flex flex-col justify-center gap-8 px-10 md:pl-24 md:pr-10 text-center md:text-left">
+                    <h2 className="text-5xl md:text-8xl font-bold font-octin-college text-secondary uppercase tracking-tighter leading-none">
+                        Industries <br /> We Focus Upon
+                    </h2>
+                    <div className="flex items-center gap-4 text-secondary justify-center md:justify-start">
+                        <span className="text-lg font-bold">SCROLL TO EXPLORE</span>
+                        <span className="animate-bounce">→</span>
                     </div>
+                </div>
 
-                    {services.map((service, index) => (
+                {/* Circular Cards - Larger and tighter */}
+                {services.map((service, index) => (
+                    <div
+                        key={service.id}
+                        className="relative shrink-0 w-full md:w-[80vh] flex items-center justify-center px-2 md:px-0"
+                    >
+                        {/* ROTATING CONTAINER
+                             Removed counter-rotation for text to emphasize the "object" rolling.
+                             If the user wants "exactly like Streamtime", usually the whole sticker rolls.
+                             But if text needs to be readable, maybe we hide text or keep it minimal?
+                             Let's keep the counter-rotation BUT subtle or just let it roll if the text is simple.
+                             Actually, Streamtime text is usually separate if it's long.
+                             I will keep the design clean: Image and Title inside.
+                             I will Remove counter-rotation to really sell the "rolling sticker" effect if that matches user intent "circles are rotating".
+                             Wait, if text rotates it becomes unreadable.
+                             User said: "The industries should be in circles exactly like how the referrence page... On mouse scroll the circles are rotating"
+                             Most likely: The CONTAINER rotates, the IMAGE rotates, but maybe text is OUTSIDE?
+                             Reference: https://streamtime.net/use-cases -> Circular elements roll. Text is often *on* them but sparse, or below.
+                             I'll try: Large Image Circle Rolling. Title displayed BELOW or ON TOP static?
+                             Refinement: Let's put the TITLE inside and COUNTER-ROTATE it properly so it stays legible while the background spins.
+                          */}
                         <div
-                            key={service.id}
                             ref={(el) => addToRefs(el, index)}
-                            className="group flex flex-col md:flex-row border-b md:border-b-0 md:border-r border-black/10 py-12 md:py-0 px-5 md:px-20 w-full md:w-screen h-full justify-center items-center transition-colors duration-500 relative shrink-0"
-                            onMouseEnter={(e) => e.currentTarget.style.backgroundColor = service.color}
-                            onMouseLeave={(e) => e.currentTarget.style.backgroundColor = 'transparent'}
+                            className="w-[85vw] h-[85vw] md:w-[70vh] md:h-[70vh] relative bg-neutral-100 flex items-center justify-center overflow-hidden group"
+                            style={{
+                                clipPath: SHAPES[service.shape as keyof typeof SHAPES],
+                                filter: "drop-shadow(0 20px 20px rgba(0,0,0,0.15))"
+                            }}
                         >
-                            {/* Desktop: Absolute Header for the first item? Or just repeat/hide? 
-                                Let's keep the design simple: Content Left, Image Right. 
-                            */}
+                            {/* Background Image (Rotates with container) */}
+                            <div className="absolute inset-0">
+                                <img
+                                    src={service.image}
+                                    alt={service.title}
+                                    className="w-full h-full object-cover opacity-100 transition-transform duration-700 scale-105"
+                                />
+                                <div className="absolute inset-0 bg-black/30"></div>
+                            </div>
 
-                            <div className="w-full h-full max-w-7xl mx-auto flex flex-col md:flex-row items-center gap-10 md:gap-20">
-                                {/* Number */}
-                                <div className="w-full md:w-auto mb-6 md:mb-0">
-                                    <span className="text-2xl md:text-9xl font-octin-college text-neutral-400 font-bold group-hover:text-secondary opacity-30">({service.id})</span>
-                                </div>
-
-                                {/* Content */}
-                                <div className="w-full md:w-1/3 mb-8 md:mb-0">
-                                    <h3 className="text-3xl md:text-6xl font-bold mb-6 font-octin-college uppercase tracking-wider leading-tight">{service.title}</h3>
-                                    <ul className="flex flex-col gap-2">
-                                        {service.services.map((item, i) => (
-                                            <li key={i} className="text-neutral-500 font-medium text-lg leading-relaxed group-hover:text-secondary">{item}</li>
-                                        ))}
-                                    </ul>
-                                </div>
-
-                                {/* Image Area (Right) */}
-                                <div className="w-full md:flex-1 flex justify-end items-center h-[50vh]">
-                                    <div className="relative w-full h-full aspect-video md:aspect-auto overflow-hidden rounded-xl shadow-2xl image">
-                                        <img
-                                            src={service.image}
-                                            alt={service.title}
-                                            className="w-full h-full object-cover transition-all duration-700 scale-110 group-hover:scale-100"
-                                        />
-                                    </div>
+                            {/* Inner Content (Counter-Rotated) */}
+                            <div
+                                ref={(el) => addToContentRefs(el, index)}
+                                className="relative z-10 text-center text-white p-10 flex flex-col items-center justify-center h-full w-full"
+                            >
+                                {/* To keep text upright we need to apply counter rotation in the animation loop above or stick to a non-rotating inner div? 
+                                     Actually, doing it in GSAP is smoother. I will add a ref for content.
+                                 */}
+                                <div className="content-rotator flex flex-col items-center">
+                                    <h3 className="text-4xl md:text-7xl font-bold font-octin-college uppercase tracking-tighter leading-none mb-2 drop-shadow-lg">{service.title}</h3>
+                                    <span className="text-xl font-medium opacity-80 uppercase tracking-widest">{service.services[0]} & More</span>
                                 </div>
                             </div>
                         </div>
-                    ))}
-                </div>
+                    </div>
+                ))}
+
+                {/* Padding end */}
+                <div className="hidden md:block w-[10vw] shrink-0"></div>
             </div>
         </section>
     );

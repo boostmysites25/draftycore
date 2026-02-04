@@ -18,13 +18,13 @@ const Home = () => {
             <WhoAreWe />
             <FeaturedWork />
             <IndustriesWeFocusUpon />
+            <Testimonials />
             <WhatWeStandFor />
             <ScrollingText
                 text="READY TO LEVEL UP"
                 className="my-2"
             />
             <NextStep />
-            <Testimonials />
         </div>
     )
 }
