@@ -110,7 +110,7 @@ const IndustriesWeFocusUpon = () => {
                     }, "move");
 
                     // 3. ROLLING ANIMATION (Synced with Move Phase)
-                    circlesRef.current.forEach((circle, i) => {
+                    circlesRef.current.forEach((circle) => {
                         if (circle) {
                             tl.to(circle, {
                                 rotation: 360 * 2,
@@ -121,7 +121,7 @@ const IndustriesWeFocusUpon = () => {
                     });
 
                     // Counter-Rotation (Synced with Move Phase)
-                    contentRef.current.forEach((content, i) => {
+                    contentRef.current.forEach((content) => {
                         if (content) {
                             tl.to(content, {
                                 rotation: -360 * 2,
