@@ -7,33 +7,33 @@ import { ScrollTrigger } from "gsap/ScrollTrigger";
 gsap.registerPlugin(ScrollTrigger);
 
 // --- MARQUEE COMPONENTS (Unchanged) ---
-const MarqueeItem = ({ text }: { text: string }) => (
-    <div className="flex items-center gap-4 px-5 md:px-10">
-        <span className="text-xl sm:text-2xl md:text-5xl flex font-maus items-center gap-2 font-bold tracking-widest uppercase whitespace-nowrap">
-            {text}
-        </span>
-    </div>
-);
+// const MarqueeItem = ({ text }: { text: string }) => (
+//     <div className="flex items-center gap-4 px-5 md:px-10">
+//         <span className="text-xl sm:text-2xl md:text-5xl flex font-maus items-center gap-2 font-bold tracking-widest uppercase whitespace-nowrap">
+//             {text}
+//         </span>
+//     </div>
+// );
 
-const HorizontalSet = ({ text }: { text: string }) => (
-    <div className="flex shrink-0 items-center">
-        {Array(4).fill(null).map((_, i) => (
-            <MarqueeItem key={i} text={text} />
-        ))}
-    </div>
-);
+// const HorizontalSet = ({ text }: { text: string }) => (
+//     <div className="flex shrink-0 items-center">
+//         {Array(4).fill(null).map((_, i) => (
+//             <MarqueeItem key={i} text={text} />
+//         ))}
+//     </div>
+// );
 
-const VerticalSet = ({ text }: { text: string }) => (
-    <div className="flex flex-col shrink-0 items-center">
-        {Array(4).fill(null).map((_, i) => (
-            <div key={i} className="flex flex-col items-center justify-center gap-4 py-5 md:py-10" style={{ writingMode: 'vertical-rl' }}>
-                <span className="text-xl sm:text-2xl md:text-5xl flex items-center gap-2 font-bold tracking-widest uppercase whitespace-nowrap rotate-180 font-maus">
-                    {text}
-                </span>
-            </div>
-        ))}
-    </div>
-);
+// const VerticalSet = ({ text }: { text: string }) => (
+//     <div className="flex flex-col shrink-0 items-center">
+//         {Array(4).fill(null).map((_, i) => (
+//             <div key={i} className="flex flex-col items-center justify-center gap-4 py-5 md:py-10" style={{ writingMode: 'vertical-rl' }}>
+//                 <span className="text-xl sm:text-2xl md:text-5xl flex items-center gap-2 font-bold tracking-widest uppercase whitespace-nowrap rotate-180 font-maus">
+//                     {text}
+//                 </span>
+//             </div>
+//         ))}
+//     </div>
+// );
 
 // --- PROJECT CARD COMPONENT ---
 interface ProjectProps {
