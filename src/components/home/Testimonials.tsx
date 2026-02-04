@@ -138,10 +138,10 @@ const Testimonials = () => {
             </div>
 
             <div className="relative z-10 text-center mb-8 md:mb-12">
-                <h2 className="text-4xl md:text-6xl font-black font-octin-college uppercase tracking-tighter text-secondary">
+                <h2 className="text-4xl md:text-6xl font-black font-maus uppercase tracking-tighter text-secondary">
                     Approved By
                 </h2>
-                <p className="text-neutral-500 text-sm mt-2">SCROLL TO REVIEW DOCUMENTS</p>
+                <p className="text-neutral-500 text-lg mt-2 font-coolvetica-condensed">SCROLL TO REVIEW DOCUMENTS</p>
             </div>
 
             {/* STACK WRAPPER */}
@@ -158,7 +158,7 @@ const Testimonials = () => {
                         }}
                     >
                         {/* Stamp */}
-                        <div className={`absolute top-8 right-8 border-4 border-current opacity-30 px-4 py-2 text-xl md:text-2xl font-black transform rotate-[-15deg] font-octin-college tracking-widest pointer-events-none`}>
+                        <div className={`absolute top-8 right-8 border-4 border-current opacity-30 px-4 py-2 text-xl md:text-2xl font-black transform rotate-[-15deg] font-maus tracking-widest pointer-events-none`}>
                             {item.stamp}
                         </div>
 
@@ -169,7 +169,7 @@ const Testimonials = () => {
                                 <span className="text-xs opacity-70">CLASSIFIED: PUBLIC</span>
                             </div>
 
-                            <p className="text-xl md:text-3xl font-medium leading-tight opacity-95">
+                            <p className="text-xl md:text-3xl font-medium leading-tight opacity-95 tracking-widest font-coolvetica-condensed">
                                 "{item.quote}"
                             </p>
 
@@ -178,7 +178,7 @@ const Testimonials = () => {
                                     {item.author.charAt(0)}
                                 </div>
                                 <div>
-                                    <h4 className="font-bold text-lg leading-none">{item.author}</h4>
+                                    <h4 className="font-semibold text-lg leading-none font-coolvetica">{item.author}</h4>
                                     <p className="text-sm opacity-80 mt-1">{item.role}, {item.company}</p>
                                 </div>
                             </div>

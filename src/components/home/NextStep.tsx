@@ -134,7 +134,7 @@ const NextStep = () => {
             <div className="wrapper relative z-10 flex flex-col items-center">
                 {/* Header */}
                 <div className="text-center mb-24 ns-header">
-                    <h2 className="text-5xl md:text-8xl font-black font-octin-college text-secondary uppercase tracking-tighter mb-4 opacity-100 transition-opacity duration-500">
+                    <h2 className="text-5xl md:text-8xl font-black font-maus text-secondary uppercase tracking-tighter mb-4 opacity-100 transition-opacity duration-500">
                         What's Next?
                     </h2>
                 </div>
@@ -154,7 +154,7 @@ const NextStep = () => {
 
                             {/* Step Number */}
                             <div className="col-span-1 md:col-span-1 ns-item-content">
-                                <span className="text-xl font-bold font-mono text-neutral-300 group-hover:text-black transition-colors duration-300">
+                                <span className="text-xl font-bold font-coolvetica-condensed text-neutral-300 group-hover:text-black transition-colors duration-300">
                                     0{index + 1}
                                 </span>
                             </div>
@@ -163,7 +163,7 @@ const NextStep = () => {
                             <div className="col-span-1 md:col-span-11 flex flex-col justify-center ns-item-content">
                                 <div className="relative overflow-hidden w-fit">
                                     <h3
-                                        className="text-4xl md:text-[7rem] font-black font-octin-college uppercase tracking-tighter transition-all duration-500 z-30 relative leading-[0.9]"
+                                        className="text-4xl md:text-[7rem] font-black font-maus uppercase tracking-tighter transition-all duration-500 z-30 relative leading-[0.9]"
                                         style={{
                                             WebkitTextStroke: "1px black",
                                             color: "transparent",
@@ -179,7 +179,7 @@ const NextStep = () => {
                                         </span>
                                     </h3>
                                 </div>
-                                <p className="text-lg font-medium text-neutral-400 group-hover:text-black transition-colors duration-300 transform translate-y-4 opacity-0 group-hover:translate-y-0 group-hover:opacity-100 ease-out mt-4 pl-1">
+                                <p className="text-lg font-medium text-neutral-400 group-hover:text-black transition-colors duration-300 transform translate-y-4 opacity-0 group-hover:translate-y-0 group-hover:opacity-100 ease-out mt-4 pl-1 font-coolvetica-condensed">
                                     {step.sub}
                                 </p>
                             </div>

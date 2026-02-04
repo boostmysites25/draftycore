@@ -106,7 +106,7 @@ const ScrollingText: React.FC<ScrollingTextProps> = ({
             {Array.from({ length: 12 }).map((_, i) => (
                 <div key={i} className="flex items-center">
                     <span
-                        className={`text-[3rem] md:text-[6rem] lg:text-[10rem] font-black font-octin-college uppercase leading-none px-2 md:px-4 ${outline ? 'text-transparent stroke-text' : 'text-black'}`}
+                        className={`text-[3rem] md:text-[6rem] lg:text-[10rem] font-black font-maus uppercase leading-none px-2 md:px-4 ${outline ? 'text-transparent stroke-text' : 'text-black'}`}
                         style={outline ? { WebkitTextStroke: "1px black" } : {}}
                     >
                         {text}

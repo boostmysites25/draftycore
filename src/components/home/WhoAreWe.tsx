@@ -219,7 +219,7 @@ const WhoAreWe = () => {
     return (
         <section
             ref={containerRef}
-            className="min-h-screen flex items-stretch py-24 relative bg-[#f1f1f5] cursor-none"
+            className="min-h-screen flex items-stretch py-24 relative bg-[#f1f1f5] cursor-none border-t-2 border-brandyellow"
             onMouseEnter={() => setIsHovering(true)}
             onMouseLeave={() => setIsHovering(false)}
         >
@@ -276,10 +276,10 @@ const WhoAreWe = () => {
                 <div className="md:w-1/3 flex flex-col items-center mx-auto relative z-20">
                     <div className="sticky top-32">
 
-                        <div className="mb-4 text-xs font-mono font-bold tracking-widest text-black/40 uppercase hidden md:block">
+                        <div className="mb-4 text-xs font-coolvetica-condensed font-bold tracking-widest text-black/40 uppercase hidden md:block">
                             // SECTION 01: IDENTITY
                         </div>
-                        <h2 className="text-5xl sm:text-5xl md:text-7xl lg:text-8xl font-octin-college font-bold text-secondary uppercase tracking-tighter leading-none text-center cursor-pointer select-none">
+                        <h2 className="text-5xl sm:text-5xl md:text-7xl lg:text-8xl font-maus font-bold text-secondary uppercase tracking-tighter leading-none text-center cursor-pointer select-none">
                             {renderTitle("Who")}
                             <div className="flex justify-center md:hidden">Are</div>
                             <div className="hidden md:flex justify-center">
@@ -313,10 +313,10 @@ const WhoAreWe = () => {
                                 cursor-none
                             `}
                         >
-                            <span className="text-sm font-mono opacity-50 mb-6 block">0{index + 1}</span>
+                            <span className="text-sm font-coolvetica-condensed opacity-50 mb-6 block">0{index + 1}</span>
                             <p className="text-xl sm:text-2xl md:text-3xl leading-tight tracking-tight">
                                 {card.text.split(" ").map((word, wIndex) => (
-                                    <span key={wIndex} className="word inline-block mr-2 leading-snug font-coolvetica tracking-wide">
+                                    <span key={wIndex} className="word inline-block mr-2 leading-snug font-coolvetica-condensed tracking-wide">
                                         {word}
                                     </span>
                                 ))}

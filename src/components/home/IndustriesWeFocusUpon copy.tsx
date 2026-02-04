@@ -119,7 +119,7 @@ const IndustriesWeFocusUpon1 = () => {
                 <div ref={trackRef} className="flex flex-col md:flex-row w-full md:w-[500vw] h-full">
                     {/* SLIDE 1: HEADER */}
                     <div className="w-full md:w-screen h-full flex justify-center items-center shrink-0 p-10 border-b md:border-b-0 md:border-r border-black/10">
-                        <h2 className="text-5xl md:text-[8rem] font-bold font-octin-college text-secondary uppercase tracking-tighter text-center leading-none">
+                        <h2 className="text-5xl md:text-8xl font-bold font-maus text-secondary uppercase tracking-tighter leading-none">
                             Industries <br /> We Focus Upon
                         </h2>
                     </div>
@@ -139,17 +139,13 @@ const IndustriesWeFocusUpon1 = () => {
                             <div className="w-full h-full max-w-7xl mx-auto flex flex-col md:flex-row items-center gap-10 md:gap-20">
                                 {/* Number */}
                                 <div className="w-full md:w-auto mb-6 md:mb-0">
-                                    <span className="text-2xl md:text-9xl font-octin-college text-neutral-400 font-bold group-hover:text-secondary opacity-30">({service.id})</span>
+                                    <span className="text-2xl md:text-9xl font-maus text-neutral-400 font-bold group-hover:text-secondary opacity-30">({service.id})</span>
                                 </div>
 
                                 {/* Content */}
                                 <div className="w-full md:w-1/3 mb-8 md:mb-0">
-                                    <h3 className="text-3xl md:text-6xl font-bold mb-6 font-octin-college uppercase tracking-wider leading-tight">{service.title}</h3>
-                                    <ul className="flex flex-col gap-2">
-                                        {service.services.map((item, i) => (
-                                            <li key={i} className="text-neutral-500 font-medium text-lg leading-relaxed group-hover:text-secondary">{item}</li>
-                                        ))}
-                                    </ul>
+                                    <h3 className="text-4xl md:text-7xl font-bold font-maus uppercase tracking-tighter leading-none mb-2 drop-shadow-lg">{service.title}</h3>
+                                    <span className="text-xl font-coolvetica-condensed font-medium opacity-80 uppercase tracking-widest">{service.services[0]} & More</span>
                                 </div>
 
                                 {/* Image Area (Right) */}

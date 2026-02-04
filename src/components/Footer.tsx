@@ -13,10 +13,10 @@ const Footer = () => {
                     {/* Brand & CTA Column */}
                     <div className="lg:w-1/3 flex flex-col justify-between">
                         <div>
-                            <Link to="/" className="text-4xl md:text-5xl font-octin-college font-bold tracking-tighter uppercase mb-6 inline-block">
+                            <Link to="/" className="text-4xl md:text-5xl font-maus font-bold tracking-tighter uppercase mb-6 inline-block">
                                 DraftyCore
                             </Link>
-                            <p className="text-gray-400 text-lg leading-relaxed max-w-sm">
+                            <p className="text-gray-400 text-lg leading-relaxed max-w-sm font-coolvetica-condensed tracking-wide">
                                 Empowering architects and engineers with precision drafting and BIM solutions. We build the foundation of your vision.
                             </p>
                         </div>
@@ -24,7 +24,7 @@ const Footer = () => {
                         <div className="pt-10 lg:pt-auto">
                             <Link
                                 to="/contact"
-                                className="inline-flex items-center gap-3 text-2xl font-octin-college text-brandlimegreen hover:text-white transition-colors duration-300"
+                                className="inline-flex items-center gap-3 text-2xl font-maus text-brandlimegreen hover:text-white transition-colors duration-300"
                             >
                                 Let's Talk Project
                                 <span className="text-3xl">→</span>
@@ -37,7 +37,7 @@ const Footer = () => {
 
                         {/* Services */}
                         {/* <div>
-                            <h4 className="font-octin-college text-xl text-gray-500 mb-6 uppercase tracking-wider">Services</h4>
+                            <h4 className="font-maus text-xl text-gray-500 mb-6 uppercase tracking-wider">Services</h4>
                             <ul className="flex flex-col gap-4 text-lg">
                                 <li><Link to="/services/drafting" className="hover:text-brandorange transition-colors">Drafting Services</Link></li>
                                 <li><Link to="/services/bim" className="hover:text-brandpink transition-colors">BIM Modeling</Link></li>
@@ -48,8 +48,8 @@ const Footer = () => {
 
                         {/* Company */}
                         <div>
-                            <h4 className="font-octin-college text-xl text-gray-500 mb-6 uppercase tracking-wider">Company</h4>
-                            <ul className="flex flex-col gap-4 text-lg">
+                            <h4 className="font-maus text-xl text-gray-500 mb-6 uppercase tracking-wider">Company</h4>
+                            <ul className="flex flex-col gap-4 text-lg font-coolvetica-condensed tracking-widest">
                                 <li><Link to="/" className="hover:text-brandorange transition-colors">Home</Link></li>
                                 <li><Link to="/about" className="hover:text-brandorange transition-colors">About Us</Link></li>
                                 <li><Link to="/contact" className="hover:text-brandyellow transition-colors">Contact</Link></li>
@@ -58,8 +58,8 @@ const Footer = () => {
 
                         {/* Contact Info */}
                         <div>
-                            <h4 className="font-octin-college text-xl text-gray-500 mb-6 uppercase tracking-wider">Connect</h4>
-                            <ul className="flex flex-col gap-4 text-lg text-gray-300">
+                            <h4 className="font-maus text-xl text-gray-500 mb-6 uppercase tracking-wider">Connect</h4>
+                            <ul className="flex flex-col gap-4 text-lg text-gray-300 font-coolvetica-condensed tracking-widest">
                                 <li>
                                     <a href="mailto:hello@draftycore.com" className="hover:text-white transition-colors">hello@draftycore.com</a>
                                 </li>
@@ -86,15 +86,15 @@ const Footer = () => {
                 {/* Bottom Bar */}
                 <div className="mt-20 pt-8 border-t border-white/10 flex flex-col md:flex-row justify-between items-center text-gray-500 text-sm">
                     <p>&copy; {new Date().getFullYear()} DraftyCore. All rights reserved.</p>
-                    <div className="flex gap-8 mt-4 md:mt-0">
+                    {/* <div className="flex gap-8 mt-4 md:mt-0">
                         <Link to="/privacy" className="hover:text-white transition-colors">Privacy Policy</Link>
                         <Link to="/terms" className="hover:text-white transition-colors">Terms of Service</Link>
-                    </div>
+                    </div> */}
                 </div>
             </div>
 
             {/* Big Background Text Effect */}
-            <div className="absolute bottom-[-5%] left-1/2 -translate-x-1/2 w-full text-center pointer-events-none opacity-[0.03] select-none text-[15vw] leading-none font-octin-college font-bold uppercase whitespace-nowrap">
+            <div className="absolute bottom-[-5%] left-1/2 -translate-x-1/2 w-full text-center pointer-events-none opacity-[0.03] select-none text-[15vw] leading-none font-maus font-bold uppercase whitespace-nowrap">
                 DraftyCore
             </div>
         </footer>

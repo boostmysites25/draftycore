@@ -9,7 +9,7 @@ gsap.registerPlugin(ScrollTrigger);
 // --- MARQUEE COMPONENTS (Unchanged) ---
 const MarqueeItem = ({ text }: { text: string }) => (
     <div className="flex items-center gap-4 px-5 md:px-10">
-        <span className="text-xl sm:text-2xl md:text-5xl flex font-octin-college items-center gap-2 font-bold tracking-widest uppercase whitespace-nowrap">
+        <span className="text-xl sm:text-2xl md:text-5xl flex font-maus items-center gap-2 font-bold tracking-widest uppercase whitespace-nowrap">
             {text}
         </span>
     </div>
@@ -27,7 +27,7 @@ const VerticalSet = ({ text }: { text: string }) => (
     <div className="flex flex-col shrink-0 items-center">
         {Array(4).fill(null).map((_, i) => (
             <div key={i} className="flex flex-col items-center justify-center gap-4 py-5 md:py-10" style={{ writingMode: 'vertical-rl' }}>
-                <span className="text-xl sm:text-2xl md:text-5xl flex items-center gap-2 font-bold tracking-widest uppercase whitespace-nowrap rotate-180 font-octin-college">
+                <span className="text-xl sm:text-2xl md:text-5xl flex items-center gap-2 font-bold tracking-widest uppercase whitespace-nowrap rotate-180 font-maus">
                     {text}
                 </span>
             </div>
@@ -124,47 +124,47 @@ const ProjectCard = forwardRef<HTMLDivElement, { project: ProjectProps }>(({ pro
 
             {/* MARQUEES (Note: These might need to be hidden/faded out during expansion if they overlay the split) */}
             {/* 1. TOP MARQUEE (Left) */}
-            <div ref={topMarqueeRef} className="absolute top-0 left-0 w-full h-[30px] sm:h-[40px] md:h-[60px] bg-white text-black z-20 overflow-hidden flex items-center transition-opacity duration-300 opacity-100 border border-white/10">
+            {/* <div ref={topMarqueeRef} className="absolute top-0 left-0 w-full h-[30px] sm:h-[40px] md:h-[60px] bg-white text-black z-20 overflow-hidden flex items-center transition-opacity duration-300 opacity-100 border border-white/10">
                 <div className="marquee-track flex w-max will-change-transform">
                     <HorizontalSet text={project.title} />
                     <HorizontalSet text={project.title} />
                     <HorizontalSet text={project.title} />
                     <HorizontalSet text={project.title} />
                 </div>
-            </div>
+            </div> */}
 
             {/* 2. RIGHT MARQUEE (Down) */}
-            <div ref={rightMarqueeRef} className="absolute top-0 right-0 w-[30px] sm:w-[40px] md:w-[60px] h-full bg-white text-black z-20 overflow-hidden flex flex-col items-center transition-opacity duration-300 opacity-100 border border-white/10">
+            {/* <div ref={rightMarqueeRef} className="absolute top-0 right-0 w-[30px] sm:w-[40px] md:w-[60px] h-full bg-white text-black z-20 overflow-hidden flex flex-col items-center transition-opacity duration-300 opacity-100 border border-white/10">
                 <div className="marquee-track flex flex-col h-max will-change-transform">
                     <VerticalSet text={project.title} />
                     <VerticalSet text={project.title} />
                     <VerticalSet text={project.title} />
                     <VerticalSet text={project.title} />
                 </div>
-            </div>
+            </div> */}
 
             {/* 3. BOTTOM MARQUEE (Right) */}
-            <div ref={bottomMarqueeRef} className="absolute bottom-0 left-0 w-full h-[30px] sm:h-[40px] md:h-[60px] bg-white text-black z-20 overflow-hidden flex items-center transition-opacity duration-300 opacity-100 border border-white/10">
+            {/* <div ref={bottomMarqueeRef} className="absolute bottom-0 left-0 w-full h-[30px] sm:h-[40px] md:h-[60px] bg-white text-black z-20 overflow-hidden flex items-center transition-opacity duration-300 opacity-100 border border-white/10">
                 <div className="marquee-track flex w-max will-change-transform">
                     <HorizontalSet text={project.title} />
                     <HorizontalSet text={project.title} />
                     <HorizontalSet text={project.title} />
                     <HorizontalSet text={project.title} />
                 </div>
-            </div>
+            </div> */}
 
             {/* 4. LEFT MARQUEE (Up) */}
-            <div ref={leftMarqueeRef} className="absolute top-0 left-0 w-[30px] sm:w-[40px] md:w-[60px] h-full bg-white text-black z-20 overflow-hidden flex flex-col items-center transition-opacity duration-300 opacity-100 border border-white/10">
+            {/* <div ref={leftMarqueeRef} className="absolute top-0 left-0 w-[30px] sm:w-[40px] md:w-[60px] h-full bg-white text-black z-20 overflow-hidden flex flex-col items-center transition-opacity duration-300 opacity-100 border border-white/10">
                 <div className="marquee-track flex flex-col h-max will-change-transform">
                     <VerticalSet text={project.title} />
                     <VerticalSet text={project.title} />
                     <VerticalSet text={project.title} />
                     <VerticalSet text={project.title} />
                 </div>
-            </div>
+            </div> */}
 
             {/* VIDEO CONTAINER (Split) */}
-            <div className="shutter-wrapper absolute inset-0 z-10 flex w-full h-full overflow-hidden">
+            <div className="shutter-wrapper absolute inset-0 z-10 flex w-full h-full overflow-hidden border-4 border-black">
                 {/* LEFT HALF */}
                 <div className="mask-left relative w-1/2 h-full overflow-hidden bg-neutral-900 border-black/50 will-change-transform">
                     <div className="absolute top-0 left-0 w-[200%] h-full">
@@ -325,7 +325,7 @@ const FeaturedWork = () => {
                 >
                     {/* Header Card */}
                     <div ref={headingRef} className="shrink-0 w-full md:w-[20vw] text-center md:text-left">
-                        <h2 className="text-5xl md:text-[4.5rem] font-black font-octin-college leading-none text-black">
+                        <h2 className="text-5xl md:text-[4.5rem] font-black font-maus leading-none text-black">
                             UNIFIED  <br /> ECOSYSTEM
                         </h2>
                         <div className="w-20 h-2 bg-brandturquoise mt-8 mx-auto md:mx-0"></div>

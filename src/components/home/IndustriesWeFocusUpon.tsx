@@ -83,7 +83,7 @@ const IndustriesWeFocusUpon = () => {
                 const totalScroll = "400%";
 
                 if (track) {
-                    const sections = services.length + 1; // Header + 4 services
+                    // const sections = services.length + 1; // Unused
 
                     // Main Timeline
                     const tl = gsap.timeline({
@@ -104,7 +104,7 @@ const IndustriesWeFocusUpon = () => {
                     tl.addLabel("move");
 
                     tl.to(track, {
-                        xPercent: -100 * (sections - 1) / sections,
+                        x: () => -(track.scrollWidth - window.innerWidth),
                         ease: "none",
                         duration: scrollDuration
                     }, "move");
@@ -160,11 +160,11 @@ const IndustriesWeFocusUpon = () => {
 
                 {/* Header Section (Intro) - Now just a lead-in */}
                 <div className="w-full md:w-[40vw] shrink-0 flex flex-col justify-center gap-8 px-10 md:pl-24 md:pr-10 text-center md:text-left">
-                    <h2 className="text-5xl md:text-8xl font-bold font-octin-college text-secondary uppercase tracking-tighter leading-none">
+                    <h2 className="text-5xl md:text-8xl font-bold font-maus text-secondary uppercase tracking-tighter leading-none">
                         Industries <br /> We Focus Upon
                     </h2>
-                    <div className="flex items-center gap-4 text-secondary justify-center md:justify-start">
-                        <span className="text-lg font-bold">SCROLL TO EXPLORE</span>
+                    <div className="flex items-center gap-4 text-secondary justify-center md:justify-start font-coolvetica-condensed">
+                        <span className="text-lg">SCROLL TO EXPLORE</span>
                         <span className="animate-bounce">→</span>
                     </div>
                 </div>
@@ -175,21 +175,7 @@ const IndustriesWeFocusUpon = () => {
                         key={service.id}
                         className="relative shrink-0 w-full md:w-[80vh] flex items-center justify-center px-2 md:px-0"
                     >
-                        {/* ROTATING CONTAINER
-                             Removed counter-rotation for text to emphasize the "object" rolling.
-                             If the user wants "exactly like Streamtime", usually the whole sticker rolls.
-                             But if text needs to be readable, maybe we hide text or keep it minimal?
-                             Let's keep the counter-rotation BUT subtle or just let it roll if the text is simple.
-                             Actually, Streamtime text is usually separate if it's long.
-                             I will keep the design clean: Image and Title inside.
-                             I will Remove counter-rotation to really sell the "rolling sticker" effect if that matches user intent "circles are rotating".
-                             Wait, if text rotates it becomes unreadable.
-                             User said: "The industries should be in circles exactly like how the referrence page... On mouse scroll the circles are rotating"
-                             Most likely: The CONTAINER rotates, the IMAGE rotates, but maybe text is OUTSIDE?
-                             Reference: https://streamtime.net/use-cases -> Circular elements roll. Text is often *on* them but sparse, or below.
-                             I'll try: Large Image Circle Rolling. Title displayed BELOW or ON TOP static?
-                             Refinement: Let's put the TITLE inside and COUNTER-ROTATE it properly so it stays legible while the background spins.
-                          */}
+                        {/* ROTATING CONTAINER */}
                         <div
                             ref={(el) => addToRefs(el, index)}
                             className="w-[85vw] h-[85vw] md:w-[70vh] md:h-[70vh] relative bg-neutral-100 flex items-center justify-center overflow-hidden group"
@@ -213,20 +199,14 @@ const IndustriesWeFocusUpon = () => {
                                 ref={(el) => addToContentRefs(el, index)}
                                 className="relative z-10 text-center text-white p-10 flex flex-col items-center justify-center h-full w-full"
                             >
-                                {/* To keep text upright we need to apply counter rotation in the animation loop above or stick to a non-rotating inner div? 
-                                     Actually, doing it in GSAP is smoother. I will add a ref for content.
-                                 */}
                                 <div className="content-rotator flex flex-col items-center">
-                                    <h3 className="text-4xl md:text-7xl font-bold font-octin-college uppercase tracking-tighter leading-none mb-2 drop-shadow-lg">{service.title}</h3>
-                                    <span className="text-xl font-medium opacity-80 uppercase tracking-widest">{service.services[0]} & More</span>
+                                    <h3 className="text-4xl md:text-7xl font-bold font-maus uppercase tracking-tighter leading-none mb-2 drop-shadow-lg">{service.title}</h3>
+                                    <span className="text-xl font-coolvetica-condensed font-medium opacity-80 uppercase tracking-widest">{service.services[0]} & More</span>
                                 </div>
                             </div>
                         </div>
                     </div>
                 ))}
-
-                {/* Padding end */}
-                <div className="hidden md:block w-[10vw] shrink-0"></div>
             </div>
         </section>
     );

@@ -6,7 +6,7 @@ const WhatWeStandFor = () => {
         <div className="relative pb-5 pt-24 bg-[#F5F5F0]">
             <ConnectiveTech />
             <div className="wrapper relative z-10">
-                <h2 className="text-5xl md:text-7xl font-bold font-octin-college text-secondary uppercase tracking-tighter mb-6">
+                <h2 className="text-5xl md:text-7xl font-bold font-maus text-secondary uppercase tracking-tighter mb-6">
                     What We Stand For
                 </h2>
             </div>

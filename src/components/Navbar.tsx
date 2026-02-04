@@ -147,7 +147,7 @@ const Navbar = () => {
                             <ul className="flex gap-10">
                                 {links.map((link) => (
                                     <li key={link.name}>
-                                        <a href={link.href} className={`font-big-shoulders font-extrabold uppercase relative flex items-center gap-2 text-primary hover:text-brandorange transition-colors ${pathname === link.href ? "border-b-2 border-brandorange" : ""}`}>
+                                        <a href={link.href} className={`font-coolvetica font-bold uppercase relative flex items-center gap-2 text-primary hover:text-brandorange transition-colors ${pathname === link.href ? "border-b-2 border-brandorange" : ""}`}>
                                             <span className="w-1 h-1 bg-brandorange rotate-45" />
                                             {link.name}
                                             <span className="w-1 h-1 bg-brandorange rotate-45" />
@@ -204,7 +204,7 @@ const Navbar = () => {
                                 href={link.href}
                                 ref={el => linkRefs.current[i] = el}
                                 onClick={() => setIsMenuOpen(false)}
-                                className="font-octin-college text-5xl sm:text-7xl font-bold text-secondary hover:text-brandorange transition-all duration-300 uppercase tracking-wider relative group"
+                                className="font-maus text-5xl sm:text-7xl font-bold text-secondary hover:text-brandorange transition-all duration-300 uppercase tracking-wider relative group"
                             >
                                 {link.name}
                                 <span className="absolute -bottom-2 left-0 w-0 h-1 bg-brandorange transition-all duration-300 group-hover:w-full"></span>
@@ -213,7 +213,7 @@ const Navbar = () => {
                     </div>
 
                     {/* Decorative Footer Info */}
-                    <div className="absolute bottom-10 text-secondary/50 font-big-shoulders tracking-[0.2em] text-sm">
+                    <div className="absolute bottom-10 text-secondary/50 font-coolvetica-condensed tracking-[0.2em] text-sm">
                         FUTURE READY • SYSTEM ONLINE
                     </div>
                 </div>,

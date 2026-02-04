@@ -98,7 +98,7 @@ const Hero = () => {
         <div
             // ref={containerRef}
             className='h-screen w-full flex items-center justify-center overflow-hidden relative bg-[#F5F5F0] cursor-none'
-             onMouseEnter={() => setIsHovering(true)} onMouseLeave={() => setIsHovering(false)}
+            onMouseEnter={() => setIsHovering(true)} onMouseLeave={() => setIsHovering(false)}
         >
             {/* Background Animation: Pulse Grid with lower opacity for subtlety */}
             <div className="absolute inset-0 z-0 opacity-40">
@@ -120,15 +120,15 @@ const Hero = () => {
                 <div className="absolute top-20 left-8 border-l-2 border-black pl-3 animate-fade-in-up">
                     <div className="flex items-center gap-2 mb-1">
                         <div className="w-1.5 h-1.5 rounded-full bg-brandorange animate-pulse"></div>
-                        <span className="text-[10px] font-mono font-bold tracking-[0.2em] text-black/60 uppercase">System Status</span>
+                        <span className="text-[10px] font-coolvetica-condensed font-bold tracking-[0.2em] text-black/60 uppercase">System Status</span>
                     </div>
                     <div className="text-sm font-bold tracking-widest text-black/90">ONLINE // READY</div>
                 </div>
 
                 {/* Top Right Coordinates */}
                 <div className="absolute top-8 right-8 text-right hidden md:block animate-fade-in-up animation-delay-200">
-                    <p className="text-[10px] font-mono text-black/40 mb-1">GRID REFERENCE</p>
-                    <p className="text-sm font-mono font-bold text-black/70">X: 04.92.11 <br />Y: 08.22.90</p>
+                    <p className="text-[10px] font-coolvetica-condensed text-black/40 mb-1">GRID REFERENCE</p>
+                    <p className="text-sm font-coolvetica-condensed font-bold text-black/70">X: 04.92.11 <br />Y: 08.22.90</p>
                 </div>
 
                 {/* Bottom Left Technical Marker */}
@@ -139,20 +139,20 @@ const Hero = () => {
                         <line x1="0" y1="20" x2="40" y2="20" stroke="black" strokeWidth="1" />
                     </svg>
                     <div className="flex flex-col">
-                        <span className="text-[10px] font-mono tracking-widest font-bold">SCALE 1:1</span>
-                        <span className="text-[10px] font-mono text-black/50">DRAFTING ENGINE</span>
+                        <span className="text-[10px] font-coolvetica-condensed tracking-widest font-bold">SCALE 1:1</span>
+                        <span className="text-[10px] font-coolvetica-condensed text-black/50">DRAFTING ENGINE</span>
                     </div>
                 </div>
 
                 {/* Bottom Right Box */}
                 <div className="absolute bottom-12 right-12 hidden md:block border border-black/10 bg-white/50 backdrop-blur-sm p-4">
                     <div className="flex justify-between items-center w-32 border-b border-black/10 pb-2 mb-2">
-                        <span className="text-[9px] font-mono text-black/40">CPU</span>
-                        <span className="text-[9px] font-mono font-bold">12%</span>
+                        <span className="text-[9px] font-coolvetica-condensed text-black/40">CPU</span>
+                        <span className="text-[9px] font-coolvetica-condensed font-bold">12%</span>
                     </div>
                     <div className="flex justify-between items-center w-32">
-                        <span className="text-[9px] font-mono text-black/40">MEM</span>
-                        <span className="text-[9px] font-mono font-bold">OPTIMIZED</span>
+                        <span className="text-[9px] font-coolvetica-condensed text-black/40">MEM</span>
+                        <span className="text-[9px] font-coolvetica-condensed font-bold">OPTIMIZED</span>
                     </div>
                 </div>
 
@@ -170,7 +170,7 @@ const Hero = () => {
                     {/* Measurement Line Above Text */}
                     <div className="absolute -top-12 left-0 w-full hidden md:flex justify-between items-end border-b border-black/20 pb-2 px-10">
                         <span className="h-2 w-[1px] bg-black/30"></span>
-                        <span className="text-[10px] font-mono text-black/40 tracking-widest">1200mm</span>
+                        <span className="text-[10px] font-coolvetica-condensed text-black/40 tracking-widest">1200mm</span>
                         <span className="h-2 w-[1px] bg-black/30"></span>
                     </div>
 
@@ -179,7 +179,7 @@ const Hero = () => {
 
                 {/* Sub-headline */}
                 <div className={isAligned ? "mt-8 md:mt-2 overflow-hidden duration-500" : "mt-8 md:mt-2 overflow-hidden opacity-0 duration-500"}>
-                    <p className="text-sm md:text-lg font-mono text-black/60 tracking-widest uppercase animate-fade-in-up animation-delay-500">
+                    <p className="text-sm md:text-lg font-coolvetica-condensed text-black/60 tracking-widest uppercase animate-fade-in-up animation-delay-500">
                         The Drafting Engine
                     </p>
                 </div>
