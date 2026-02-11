@@ -12,6 +12,7 @@
   "dependencies": {
     "@react-three/fiber": "^8.17.10",
     "@studio-freight/lenis": "^1.0.42",
+    "gifuct-js": "^2.1.2",
     "gsap": "^3.12.4",
     "matter-js": "^0.20.0",
     "ogl": "^1.0.11",

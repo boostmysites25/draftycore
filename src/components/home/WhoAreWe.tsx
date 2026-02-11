@@ -2,6 +2,86 @@ import { useEffect, useRef, useState } from 'react';
 import { CircleCursor } from '../ui/Cursors';
 import gsap from 'gsap';
 import { ScrollTrigger } from 'gsap/ScrollTrigger';
+import gif from '../../assets/who-are-we.gif'
+import { parseGIF, decompressFrames } from 'gifuct-js';
+
+const GifPlayer = ({ src, playbackRate = 1, className }: { src: string, playbackRate?: number, className?: string }) => {
+    const canvasRef = useRef<HTMLCanvasElement>(null);
+    const [frames, setFrames] = useState<any[]>([]);
+    const [isPlaying, setIsPlaying] = useState(false);
+    const frameIndexRef = useRef(0);
+    const timeoutRef = useRef<any>(null);
+
+    useEffect(() => {
+        let isMounted = true;
+        fetch(src)
+            .then(resp => resp.arrayBuffer())
+            .then(buff => {
+                if (!isMounted) return;
+                const gif = parseGIF(buff);
+                const frames = decompressFrames(gif, true);
+                setFrames(frames);
+                setIsPlaying(true);
+            });
+        return () => { isMounted = false; };
+    }, [src]);
+
+    useEffect(() => {
+        if (!isPlaying || frames.length === 0 || !canvasRef.current) return;
+
+        const canvas = canvasRef.current;
+        const ctx = canvas.getContext('2d');
+        if (!ctx) return;
+
+        const renderFrame = () => {
+            const frame = frames[frameIndexRef.current];
+
+            // Clear and draw frame
+            // Since gifuct-js frames areImageData objects, we can put them directly
+            if (frame.disposalType === 2) {
+                ctx.clearRect(0, 0, canvas.width, canvas.height);
+            }
+
+            // Create a temporary canvas to draw the patch
+            const tempCanvas = document.createElement('canvas');
+            tempCanvas.width = frame.dims.width;
+            tempCanvas.height = frame.dims.height;
+            const tempCtx = tempCanvas.getContext('2d');
+            if (tempCtx) {
+                const imageData = new ImageData(
+                    new Uint8ClampedArray(frame.patch),
+                    frame.dims.width,
+                    frame.dims.height
+                );
+                tempCtx.putImageData(imageData, 0, 0);
+                ctx.drawImage(tempCanvas, frame.dims.left, frame.dims.top);
+            }
+
+            // Calculate next frame delay
+            const delay = Math.max(frame.delay, 100); // GIF delay is in ms
+            const adjustedDelay = delay / playbackRate;
+
+            frameIndexRef.current = (frameIndexRef.current + 1) % frames.length;
+
+            timeoutRef.current = setTimeout(() => {
+                requestAnimationFrame(renderFrame);
+            }, adjustedDelay);
+        };
+
+        // Initialize canvas size based on first frame
+        if (frames.length > 0) {
+            canvas.width = frames[0].dims.width;
+            canvas.height = frames[0].dims.height;
+            renderFrame();
+        }
+
+        return () => {
+            if (timeoutRef.current) clearTimeout(timeoutRef.current);
+        };
+    }, [isPlaying, frames, playbackRate]);
+
+    return <canvas ref={canvasRef} className={className} />;
+};
 
 gsap.registerPlugin(ScrollTrigger);
 
@@ -243,13 +323,9 @@ const WhoAreWe = () => {
                 </div> */}
 
                 {/* Decoration 2 */}
-                <div ref={decoration2Ref} className="absolute -bottom-10 -left-10 opacity-20 block animate-bounce">
-                    <svg width="300" height="300" viewBox="0 0 300 300" fill="none" xmlns="http://www.w3.org/2000/svg">
-                        <rect x="50" y="50" width="200" height="200" stroke="black" strokeWidth="2" />
-                        <line x1="50" y1="50" x2="250" y2="250" stroke="black" strokeWidth="1" />
-                        <line x1="250" y1="50" x2="50" y2="250" stroke="black" strokeWidth="1" />
-                        <circle cx="150" cy="150" r="20" stroke="black" strokeWidth="2" />
-                    </svg>
+                <div ref={decoration2Ref} className="absolute bottom-10 left-5 block">
+                    {/* <img src={gif} alt="who-are-we" className='w-72 h-w-72' /> */}
+                    <GifPlayer src={gif} playbackRate={1} className='w-72 h-72' />
                 </div>
 
                 <div className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-[800px] h-[800px] border border-black/5 rounded-full z-0"></div>
@@ -276,7 +352,7 @@ const WhoAreWe = () => {
                 <div className="md:w-1/3 flex flex-col items-center mx-auto relative z-20">
                     <div className="sticky top-32">
 
-                        <div className="mb-4 text-xs font-coolvetica-condensed font-bold tracking-widest text-black/40 uppercase hidden md:block">
+                        <div className="mb-4 text-lg tracking-widest font-coolvetica-condensed font-bold text-black/40 uppercase hidden md:block">
                             // SECTION 01: IDENTITY
                         </div>
                         <h2 className="text-5xl sm:text-5xl md:text-7xl lg:text-8xl font-maus font-bold text-secondary uppercase tracking-tighter leading-none text-center cursor-pointer select-none">
@@ -313,10 +389,10 @@ const WhoAreWe = () => {
                                 cursor-none
                             `}
                         >
-                            <span className="text-sm font-coolvetica-condensed opacity-50 mb-6 block">0{index + 1}</span>
+                            <span className="text-lg font-coolvetica opacity-50 mb-6 block">0{index + 1}</span>
                             <p className="text-xl sm:text-2xl md:text-3xl leading-tight tracking-tight">
                                 {card.text.split(" ").map((word, wIndex) => (
-                                    <span key={wIndex} className="word inline-block mr-2 leading-snug font-coolvetica-condensed tracking-wide">
+                                    <span key={wIndex} className="word inline-block mr-2 leading-snug font-coolvetica tracking-wide">
                                         {word}
                                     </span>
                                 ))}

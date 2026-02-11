@@ -3,6 +3,10 @@ import gsap from "gsap";
 import { ScrollTrigger } from "gsap/ScrollTrigger";
 import CyberCircuit from "../ui/CyberCircuit";
 import { FeaturedCursor } from "../ui/Cursors";
+import img1 from '../../assets/images/branding.jpeg'
+import img2 from '../../assets/images/uiuxdesign.jpeg'
+import img3 from '../../assets/images/development.jpeg'
+import img4 from '../../assets/images/digitalmarketing.jpeg'
 
 gsap.registerPlugin(ScrollTrigger);
 
@@ -27,7 +31,7 @@ const services: ServiceItem[] = [
         id: "01",
         title: "Branding",
         services: ["Creative Direction", "Brand Identity", "Branding Strategy", "Graphic Design", "Startup"],
-        image: "https://images.unsplash.com/photo-1600607686527-6fb886090705?q=80&w=2700&auto=format&fit=crop",
+        image: img1,
         color: "#FF7A00",
         shape: "starburst"
     },
@@ -35,7 +39,7 @@ const services: ServiceItem[] = [
         id: "02",
         title: "UI-UX Design",
         services: ["Website Design", "App Design", "Wireframing", "Prototyping", "User Research"],
-        image: "https://images.unsplash.com/photo-1581291518633-83b4ebd1d83e?q=80&w=2700&auto=format&fit=crop",
+        image: img2,
         color: "#FFC300",
         shape: "octagon"
     },
@@ -43,17 +47,17 @@ const services: ServiceItem[] = [
         id: "03",
         title: "Development",
         services: ["Frontend Dev", "Backend Dev", "Full Stack", "CMS Integration", "E-commerce"],
-        image: "https://images.unsplash.com/photo-1555066931-4365d14bab8c?q=80&w=2700&auto=format&fit=crop",
+        image: img3,
         color: "#FF2D95",
-        shape: "hexagon"
+        shape: "starburst"
     },
     {
         id: "04",
         title: "Digital Marketing",
         services: ["SEO Optimization", "Social Media", "Content Strategy", "Email Marketing", "Analytics"],
-        image: "https://images.unsplash.com/photo-1557838923-2985c318be48?q=80&w=2700&auto=format&fit=crop",
+        image: img4,
         color: "#B8F135",
-        shape: "starburst"
+        shape: "octagon"
     }
 ];
 
@@ -200,7 +204,7 @@ const IndustriesWeFocusUpon = () => {
                                 className="relative z-10 text-center text-white p-10 flex flex-col items-center justify-center h-full w-full"
                             >
                                 <div className="content-rotator flex flex-col items-center">
-                                    <h3 className="text-4xl md:text-7xl font-bold font-maus uppercase tracking-tighter leading-none mb-2 drop-shadow-lg">{service.title}</h3>
+                                    <h3 className="text-4xl md:text-[4.20rem] font-bold font-maus uppercase tracking-tighter leading-none mb-2 drop-shadow-lg">{service.title}</h3>
                                     <span className="text-xl font-coolvetica-condensed font-medium opacity-80 uppercase tracking-widest">{service.services[0]} & More</span>
                                 </div>
                             </div>

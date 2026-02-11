@@ -120,39 +120,39 @@ const Hero = () => {
                 <div className="absolute top-20 left-8 border-l-2 border-black pl-3 animate-fade-in-up">
                     <div className="flex items-center gap-2 mb-1">
                         <div className="w-1.5 h-1.5 rounded-full bg-brandorange animate-pulse"></div>
-                        <span className="text-[10px] font-coolvetica-condensed font-bold tracking-[0.2em] text-black/60 uppercase">System Status</span>
+                        <span className="text-[14px] font-coolvetica-condensed font-bold tracking-widest text-black/60 uppercase">System Status</span>
                     </div>
-                    <div className="text-sm font-bold tracking-widest text-black/90">ONLINE // READY</div>
+                    <div className="text-lg font-bold tracking-widest text-black/90">ONLINE // READY</div>
                 </div>
 
                 {/* Top Right Coordinates */}
                 <div className="absolute top-8 right-8 text-right hidden md:block animate-fade-in-up animation-delay-200">
-                    <p className="text-[10px] font-coolvetica-condensed text-black/40 mb-1">GRID REFERENCE</p>
-                    <p className="text-sm font-coolvetica-condensed font-bold text-black/70">X: 04.92.11 <br />Y: 08.22.90</p>
+                    <p className="text-[14px] font-coolvetica-condensed text-black/40 mb-1 tracking-widest">GRID REFERENCE</p>
+                    <p className="text-lg font-coolvetica-condensed font-bold text-black/70">X: 04.92.11 <br />Y: 08.22.90</p>
                 </div>
 
                 {/* Bottom Left Technical Marker */}
                 <div className="absolute bottom-12 left-12 hidden md:flex items-center gap-4 opacity-60">
-                    <svg width="40" height="40" viewBox="0 0 40 40" fill="none" className="animate-[spin_10s_linear_infinite]">
+                    <svg width="50" height="50" viewBox="0 0 40 40" fill="none" className="animate-[spin_10s_linear_infinite]">
                         <circle cx="20" cy="20" r="18" stroke="black" strokeWidth="1" strokeDasharray="4 4" />
                         <line x1="20" y1="0" x2="20" y2="40" stroke="black" strokeWidth="1" />
                         <line x1="0" y1="20" x2="40" y2="20" stroke="black" strokeWidth="1" />
                     </svg>
                     <div className="flex flex-col">
-                        <span className="text-[10px] font-coolvetica-condensed tracking-widest font-bold">SCALE 1:1</span>
-                        <span className="text-[10px] font-coolvetica-condensed text-black/50">DRAFTING ENGINE</span>
+                        <span className="text-lg font-coolvetica-condensed tracking-widest font-bold">SCALE 1:1</span>
+                        <span className="text-lg font-coolvetica-condensed text-black/50 tracking-widest">DRAFTING ENGINE</span>
                     </div>
                 </div>
 
                 {/* Bottom Right Box */}
                 <div className="absolute bottom-12 right-12 hidden md:block border border-black/10 bg-white/50 backdrop-blur-sm p-4">
                     <div className="flex justify-between items-center w-32 border-b border-black/10 pb-2 mb-2">
-                        <span className="text-[9px] font-coolvetica-condensed text-black/40">CPU</span>
-                        <span className="text-[9px] font-coolvetica-condensed font-bold">12%</span>
+                        <span className="text-lg tracking-widest font-coolvetica-condensed text-black/40">CPU</span>
+                        <span className="text-lg tracking-widest font-coolvetica-condensed font-bold">12%</span>
                     </div>
                     <div className="flex justify-between items-center w-32">
-                        <span className="text-[9px] font-coolvetica-condensed text-black/40">MEM</span>
-                        <span className="text-[9px] font-coolvetica-condensed font-bold">OPTIMIZED</span>
+                        <span className="text-lg tracking-widest font-coolvetica-condensed text-black/40">MEM</span>
+                        <span className="text-lg tracking-widest font-coolvetica-condensed font-bold">OPTIMIZED</span>
                     </div>
                 </div>
 

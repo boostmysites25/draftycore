@@ -3,10 +3,10 @@ import ConnectiveTech from "../ui/ConnectiveTech"
 
 const WhatWeStandFor = () => {
     return (
-        <div className="relative pb-5 pt-24 bg-[#F5F5F0]">
+        <div className="relative pt-24 bg-[#F5F5F0]">
             <ConnectiveTech />
             <div className="wrapper relative z-10">
-                <h2 className="text-5xl md:text-7xl font-bold font-maus text-secondary uppercase tracking-tighter mb-6">
+                <h2 className="text-5xl md:text-8xl font-black font-maus text-secondary uppercase tracking-tighter mb-4">
                     What We Stand For
                 </h2>
             </div>

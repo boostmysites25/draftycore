@@ -42,7 +42,7 @@ const FallingText: React.FC<FallingTextProps> = ({
                 const color = BRAND_COLORS[index % BRAND_COLORS.length];
 
                 return `<span
-          class="inline-block mx-2 select-none px-4 py-2 rounded-full text-white font-medium shadow-lg text-nowrap"
+          class="inline-block mx-2 select-none px-4 py-2 rounded-full text-white font-medium shadow-lg text-nowrap font-coolvetica tracking-wide text-xl"
           style="background-color: ${color};"
         >
           ${word}

@@ -130,7 +130,7 @@ const Navbar = () => {
     return (
         <>
             <nav className={`fixed w-screen top-0 left-0 right-0 z-50 transition-all duration-300 ${isScrolled ? "backdrop-blur-md bg-white/5" : ""} ${showNavbar ? "translate-y-0" : "-translate-y-0"}`}>
-                <div className="wrapper py-2">
+                <div className="wrapper py-1">
                     <div className="grid grid-cols-2 md:grid-cols-3 gap-10 items-center">
                         {/* Logo Section */}
                         <div
@@ -139,7 +139,7 @@ const Navbar = () => {
                             onMouseLeave={() => setIsHovering(false)}
                         >
                             {/* Static/Gif Logo Logic */}
-                            <img src={isHovering || !staticLogo ? logo : staticLogo} alt="Logo" className="w-[6rem] sm:w-[8rem] h-auto object-contain cursor-pointer" />
+                            <img src={isHovering || !staticLogo ? logo : staticLogo} alt="Logo" className="w-[5rem] sm:w-[6rem] h-auto object-contain cursor-pointer" />
                         </div>
 
                         {/* Desktop Menu */}
@@ -147,7 +147,7 @@ const Navbar = () => {
                             <ul className="flex gap-10">
                                 {links.map((link) => (
                                     <li key={link.name}>
-                                        <a href={link.href} className={`font-coolvetica font-bold uppercase relative flex items-center gap-2 text-primary hover:text-brandorange transition-colors ${pathname === link.href ? "border-b-2 border-brandorange" : ""}`}>
+                                        <a href={link.href} className={`font-coolvetica font-bold relative flex items-center gap-2 text-primary hover:text-brandorange transition-colors ${pathname === link.href ? "border-b-2 border-brandorange" : ""}`}>
                                             <span className="w-1 h-1 bg-brandorange rotate-45" />
                                             {link.name}
                                             <span className="w-1 h-1 bg-brandorange rotate-45" />
