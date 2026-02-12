@@ -89,7 +89,7 @@ const Testimonials = () => {
     return (
         <section ref={containerRef} className="pt-32 pb-48 bg-white relative">
             <div className="wrapper relative z-10">
-                <div className="mb-32 text-center">
+                <div className="mb-10 md:mb-32 text-center">
                     <h2 className="text-5xl md:text-8xl font-black font-maus text-secondary uppercase tracking-tighter mb-4">
                         What Our Clients Say
                     </h2>

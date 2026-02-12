@@ -19,7 +19,7 @@ const Home = () => {
             <FeaturedWork />
             <IndustriesWeFocusUpon />
             <WhatWeStandFor />
-            <ScrollingText className="" />
+            <ScrollingText className="" buttonLink="/" buttonText="Signup" />
             <NextStep />
             <Testimonials />
         </div>

@@ -1,4 +1,4 @@
-import { useRef, useLayoutEffect, useState, useEffect } from 'react'
+import { useRef, useLayoutEffect, useState } from 'react'
 // import heroImg from '../../assets/images/hero.webp'
 import gsap from 'gsap'
 import { ScrollTrigger } from 'gsap/ScrollTrigger'
@@ -18,27 +18,7 @@ const Hero = () => {
     const cursorRef = useRef<HTMLDivElement>(null);
     const [isHovering, setIsHovering] = useState(false);
     const [currentVideo, setCurrentVideo] = useState({ id: 1, video });
-    const videoRef = useRef<HTMLVideoElement>(null);
-    const [hasInitialDelayPassed, setHasInitialDelayPassed] = useState(false);
-
-    useEffect(() => {
-        const timer = setTimeout(() => {
-            setHasInitialDelayPassed(true);
-        }, 6000);
-        return () => clearTimeout(timer);
-    }, []);
-
-    useEffect(() => {
-        if (currentVideo.id !== 1) {
-            setHasInitialDelayPassed(true);
-        }
-    }, [currentVideo.id]);
-
-    useEffect(() => {
-        if (videoRef.current && hasInitialDelayPassed) {
-            videoRef.current.play().catch(e => console.error("Video play failed", e));
-        }
-    }, [hasInitialDelayPassed, currentVideo]);
+    const [isFreshStart, setIsFreshStart] = useState(true);
 
 
     // const word = "DRAFTY"
@@ -65,10 +45,11 @@ const Hero = () => {
             // Triggered using callbacks for custom "Reverse" behavior (Smooth instead of Jerky Elastic)
             ScrollTrigger.create({
                 trigger: document.body,
-                start: 10,
+                start: () => window.innerHeight * 0.20, // Trigger at 10% scroll
                 invalidateOnRefresh: true,
                 onEnter: () => {
                     setCurrentVideo({ id: 2, video: video2 });
+                    setIsFreshStart(false)
                     const baseDrop = window.innerHeight * 0.20;
 
                     // Play Drop & Bounce
@@ -95,6 +76,7 @@ const Hero = () => {
                 },
                 onLeaveBack: () => {
                     setCurrentVideo({ id: 1, video });
+                    setIsFreshStart(true)
                     setIsAligned(true);
                     // Smooth Return to Alignment (Overwrites the elastic bounce)
                     gsap.to(lettersRef.current, {
@@ -116,11 +98,7 @@ const Hero = () => {
         <div
             // ref={containerRef}
             className='h-screen w-full flex items-center justify-center overflow-hidden relative bg-[#F5F5F0] cursor-none'
-            onMouseEnter={() => setIsHovering(true)}
-            onMouseLeave={() => setIsHovering(false)}
-            onClick={() => {
-                setCurrentVideo({ id: 2, video: video2 });
-            }}
+            onMouseEnter={() => setIsHovering(true)} onMouseLeave={() => setIsHovering(false)}
         >
             {/* Background Animation: Pulse Grid with lower opacity for subtlety */}
             <div className="absolute inset-0 z-0 opacity-40">
@@ -196,7 +174,7 @@ const Hero = () => {
                         <span className="h-2 w-[1px] bg-black/30"></span>
                     </div>
 
-                    <video ref={videoRef} src={currentVideo.video} loop={false} muted className={`w-full h-full object-cover ${currentVideo.id === 2 ? "-translate-y-[14rem]" : ""}`}></video>
+                    <video src={currentVideo.video} autoPlay loop={false} muted className={`w-full h-full object-cover ${currentVideo.id === 2 ? "-translate-y-[14rem]" : ""}`}></video>
                 </div>
 
                 {/* Sub-headline */}
