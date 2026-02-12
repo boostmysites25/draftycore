@@ -18,7 +18,7 @@ const Hero = () => {
     const cursorRef = useRef<HTMLDivElement>(null);
     const [isHovering, setIsHovering] = useState(false);
     const [currentVideo, setCurrentVideo] = useState({ id: 1, video });
-    const [isFreshStart, setIsFreshStart] = useState(true);
+
 
 
     // const word = "DRAFTY"
@@ -49,7 +49,7 @@ const Hero = () => {
                 invalidateOnRefresh: true,
                 onEnter: () => {
                     setCurrentVideo({ id: 2, video: video2 });
-                    setIsFreshStart(false)
+
                     const baseDrop = window.innerHeight * 0.20;
 
                     // Play Drop & Bounce
@@ -76,7 +76,7 @@ const Hero = () => {
                 },
                 onLeaveBack: () => {
                     setCurrentVideo({ id: 1, video });
-                    setIsFreshStart(true)
+
                     setIsAligned(true);
                     // Smooth Return to Alignment (Overwrites the elastic bounce)
                     gsap.to(lettersRef.current, {
