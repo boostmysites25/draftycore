@@ -156,17 +156,20 @@ const WhoAreWe = () => {
 
     const cards = [
         {
-            text: "We’re your behind-the-scenes drafting engine, quietly powering your studio with precision, pace, and production muscle.",
+            header: "Your studio’s secret tool",
+            description: "The behind-the-scenes boost for your office. A quiet, capable drafting partner for design-led studios. We are the quiet force behind your bold ideas.",
             bgClass: "bg-brandlimegreen text-black",
             borderClass: "border-white/10"
         },
         {
-            text: "We plug into your workflow seamlessly as a quiet extension of your team, helping you deliver more without stretching internal bandwidth.",
+            header: "The Smooth Operator",
+            description: "Our custom designed platform brings projects, finance, chat, and screenshare meetings into one clean workflow, with AI quietly doing the heavy lifting.",
             bgClass: "bg-brandturquoise text-black",
             borderClass: "border-black/10"
         },
         {
-            text: "Our custom-built platform makes it ridiculously easy to brief, review, and deliver drawings, no email chains, no chaos. Just smooth, scalable drafting support.",
+            header: "Start Small, Grow Big",
+            description: "From light support to dedicated capacity, our plans let you commit comfortably and expand when you’re ready.",
             bgClass: "bg-brandorange text-black",
             borderClass: "border-black/10"
         }
@@ -390,9 +393,16 @@ const WhoAreWe = () => {
                             `}
                         >
                             <span className="text-lg font-coolvetica opacity-50 mb-6 block">0{index + 1}</span>
-                            <p className="text-xl sm:text-2xl md:text-3xl leading-tight tracking-tight">
-                                {card.text.split(" ").map((word, wIndex) => (
-                                    <span key={wIndex} className="word inline-block mr-2 leading-snug font-coolvetica tracking-wide">
+                            <h3 className="text-4xl md:text-5xl font-maus font-black uppercase tracking-tighter mb-4 leading-none">
+                                {card.header.split(" ").map((word, wIndex) => (
+                                    <span key={`h-${wIndex}`} className="word inline-block mr-2">
+                                        {word}
+                                    </span>
+                                ))}
+                            </h3>
+                            <p className="text-xl sm:text-2xl md:text-3xl leading-tight tracking-tight font-coolvetica">
+                                {card.description.split(" ").map((word, wIndex) => (
+                                    <span key={`d-${wIndex}`} className="word inline-block mr-2 leading-snug tracking-wide">
                                         {word}
                                     </span>
                                 ))}

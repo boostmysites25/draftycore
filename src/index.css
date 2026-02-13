@@ -153,7 +153,7 @@ body {
 
 @layer utilities {
     .wrapper {
-        @apply max-w-[85rem] px-4 sm:px-6 lg:px-8 mx-auto;
+        @apply max-w-[90rem] px-4 sm:px-6 lg:px-8 mx-auto;
     }
     .coolvetica {
         font-family: 'Coolvetica', sans-serif;

@@ -15,11 +15,11 @@ const Home = () => {
         <div className="">
             <Preloader />
             <Hero />
-            <WhoAreWe />
-            <FeaturedWork />
-            <IndustriesWeFocusUpon />
+            <div id="about"><WhoAreWe /></div>
+            <div id="work"><FeaturedWork /></div>
+            <div id="services"><IndustriesWeFocusUpon /></div>
             <WhatWeStandFor />
-            <ScrollingText className="" buttonLink="/" buttonText="Signup" />
+            <ScrollingText className="" buttonLink="https://forms.zohopublic.in/drafty1/form/Complaints/formperma/6zDGITOYehhdgPUJSAsth00PEcIaect4hiwr7E8o3jc" buttonText="Signup" />
             <NextStep />
             <Testimonials />
         </div>

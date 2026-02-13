@@ -12,7 +12,13 @@ interface FallingTextProps {
     fontSize?: string;
 }
 
-const BRAND_COLORS = ["#FF7A00", "#FFC300", "#FF2D95", "#B8F135", "#2ED9C3"];
+const BRAND_COLORS = [
+    // "#FF7A00",
+    "#FFC300",
+    //   "#FF2D95",
+    "#B8F135",
+    // "#2ED9C3"
+];
 
 const FallingText: React.FC<FallingTextProps> = ({
     text = '',
@@ -42,7 +48,7 @@ const FallingText: React.FC<FallingTextProps> = ({
                 const color = BRAND_COLORS[index % BRAND_COLORS.length];
 
                 return `<span
-          class="inline-block mx-2 select-none px-4 py-2 rounded-full text-white font-medium shadow-lg text-nowrap font-coolvetica tracking-wide text-xl"
+          class="inline-block mx-2 select-none px-5 py-2 rounded-full text-white font-medium shadow-lg text-nowrap font-coolvetica tracking-wide text-xl md:text-2xl"
           style="background-color: ${color};"
         >
           ${word}
@@ -66,7 +72,7 @@ const FallingText: React.FC<FallingTextProps> = ({
                         observer.disconnect();
                     }
                 },
-                { threshold: 0.1 }
+                { threshold: 0.2 }
             );
             observer.observe(containerRef.current);
             return () => observer.disconnect();

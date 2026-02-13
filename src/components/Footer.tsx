@@ -1,7 +1,8 @@
-import { Link } from 'react-router-dom';
-import { FaLinkedinIn, FaInstagram, FaTwitter } from 'react-icons/fa';
+import { Link, useLocation } from 'react-router-dom';
+import { FaLinkedinIn, FaInstagram } from 'react-icons/fa';
 
 const Footer = () => {
+    const { pathname } = useLocation();
     return (
         <footer className="bg-black text-white py-20 relative overflow-hidden">
             {/* Decorative Top Border */}
@@ -23,7 +24,9 @@ const Footer = () => {
 
                         <div className="pt-10 lg:pt-auto">
                             <Link
-                                to="/contact"
+                                to="https://forms.zohopublic.in/drafty1/form/Complaints/formperma/6zDGITOYehhdgPUJSAsth00PEcIaect4hiwr7E8o3jc"
+                                target="_blank"
+                                rel="noopener noreferrer"
                                 className="inline-flex items-center gap-3 text-2xl font-maus text-brandlimegreen hover:text-white transition-colors duration-300"
                             >
                                 Let's Talk Project
@@ -50,9 +53,24 @@ const Footer = () => {
                         <div>
                             <h4 className="font-maus text-xl text-gray-500 mb-6 uppercase tracking-wider">Company</h4>
                             <ul className="flex flex-col gap-4 text-lg font-coolvetica tracking-wide">
-                                <li><Link to="/" className="hover:text-brandorange transition-colors">Home</Link></li>
-                                <li><Link to="/about" className="hover:text-brandorange transition-colors">About Us</Link></li>
-                                <li><Link to="/contact" className="hover:text-brandyellow transition-colors">Contact</Link></li>
+                                <li><Link to="/#about" className="hover:text-brandorange transition-colors"
+                                    onClick={(e) => {
+                                        if (pathname === '/') {
+                                            e.preventDefault();
+                                            const element = document.getElementById('about');
+                                            if (element) element.scrollIntoView({ behavior: 'smooth' });
+                                        }
+                                    }}>About Us</Link></li>
+                                <li>
+                                    <a
+                                        href="https://forms.zohopublic.in/drafty1/form/Complaints/formperma/6zDGITOYehhdgPUJSAsth00PEcIaect4hiwr7E8o3jc"
+                                        target="_blank"
+                                        rel="noopener noreferrer"
+                                        className="hover:text-brandyellow transition-colors"
+                                    >
+                                        Contact
+                                    </a>
+                                </li>
                             </ul>
                         </div>
 
@@ -73,9 +91,6 @@ const Footer = () => {
                                     </a>
                                     <a href="#" className="w-10 h-10 rounded-full bg-white/10 flex items-center justify-center hover:bg-brandpink hover:text-white transition-all">
                                         <FaInstagram />
-                                    </a>
-                                    <a href="#" className="w-10 h-10 rounded-full bg-white/10 flex items-center justify-center hover:bg-brandturquoise hover:text-black transition-all">
-                                        <FaTwitter />
                                     </a>
                                 </li>
                             </ul>

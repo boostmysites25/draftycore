@@ -205,7 +205,7 @@ ProjectCard.displayName = "ProjectCard";
 
 // --- DATA ---
 const PROJECTS: ProjectProps[] = [
-    { id: 1, title: "UNIFIED ECOSYSTEM", videoSrc: "/videos/showreel-1920.mp4" }
+    { id: 1, title: "THE WORKFLOW ENGINE", videoSrc: "/videos/showreel-1920.mp4" }
 ];
 
 const FeaturedWork = () => {
@@ -326,7 +326,7 @@ const FeaturedWork = () => {
                     {/* Header Card */}
                     <div ref={headingRef} className="shrink-0 w-full md:w-[20vw] text-center md:text-left">
                         <h2 className="text-5xl md:text-[4.5rem] font-black font-maus leading-none text-black">
-                            UNIFIED  <br /> ECOSYSTEM
+                            THE WORKFLOW ENGINE 
                         </h2>
                         <div className="w-20 h-2 bg-brandturquoise mt-8 mx-auto md:mx-0"></div>
                     </div>

@@ -139,7 +139,7 @@ const Hero = () => {
             {/* Architectural HUD Elements */}
             <div className="absolute top-0 left-0 w-full h-full pointer-events-none z-20 mix-blend-multiply">
                 {/* Top Left Status Box */}
-                <div className="absolute top-20 left-8 border-l-2 border-black pl-3 animate-fade-in-up">
+                <div className="absolute top-32 left-8 border-l-2 border-black pl-3 animate-fade-in-up">
                     <div className="flex items-center gap-2 mb-1">
                         <div className="w-1.5 h-1.5 rounded-full bg-brandorange animate-pulse"></div>
                         <span className="text-[14px] font-coolvetica-condensed font-bold tracking-widest text-black/60 uppercase">System Status</span>

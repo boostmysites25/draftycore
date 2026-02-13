@@ -35,7 +35,7 @@ const CircleCursor = forwardRef<HTMLDivElement, { isActive: boolean }>(({ isActi
     return (
         <div
             ref={internalRef}
-            className="fixed top-0 left-0 w-8 h-8 rounded-full border border-black/50 pointer-events-none z-50 hidden md:block -translate-x-1/2 -translate-y-1/2 opacity-0 visibility-hidden"
+            className="fixed top-0 left-0 w-5 h-5 rounded-full border-2 border-black/50 pointer-events-none z-50 hidden md:block -translate-x-1/2 -translate-y-1/2 opacity-0 visibility-hidden"
         ></div>
     );
 });

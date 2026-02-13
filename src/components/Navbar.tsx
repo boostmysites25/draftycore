@@ -5,9 +5,8 @@ import logo from '../assets/images/logo.gif'
 import gsap from "gsap"
 
 const links = [
-    { name: "Home", href: "/" },
-    { name: "About", href: "#" },
-    { name: "Contact", href: "#" },
+    { name: "About", href: "/#about" },
+    { name: "Contact", href: "https://forms.zohopublic.in/drafty1/form/Complaints/formperma/6zDGITOYehhdgPUJSAsth00PEcIaect4hiwr7E8o3jc", external: true },
 ]
 
 const Navbar = () => {
@@ -147,7 +146,22 @@ const Navbar = () => {
                             <ul className="flex gap-10">
                                 {links.map((link) => (
                                     <li key={link.name}>
-                                        <a href={link.href} className={`font-coolvetica font-bold relative flex items-center gap-2 text-primary hover:text-brandorange transition-colors ${pathname === link.href ? "border-b-2 border-brandorange" : ""}`}>
+                                        <a
+                                            href={link.href}
+                                            target={link.external ? "_blank" : undefined}
+                                            rel={link.external ? "noopener noreferrer" : undefined}
+                                            onClick={(e) => {
+                                                if (!link.external && pathname === '/' && link.href.startsWith('/#')) {
+                                                    e.preventDefault();
+                                                    const id = link.href.split('#')[1];
+                                                    const element = document.getElementById(id);
+                                                    if (element) {
+                                                        element.scrollIntoView({ behavior: 'smooth' });
+                                                    }
+                                                }
+                                            }}
+                                            className={`font-coolvetica font-bold relative flex items-center gap-2 text-primary hover:text-brandorange transition-colors ${pathname === link.href ? "border-b-2 border-brandorange" : ""}`}
+                                        >
                                             <span className="w-1 h-1 bg-brandorange rotate-45" />
                                             {link.name}
                                             <span className="w-1 h-1 bg-brandorange rotate-45" />
@@ -202,8 +216,20 @@ const Navbar = () => {
                             <a
                                 key={link.name}
                                 href={link.href}
+                                target={link.external ? "_blank" : undefined}
+                                rel={link.external ? "noopener noreferrer" : undefined}
                                 ref={el => linkRefs.current[i] = el}
-                                onClick={() => setIsMenuOpen(false)}
+                                onClick={(e) => {
+                                    setIsMenuOpen(false);
+                                    if (!link.external && pathname === '/' && link.href.startsWith('/#')) {
+                                        e.preventDefault();
+                                        const id = link.href.split('#')[1];
+                                        const element = document.getElementById(id);
+                                        if (element) {
+                                            element.scrollIntoView({ behavior: 'smooth' });
+                                        }
+                                    }
+                                }}
                                 className="font-maus text-5xl sm:text-7xl font-bold text-secondary hover:text-brandorange transition-all duration-300 uppercase tracking-wider relative group"
                             >
                                 {link.name}

@@ -85,9 +85,9 @@ const NextStep = () => {
                     <h2 ref={titleRef} className="text-5xl md:text-8xl font-black font-maus text-secondary uppercase tracking-tighter mb-4">
                         Next Step
                     </h2>
-                    <p ref={subTitleRef} className="text-xl md:text-2xl text-neutral-500 font-medium max-w-3xl mx-auto font-coolvetica-condensed tracking-widest">
+                    {/* <p ref={subTitleRef} className="text-xl md:text-2xl text-neutral-500 font-medium max-w-3xl mx-auto font-coolvetica-condensed tracking-widest">
                         Ready to Scale Your Drafting Capacity Without Overhead?
-                    </p>
+                    </p> */}
                 </div>
 
                 {/* Steps Grid */}
