@@ -145,7 +145,7 @@ const IndustriesWeFocusUpon1 = () => {
                                 {/* Content */}
                                 <div className="w-full md:w-1/3 mb-8 md:mb-0">
                                     <h3 className="text-4xl md:text-7xl font-bold font-maus uppercase tracking-tighter leading-none mb-2 drop-shadow-lg">{service.title}</h3>
-                                    <span className="text-xl font-coolvetica-condensed font-medium opacity-80 uppercase tracking-widest">{service.services[0]} & More</span>
+                                    <span className="text-xl font-coolvetica font-medium opacity-80 uppercase tracking-widest">{service.services[0]} & More</span>
                                 </div>
 
                                 {/* Image Area (Right) */}

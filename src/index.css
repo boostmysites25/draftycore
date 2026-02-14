@@ -26,17 +26,17 @@
 
 
 /* Octin College Font - Bold */
-@font-face {
+/* @font-face {
   font-family: 'Octin College';
   src: url('/octin_college_free/Octin College Bold.ttf') format('truetype');
   font-weight: bold;
   font-style: normal;
   font-display: swap;
-}
+} */
 
 /* F37 Judge Font Definitions */
 
-@font-face {
+/* @font-face {
     font-family: 'F37 Judge';
     src: url('/F37 Judge/F37Judge-Regular.woff2') format('woff2'),
          url('/F37 Judge/F37Judge-Regular.woff') format('woff'),
@@ -84,7 +84,7 @@
     font-weight: bold;
     font-style: normal;
     font-display: swap;
-}
+} */
 
 /* Coolvetica Font Definitions */
 

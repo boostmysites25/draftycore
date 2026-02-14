@@ -10,6 +10,7 @@ interface FallingTextProps {
     gravity?: number;
     mouseConstraintStiffness?: number;
     fontSize?: string;
+    className?: string;
 }
 
 const BRAND_COLORS = [
@@ -28,7 +29,8 @@ const FallingText: React.FC<FallingTextProps> = ({
     wireframes = false,
     gravity = 1,
     mouseConstraintStiffness = 0.2,
-    fontSize = '1rem'
+    fontSize = '1rem',
+    className = ''
 }) => {
     const containerRef = useRef<HTMLDivElement | null>(null);
     const textRef = useRef<HTMLDivElement | null>(null);
@@ -48,7 +50,7 @@ const FallingText: React.FC<FallingTextProps> = ({
                 const color = BRAND_COLORS[index % BRAND_COLORS.length];
 
                 return `<span
-          class="inline-block mx-2 select-none px-5 py-2 rounded-full text-white font-medium shadow-lg text-nowrap font-coolvetica tracking-wide text-xl md:text-2xl"
+          class="inline-block mx-2 select-none px-6 py-3 rounded-full text-white font-medium shadow-lg text-nowrap font-coolvetica tracking-wide text-xl md:text-3xl"
           style="background-color: ${color};"
         >
           ${word}
@@ -198,7 +200,7 @@ const FallingText: React.FC<FallingTextProps> = ({
     return (
         <div
             ref={containerRef}
-            className="relative z-[1] w-full h-full min-h-[65vh] cursor-pointer text-center pt-8 overflow-hidden touch-pan-y"
+            className={`relative z-[1] w-full h-full min-h-[65vh] cursor-pointer text-center pt-8 overflow-hidden touch-pan-y ${className}`}
             onClick={trigger === 'click' ? handleTrigger : undefined}
             onMouseEnter={trigger === 'hover' ? handleTrigger : undefined}
         >

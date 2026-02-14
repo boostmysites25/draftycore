@@ -311,7 +311,7 @@ const FeaturedWork = () => {
         >
 
             {/* Opaque Background Layer - fades out during split */}
-            <div ref={bgRef} className="absolute inset-0 bg-[#f1f1f5] z-0">
+            <div ref={bgRef} className="absolute inset-0 bg-[#FAFAFA] z-0">
                 <div className="absolute inset-0 pointer-events-none opacity-5">
                     <div className="w-full h-full bg-[radial-gradient(circle_at_center,_var(--tw-gradient-stops))] from-black via-transparent to-transparent"></div>
                 </div>

@@ -167,8 +167,8 @@ const IndustriesWeFocusUpon = () => {
                     <h2 className="text-5xl md:text-8xl font-bold font-maus text-secondary uppercase tracking-tighter leading-none">
                         Industries <br /> We Focus Upon
                     </h2>
-                    <div className="flex items-center gap-4 text-secondary justify-center md:justify-start font-coolvetica-condensed">
-                        <span className="text-lg">SCROLL TO EXPLORE</span>
+                    <div className="flex items-center gap-4 text-secondary justify-center md:justify-start font-coolvetica">
+                        <span className="text-lg">Scroll To Explore</span>
                         <span className="animate-bounce">→</span>
                     </div>
                 </div>
@@ -205,7 +205,7 @@ const IndustriesWeFocusUpon = () => {
                             >
                                 <div className="content-rotator flex flex-col items-center">
                                     <h3 className="text-4xl md:text-[4.20rem] font-bold font-maus uppercase tracking-tighter leading-none mb-2 drop-shadow-lg">{service.title}</h3>
-                                    <span className="text-xl font-coolvetica-condensed font-medium opacity-80 uppercase tracking-widest">{service.services[0]} & More</span>
+                                    <span className="text-xl font-coolvetica font-medium opacity-80 tracking-wide">{service.services[0]} & More</span>
                                 </div>
                             </div>
                         </div>

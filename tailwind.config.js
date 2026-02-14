@@ -17,7 +17,8 @@ export default {
             fontFamily: {
                 'maus': ['MAUS', 'sans-serif'],
                 'coolvetica': ['Coolvetica', 'sans-serif'],
-                'coolvetica-condensed': ['F37 Judge Condensed', 'sans-serif'],
+                'coolvetica-condensed': ['Coolvetica', 'sans-serif'],
+                // 'coolvetica-condensed': ['F37 Judge Condensed', 'sans-serif'],
                 'octin-college': ['MAUS', 'sans-serif'], // Fallback map to MAUS for easier migration
             },
         },

@@ -18,7 +18,7 @@ const Footer = () => {
                                 DraftyCore
                             </Link>
                             <p className="text-gray-400 text-lg leading-relaxed max-w-sm font-coolvetica tracking-wide">
-                                Empowering architects and engineers with precision drafting and BIM solutions. We build the foundation of your vision.
+                                Empowering Architects and Engineers with precision drafting and BIM solutions. We build the foundation of your vision.
                             </p>
                         </div>
 

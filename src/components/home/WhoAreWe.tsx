@@ -302,7 +302,7 @@ const WhoAreWe = () => {
     return (
         <section
             ref={containerRef}
-            className="min-h-screen flex items-stretch py-24 relative bg-[#f1f1f5] cursor-none border-t-2 border-brandyellow"
+            className="min-h-screen flex items-stretch py-24 relative bg-[#FAFAFA] cursor-none border-t-2 border-brandyellow"
             onMouseEnter={() => setIsHovering(true)}
             onMouseLeave={() => setIsHovering(false)}
         >
@@ -355,7 +355,7 @@ const WhoAreWe = () => {
                 <div className="md:w-1/3 flex flex-col items-center mx-auto relative z-20">
                     <div className="sticky top-32">
 
-                        <div className="mb-4 text-lg tracking-widest font-coolvetica-condensed font-bold text-black/40 uppercase hidden md:block">
+                        <div className="mb-4 text-lg tracking-widest font-coolvetica font-bold text-black/40 hidden md:block">
                             // SECTION 01: IDENTITY
                         </div>
                         <h2 className="text-5xl sm:text-5xl md:text-7xl lg:text-8xl font-maus font-bold text-secondary uppercase tracking-tighter leading-none text-center cursor-pointer select-none">
@@ -393,7 +393,7 @@ const WhoAreWe = () => {
                             `}
                         >
                             <span className="text-lg font-coolvetica opacity-50 mb-6 block">0{index + 1}</span>
-                            <h3 className="text-4xl md:text-5xl font-maus font-black uppercase tracking-tighter mb-4 leading-none">
+                            <h3 className="text-4xl md:text-[3.75rem] font-maus font-black uppercase tracking-tighter mb-4 leading-none">
                                 {card.header.split(" ").map((word, wIndex) => (
                                     <span key={`h-${wIndex}`} className="word inline-block mr-2">
                                         {word}
