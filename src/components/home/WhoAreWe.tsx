@@ -2,86 +2,8 @@ import { useEffect, useRef, useState } from 'react';
 import { CircleCursor } from '../ui/Cursors';
 import gsap from 'gsap';
 import { ScrollTrigger } from 'gsap/ScrollTrigger';
-import gif from '../../assets/who-are-we.gif'
-import { parseGIF, decompressFrames } from 'gifuct-js';
 
-const GifPlayer = ({ src, playbackRate = 1, className }: { src: string, playbackRate?: number, className?: string }) => {
-    const canvasRef = useRef<HTMLCanvasElement>(null);
-    const [frames, setFrames] = useState<any[]>([]);
-    const [isPlaying, setIsPlaying] = useState(false);
-    const frameIndexRef = useRef(0);
-    const timeoutRef = useRef<any>(null);
 
-    useEffect(() => {
-        let isMounted = true;
-        fetch(src)
-            .then(resp => resp.arrayBuffer())
-            .then(buff => {
-                if (!isMounted) return;
-                const gif = parseGIF(buff);
-                const frames = decompressFrames(gif, true);
-                setFrames(frames);
-                setIsPlaying(true);
-            });
-        return () => { isMounted = false; };
-    }, [src]);
-
-    useEffect(() => {
-        if (!isPlaying || frames.length === 0 || !canvasRef.current) return;
-
-        const canvas = canvasRef.current;
-        const ctx = canvas.getContext('2d');
-        if (!ctx) return;
-
-        const renderFrame = () => {
-            const frame = frames[frameIndexRef.current];
-
-            // Clear and draw frame
-            // Since gifuct-js frames areImageData objects, we can put them directly
-            if (frame.disposalType === 2) {
-                ctx.clearRect(0, 0, canvas.width, canvas.height);
-            }
-
-            // Create a temporary canvas to draw the patch
-            const tempCanvas = document.createElement('canvas');
-            tempCanvas.width = frame.dims.width;
-            tempCanvas.height = frame.dims.height;
-            const tempCtx = tempCanvas.getContext('2d');
-            if (tempCtx) {
-                const imageData = new ImageData(
-                    new Uint8ClampedArray(frame.patch),
-                    frame.dims.width,
-                    frame.dims.height
-                );
-                tempCtx.putImageData(imageData, 0, 0);
-                ctx.drawImage(tempCanvas, frame.dims.left, frame.dims.top);
-            }
-
-            // Calculate next frame delay
-            const delay = Math.max(frame.delay, 100); // GIF delay is in ms
-            const adjustedDelay = delay / playbackRate;
-
-            frameIndexRef.current = (frameIndexRef.current + 1) % frames.length;
-
-            timeoutRef.current = setTimeout(() => {
-                requestAnimationFrame(renderFrame);
-            }, adjustedDelay);
-        };
-
-        // Initialize canvas size based on first frame
-        if (frames.length > 0) {
-            canvas.width = frames[0].dims.width;
-            canvas.height = frames[0].dims.height;
-            renderFrame();
-        }
-
-        return () => {
-            if (timeoutRef.current) clearTimeout(timeoutRef.current);
-        };
-    }, [isPlaying, frames, playbackRate]);
-
-    return <canvas ref={canvasRef} className={className} />;
-};
 
 gsap.registerPlugin(ScrollTrigger);
 
