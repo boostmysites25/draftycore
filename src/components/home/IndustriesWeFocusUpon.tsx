@@ -3,10 +3,10 @@ import gsap from "gsap";
 import { ScrollTrigger } from "gsap/ScrollTrigger";
 import CyberCircuit from "../ui/CyberCircuit";
 import { FeaturedCursor } from "../ui/Cursors";
-import img1 from '../../assets/images/branding.jpeg'
-import img2 from '../../assets/images/uiuxdesign.jpeg'
-import img3 from '../../assets/images/development.jpeg'
-import img4 from '../../assets/images/digitalmarketing.jpeg'
+import img1 from '../../assets/images/Artboard_1.png'
+import img2 from '../../assets/images/Artboard_2.png'
+import img3 from '../../assets/images/Artboard_3.png'
+import img4 from '../../assets/images/Artboard_4.png'
 
 gsap.registerPlugin(ScrollTrigger);
 
@@ -19,42 +19,42 @@ interface ServiceItem {
     shape: string;
 }
 
-const SHAPES = {
-    circle: "circle(50% at 50% 50%)",
-    octagon: "polygon(30% 0%, 70% 0%, 100% 30%, 100% 70%, 70% 100%, 30% 100%, 0% 70%, 0% 30%)",
-    hexagon: "polygon(50% 0%, 100% 25%, 100% 75%, 50% 100%, 0% 75%, 0% 25%)",
-    starburst: "polygon(50% 0%, 61% 10%, 75% 6%, 80% 20%, 93% 25%, 89% 39%, 98% 50%, 89% 61%, 93% 75%, 80% 80%, 75% 94%, 61% 90%, 50% 100%, 39% 90%, 25% 94%, 20% 80%, 7% 75%, 11% 61%, 2% 50%, 11% 39%, 7% 25%, 20% 20%, 25% 6%, 39% 10%)"
-};
+// const SHAPES = {
+//     circle: "circle(50% at 50% 50%)",
+//     octagon: "polygon(30% 0%, 70% 0%, 100% 30%, 100% 70%, 70% 100%, 30% 100%, 0% 70%, 0% 30%)",
+//     hexagon: "polygon(50% 0%, 100% 25%, 100% 75%, 50% 100%, 0% 75%, 0% 25%)",
+//     starburst: "polygon(50% 0%, 61% 10%, 75% 6%, 80% 20%, 93% 25%, 89% 39%, 98% 50%, 89% 61%, 93% 75%, 80% 80%, 75% 94%, 61% 90%, 50% 100%, 39% 90%, 25% 94%, 20% 80%, 7% 75%, 11% 61%, 2% 50%, 11% 39%, 7% 25%, 20% 20%, 25% 6%, 39% 10%)"
+// };
 
 const services: ServiceItem[] = [
     {
         id: "01",
-        title: "Branding",
-        services: ["Creative Direction", "Brand Identity", "Branding Strategy", "Graphic Design", "Startup"],
+        title: "Civil Engineering",
+        services: ["Infrastructure Design", "Construction Management", "Site Planning", "Surveying & Mapping", "Geotechnical"],
         image: img1,
         color: "#FF7A00",
         shape: "starburst"
     },
     {
         id: "02",
-        title: "UI-UX Design",
-        services: ["Website Design", "App Design", "Wireframing", "Prototyping", "User Research"],
+        title: "Shop Detailing",
+        services: ["Steel Detailing", "Fabrication Drawings", "BIM Coordination", "Rebar Detailing", "Connection Design"],
         image: img2,
         color: "#FFC300",
         shape: "octagon"
     },
     {
         id: "03",
-        title: "Development",
-        services: ["Frontend Dev", "Backend Dev", "Full Stack", "CMS Integration", "E-commerce"],
+        title: "Structural Engineering",
+        services: ["Structural Analysis", "Steel Structure Design", "Concrete Design", "Load Calculations", "Retrofitting"],
         image: img3,
         color: "#FF2D95",
         shape: "starburst"
     },
     {
         id: "04",
-        title: "Digital Marketing",
-        services: ["SEO Optimization", "Social Media", "Content Strategy", "Email Marketing", "Analytics"],
+        title: "Architecture",
+        services: ["Architectural Design", "Interior Planning", "Landscape Architecture", "3D Visualization", "Sustainable Design"],
         image: img4,
         color: "#B8F135",
         shape: "octagon"
@@ -182,20 +182,20 @@ const IndustriesWeFocusUpon = () => {
                         {/* ROTATING CONTAINER */}
                         <div
                             ref={(el) => addToRefs(el, index)}
-                            className="w-[85vw] h-[85vw] 2xl:w-[70vh] 2xl:h-[70vh] relative bg-neutral-100 flex items-center justify-center overflow-hidden group"
-                            style={{
-                                clipPath: SHAPES[service.shape as keyof typeof SHAPES],
-                                filter: "drop-shadow(0 20px 20px rgba(0,0,0,0.15))"
-                            }}
+                            className="w-[85vw] h-[85vw] 2xl:w-[70vh] 2xl:h-[70vh] relative flex items-center justify-center overflow-hidden group"
+                        // style={{
+                        //     clipPath: SHAPES[service.shape as keyof typeof SHAPES],
+                        //     filter: "drop-shadow(0 20px 20px rgba(0,0,0,0.15))"
+                        // }}
                         >
                             {/* Background Image (Rotates with container) */}
                             <div className="absolute inset-0">
                                 <img
                                     src={service.image}
                                     alt={service.title}
-                                    className="w-full h-full object-cover opacity-100 transition-transform duration-700 scale-105"
+                                    className="w-full h-full object-cover opacity-100 transition-transform duration-700 scale-105 brightness-75"
                                 />
-                                <div className="absolute inset-0 bg-black/30"></div>
+                                {/* <div className="absolute inset-0 bg-black/30"></div> */}
                             </div>
 
                             {/* Inner Content (Counter-Rotated) */}
@@ -204,7 +204,7 @@ const IndustriesWeFocusUpon = () => {
                                 className="relative z-10 text-center text-white p-10 flex flex-col items-center justify-center h-full w-full"
                             >
                                 <div className="content-rotator flex flex-col items-center">
-                                    <h3 className="text-4xl 2xl:text-[4.20rem] font-bold font-maus uppercase tracking-tighter leading-none mb-2 drop-shadow-lg">{service.title}</h3>
+                                    <h3 className="text-4xl 2xl:text-[4rem] font-bold font-maus uppercase tracking-tighter leading-none mb-2 drop-shadow-lg md:max-w-[20rem]">{service.title}</h3>
                                     <span className="text-xl font-coolvetica font-medium opacity-80 tracking-wide">{service.services[0]} & More</span>
                                 </div>
                             </div>
