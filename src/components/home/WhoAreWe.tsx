@@ -327,8 +327,26 @@ const WhoAreWe = () => {
 
                 {/* Decoration 2 */}
                 <div ref={decoration2Ref} className="absolute bottom-10 left-5 block">
-                    {/* <img src={gif} alt="who-are-we" className='w-72 h-w-72' /> */}
-                    <GifPlayer src={gif} playbackRate={1} className='w-72 h-72' />
+                    <svg width="288" height="288" viewBox="0 0 288 288" fill="none" xmlns="http://www.w3.org/2000/svg" className="w-56 h-56 opacity-30">
+                        {/* Outer rotating square */}
+                        <rect x="24" y="24" width="240" height="240" stroke="black" strokeWidth="2" fill="none" className="origin-center" />
+
+                        {/* Middle rotating square (opposite direction) */}
+                        <rect x="64" y="64" width="160" height="160" stroke="black" strokeWidth="2" fill="none" className="origin-center animate-[spin_15s_linear_infinite_reverse]" />
+
+                        {/* Inner pulsing square */}
+                        <rect x="104" y="104" width="80" height="80" stroke="black" strokeWidth="2" fill="rgba(0,0,0,0.1)" className="origin-center animate-[pulse_3s_ease-in-out_infinite]" />
+
+                        {/* Corner accent squares */}
+                        {/* <rect x="24" y="24" width="40" height="40" fill="black" className="animate-[pulse_2s_ease-in-out_infinite]" />
+                        <rect x="224" y="24" width="40" height="40" fill="black" className="animate-[pulse_2s_ease-in-out_infinite_0.5s]" style={{ animationDelay: '0.5s' }} />
+                        <rect x="24" y="224" width="40" height="40" fill="black" className="animate-[pulse_2s_ease-in-out_infinite_1s]" style={{ animationDelay: '1s' }} />
+                        <rect x="224" y="224" width="40" height="40" fill="black" className="animate-[pulse_2s_ease-in-out_infinite_1.5s]" style={{ animationDelay: '1.5s' }} /> */}
+
+                        {/* Diagonal lines */}
+                        <line x1="24" y1="24" x2="264" y2="264" stroke="black" strokeWidth="1" strokeDasharray="5 5" className="animate-[pulse_4s_ease-in-out_infinite]" />
+                        <line x1="264" y1="24" x2="24" y2="264" stroke="black" strokeWidth="1" strokeDasharray="5 5" className="animate-[pulse_4s_ease-in-out_infinite]" style={{ animationDelay: '2s' }} />
+                    </svg>
                 </div>
 
                 <div className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-[800px] h-[800px] border border-black/5 rounded-full z-0"></div>
@@ -393,7 +411,7 @@ const WhoAreWe = () => {
                             `}
                         >
                             <span className="text-lg font-coolvetica opacity-50 mb-6 block">0{index + 1}</span>
-                            <h3 className="text-4xl md:text-[3.75rem] font-maus font-black uppercase tracking-tighter mb-4 leading-none">
+                            <h3 className="text-4xl md:text-[3.75rem] font-maus font-black uppercase tracking-tighter mb-4 leading-none bg-white w-fit p-2">
                                 {card.header.split(" ").map((word, wIndex) => (
                                     <span key={`h-${wIndex}`} className="word inline-block mr-2">
                                         {word}

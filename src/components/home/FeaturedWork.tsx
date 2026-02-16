@@ -8,8 +8,8 @@ gsap.registerPlugin(ScrollTrigger);
 
 // --- MARQUEE COMPONENTS (Unchanged) ---
 // const MarqueeItem = ({ text }: { text: string }) => (
-//     <div className="flex items-center gap-4 px-5 md:px-10">
-//         <span className="text-xl sm:text-2xl md:text-5xl flex font-maus items-center gap-2 font-bold tracking-widest uppercase whitespace-nowrap">
+//     <div className="flex items-center gap-4 px-5 2xl:px-10">
+//         <span className="text-xl sm:text-2xl 2xl:text-5xl flex font-maus items-center gap-2 font-bold tracking-widest uppercase whitespace-nowrap">
 //             {text}
 //         </span>
 //     </div>
@@ -26,8 +26,8 @@ gsap.registerPlugin(ScrollTrigger);
 // const VerticalSet = ({ text }: { text: string }) => (
 //     <div className="flex flex-col shrink-0 items-center">
 //         {Array(4).fill(null).map((_, i) => (
-//             <div key={i} className="flex flex-col items-center justify-center gap-4 py-5 md:py-10" style={{ writingMode: 'vertical-rl' }}>
-//                 <span className="text-xl sm:text-2xl md:text-5xl flex items-center gap-2 font-bold tracking-widest uppercase whitespace-nowrap rotate-180 font-maus">
+//             <div key={i} className="flex flex-col items-center justify-center gap-4 py-5 2xl:py-10" style={{ writingMode: 'vertical-rl' }}>
+//                 <span className="text-xl sm:text-2xl 2xl:text-5xl flex items-center gap-2 font-bold tracking-widest uppercase whitespace-nowrap rotate-180 font-maus">
 //                     {text}
 //                 </span>
 //             </div>
@@ -120,11 +120,11 @@ const ProjectCard = forwardRef<HTMLDivElement, { project: ProjectProps }>(({ pro
     const videoClass = "w-full h-full object-cover opacity-90 group-hover:opacity-100 scale-100 transition-opacity duration-700 ease-out grayscale group-hover:grayscale-0 will-change-transform";
 
     return (
-        <div ref={internalRef} className="project-card relative w-[80vw] md:w-[60vw] aspect-[16/9] shrink-0 bg-transparent shadow-2xl flex flex-col justify-center items-center overflow-visible mx-4 md:mx-10 group will-change-[width,margin]">
+        <div ref={internalRef} className="project-card relative w-[80vw] 2xl:w-[60vw] aspect-[16/9] shrink-0 bg-transparent shadow-2xl flex flex-col justify-center items-center overflow-visible mx-4 2xl:mx-10 group will-change-[width,margin]">
 
             {/* MARQUEES (Note: These might need to be hidden/faded out during expansion if they overlay the split) */}
             {/* 1. TOP MARQUEE (Left) */}
-            {/* <div ref={topMarqueeRef} className="absolute top-0 left-0 w-full h-[30px] sm:h-[40px] md:h-[60px] bg-white text-black z-20 overflow-hidden flex items-center transition-opacity duration-300 opacity-100 border border-white/10">
+            {/* <div ref={topMarqueeRef} className="absolute top-0 left-0 w-full h-[30px] sm:h-[40px] 2xl:h-[60px] bg-white text-black z-20 overflow-hidden flex items-center transition-opacity duration-300 opacity-100 border border-white/10">
                 <div className="marquee-track flex w-max will-change-transform">
                     <HorizontalSet text={project.title} />
                     <HorizontalSet text={project.title} />
@@ -134,7 +134,7 @@ const ProjectCard = forwardRef<HTMLDivElement, { project: ProjectProps }>(({ pro
             </div> */}
 
             {/* 2. RIGHT MARQUEE (Down) */}
-            {/* <div ref={rightMarqueeRef} className="absolute top-0 right-0 w-[30px] sm:w-[40px] md:w-[60px] h-full bg-white text-black z-20 overflow-hidden flex flex-col items-center transition-opacity duration-300 opacity-100 border border-white/10">
+            {/* <div ref={rightMarqueeRef} className="absolute top-0 right-0 w-[30px] sm:w-[40px] 2xl:w-[60px] h-full bg-white text-black z-20 overflow-hidden flex flex-col items-center transition-opacity duration-300 opacity-100 border border-white/10">
                 <div className="marquee-track flex flex-col h-max will-change-transform">
                     <VerticalSet text={project.title} />
                     <VerticalSet text={project.title} />
@@ -144,7 +144,7 @@ const ProjectCard = forwardRef<HTMLDivElement, { project: ProjectProps }>(({ pro
             </div> */}
 
             {/* 3. BOTTOM MARQUEE (Right) */}
-            {/* <div ref={bottomMarqueeRef} className="absolute bottom-0 left-0 w-full h-[30px] sm:h-[40px] md:h-[60px] bg-white text-black z-20 overflow-hidden flex items-center transition-opacity duration-300 opacity-100 border border-white/10">
+            {/* <div ref={bottomMarqueeRef} className="absolute bottom-0 left-0 w-full h-[30px] sm:h-[40px] 2xl:h-[60px] bg-white text-black z-20 overflow-hidden flex items-center transition-opacity duration-300 opacity-100 border border-white/10">
                 <div className="marquee-track flex w-max will-change-transform">
                     <HorizontalSet text={project.title} />
                     <HorizontalSet text={project.title} />
@@ -154,7 +154,7 @@ const ProjectCard = forwardRef<HTMLDivElement, { project: ProjectProps }>(({ pro
             </div> */}
 
             {/* 4. LEFT MARQUEE (Up) */}
-            {/* <div ref={leftMarqueeRef} className="absolute top-0 left-0 w-[30px] sm:w-[40px] md:w-[60px] h-full bg-white text-black z-20 overflow-hidden flex flex-col items-center transition-opacity duration-300 opacity-100 border border-white/10">
+            {/* <div ref={leftMarqueeRef} className="absolute top-0 left-0 w-[30px] sm:w-[40px] 2xl:w-[60px] h-full bg-white text-black z-20 overflow-hidden flex flex-col items-center transition-opacity duration-300 opacity-100 border border-white/10">
                 <div className="marquee-track flex flex-col h-max will-change-transform">
                     <VerticalSet text={project.title} />
                     <VerticalSet text={project.title} />
@@ -163,8 +163,20 @@ const ProjectCard = forwardRef<HTMLDivElement, { project: ProjectProps }>(({ pro
                 </div>
             </div> */}
 
-            {/* VIDEO CONTAINER (Split) */}
-            <div className="shutter-wrapper absolute inset-0 z-10 flex w-full h-full overflow-hidden border-4 border-black">
+            {/* VIDEO CONTAINER (Mobile - Simple) */}
+            <div className="block 2xl:hidden absolute inset-0 z-10 w-full h-full overflow-hidden border-4 border-black bg-neutral-900">
+                <video
+                    className="w-full h-full object-cover"
+                    src={project.videoSrc}
+                    autoPlay
+                    muted
+                    loop
+                    playsInline
+                />
+            </div>
+
+            {/* VIDEO CONTAINER (Desktop - Split) */}
+            <div className="shutter-wrapper hidden 2xl:flex absolute inset-0 z-10 w-full h-full overflow-hidden border-4 border-black">
                 {/* LEFT HALF */}
                 <div className="mask-left relative w-1/2 h-full overflow-hidden bg-neutral-900 border-black/50 will-change-transform">
                     <div className="absolute top-0 left-0 w-[200%] h-full">
@@ -220,8 +232,8 @@ const FeaturedWork = () => {
 
         const mm = gsap.matchMedia();
 
-        // DESKTOP ANIMATION (min-width: 768px)
-        mm.add("(min-width: 768px)", () => {
+        // DESKTOP ANIMATION (min-width: 1536px)
+        mm.add("(min-width: 1536px)", () => {
             // 1. REVEAL ANIMATION (Initial)
             gsap.set(sectionRef.current, {
                 clipPath: "inset(0% 0% 0% 0%)",
@@ -307,28 +319,28 @@ const FeaturedWork = () => {
     return (
         <section
             ref={sectionRef}
-            className="w-full md:h-[100dvh] py-24 flex items-center relative overflow-hidden cursor-none z-40"
+            className="w-full 2xl:h-[100dvh] py-24 flex items-center relative overflow-hidden cursor-none z-40"
         >
 
             {/* Opaque Background Layer - fades out during split */}
-            <div ref={bgRef} className="absolute inset-0 bg-[#FAFAFA] z-0">
+            <div ref={bgRef} className="absolute inset-0 bg-[#F5F5F0] z-0">
                 <div className="absolute inset-0 pointer-events-none opacity-5">
                     <div className="w-full h-full bg-[radial-gradient(circle_at_center,_var(--tw-gradient-stops))] from-black via-transparent to-transparent"></div>
                 </div>
             </div>
 
             {/* Sticky Wrapper/Trigger Area */}
-            <div className="w-full h-full flex items-start md:items-center relative z-10 md:justify-start justify-center pt-20 md:pt-0">
+            <div className="w-full h-full flex items-start 2xl:items-center relative z-10 2xl:justify-start justify-center pt-20 2xl:pt-0">
                 <div
                     ref={triggerRef}
-                    className="flex flex-col md:flex-row flex-nowrap items-center pl-[5vw] pr-[5vw] gap-10 md:gap-20 will-change-transform w-full md:w-auto"
+                    className="flex flex-col 2xl:flex-row flex-nowrap items-center pl-[5vw] pr-[5vw] gap-10 2xl:gap-20 will-change-transform w-full 2xl:w-auto"
                 >
                     {/* Header Card */}
-                    <div ref={headingRef} className="shrink-0 w-full md:w-[20vw] text-center md:text-left">
-                        <h2 className="text-5xl md:text-[4.5rem] font-black font-maus leading-none text-black">
-                            THE WORKFLOW ENGINE 
+                    <div ref={headingRef} className="shrink-0 w-full 2xl:w-[20vw] text-center 2xl:text-left">
+                        <h2 className="text-5xl 2xl:text-[4.5rem] font-black font-maus leading-none text-black">
+                            THE WORKFLOW ENGINE
                         </h2>
-                        <div className="w-20 h-2 bg-brandturquoise mt-8 mx-auto md:mx-0"></div>
+                        <div className="w-20 h-2 bg-brandturquoise mt-8 mx-auto 2xl:mx-0"></div>
                     </div>
 
                     {PROJECTS.map((project) => (

@@ -15,7 +15,7 @@ const Footer = () => {
                     <div className="lg:w-1/3 flex flex-col justify-between">
                         <div>
                             <Link to="/" className="text-4xl md:text-5xl font-maus font-bold tracking-tighter uppercase mb-6 inline-block">
-                                DraftyCore
+                                Drafty
                             </Link>
                             <p className="text-gray-400 text-lg leading-relaxed max-w-sm font-coolvetica tracking-wide">
                                 Empowering Architects and Engineers with precision drafting and BIM solutions. We build the foundation of your vision.
@@ -51,7 +51,7 @@ const Footer = () => {
 
                         {/* Company */}
                         <div>
-                            <h4 className="font-maus text-xl text-gray-500 mb-6 uppercase tracking-wider">Company</h4>
+                            <h4 className="font-maus text-xl text-white mb-6 uppercase tracking-wider">Company</h4>
                             <ul className="flex flex-col gap-4 text-lg font-coolvetica tracking-wide">
                                 <li><Link to="/#about" className="hover:text-brandorange transition-colors"
                                     onClick={(e) => {
@@ -76,10 +76,10 @@ const Footer = () => {
 
                         {/* Contact Info */}
                         <div>
-                            <h4 className="font-maus text-xl text-gray-500 mb-6 uppercase tracking-wider">Connect</h4>
+                            <h4 className="font-maus text-xl text-white mb-6 uppercase tracking-wider">Connect</h4>
                             <ul className="flex flex-col gap-4 text-lg text-gray-300 font-coolvetica tracking-wide">
                                 <li>
-                                    <a href="mailto:hello@draftycore.com" className="hover:text-white transition-colors">hello@draftycore.com</a>
+                                    <a href="mailto:hello@drafty.com" className="hover:text-white transition-colors">hello@drafty.com</a>
                                 </li>
                                 <li>
                                     <span className="block">+1 (555) 123-4567</span>
@@ -100,7 +100,7 @@ const Footer = () => {
 
                 {/* Bottom Bar */}
                 <div className="mt-20 pt-8 border-t border-white/10 flex flex-col md:flex-row justify-between items-center text-gray-500 text-md font-coolvetica tracking-wide">
-                    <p>&copy; {new Date().getFullYear()} DraftyCore. All rights reserved.</p>
+                    <p>&copy; {new Date().getFullYear()} Drafty. All rights reserved.</p>
                     {/* <div className="flex gap-8 mt-4 md:mt-0">
                         <Link to="/privacy" className="hover:text-white transition-colors">Privacy Policy</Link>
                         <Link to="/terms" className="hover:text-white transition-colors">Terms of Service</Link>
@@ -110,7 +110,7 @@ const Footer = () => {
 
             {/* Big Background Text Effect */}
             <div className="absolute bottom-[-5%] left-1/2 -translate-x-1/2 w-full text-center pointer-events-none opacity-[0.03] select-none text-[15vw] leading-none font-maus font-bold uppercase whitespace-nowrap">
-                DraftyCore
+                Drafty
             </div>
         </footer>
     );

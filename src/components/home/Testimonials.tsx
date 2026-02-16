@@ -88,6 +88,8 @@ const Testimonials = () => {
 
     return (
         <section ref={containerRef} className="pt-32 pb-48 bg-white relative">
+            {/* Decorative Top Border */}
+            <div className="absolute top-0 left-0 w-full h-1 bg-gradient-to-r from-brandorange via-brandpink to-brandturquoise"></div>
             <div className="wrapper relative z-10">
                 <div className="mb-10 md:mb-32 text-center">
                     <h2 className="text-5xl md:text-8xl font-black font-maus text-secondary uppercase tracking-tighter mb-4">
@@ -95,7 +97,7 @@ const Testimonials = () => {
                     </h2>
                 </div>
 
-                <div className="flex flex-col lg:grid grid-cols-4 justify-center items-start gap-6 lg:gap-10">
+                <div className="flex flex-col lg:grid grid-cols-2 2xl:grid-cols-4 justify-center items-start gap-6 lg:gap-10">
                     {testimonialsData.map((item, index) => (
                         <div
                             key={item.id}

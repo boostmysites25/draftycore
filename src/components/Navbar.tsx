@@ -4,9 +4,16 @@ import { useLocation } from "react-router-dom"
 import logo from '../assets/images/logo.gif'
 import gsap from "gsap"
 
-const links = [
+interface Link {
+    name: string;
+    href: string;
+    external?: boolean;
+}
+
+const links: Link[] = [
     { name: "About", href: "/#about" },
-    { name: "Contact", href: "https://forms.zohopublic.in/drafty1/form/Complaints/formperma/6zDGITOYehhdgPUJSAsth00PEcIaect4hiwr7E8o3jc", external: true },
+    { name: "Contact", href: "/contact" },
+    { name: "Login", href: "#" }
 ]
 
 const Navbar = () => {

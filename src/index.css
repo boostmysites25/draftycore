@@ -24,6 +24,24 @@
   font-display: swap;
 }
 
+.break-words {
+  overflow-wrap: break-word; /* Prevents overflow */
+  word-wrap: break-word;     /* Legacy support */
+  -webkit-hyphens: auto;
+  -moz-hyphens: auto;
+  -ms-hyphens: auto;
+  hyphens: auto;             /* Enable hyphenation */
+  word-break: normal;        /* Reset word-break to allow hyphenation */
+}
+
+.hyphens-auto {
+  -webkit-hyphens: auto;
+  -moz-hyphens: auto;
+  -ms-hyphens: auto;
+  hyphens: auto;
+  word-break: normal;        /* Standard word breaking */
+  overflow-wrap: break-word; /* Prevents overflow only if needed */
+}
 
 /* Octin College Font - Bold */
 /* @font-face {
