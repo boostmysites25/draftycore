@@ -248,7 +248,7 @@ const WhoAreWe = () => {
                 </div> */}
 
                 {/* Decoration 2 */}
-                <div ref={decoration2Ref} className="absolute bottom-10 left-5 block">
+                <div ref={decoration2Ref} className="absolute bottom-10 left-5 block animate-bounce">
                     <svg width="288" height="288" viewBox="0 0 288 288" fill="none" xmlns="http://www.w3.org/2000/svg" className="w-56 h-56 opacity-30">
                         {/* Outer rotating square */}
                         <rect x="24" y="24" width="240" height="240" stroke="black" strokeWidth="2" fill="none" className="origin-center" />
