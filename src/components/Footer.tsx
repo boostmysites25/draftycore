@@ -79,7 +79,7 @@ const Footer = () => {
                             <h4 className="font-maus text-xl text-white mb-6 uppercase tracking-wider">Connect</h4>
                             <ul className="flex flex-col gap-4 text-lg text-gray-300 font-coolvetica tracking-wide">
                                 <li>
-                                    <a href="mailto:hello@drafty.com" className="hover:text-white transition-colors">hello@drafty.com</a>
+                                    <a href="mailto:hello@draftyco.au" className="hover:text-white transition-colors">hello@draftyco.au</a>
                                 </li>
                                 <li>
                                     <span className="block">+1 (555) 123-4567</span>

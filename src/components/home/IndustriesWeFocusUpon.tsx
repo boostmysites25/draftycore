@@ -13,7 +13,6 @@ gsap.registerPlugin(ScrollTrigger);
 interface ServiceItem {
     id: string;
     title: string;
-    services: string[];
     image: string;
     color: string;
     shape: string;
@@ -30,7 +29,6 @@ const services: ServiceItem[] = [
     {
         id: "01",
         title: "Civil Engineering",
-        services: ["Infrastructure Design", "Construction Management", "Site Planning", "Surveying & Mapping", "Geotechnical"],
         image: img1,
         color: "#FF7A00",
         shape: "starburst"
@@ -38,7 +36,6 @@ const services: ServiceItem[] = [
     {
         id: "02",
         title: "Shop Detailing",
-        services: ["Steel Detailing", "Fabrication Drawings", "BIM Coordination", "Rebar Detailing", "Connection Design"],
         image: img2,
         color: "#FFC300",
         shape: "octagon"
@@ -46,7 +43,6 @@ const services: ServiceItem[] = [
     {
         id: "03",
         title: "Structural Engineering",
-        services: ["Structural Analysis", "Steel Structure Design", "Concrete Design", "Load Calculations", "Retrofitting"],
         image: img3,
         color: "#FF2D95",
         shape: "starburst"
@@ -54,7 +50,6 @@ const services: ServiceItem[] = [
     {
         id: "04",
         title: "Architecture",
-        services: ["Architectural Design", "Interior Planning", "Landscape Architecture", "3D Visualization", "Sustainable Design"],
         image: img4,
         color: "#B8F135",
         shape: "octagon"
@@ -205,7 +200,6 @@ const IndustriesWeFocusUpon = () => {
                             >
                                 <div className="content-rotator flex flex-col items-center">
                                     <h3 className="text-4xl 2xl:text-[4rem] font-bold font-maus uppercase tracking-tighter leading-none mb-2 drop-shadow-lg md:max-w-[20rem]">{service.title}</h3>
-                                    <span className="text-xl font-coolvetica font-medium opacity-80 tracking-wide">{service.services[0]} & More</span>
                                 </div>
                             </div>
                         </div>

@@ -140,15 +140,15 @@ const Hero = () => {
                 <div className="absolute top-32 left-8 border-l-2 border-black pl-3 animate-fade-in-up hidden md:block">
                     <div className="flex items-center gap-2 mb-1">
                         <div className="w-1.5 h-1.5 rounded-full bg-brandorange animate-pulse"></div>
-                        <span className="text-lg font-coolvetica font-bold tracking-widest text-black/60 uppercase">System Status</span>
+                        <span className="text-base font-coolvetica font-bold tracking-widest text-black/80 uppercase">System Status</span>
                     </div>
                     <div className="text-[12px] font-bold tracking-widest text-black/60">ONLINE // READY</div>
                 </div>
 
                 {/* Top Right Coordinates */}
                 <div className="absolute top-32 right-8 text-right hidden md:block animate-fade-in-up animation-delay-200">
-                    <p className="text-lg font-coolvetica text-black/60 mb-1 tracking-widest">GRID REFERENCE</p>
-                    <p className="text-lg font-coolvetica font-bold text-black/60 tracking-widest">X: 04.92.11 <br />Y: 08.22.90</p>
+                    <p className="text-base font-coolvetica text-black/80 mb-1 tracking-widest">GRID REFERENCE</p>
+                    <p className="text-[12px] font-coolvetica font-bold text-black/60 tracking-widest">X: 04.92.11 <br />Y: 08.22.90</p>
                 </div>
 
                 {/* Bottom Left Technical Marker */}
@@ -159,7 +159,7 @@ const Hero = () => {
                         <line x1="0" y1="20" x2="40" y2="20" stroke="black" strokeWidth="1" />
                     </svg>
                     <div className="flex flex-col">
-                        <span className="text-lg font-coolvetica tracking-widest font-bold text-black/60">SCALE 1:1</span>
+                        <span className="text-base font-coolvetica tracking-widest font-bold text-black/80">SCALE 1:1</span>
                         <span className="text-[12px] font-coolvetica text-black/60 tracking-widest">DRAFTING ENGINE</span>
                     </div>
                 </div>
@@ -167,12 +167,12 @@ const Hero = () => {
                 {/* Bottom Right Box */}
                 <div className="absolute bottom-12 right-12 hidden md:block border border-black/10 bg-white/50 backdrop-blur-sm p-4">
                     <div className="flex justify-between items-center w-44 border-b border-black/10 pb-2 mb-2">
-                        <span className="text-lg tracking-widest font-coolvetica text-black/60">CPU</span>
-                        <span className="text-lg tracking-widest font-coolvetica font-semibold text-black/60">12%</span>
+                        <span className="text-base tracking-widest font-coolvetica text-black/80">CPU</span>
+                        <span className="text-[12px] tracking-widest font-coolvetica font-semibold text-black/60">12%</span>
                     </div>
                     <div className="flex justify-between items-center w-44">
-                        <span className="text-lg tracking-widest font-coolvetica text-black/60">MEM</span>
-                        <span className="text-lg tracking-widest font-coolvetica font-semibold text-black/60">OPTIMIZED</span>
+                        <span className="text-base tracking-widest font-coolvetica text-black/80">MEM</span>
+                        <span className="text-[12px] tracking-widest font-coolvetica font-semibold text-black/60">OPTIMIZED</span>
                     </div>
                 </div>
 

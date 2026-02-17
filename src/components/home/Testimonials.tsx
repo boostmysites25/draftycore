@@ -18,9 +18,9 @@ interface Testimonial {
 const testimonialsData: Testimonial[] = [
     {
         id: 1,
-        quote: "They took the time to understand my brand and developed a marketing strategy that perfectly captured our essence. Their creative campaigns led to a significant increase in sales.",
-        author: "Michael Mahanay",
-        role: "Designer",
+        quote: "It’s been a game-changer for our team. We can finally focus on the design stuff we love, while the drafting work just gets done. No micromanaging, no late-night fixes. it’s like someone quietly picked up the slack for us.",
+        author: "Rod",
+        role: "Mezzebar Constructions",
         bgColor: "bg-brandorange", // #FF7A00
         textColor: "text-white",
         rotation: -4,
@@ -28,9 +28,9 @@ const testimonialsData: Testimonial[] = [
     },
     {
         id: 2,
-        quote: "Their mission is to empower the brands we believe in with tailor-made approaches that ignite creativity and growth without limits. We discovered truly quality work.",
-        author: "Daryl Mitchell",
-        role: "Lead Developer",
+        quote: "The biggest shift has been freeing up our senior team. Instead of spending evenings fixing linework and notes, they’re focused on design thinking and client decisions. The outsourced team carries the production load without needing constant direction. It just works!",
+        author: "Marios",
+        role: "Mammoth",
         bgColor: "bg-brandpink", // #FF2D95
         textColor: "text-white",
         rotation: 3,
@@ -38,9 +38,9 @@ const testimonialsData: Testimonial[] = [
     },
     {
         id: 3,
-        quote: "Redox acts as a partner for forward-thinking organizations, using design and technology to tackle today's challenges. I offer creative solutions that connect, engage, and drive results.",
-        author: "Tom Banton",
-        role: "Digital Marketer",
+        quote: "We don’t outsource everything, we keep the design-critical pieces in-house. But for documentation and the heavy drafting lift, they’ve become a seamless extension of our team. It’s allowed us to take on more projects without increasing headcount.",
+        author: "Architect",
+        role: "Anonymous",
         bgColor: "bg-brandlimegreen", // #B8F135
         textColor: "text-black",
         rotation: -2,
@@ -48,9 +48,9 @@ const testimonialsData: Testimonial[] = [
     },
     {
         id: 4,
-        quote: "Design is a team effort, and I believe in a true partnership. By working closely with you and understanding your vision, we can create something that truly resonates.",
-        author: "Lance Petter",
-        role: "Web Designer",
+        quote: "We’d tried offshore setups before, and the admin overhead made it unsustainable. What works here is the structure, tasks are clear, communication is sharp, and we’re not digging through endless email threads to find the latest file. Everything’s where it should be.",
+        author: "Architectural Firm",
+        role: "Anonymous",
         bgColor: "bg-brandturquoise", // #2ED9C3
         textColor: "text-black",
         rotation: 4,

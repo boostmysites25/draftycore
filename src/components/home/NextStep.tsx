@@ -13,18 +13,18 @@ const NextStep = () => {
 
     const steps = [
         {
-            text: "Free Consultation",
-            sub: "Let's talk about your needs",
+            text: "Say G’day",
+            sub: "Free consultation to unpack your needs",
             image: "/free_consultation.jpeg",
         },
         {
-            text: "Pilot Project",
-            sub: "Test our capabilities risk-free",
+            text: "Pilot Pass",
+            sub: "A small test run, no drama",
             image: "/pilot_project.jpeg",
         },
         {
-            text: "Full Partnership",
-            sub: "Scale your drafting capacity",
+            text: "Lock It In",
+            sub: "Ongoing partnership, scalable drafting support",
             image: "/full_partnership.jpeg",
         }
     ];
@@ -83,7 +83,7 @@ const NextStep = () => {
                 {/* Header */}
                 <div className="text-center mb-20">
                     <h2 ref={titleRef} className="text-5xl md:text-8xl font-black font-maus text-secondary uppercase tracking-tighter mb-4">
-                        Next Step
+                        Next steps*
                     </h2>
                     {/* <p ref={subTitleRef} className="text-xl md:text-2xl text-neutral-500 font-medium max-w-3xl mx-auto font-coolvetica tracking-widest">
                         Ready to Scale Your Drafting Capacity Without Overhead?
