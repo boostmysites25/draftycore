@@ -148,12 +148,12 @@ const Hero = () => {
                 {/* Top Right Coordinates */}
                 <div className="absolute top-32 right-8 text-right hidden md:block animate-fade-in-up animation-delay-200">
                     <p className="text-lg font-coolvetica text-black/60 mb-1 tracking-widest">GRID REFERENCE</p>
-                    <p className="text-[12px] font-coolvetica font-bold text-black/60 tracking-widest">X: 04.92.11 <br />Y: 08.22.90</p>
+                    <p className="text-lg font-coolvetica font-bold text-black/60 tracking-widest">X: 04.92.11 <br />Y: 08.22.90</p>
                 </div>
 
                 {/* Bottom Left Technical Marker */}
-                <div className="absolute bottom-12 left-12 hidden md:flex items-center gap-4 opacity-60">
-                    <svg width="50" height="50" viewBox="0 0 40 40" fill="none" className="animate-[spin_10s_linear_infinite]">
+                <div className="absolute bottom-12 left-12 hidden md:flex items-center gap-4">
+                    <svg width="50" height="50" viewBox="0 0 40 40" fill="none" className="animate-[spin_10s_linear_infinite] opacity-60">
                         <circle cx="20" cy="20" r="18" stroke="black" strokeWidth="1" strokeDasharray="4 4" />
                         <line x1="20" y1="0" x2="20" y2="40" stroke="black" strokeWidth="1" />
                         <line x1="0" y1="20" x2="40" y2="20" stroke="black" strokeWidth="1" />
@@ -168,11 +168,11 @@ const Hero = () => {
                 <div className="absolute bottom-12 right-12 hidden md:block border border-black/10 bg-white/50 backdrop-blur-sm p-4">
                     <div className="flex justify-between items-center w-44 border-b border-black/10 pb-2 mb-2">
                         <span className="text-lg tracking-widest font-coolvetica text-black/60">CPU</span>
-                        <span className="text-[12px] tracking-widest font-coolvetica font-semibold text-black/60">12%</span>
+                        <span className="text-lg tracking-widest font-coolvetica font-semibold text-black/60">12%</span>
                     </div>
                     <div className="flex justify-between items-center w-44">
                         <span className="text-lg tracking-widest font-coolvetica text-black/60">MEM</span>
-                        <span className="text-[12px] tracking-widest font-coolvetica font-semibold text-black/60">OPTIMIZED</span>
+                        <span className="text-lg tracking-widest font-coolvetica font-semibold text-black/60">OPTIMIZED</span>
                     </div>
                 </div>
 

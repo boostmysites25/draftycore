@@ -333,7 +333,7 @@ const WhoAreWe = () => {
                             `}
                         >
                             <span className="text-lg font-coolvetica opacity-50 mb-6 block">0{index + 1}</span>
-                            <h3 className="text-4xl md:text-[3.75rem] font-maus font-black uppercase tracking-tighter mb-4 leading-none bg-white w-fit p-2">
+                            <h3 className="text-4xl md:text-[3.75rem] font-maus font-black uppercase tracking-tighter mb-4 leading-none bg-white rounded-xl w-fit p-2">
                                 {card.header.split(" ").map((word, wIndex) => (
                                     <span key={`h-${wIndex}`} className="word inline-block mr-2">
                                         {word}
