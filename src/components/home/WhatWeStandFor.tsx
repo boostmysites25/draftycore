@@ -9,7 +9,7 @@ const WhatWeStandFor = () => {
         <h2 className="text-5xl md:text-8xl font-black font-maus text-secondary uppercase tracking-tighter mb-4 text-center">
           What We Stand For
         </h2>
-        <div className="max-w-2xl mx-auto pt-10">
+        <div className="max-w-3xl mx-auto pt-10">
           <p
             className="text-lg md:text-xl text-neutral-500 font-medium font-coolvetica tracking-widest break-words text-justify hyphens-auto"
             lang="en"
