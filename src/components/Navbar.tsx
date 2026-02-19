@@ -135,7 +135,7 @@ const Navbar = () => {
 
     return (
         <>
-            <nav className={`fixed w-screen max-w-[100vw] top-0 left-0 right-0 z-50 transition-all duration-300 ${isScrolled ? "backdrop-blur-md bg-white/5" : ""} ${showNavbar ? "translate-y-0" : "-translate-y-full"}`}>
+            <nav className={`fixed w-screen max-w-[100vw] overflow-x-hidden top-0 left-0 right-0 z-50 transition-all duration-300 ${isScrolled ? "backdrop-blur-md bg-white/5" : ""} ${showNavbar ? "translate-y-0" : "-translate-y-full"}`}>
                 <div className="wrapper py-1">
                     <div className="grid grid-cols-2 md:grid-cols-3 gap-10 items-center">
                         {/* Logo Section */}
@@ -197,7 +197,7 @@ const Navbar = () => {
             {createPortal(
                 <div
                     ref={menuRef}
-                    className="fixed inset-0 bg-white z-[60] flex flex-col items-center justify-center overflow-hidden invisible w-screen h-screen overflow-hidden"
+                    className="fixed inset-0 bg-white z-[60] flex flex-col items-center justify-center overflow-hidden invisible h-screen w-screen max-w-[100vw]"
                 >
                     {/* Close Button */}
                     <div className="absolute top-6 right-6 z-50">
