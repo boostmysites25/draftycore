@@ -1,7 +1,7 @@
 import { BrowserRouter as Router, Routes, Route } from "react-router-dom";
 import Home from "./pages/Home";
 import Layout from "./components/Layout";
-import SmoothScroll from "./components/common/SmoothScroll";
+// import SmoothScroll from "./components/common/SmoothScroll";
 import Contact from "./pages/Contact";
 import Login from "./pages/Login";
 import ThankYou from "./pages/ThankYou";
@@ -9,7 +9,7 @@ import { Toaster } from "react-hot-toast";
 
 function App() {
   return (
-    <SmoothScroll>
+    // <SmoothScroll>
       <Router>
         <Toaster position="top-center" reverseOrder={false} />
         <Routes>
@@ -21,7 +21,7 @@ function App() {
           </Route>
         </Routes>
       </Router>
-    </SmoothScroll>
+    // </SmoothScroll>
   );
 }
 

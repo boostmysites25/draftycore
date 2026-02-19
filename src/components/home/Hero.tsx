@@ -6,6 +6,7 @@ import { ScrollTrigger } from 'gsap/ScrollTrigger'
 // import Antigravity from '../ui/Antigravity'
 import PulseGrid from '../ui/PulseGrid'
 import video from '../../assets/logo-vid.webm'
+import videoMp4 from '../../assets/logo-vid1.mp4'
 import video2 from '../../assets/scroll-down-vid.webm'
 import { CircleCursor } from '../ui/Cursors'
 
@@ -17,7 +18,16 @@ const Hero = () => {
     const [isAligned, setIsAligned] = useState(false)
     const cursorRef = useRef<HTMLDivElement>(null);
     const [isHovering, setIsHovering] = useState(false);
-    const [currentVideo, setCurrentVideo] = useState({ id: 1, video });
+    const [currentVideo, setCurrentVideo] = useState<{
+        id: number;
+        sources: {
+            webm: string;
+            mp4: string | null;
+        }
+    }>({
+        id: 1,
+        sources: { webm: video, mp4: videoMp4 }
+    });
     const videoRef = useRef<HTMLVideoElement>(null);
     const [hasInitialDelayPassed, setHasInitialDelayPassed] = useState(false);
 
@@ -68,7 +78,10 @@ const Hero = () => {
                 start: 10,
                 invalidateOnRefresh: true,
                 onEnter: () => {
-                    setCurrentVideo({ id: 2, video: video2 });
+                    setCurrentVideo({
+                        id: 2,
+                        sources: { webm: video2, mp4: null }
+                    });
                     const baseDrop = window.innerHeight * 0.20;
 
                     // Play Drop & Bounce
@@ -94,7 +107,10 @@ const Hero = () => {
                         })
                 },
                 onLeaveBack: () => {
-                    setCurrentVideo({ id: 1, video });
+                    setCurrentVideo({
+                        id: 1,
+                        sources: { webm: video, mp4: videoMp4 }
+                    });
                     setIsAligned(true);
                     // Smooth Return to Alignment (Overwrites the elastic bounce)
                     gsap.to(lettersRef.current, {
@@ -195,8 +211,8 @@ const Hero = () => {
                     </div>
 
                     <video
+                        key={currentVideo.id}
                         ref={videoRef}
-                        src={currentVideo.video}
                         loop={false}
                         muted
                         playsInline
@@ -204,7 +220,12 @@ const Hero = () => {
                         disableRemotePlayback
                         onContextMenu={(e) => e.preventDefault()}
                         className={`w-full h-full object-cover ${currentVideo.id === 2 ? "-translate-y-[14rem]" : ""}`}
-                    ></video>
+                    >
+                        {/* Prefer MP4 (potentially HEVC) for Safari/iOS */}
+                        {currentVideo.sources.mp4 && <source src={currentVideo.sources.mp4} type='video/mp4; codecs="hvc1"' />}
+                        {/* Fallback to WebM for Chrome/FF */}
+                        <source src={currentVideo.sources.webm} type="video/webm" />
+                    </video>
                 </div>
 
                 {/* Sub-headline */}
