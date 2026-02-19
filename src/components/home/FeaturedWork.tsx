@@ -319,7 +319,7 @@ const FeaturedWork = () => {
     return (
         <section
             ref={sectionRef}
-            className="w-full 2xl:h-[100dvh] py-24 flex items-center relative overflow-hidden cursor-none z-40"
+            className="w-full 2xl:h-[100dvh] py-24 flex items-center relative overflow-hidden cursor-none z-40 max-w-[100vw] overflow-x-hidden"
         >
 
             {/* Opaque Background Layer - fades out during split */}

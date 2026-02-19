@@ -149,7 +149,7 @@ const IndustriesWeFocusUpon = () => {
     };
 
     return (
-        <section ref={sectionRef} className="bg-[#f1f1f1] relative overflow-hidden 2xl:h-screen w-full flex flex-col 2xl:flex-row items-center py-20 2xl:py-0">
+        <section ref={sectionRef} className="bg-[#f1f1f1] relative overflow-hidden 2xl:h-screen flex flex-col 2xl:flex-row items-center py-20 2xl:py-0 max-w-[100vw] overflow-x-hidden">
             <FeaturedCursor isActive={true} />
 
             {/* Background */}

@@ -131,7 +131,7 @@ const Hero = () => {
     return (
         <div
             // ref={containerRef}
-            className='h-screen w-full flex items-center justify-center overflow-hidden relative bg-[#F5F5F0] cursor-none'
+            className='h-screen flex items-center justify-center overflow-hidden relative bg-[#F5F5F0] cursor-none w-screen max-w-[100vw]'
             onMouseEnter={() => setIsHovering(true)}
             onMouseLeave={() => setIsHovering(false)}
 

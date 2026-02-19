@@ -87,7 +87,7 @@ const Testimonials = () => {
     };
 
     return (
-        <section ref={containerRef} className="pt-32 pb-48 bg-white relative">
+        <section ref={containerRef} className="pt-32 pb-48 bg-white relative w-screen max-w-[100vw] overflow-x-hidden">
             {/* Decorative Top Border */}
             <div className="absolute top-0 left-0 w-full h-1 bg-gradient-to-r from-brandorange via-brandpink to-brandturquoise"></div>
             <div className="wrapper relative z-10">
