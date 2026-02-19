@@ -1,15 +1,14 @@
-@import url('https://fonts.googleapis.com/css2?family=Big+Shoulders:opsz,wght@10..72,100..900&display=swap');
+@import url("https://fonts.googleapis.com/css2?family=Big+Shoulders:opsz,wght@10..72,100..900&display=swap");
 
 @tailwind base;
 @tailwind components;
 @tailwind utilities;
 
 
-
 /* Academy Filled 3D Font */
 @font-face {
-  font-family: 'MAUS';
-  src: url('/maus/Maus Regular.ttf') format('truetype');
+  font-family: "MAUS";
+  src: url("/maus/Maus Regular.ttf") format("truetype");
   font-weight: normal;
   font-style: normal;
   font-display: swap;
@@ -17,21 +16,27 @@
 
 /* Octin College Font - Regular */
 @font-face {
-  font-family: 'Octin College';
-  src: url('/octin_college_free/Octin College Rg.otf') format('opentype');
+  font-family: "Octin College";
+  src: url("/octin_college_free/Octin College Rg.otf") format("opentype");
   font-weight: normal;
   font-style: normal;
   font-display: swap;
 }
 
+
+body {
+  max-width: 100vw;
+  overflow-x: hidden;
+}
+
 .break-words {
   overflow-wrap: break-word; /* Prevents overflow */
-  word-wrap: break-word;     /* Legacy support */
+  word-wrap: break-word; /* Legacy support */
   -webkit-hyphens: auto;
   -moz-hyphens: auto;
   -ms-hyphens: auto;
-  hyphens: auto;             /* Enable hyphenation */
-  word-break: normal;        /* Reset word-break to allow hyphenation */
+  hyphens: auto; /* Enable hyphenation */
+  word-break: normal; /* Reset word-break to allow hyphenation */
 }
 
 .hyphens-auto {
@@ -39,7 +44,7 @@
   -moz-hyphens: auto;
   -ms-hyphens: auto;
   hyphens: auto;
-  word-break: normal;        /* Standard word breaking */
+  word-break: normal; /* Standard word breaking */
   overflow-wrap: break-word; /* Prevents overflow only if needed */
 }
 
@@ -107,21 +112,22 @@
 /* Coolvetica Font Definitions */
 
 @font-face {
-    font-family: 'Coolvetica';
-    src: url('/Coolvetica-Font/Coolvetica-Font/WOFF2/Coolvetica-Regular.woff2') format('woff2');
-    font-weight: normal;
-    font-style: normal;
-    font-display: swap;
+  font-family: "Coolvetica";
+  src: url("/Coolvetica-Font/Coolvetica-Font/WOFF2/Coolvetica-Regular.woff2")
+    format("woff2");
+  font-weight: normal;
+  font-style: normal;
+  font-display: swap;
 }
 
 @font-face {
-    font-family: 'Coolvetica';
-    src: url('/Coolvetica-Font/Coolvetica-Font/WOFF2/Coolvetica-Bold.woff2') format('woff2');
-    font-weight: bold;
-    font-style: normal;
-    font-display: swap;
+  font-family: "Coolvetica";
+  src: url("/Coolvetica-Font/Coolvetica-Font/WOFF2/Coolvetica-Bold.woff2")
+    format("woff2");
+  font-weight: bold;
+  font-style: normal;
+  font-display: swap;
 }
-
 
 :root {
   font-family: Inter, system-ui, Avenir, Helvetica, Arial, sans-serif;
@@ -139,18 +145,27 @@
 }
 
 /* Apply Octin College to all headings */
-h1, h2, h3, h4, h5, h6 {
+h1,
+h2,
+h3,
+h4,
+h5,
+h6 {
   /* font-family: 'Octin College', sans-serif; */
-  font-family: 'Academy Filled 3D', sans-serif;
+  font-family: "Academy Filled 3D", sans-serif;
 }
 
 /* Use Bold weight for main headings */
-h1, h2, h3 {
+h1,
+h2,
+h3 {
   font-weight: bold;
 }
 
 /* Use Regular weight for subheadings */
-h4, h5, h6 {
+h4,
+h5,
+h6 {
   font-weight: normal;
 }
 
@@ -170,10 +185,10 @@ body {
 }
 
 @layer utilities {
-    .wrapper {
-        @apply max-w-[90rem] px-4 sm:px-6 lg:px-8 mx-auto;
-    }
-    .coolvetica {
-        font-family: 'Coolvetica', sans-serif;
-    }
+  .wrapper {
+    @apply max-w-[90rem] px-4 sm:px-6 lg:px-8 mx-auto;
+  }
+  .coolvetica {
+    font-family: "Coolvetica", sans-serif;
+  }
 }

@@ -340,7 +340,7 @@ const FeaturedWork = () => {
                         <h2 className="text-5xl 2xl:text-[4.5rem] font-black font-maus leading-none text-black">
                             THE WORKFLOW ENGINE
                         </h2>
-                        <div className="w-20 h-2 bg-brandturquoise mt-8 mx-auto 2xl:mx-0"></div>
+                        <div className="w-20 h-2 bg-brandyellow mt-8 mx-auto 2xl:mx-0"></div>
                     </div>
 
                     {PROJECTS.map((project) => (

@@ -27,6 +27,20 @@ interface ServiceItem {
 
 const services: ServiceItem[] = [
     {
+        id: "04",
+        title: "Architecture",
+        image: img4,
+        color: "#B8F135",
+        shape: "octagon"
+    },
+    {
+        id: "03",
+        title: "Structural Engineering",
+        image: img3,
+        color: "#FF2D95",
+        shape: "starburst"
+    },
+    {
         id: "01",
         title: "Civil Engineering",
         image: img1,
@@ -40,20 +54,6 @@ const services: ServiceItem[] = [
         color: "#FFC300",
         shape: "octagon"
     },
-    {
-        id: "03",
-        title: "Structural Engineering",
-        image: img3,
-        color: "#FF2D95",
-        shape: "starburst"
-    },
-    {
-        id: "04",
-        title: "Architecture",
-        image: img4,
-        color: "#B8F135",
-        shape: "octagon"
-    }
 ];
 
 const IndustriesWeFocusUpon = () => {
@@ -188,7 +188,7 @@ const IndustriesWeFocusUpon = () => {
                                 <img
                                     src={service.image}
                                     alt={service.title}
-                                    className="w-full h-full object-cover opacity-100 transition-transform duration-700 scale-105 brightness-75"
+                                    className="w-full h-full object-contain opacity-100 transition-transform duration-700 brightness-75"
                                 />
                                 {/* <div className="absolute inset-0 bg-black/30"></div> */}
                             </div>
@@ -199,7 +199,7 @@ const IndustriesWeFocusUpon = () => {
                                 className="relative z-10 text-center text-white p-10 flex flex-col items-center justify-center h-full w-full"
                             >
                                 <div className="content-rotator flex flex-col items-center">
-                                    <h3 className="text-4xl 2xl:text-[4rem] font-bold font-maus uppercase tracking-tighter leading-none mb-2 drop-shadow-lg md:max-w-[20rem]">{service.title}</h3>
+                                    <h3 className="text-4xl 2xl:text-[3.5rem] font-bold font-maus uppercase tracking-tighter leading-none mb-2 drop-shadow-lg md:max-w-[20rem] mx-auto">{service.title}</h3>
                                 </div>
                             </div>
                         </div>

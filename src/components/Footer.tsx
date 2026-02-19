@@ -24,7 +24,7 @@ const Footer = () => {
 
                         <div className="pt-10 lg:pt-auto">
                             <Link
-                                to="https://forms.zohopublic.in/drafty1/form/Complaints/formperma/6zDGITOYehhdgPUJSAsth00PEcIaect4hiwr7E8o3jc"
+                                to="/contact"
                                 target="_blank"
                                 rel="noopener noreferrer"
                                 className="inline-flex items-center gap-3 text-2xl font-maus text-brandlimegreen hover:text-white transition-colors duration-300"
@@ -63,7 +63,7 @@ const Footer = () => {
                                     }}>About Us</Link></li>
                                 <li>
                                     <a
-                                        href="https://forms.zohopublic.in/drafty1/form/Complaints/formperma/6zDGITOYehhdgPUJSAsth00PEcIaect4hiwr7E8o3jc"
+                                        href="/contact"
                                         target="_blank"
                                         rel="noopener noreferrer"
                                         className="hover:text-brandyellow transition-colors"
@@ -80,9 +80,6 @@ const Footer = () => {
                             <ul className="flex flex-col gap-4 text-lg text-gray-300 font-coolvetica tracking-wide">
                                 <li>
                                     <a href="mailto:hello@draftyco.au" className="hover:text-white transition-colors">hello@draftyco.au</a>
-                                </li>
-                                <li>
-                                    <span className="block">+1 (555) 123-4567</span>
                                 </li>
                                 <li className="flex gap-4 mt-2">
                                     {/* Social Icons Placeholder */}

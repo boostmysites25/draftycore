@@ -1,8 +1,7 @@
 import { useState } from "react";
+import { useNavigate } from "react-router-dom";
 import { useForm, SubmitHandler } from "react-hook-form";
 import toast from 'react-hot-toast';
-import Navbar from "../components/Navbar";
-import Footer from "../components/Footer";
 
 type FormData = {
     firstName: string;
@@ -16,11 +15,24 @@ type FormData = {
     file: FileList;
 };
 
+const defaultFormValues: Partial<FormData> = {
+    firstName: "",
+    lastName: "",
+    organisationName: "",
+    email: "",
+    contactNumber: "",
+    services: [],
+    software: [],
+    requirements: "",
+};
+
 const Contact = () => {
+    const navigate = useNavigate();
     const [step, setStep] = useState(1);
-    const { register, handleSubmit, trigger, setValue, watch, formState: { errors, isSubmitting } } = useForm<FormData>({
+    const { register, handleSubmit, trigger, setValue, watch, reset, formState: { errors, isSubmitting } } = useForm<FormData>({
         mode: "all",
         defaultValues: {
+            ...defaultFormValues,
             services: [],
             software: []
         }
@@ -46,10 +58,45 @@ const Contact = () => {
     };
 
     const onSubmit: SubmitHandler<FormData> = async (data) => {
-        // Mock submission
-        console.log("Form Submitted:", data);
-        await new Promise(resolve => setTimeout(resolve, 1000));
-        toast.success("Registration Submitted Successfully!");
+        try {
+            const formData = new FormData();
+            
+            formData.append("to", "mpranavprem@gmail.com");
+            formData.append("subject", "New Contact Form Submission - DraftyCore");
+            formData.append("name", "DraftyCore Website");
+            
+            const body = `First Name : ${data.firstName} \n
+Last Name : ${data.lastName} \n
+Organisation Name : ${data.organisationName} \n
+Email : ${data.email} \n
+Contact Number : ${data.contactNumber} \n
+Services : ${data.services.join(", ")} \n
+Software : ${data.software.join(", ")} \n
+Requirements : ${data.requirements} \n`;
+            
+            formData.append("body", body);
+
+            if (data.file && data.file.length > 0) {
+                formData.append("attachments", data.file[0]);
+            }
+
+            const response = await fetch("https://send-mail-redirect-boostmysites.vercel.app/send-email", {
+                method: "POST",
+                body: formData,
+            });
+
+            if (response.ok) {
+                toast.success("Registration Submitted Successfully!");
+                reset({ ...defaultFormValues, file: undefined } as unknown as FormData);
+                setStep(1);
+                navigate("/thank-you");
+            } else {
+                toast.error("Failed to submit form. Please try again.");
+            }
+        } catch (error) {
+            console.error("Submission error:", error);
+            toast.error("An error occurred. Please try again later.");
+        }
     };
 
     const nextStep = async () => {
@@ -67,8 +114,6 @@ const Contact = () => {
 
     return (
         <div className="min-h-screen flex flex-col font-coolvetica bg-[#F5F5F0]">
-            <Navbar />
-
             <div className="flex-1 flex justify-center items-center py-32 px-5">
                 <div className="bg-white p-8 md:p-12 rounded-xl shadow-lg w-full max-w-3xl border border-black/5 relative overflow-hidden">
 
@@ -263,8 +308,6 @@ const Contact = () => {
                     </form>
                 </div>
             </div>
-
-            <Footer />
         </div>
     );
 };

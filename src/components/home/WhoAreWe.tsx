@@ -92,7 +92,7 @@ const WhoAreWe = () => {
         {
             header: "Start Small, Grow Big",
             description: "From light support to dedicated capacity, our plans let you commit comfortably and expand when you’re ready.",
-            bgClass: "bg-brandorange text-black",
+            bgClass: "bg-brandpink text-black",
             borderClass: "border-black/10"
         }
     ];

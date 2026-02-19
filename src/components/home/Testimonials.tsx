@@ -21,7 +21,7 @@ const testimonialsData: Testimonial[] = [
         quote: "It’s been a game-changer for our team. We can finally focus on the design stuff we love, while the drafting work just gets done. No micromanaging, no late-night fixes. it’s like someone quietly picked up the slack for us.",
         author: "Rod",
         role: "Mezzebar Constructions",
-        bgColor: "bg-brandorange", // #FF7A00
+        bgColor: "bg-brandorange",
         textColor: "text-white",
         rotation: -4,
         offsetY: 100
@@ -30,8 +30,8 @@ const testimonialsData: Testimonial[] = [
         id: 2,
         quote: "The biggest shift has been freeing up our senior team. Instead of spending evenings fixing linework and notes, they’re focused on design thinking and client decisions. The outsourced team carries the production load without needing constant direction. It just works!",
         author: "Marios",
-        role: "Mammoth",
-        bgColor: "bg-brandpink", // #FF2D95
+        role: "Mammoth Build",
+        bgColor: "bg-brandpink",
         textColor: "text-white",
         rotation: 3,
         offsetY: -40
@@ -41,7 +41,7 @@ const testimonialsData: Testimonial[] = [
         quote: "We don’t outsource everything, we keep the design-critical pieces in-house. But for documentation and the heavy drafting lift, they’ve become a seamless extension of our team. It’s allowed us to take on more projects without increasing headcount.",
         author: "Architect",
         role: "Anonymous",
-        bgColor: "bg-brandlimegreen", // #B8F135
+        bgColor: "bg-brandlimegreen",
         textColor: "text-black",
         rotation: -2,
         offsetY: 80
@@ -51,7 +51,7 @@ const testimonialsData: Testimonial[] = [
         quote: "We’d tried offshore setups before, and the admin overhead made it unsustainable. What works here is the structure, tasks are clear, communication is sharp, and we’re not digging through endless email threads to find the latest file. Everything’s where it should be.",
         author: "Architectural Firm",
         role: "Anonymous",
-        bgColor: "bg-brandturquoise", // #2ED9C3
+        bgColor: "bg-brandturquoise",
         textColor: "text-black",
         rotation: 4,
         offsetY: -20
