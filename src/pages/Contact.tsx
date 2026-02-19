@@ -61,7 +61,7 @@ const Contact = () => {
         try {
             const formData = new FormData();
             
-            formData.append("to", "mpranavprem@gmail.com");
+            formData.append("to", "hello@draftyco.au");
             formData.append("subject", "New Contact Form Submission - DraftyCore");
             formData.append("name", "DraftyCore Website");
             
