@@ -155,10 +155,10 @@ const IndustriesWeFocusUpon = () => {
             {/* Background */}
             <CyberCircuit className="z-0 opacity-10 absolute inset-0 pointer-events-none" color="#000000" />
 
-            <div ref={trackRef} className="flex flex-row w-[max-content] h-full items-center gap-0 z-10 pl-0">
+            <div ref={trackRef} className="flex flex-row w-[max-content] h-full items-center gap-8 z-10 pl-0 pr-24">
 
                 {/* Header Section (Intro) - Now just a lead-in */}
-                <div className="w-[90vw] md:w-[40vw] shrink-0 flex flex-col justify-center gap-8 px-10 md:pl-24 md:pr-10 text-left">
+                <div className="w-[90vw] md:w-[40vw] shrink-0 flex flex-col justify-center gap-8 px-10 md:pl-24 md:pr-10 text-left relative z-20">
                     <h2 className="text-6xl md:text-8xl font-bold font-maus text-secondary uppercase tracking-tighter leading-none">
                         Industries <br /> We Focus Upon
                     </h2>
@@ -172,12 +172,12 @@ const IndustriesWeFocusUpon = () => {
                 {services.map((service, index) => (
                     <div
                         key={service.id}
-                        className="relative shrink-0 w-[90vw] md:w-[60vh] flex items-center justify-center px-0"
+                        className="relative shrink-0 w-[90vw] md:w-[60vh] 2xl:w-[90vh] flex items-center justify-center px-0"
                     >
                         {/* ROTATING CONTAINER */}
                         <div
                             ref={(el) => addToRefs(el, index)}
-                            className="w-[85vw] h-[85vw] md:w-[50vh] md:h-[50vh] relative flex items-center justify-center overflow-hidden group"
+                            className="w-[85vw] h-[85vw] md:w-[45vh] md:h-[45vh] 2xl:w-[70vh] 2xl:h-[70vh] relative flex items-center justify-center overflow-hidden group"
                         // style={{
                         //     clipPath: SHAPES[service.shape as keyof typeof SHAPES],
                         //     filter: "drop-shadow(0 20px 20px rgba(0,0,0,0.15))"
@@ -199,7 +199,7 @@ const IndustriesWeFocusUpon = () => {
                                 className="relative z-10 text-center text-white p-10 flex flex-col items-center justify-center h-full w-full"
                             >
                                 <div className="content-rotator flex flex-col items-center">
-                                    <h3 className="text-3xl md:text-[3.5rem] font-bold font-maus uppercase tracking-tighter leading-none mb-2 drop-shadow-lg max-w-[20rem] mx-auto">{service.title}</h3>
+                                    <h3 className="text-3xl md:text-[3.5rem] 2xl:text-5xl font-bold font-maus uppercase tracking-tighter leading-none mb-2 drop-shadow-lg max-w-[20rem] 2xl:max-w-[20rem] mx-auto">{service.title}</h3>
                                 </div>
                             </div>
                         </div>
