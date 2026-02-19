@@ -61,7 +61,7 @@ const Preloader = () => {
     return (
         <div
             ref={containerRef}
-            className="fixed inset-0 z-[999] flex items-center justify-center overflow-hidden bg-white border-b-4 border-brandturquoise h-screen w-screen" // White Background
+            className="fixed max-w-[100vw] inset-0 z-[999] flex items-center justify-center overflow-hidden bg-white border-b-4 border-brandturquoise h-screen w-screen" // White Background
         >
             {/* Content Layer */}
             <div className="relative z-10 flex flex-col items-center w-full h-full justify-center px-3">
