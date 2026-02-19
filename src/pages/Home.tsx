@@ -13,7 +13,7 @@ const Testimonials = lazy(() => import('../components/home/Testimonials'))
 const Home = () => {
     return (
         <div className="">
-            {/* <Preloader /> */}
+            <Preloader />
             <Hero />
             <div id="about"><WhoAreWe /></div>
             <div id="work"><FeaturedWork /></div>
