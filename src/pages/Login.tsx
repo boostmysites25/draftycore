@@ -1,6 +1,4 @@
 import { useState } from 'react';
-import { Link } from 'react-router-dom';
-import { FaArrowLeft } from 'react-icons/fa';
 
 const Login = () => {
     const [email, setEmail] = useState('');
