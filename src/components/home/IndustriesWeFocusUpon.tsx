@@ -73,7 +73,8 @@ const IndustriesWeFocusUpon = () => {
                 // FeaturedWork is pinned for 300% (approx). 
                 // We overlap because pinSpacing=false.
                 // So we need to WAIT for that 300% before we start moving.
-                const waitDuration = 100; // Relative units for timeline
+                const isLargeScreen = window.innerWidth > 1280;
+                const waitDuration = isLargeScreen ? 100 : 0; // Conditional wait
                 const scrollDuration = 100; // Relative units for timeline
 
                 // Total distance: We need to pin for (Wait + Scroll)
@@ -96,8 +97,10 @@ const IndustriesWeFocusUpon = () => {
                     });
 
                     // 1. WAIT PHASE (Synced with FeaturedWork)
-                    // We hold everything static for the first half of the scroll
-                    tl.to({}, { duration: waitDuration });
+                    // We hold everything static for the first half of the scroll ONLY on large screens
+                    if (waitDuration > 0) {
+                        tl.to({}, { duration: waitDuration });
+                    }
 
                     // 2. MOVE PHASE (Horizontal Scroll)
                     tl.addLabel("move");
