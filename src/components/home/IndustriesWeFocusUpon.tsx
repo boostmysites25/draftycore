@@ -66,8 +66,8 @@ const IndustriesWeFocusUpon = () => {
         const ctx = gsap.context(() => {
             const mm = gsap.matchMedia();
 
-            // DESKTOP: Horizontal Scroll with Rolling Physics (Now only for 2xl and up)
-            mm.add("(min-width: 1536px)", () => {
+            // DESKTOP & MOBILE: Horizontal Scroll with Rolling Physics
+            mm.add("(min-width: 0px)", () => {
                 const track = trackRef.current;
 
                 // FeaturedWork is pinned for 300% (approx). 
@@ -149,20 +149,20 @@ const IndustriesWeFocusUpon = () => {
     };
 
     return (
-        <section ref={sectionRef} className="bg-[#f1f1f1] relative overflow-hidden 2xl:h-screen flex flex-col 2xl:flex-row items-center py-20 2xl:py-0 max-w-[100vw] overflow-x-hidden">
+        <section ref={sectionRef} className="bg-[#f1f1f1] relative overflow-hidden h-screen flex flex-row items-center py-0 max-w-[100vw] overflow-x-hidden">
             <FeaturedCursor isActive={true} />
 
             {/* Background */}
             <CyberCircuit className="z-0 opacity-10 absolute inset-0 pointer-events-none" color="#000000" />
 
-            <div ref={trackRef} className="flex flex-col 2xl:flex-row w-full 2xl:h-full items-center gap-20 2xl:gap-0 2xl:w-[max-content] z-10 pl-5 2xl:pl-0">
+            <div ref={trackRef} className="flex flex-row w-[max-content] h-full items-center gap-0 z-10 pl-0">
 
                 {/* Header Section (Intro) - Now just a lead-in */}
-                <div className="w-full 2xl:w-[40vw] shrink-0 flex flex-col justify-center gap-8 px-10 2xl:pl-24 2xl:pr-10 text-center 2xl:text-left">
-                    <h2 className="text-5xl 2xl:text-8xl font-bold font-maus text-secondary uppercase tracking-tighter leading-none">
+                <div className="w-[90vw] md:w-[40vw] shrink-0 flex flex-col justify-center gap-8 px-10 md:pl-24 md:pr-10 text-left">
+                    <h2 className="text-6xl md:text-8xl font-bold font-maus text-secondary uppercase tracking-tighter leading-none">
                         Industries <br /> We Focus Upon
                     </h2>
-                    <div className="flex items-center gap-4 text-secondary justify-center 2xl:justify-start font-coolvetica">
+                    <div className="flex items-center gap-4 text-secondary justify-start font-coolvetica">
                         <span className="text-lg">Scroll To Explore</span>
                         <span className="animate-bounce">→</span>
                     </div>
@@ -172,12 +172,12 @@ const IndustriesWeFocusUpon = () => {
                 {services.map((service, index) => (
                     <div
                         key={service.id}
-                        className="relative shrink-0 w-full 2xl:w-[80vh] flex items-center justify-center px-2 2xl:px-0"
+                        className="relative shrink-0 w-[90vw] md:w-[60vh] flex items-center justify-center px-0"
                     >
                         {/* ROTATING CONTAINER */}
                         <div
                             ref={(el) => addToRefs(el, index)}
-                            className="w-[85vw] h-[85vw] 2xl:w-[70vh] 2xl:h-[70vh] relative flex items-center justify-center overflow-hidden group"
+                            className="w-[85vw] h-[85vw] md:w-[50vh] md:h-[50vh] relative flex items-center justify-center overflow-hidden group"
                         // style={{
                         //     clipPath: SHAPES[service.shape as keyof typeof SHAPES],
                         //     filter: "drop-shadow(0 20px 20px rgba(0,0,0,0.15))"
@@ -199,7 +199,7 @@ const IndustriesWeFocusUpon = () => {
                                 className="relative z-10 text-center text-white p-10 flex flex-col items-center justify-center h-full w-full"
                             >
                                 <div className="content-rotator flex flex-col items-center">
-                                    <h3 className="text-4xl 2xl:text-[3.5rem] font-bold font-maus uppercase tracking-tighter leading-none mb-2 drop-shadow-lg md:max-w-[20rem] mx-auto">{service.title}</h3>
+                                    <h3 className="text-3xl md:text-[3.5rem] font-bold font-maus uppercase tracking-tighter leading-none mb-2 drop-shadow-lg max-w-[20rem] mx-auto">{service.title}</h3>
                                 </div>
                             </div>
                         </div>

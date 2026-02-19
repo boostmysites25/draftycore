@@ -3,7 +3,7 @@ import ConnectiveTech from "../ui/ConnectiveTech";
 
 const WhatWeStandFor = () => {
   return (
-    <div className="relative pt-24 lg:pt-12 bg-[#F5F5F0] border-t-4 border-brandlimegreen lg:h-[88vh] lg:max-h-screen lg:overflow-hidden lg:flex lg:flex-col w-screen max-w-[100vw] overflow-x-hidden">
+    <div className="relative pt-24 lg:pt-12 bg-[#F5F5F0] border-t-4 border-brandlimegreen h-[120vh] lg:h-[88vh] lg:max-h-screen lg:overflow-hidden lg:flex lg:flex-col">
       <ConnectiveTech />
       <div className="wrapper absolute inset-0 top-24 z-10 lg:flex-none">
         <h2 className="text-5xl md:text-8xl font-black font-maus text-secondary uppercase tracking-tighter mb-4 text-center">
@@ -25,7 +25,7 @@ const WhatWeStandFor = () => {
           </p>
         </div>
       </div>
-      <div className="relative z-10 lg:flex-1 lg:overflow-hidden">
+      <div className="relative z-10 lg:flex-1 lg:overflow-hidden h-full">
         <FallingText
           text={[
             "Precision",
