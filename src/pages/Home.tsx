@@ -14,7 +14,7 @@ const Home = () => {
     return (
         <div className="">
             <Preloader />
-            <Hero />
+            <Hero delay={6} />
             <div id="about"><WhoAreWe /></div>
             <div id="work"><FeaturedWork /></div>
             <div id="services"><IndustriesWeFocusUpon /></div>

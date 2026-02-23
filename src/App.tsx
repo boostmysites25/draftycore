@@ -1,11 +1,14 @@
 import { BrowserRouter as Router, Routes, Route } from "react-router-dom";
-import Home from "./pages/Home";
-import Layout from "./components/Layout";
 // import SmoothScroll from "./components/common/SmoothScroll";
-import Contact from "./pages/Contact";
-import Login from "./pages/Login";
-import ThankYou from "./pages/ThankYou";
 import { Toaster } from "react-hot-toast";
+import { lazy } from "react";
+
+const Layout = lazy(() => import("./components/Layout"));
+const Home = lazy(() => import("./pages/Home"));
+const Contact = lazy(() => import("./pages/Contact"));
+const ThankYou = lazy(() => import("./pages/ThankYou"));
+const Login = lazy(() => import("./pages/Login"));
+const Marketing = lazy(() => import("./pages/Marketing"));
 
 function App() {
   return (
@@ -15,6 +18,7 @@ function App() {
         <Routes>
           <Route path="/" element={<Layout />}>
             <Route index element={<Home />} />
+            <Route path="/marketing" element={<Marketing />} />
             <Route path="/contact" element={<Contact />} />
             <Route path="/thank-you" element={<ThankYou />} />
             <Route path="/login" element={<Login />} />

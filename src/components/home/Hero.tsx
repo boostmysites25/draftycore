@@ -12,7 +12,7 @@ import { CircleCursor } from '../ui/Cursors'
 
 gsap.registerPlugin(ScrollTrigger)
 
-const Hero = () => {
+const Hero = ({delay}: {delay: number}) => {
     const containerRef = useRef<HTMLDivElement>(null)
     const lettersRef = useRef<(HTMLSpanElement | null)[]>([])
     const [isAligned, setIsAligned] = useState(false)
@@ -34,7 +34,7 @@ const Hero = () => {
     useEffect(() => {
         const timer = setTimeout(() => {
             setHasInitialDelayPassed(true);
-        }, 6000);
+        }, delay * 1000);
         return () => clearTimeout(timer);
     }, []);
 
@@ -68,7 +68,7 @@ const Hero = () => {
                 stagger: 0.1,
                 ease: "bounce.out",
                 duration: 1.5,
-                delay: 6
+                delay: delay
             });
 
             // ScrollTrigger 2: EXIT & SCATTER
