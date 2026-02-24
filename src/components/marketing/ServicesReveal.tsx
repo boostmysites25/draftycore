@@ -1,7 +1,6 @@
 import { useEffect, useRef } from "react";
 import gsap from "gsap";
 import { ScrollTrigger } from "gsap/ScrollTrigger";
-import SmoothScroll from "../common/SmoothScroll";
 
 gsap.registerPlugin(ScrollTrigger);
 
@@ -65,7 +64,6 @@ const ServicesReveal = () => {
   const sentence = "What services we provide you actually";
 
   return (
-    <SmoothScroll>
       <section
         ref={containerRef}
         className="w-full h-screen bg-[#111111] flex items-center justify-center overflow-hidden relative z-50"
@@ -83,7 +81,6 @@ const ServicesReveal = () => {
           </h2>
         </div>
       </section>
-    </SmoothScroll>
   );
 };
 

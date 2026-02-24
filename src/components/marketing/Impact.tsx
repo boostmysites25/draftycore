@@ -150,10 +150,10 @@ const Impact = () => {
     <section ref={containerRef} className="w-full h-screen bg-[#E087FF] relative overflow-hidden flex items-center z-10">
       <CircleCursor isActive={true} />
       
-      <div className="w-full max-w-[90rem] mx-auto px-4 sm:px-6 lg:px-8 flex h-full items-center gap-8">
+      <div className="w-full max-w-[90rem] mx-auto px-4 sm:px-6 xl:px-8 flex h-full items-center gap-8">
         
         {/* Left Side - Scrolling Tabs */}
-        <div ref={leftContainerRef} className="hidden lg:flex w-1/2 h-[80vh] relative flex-col overflow-hidden">
+        <div ref={leftContainerRef} className="hidden xl:flex w-1/2 h-[80vh] relative flex-col overflow-hidden">
           <div className="relative w-full">
             <div 
                 className="absolute left-0 w-full transition-transform duration-500 ease-out flex flex-col items-start top-0"
@@ -189,7 +189,7 @@ const Impact = () => {
         </div>
 
         {/* Right Side - Creative 3D Slider */}
-        <div className="w-full lg:w-1/2 h-[80vh] flex items-center justify-center relative">
+        <div className="w-full xl:w-1/2 h-[80vh] flex items-center justify-center relative">
             <Swiper
                 effect={'creative'}
                 grabCursor={false}
@@ -220,7 +220,7 @@ const Impact = () => {
                 {items.map((item, index) => (
                     <SwiperSlide 
                         key={item.id} 
-                        className="w-[500px] lg:w-[600px] h-[70vh] flex items-center justify-center transition-all duration-500 !overflow-hidden rounded-[3rem]"
+                        className="w-[500px] xl:w-[600px] h-[70vh] flex items-center justify-center transition-all duration-500 !overflow-hidden rounded-[3rem]"
                     >
                         <div className={`
                             bg-white rounded-[3rem] p-6 shadow-2xl w-full h-full flex flex-col relative overflow-hidden
@@ -242,7 +242,7 @@ const Impact = () => {
                             <div className="px-6 pb-4">
                                 <div className="flex justify-between items-end">
                                     <div>
-                                        <h3 className="text-4xl lg:text-5xl font-maus font-black mb-4 leading-none text-black">
+                                        <h3 className="text-4xl xl:text-5xl font-maus font-black mb-4 leading-none text-black">
                                             {item.title}
                                         </h3>
                                         <p className="text-lg text-gray-600 leading-relaxed font-medium max-w-xl line-clamp-2">
