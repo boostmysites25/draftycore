@@ -4,7 +4,7 @@ import { FaLinkedinIn, FaInstagram } from 'react-icons/fa';
 const Footer = () => {
     const { pathname } = useLocation();
     return (
-        <footer className="bg-black text-white py-20 relative overflow-hidden">
+        <footer className="bg-black text-white py-20 relative overflow-hidden z-10">
             {/* Decorative Top Border */}
             <div className="absolute top-0 left-0 w-full h-1 bg-gradient-to-r from-brandorange via-brandpink to-brandturquoise"></div>
 
