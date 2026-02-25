@@ -54,7 +54,6 @@ const RecentWorks = () => {
 
       works.forEach((_, index) => {
         const card = cardsRef.current[index];
-        const innerCard = innerCardsRef.current[index];
         const image = imagesRef.current[index];
         const prevInnerCard =
           index > 0 ? innerCardsRef.current[index - 1] : null;

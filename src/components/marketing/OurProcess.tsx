@@ -1,4 +1,3 @@
-import { useRef } from 'react';
 import { CircleCursor } from '../ui/Cursors';
 import { FaArrowRight } from 'react-icons/fa';
 
