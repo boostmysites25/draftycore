@@ -25,10 +25,10 @@ const TickerLetter = ({ char }: { char: string }) => {
   return (
     <span className="relative overflow-hidden h-[0.85em] inline-block align-bottom leading-none">
       <span ref={wrapperRef} className="flex flex-col">
-        <span className="bg-gradient-to-br from-blue-300 via-purple-400 to-orange-300 bg-clip-text text-transparent pb-1">
+        <span className="bg-gradient-to-br from-brandturquoise via-brandpink to-brandorange bg-clip-text text-transparent pb-1">
           {char}
         </span>
-        <span className="bg-gradient-to-br from-blue-300 via-purple-400 to-orange-300 bg-clip-text text-transparent pb-1">
+        <span className="bg-gradient-to-br from-brandturquoise via-brandpink to-brandorange bg-clip-text text-transparent pb-1">
           {char}
         </span>
       </span>
@@ -40,22 +40,22 @@ const WhoWeAre = () => {
   const services = [
     {
       title: "Civil Engineering",
-      color: "bg-[#1E3A8A]",
+      color: "bg-brandturquoise",
       img: "https://images.unsplash.com/photo-1541888946425-d81bb19240f5?q=80&w=2070&auto=format&fit=crop",
     },
     {
       title: "Shop Detailing",
-      color: "bg-[#F59E0B]",
+      color: "bg-brandorange",
       img: "https://images.unsplash.com/photo-1504917595217-d4dc5ebe6122?q=80&w=2070&auto=format&fit=crop",
     },
     {
       title: "Structural Engineering",
-      color: "bg-[#3B82F6]",
+      color: "bg-brandpink",
       img: "https://images.unsplash.com/photo-1581094794329-c8112a89af12?q=80&w=2070&auto=format&fit=crop",
     },
     {
       title: "Architecture",
-      color: "bg-[#EF4444]",
+      color: "bg-brandyellow",
       img: "https://images.unsplash.com/photo-1487958449943-2429e8be8625?q=80&w=2070&auto=format&fit=crop",
     },
   ];
@@ -88,42 +88,42 @@ const WhoWeAre = () => {
   });
 
   return (
-    <section className="w-full min-h-screen grid grid-cols-1 xl:grid-cols-[40%,1fr] bg-[#0a0a2e] relative">
+    <section className="w-full min-h-screen grid grid-cols-1 xl:grid-cols-[40%,1fr] bg-white relative">
       <CircleCursor isActive={true} />
 
       {/* Left Side - Image */}
-      <div className="w-full relative min-h-[50vh] xl:min-h-screen bg-[#0a0a2e] z-10">
+      <div className="w-full relative min-h-[50vh] xl:min-h-screen bg-white z-10">
         <div className="absolute inset-0 flex items-center justify-center">
           <img
             src="/images/marketing/who-we-are.webp"
             alt="Drafting Workspace"
             className="w-full h-full object-cover drop-shadow-2xl relative"
           />
-          <div className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-[80%] h-[80%] bg-blue-600/20 blur-[100px] rounded-full pointer-events-none"></div>
+          <div className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-[80%] h-[80%] bg-brandturquoise/20 blur-[100px] rounded-full pointer-events-none"></div>
         </div>
       </div>
 
       {/* Right Side - Content Container */}
-      <div className="w-full bg-[#291c52] relative flex flex-col p-8 md:p-12 xl:p-20 rounded-tl-[3rem] xl:rounded-tl-[5rem] -mt-10 xl:mt-0 xl:-ml-16 z-20 shadow-[-20px_0_50px_rgba(0,0,0,0.5)] md:pb-40">
+      <div className="w-full bg-white relative flex flex-col p-8 md:p-12 xl:p-20 rounded-tl-[3rem] xl:rounded-tl-[5rem] -mt-10 xl:mt-0 xl:-ml-[4.5rem] z-20 shadow-[-20px_0_50px_rgba(0,0,0,0.1)] md:pb-40 border-l border-black/5">
         {/* Top Content */}
         <div className="flex flex-col justify-center w-full">
-          <h3 className="text-4xl xl:text-5xl font-medium mb-12 bg-gradient-to-br from-blue-300 via-purple-400 to-orange-300 bg-clip-text text-transparent inline-block font-coolvetica pb-2">
+          <h3 className="text-4xl xl:text-5xl font-medium mb-12 bg-gradient-to-br from-brandturquoise via-brandpink to-brandorange bg-clip-text text-transparent inline-block font-coolvetica pb-2">
             DraftyCo
           </h3>
 
-          <p className="text-white/90 text-xl xl:text-2xl leading-relaxed mb-16 max-w-2xl font-coolvetica tracking-wide">
+          <p className="text-black/80 text-xl xl:text-2xl leading-relaxed mb-16 max-w-2xl font-coolvetica tracking-wide">
             Your behind the scenes drafting powerhouse delivering precision,
             speed, and scale to elevate design firms across Australia.
           </p>
 
-          <div className="mb-20 -mx-8 md:-mx-12 xl:-mx-20 overflow-hidden">
+          <div className="mb-20 -mx-8 md:-mx-12 xl:-mx-[5.1rem] overflow-hidden">
             <div ref={sliderRef} className="keen-slider">
               {[...services, ...services].map((service, index) => (
                 <div
                   key={index}
-                  className="keen-slider__slide aspect-[4/2.5] rounded-2xl overflow-hidden relative group cursor-pointer border border-white/10 hover:border-white/30 shadow-lg hover:shadow-xl hover:-translate-y-1"
+                  className="keen-slider__slide aspect-[4/2.5] rounded-2xl overflow-hidden relative group cursor-pointer border border-black/10 hover:border-black/30 shadow-lg hover:shadow-xl hover:-translate-y-1"
                 >
-                  <div className="absolute inset-0 bg-black/40 z-10 group-hover:bg-black/20 transition-colors duration-300"></div>
+                  <div className="absolute inset-0 bg-black/20 z-10 group-hover:bg-black/10 transition-colors duration-300"></div>
                   <img
                     src={service.img}
                     alt={service.title}
@@ -146,7 +146,7 @@ const WhoWeAre = () => {
 
       {/* Bottom Content - Positioned Absolute to Section */}
       <div className="absolute bottom-8 right-8 md:bottom-12 md:right-12 xl:bottom-16 xl:right-16 z-[100] flex items-end gap-4 md:gap-8 pointer-events-none">
-        <h2 className="text-6xl md:text-7xl xl:text-8xl font-maus font-black tracking-tighter leading-none uppercase flex gap-4 md:gap-8 relative text-white pointer-events-auto">
+        <h2 className="text-6xl md:text-7xl xl:text-8xl font-maus font-black tracking-tighter leading-none uppercase flex gap-4 md:gap-8 relative text-black pointer-events-auto">
           <span className="flex">
             {"WHO".split("").map((char, i) => (
               <TickerLetter key={`who-${i}`} char={char} />

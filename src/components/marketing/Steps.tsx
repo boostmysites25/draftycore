@@ -7,7 +7,7 @@ const steps = [
     title: "DISCOVER AND DEFINE",
     description:
       "We begin with deep listening understanding your vision, goals, and audience to build a solid foundation.",
-    color: "bg-[#FFC300]", // Yellow
+    color: "bg-brandyellow", // Yellow
     textColor: "text-black",
     rotation: "-rotate-3",
   },
@@ -16,7 +16,7 @@ const steps = [
     title: "PLAN AND STRATEGIZE",
     description:
       "Our team maps out the user journey and technical architecture to ensure seamless execution.",
-    color: "bg-[#FF7A00]", // Orange
+    color: "bg-brandorange", // Orange
     textColor: "text-black",
     rotation: "rotate-2",
   },
@@ -25,7 +25,7 @@ const steps = [
     title: "DESIGN AND DEVELOP",
     description:
       "We bring ideas to life with stunning visuals and robust code, focusing on performance and scalability.",
-    color: "bg-[#FF2D95]", // Pink
+    color: "bg-brandpink", // Pink
     textColor: "text-white",
     rotation: "-rotate-2",
   },
@@ -34,7 +34,7 @@ const steps = [
     title: "DELIVER AND SUPPORT",
     description:
       "After rigorous testing, we launch your product and provide ongoing support to ensure long-term success.",
-    color: "bg-[#2ED9C3]", // Turquoise/Blue
+    color: "bg-brandturquoise", // Turquoise/Blue
     textColor: "text-black",
     rotation: "rotate-3",
   },

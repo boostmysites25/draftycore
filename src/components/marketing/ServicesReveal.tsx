@@ -61,7 +61,7 @@ const ServicesReveal = () => {
     return () => ctx.revert();
   }, []);
 
-  const sentence = "What services we provide you actually";
+  const sentence = "How Drafty integrates into your workflow";
 
   return (
       <section
