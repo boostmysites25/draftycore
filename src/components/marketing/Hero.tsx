@@ -1,24 +1,52 @@
-import { useRef, useLayoutEffect, useState } from 'react'
-// import heroImg from '../../assets/images/hero.webp'
+import { useRef, useLayoutEffect, useState, useEffect } from 'react'
 import gsap from 'gsap'
 import { ScrollTrigger } from 'gsap/ScrollTrigger'
-// import Aurora from '../ui/Aurora'
-// import Antigravity from '../ui/Antigravity'
 import PulseGrid from '../ui/PulseGrid'
 import video from '../../assets/logo-vid.webm'
+import videoMp4 from '../../assets/logo-vid1.mp4'
 import video2 from '../../assets/scroll-down-vid.webm'
 import { CircleCursor } from '../ui/Cursors'
+import ConnectiveTech from '../ui/ConnectiveTech'
 
 gsap.registerPlugin(ScrollTrigger)
 
-const Hero = () => {
+const Hero = ({delay}: {delay: number}) => {
     const containerRef = useRef<HTMLDivElement>(null)
     const lettersRef = useRef<(HTMLSpanElement | null)[]>([])
     const [isAligned, setIsAligned] = useState(false)
     const cursorRef = useRef<HTMLDivElement>(null);
     const [isHovering, setIsHovering] = useState(false);
-    const [currentVideo, setCurrentVideo] = useState({ id: 1, video });
+    const [currentVideo, setCurrentVideo] = useState<{
+        id: number;
+        sources: {
+            webm: string;
+            mp4: string | null;
+        }
+    }>({
+        id: 1,
+        sources: { webm: video, mp4: videoMp4 }
+    });
+    const videoRef = useRef<HTMLVideoElement>(null);
+    const [hasInitialDelayPassed, setHasInitialDelayPassed] = useState(false);
 
+    useEffect(() => {
+        const timer = setTimeout(() => {
+            setHasInitialDelayPassed(true);
+        }, delay * 1000);
+        return () => clearTimeout(timer);
+    }, []);
+
+    useEffect(() => {
+        if (currentVideo.id !== 1) {
+            setHasInitialDelayPassed(true);
+        }
+    }, [currentVideo.id]);
+
+    useEffect(() => {
+        if (videoRef.current && hasInitialDelayPassed) {
+            videoRef.current.play().catch(e => console.error("Video play failed", e));
+        }
+    }, [hasInitialDelayPassed, currentVideo]);
 
 
     // const word = "DRAFTY"
@@ -38,18 +66,20 @@ const Hero = () => {
                 stagger: 0.1,
                 ease: "bounce.out",
                 duration: 1.5,
-                delay: 6
+                delay: delay
             });
 
             // ScrollTrigger 2: EXIT & SCATTER
             // Triggered using callbacks for custom "Reverse" behavior (Smooth instead of Jerky Elastic)
             ScrollTrigger.create({
                 trigger: document.body,
-                start: () => window.innerHeight * 0.20, // Trigger at 10% scroll
+                start: 10,
                 invalidateOnRefresh: true,
                 onEnter: () => {
-                    setCurrentVideo({ id: 2, video: video2 });
-
+                    setCurrentVideo({
+                        id: 2,
+                        sources: { webm: video2, mp4: null }
+                    });
                     const baseDrop = window.innerHeight * 0.20;
 
                     // Play Drop & Bounce
@@ -75,8 +105,10 @@ const Hero = () => {
                         })
                 },
                 onLeaveBack: () => {
-                    setCurrentVideo({ id: 1, video });
-
+                    setCurrentVideo({
+                        id: 1,
+                        sources: { webm: video, mp4: videoMp4 }
+                    });
                     setIsAligned(true);
                     // Smooth Return to Alignment (Overwrites the elastic bounce)
                     gsap.to(lettersRef.current, {
@@ -97,19 +129,22 @@ const Hero = () => {
     return (
         <div
             // ref={containerRef}
-            className='h-screen w-full flex items-center justify-center overflow-hidden relative bg-[#F5F5F0] cursor-none'
-            onMouseEnter={() => setIsHovering(true)} onMouseLeave={() => setIsHovering(false)}
+            className='h-screen flex items-center justify-center overflow-hidden relative bg-white cursor-none'
+            onMouseEnter={() => setIsHovering(true)}
+            onMouseLeave={() => setIsHovering(false)}
+
         >
             {/* Background Animation: Pulse Grid with lower opacity for subtlety */}
             <div className="absolute inset-0 z-0 opacity-40">
-                <PulseGrid
+                {/* <PulseGrid
                     gridColor="rgba(0, 0, 0, 0.08)"
                     beamColors={['#FF7A00', '#FFC300', "#FF2D95", '#B8F135', '#2ED9C3']}
                     beamSpeed={1.5}
                     beamLength={100}
                     gridSize={80}
                     pulseFrequency={0.10}
-                />
+                /> */}
+                <ConnectiveTech/>
             </div>
 
             <CircleCursor ref={cursorRef} isActive={isHovering} />
@@ -117,42 +152,42 @@ const Hero = () => {
             {/* Architectural HUD Elements */}
             <div className="absolute top-0 left-0 w-full h-full pointer-events-none z-20 mix-blend-multiply">
                 {/* Top Left Status Box */}
-                <div className="absolute top-20 left-8 border-l-2 border-black pl-3 animate-fade-in-up">
+                <div className="absolute top-32 left-8 border-l-2 border-black pl-3 animate-fade-in-up hidden md:block">
                     <div className="flex items-center gap-2 mb-1">
                         <div className="w-1.5 h-1.5 rounded-full bg-brandorange animate-pulse"></div>
-                        <span className="text-[14px] font-coolvetica-condensed font-bold tracking-widest text-black/60 uppercase">System Status</span>
+                        <span className="text-base font-coolvetica font-bold tracking-widest text-black/80 uppercase">System Status</span>
                     </div>
-                    <div className="text-lg font-bold tracking-widest text-black/90">ONLINE // READY</div>
+                    <div className="text-[12px] font-bold tracking-widest text-black/60">ONLINE // READY</div>
                 </div>
 
                 {/* Top Right Coordinates */}
-                <div className="absolute top-8 right-8 text-right hidden md:block animate-fade-in-up animation-delay-200">
-                    <p className="text-[14px] font-coolvetica-condensed text-black/40 mb-1 tracking-widest">GRID REFERENCE</p>
-                    <p className="text-lg font-coolvetica-condensed font-bold text-black/70">X: 04.92.11 <br />Y: 08.22.90</p>
+                <div className="absolute top-32 right-8 text-right hidden md:block animate-fade-in-up animation-delay-200">
+                    <p className="text-base font-coolvetica text-black/80 mb-1 tracking-widest">GRID REFERENCE</p>
+                    <p className="text-[12px] font-coolvetica font-bold text-black/60 tracking-widest">X: 04.92.11 <br />Y: 08.22.90</p>
                 </div>
 
                 {/* Bottom Left Technical Marker */}
-                <div className="absolute bottom-12 left-12 hidden md:flex items-center gap-4 opacity-60">
-                    <svg width="50" height="50" viewBox="0 0 40 40" fill="none" className="animate-[spin_10s_linear_infinite]">
+                <div className="absolute bottom-12 left-12 hidden md:flex items-center gap-4">
+                    <svg width="50" height="50" viewBox="0 0 40 40" fill="none" className="animate-[spin_10s_linear_infinite] opacity-60">
                         <circle cx="20" cy="20" r="18" stroke="black" strokeWidth="1" strokeDasharray="4 4" />
                         <line x1="20" y1="0" x2="20" y2="40" stroke="black" strokeWidth="1" />
                         <line x1="0" y1="20" x2="40" y2="20" stroke="black" strokeWidth="1" />
                     </svg>
                     <div className="flex flex-col">
-                        <span className="text-lg font-coolvetica-condensed tracking-widest font-bold">SCALE 1:1</span>
-                        <span className="text-lg font-coolvetica-condensed text-black/50 tracking-widest">DRAFTING ENGINE</span>
+                        <span className="text-base font-coolvetica tracking-widest font-bold text-black/80">SCALE 1:1</span>
+                        <span className="text-[12px] font-coolvetica text-black/60 tracking-widest">DRAFTING ENGINE</span>
                     </div>
                 </div>
 
                 {/* Bottom Right Box */}
                 <div className="absolute bottom-12 right-12 hidden md:block border border-black/10 bg-white/50 backdrop-blur-sm p-4">
-                    <div className="flex justify-between items-center w-32 border-b border-black/10 pb-2 mb-2">
-                        <span className="text-lg tracking-widest font-coolvetica-condensed text-black/40">CPU</span>
-                        <span className="text-lg tracking-widest font-coolvetica-condensed font-bold">12%</span>
+                    <div className="flex justify-between items-center w-44 border-b border-black/10 pb-2 mb-2">
+                        <span className="text-base tracking-widest font-coolvetica text-black/80">CPU</span>
+                        <span className="text-[12px] tracking-widest font-coolvetica font-semibold text-black/60">12%</span>
                     </div>
-                    <div className="flex justify-between items-center w-32">
-                        <span className="text-lg tracking-widest font-coolvetica-condensed text-black/40">MEM</span>
-                        <span className="text-lg tracking-widest font-coolvetica-condensed font-bold">OPTIMIZED</span>
+                    <div className="flex justify-between items-center w-44">
+                        <span className="text-base tracking-widest font-coolvetica text-black/80">MEM</span>
+                        <span className="text-[12px] tracking-widest font-coolvetica font-semibold text-black/60">OPTIMIZED</span>
                     </div>
                 </div>
 
@@ -170,16 +205,31 @@ const Hero = () => {
                     {/* Measurement Line Above Text */}
                     <div className="absolute -top-12 left-0 w-full hidden md:flex justify-between items-end border-b border-black/20 pb-2 px-10">
                         <span className="h-2 w-[1px] bg-black/30"></span>
-                        <span className="text-[10px] font-coolvetica-condensed text-black/40 tracking-widest">1200mm</span>
+                        <span className="text-[10px] font-coolvetica text-black/40 tracking-widest">1200mm</span>
                         <span className="h-2 w-[1px] bg-black/30"></span>
                     </div>
 
-                    <video src={currentVideo.video} autoPlay loop={false} muted className={`w-full h-full object-cover ${currentVideo.id === 2 ? "-translate-y-[14rem]" : ""}`}></video>
+                    <video
+                        key={currentVideo.id}
+                        ref={videoRef}
+                        loop={false}
+                        muted
+                        playsInline
+                        disablePictureInPicture
+                        disableRemotePlayback
+                        onContextMenu={(e) => e.preventDefault()}
+                        className={`w-full h-full object-cover ${currentVideo.id === 2 ? "-translate-y-[14rem]" : ""}`}
+                    >
+                        {/* Prefer MP4 (potentially HEVC) for Safari/iOS */}
+                        {currentVideo.sources.mp4 && <source src={currentVideo.sources.mp4} type='video/mp4; codecs="hvc1"' />}
+                        {/* Fallback to WebM for Chrome/FF */}
+                        <source src={currentVideo.sources.webm} type="video/webm" />
+                    </video>
                 </div>
 
                 {/* Sub-headline */}
                 <div className={isAligned ? "mt-8 md:mt-2 overflow-hidden duration-500" : "mt-8 md:mt-2 overflow-hidden opacity-0 duration-500"}>
-                    <p className="text-sm md:text-lg font-coolvetica-condensed text-black/60 tracking-widest uppercase animate-fade-in-up animation-delay-500">
+                    <p className="text-sm md:text-lg font-coolvetica text-black/60 tracking-widest uppercase animate-fade-in-up animation-delay-500">
                         The Drafting Engine
                     </p>
                 </div>

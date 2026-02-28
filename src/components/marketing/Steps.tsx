@@ -4,41 +4,37 @@ import { CircleCursor } from "../ui/Cursors";
 const steps = [
   {
     id: "01",
-    title: "DISCOVER AND DEFINE",
+    tag: "Scalable",
+    title: "Upward, On Demand",
     description:
-      "We begin with deep listening understanding your vision, goals, and audience to build a solid foundation.",
+      "Add drafting power without adding payroll, desks, or recruitment cycles. Built to handle peaks, protect margins, and remove bottlenecks.",
     color: "bg-brandyellow", // Yellow
     textColor: "text-black",
     rotation: "-rotate-3",
   },
   {
     id: "02",
-    title: "PLAN AND STRATEGIZE",
+    tag: "Cost Efficient",
+    title: "Budget-Friendly Brilliance",
     description:
-      "Our team maps out the user journey and technical architecture to ensure seamless execution.",
+      "High-level production support at a fraction of full in-house operational cost so you can Spend where it matters, ideas, clients and growth.",
     color: "bg-brandorange", // Orange
     textColor: "text-black",
     rotation: "rotate-2",
   },
   {
     id: "03",
-    title: "DESIGN AND DEVELOP",
+    tag: "Effective",
+    title: "Output That Outperforms",
     description:
-      "We bring ideas to life with stunning visuals and robust code, focusing on performance and scalability.",
+      "Streamlined production that keeps projects progressing, not stalling while ensuring Smart coordination that eliminates bottlenecks before they grow.",
     color: "bg-brandpink", // Pink
     textColor: "text-white",
     rotation: "-rotate-2",
   },
-  {
-    id: "04",
-    title: "DELIVER AND SUPPORT",
-    description:
-      "After rigorous testing, we launch your product and provide ongoing support to ensure long-term success.",
-    color: "bg-brandturquoise", // Turquoise/Blue
-    textColor: "text-black",
-    rotation: "rotate-3",
-  },
 ];
+
+
 
 const Steps = () => {
   return (
@@ -46,30 +42,10 @@ const Steps = () => {
       <div className="relative w-full bg-white">
         <CircleCursor isActive={true} />
 
-        <div className="grid grid-cols-1 xl:grid-cols-[60%,1fr] w-full">
-          {/* Left Side - Sticky Content */}
-          <div className="w-full h-[50vh] xl:h-screen sticky top-0 flex flex-col justify-between p-8 xl:p-16 border-r border-gray-100 bg-white z-10">
-            <div className="pt-8">
-              <h2 className="text-8xl xl:text-[10rem] font-maus font-black leading-none tracking-tighter uppercase mb-8 relative z-20">
-                STEP
-              </h2>
-            </div>
-
-            <div className="w-full h-full flex-1 absolute right-0 top-8 z-10">
-              <video
-                src="/images/marketing/step-video.mp4"
-                className="w-full h-full aspect-square object-contain 2xl:object-cover 2xl:translate-x-1/3"
-                autoPlay
-                muted
-                loop
-                playsInline
-              />
-            </div>
-          </div>
-
-          {/* Right Side - Scrolling Cards */}
+        <div className="xl:grid flex flex-col-reverse xl:grid-cols-[1fr,60%] w-full">
+          {/* Left Side - Scrolling Cards */}
           <div className="w-full relative px-8 xl:px-16 py-12 xl:py-24 z-20">
-            <div className="flex flex-col gap-24 xl:gap-32 items-center xl:items-end">
+            <div className="flex flex-col gap-24 xl:gap-32 items-center xl:items-start">
               {steps.map((step, index) => (
                 <div
                   key={step.id}
@@ -81,17 +57,17 @@ const Steps = () => {
                   <div
                     className={`relative max-w-lg ${step.textColor} mx-auto`}
                   >
-                    <div className="flex justify-between gap-4">
-                      <span className="inline-block px-4 py-1.5 rounded-full border-2 border-current text-sm font-bold tracking-wider mb-12 uppercase h-fit">
-                        STEP
+                    <div className="flex flex-col justify-between gap-4">
+                      <span className="inline-block w-fit px-4 py-1.5 rounded-full border-2 border-current text-sm font-bold tracking-wider mb-12 uppercase h-fit">
+                        {step.tag}
                       </span>
 
-                      <h3 className="text-[8rem] xl:text-[12rem] font-maus font-black leading-none tracking-tighter mb-4 xl:-ml-2">
+                      <h3 className="text-[6rem] xl:text-[10rem] font-maus font-black leading-none tracking-tighter mb-4 xl:-ml-2">
                         {step.id}
                       </h3>
                     </div>
 
-                    <h4 className="text-3xl xl:text-5xl font-coolvetica font-bold uppercase mb-8 leading-tight max-w-sm">
+                    <h4 className="text-3xl xl:text-4xl font-coolvetica font-bold uppercase mb-8 leading-tight max-w-md">
                       {step.title}
                     </h4>
 
@@ -101,6 +77,25 @@ const Steps = () => {
                   </div>
                 </div>
               ))}
+            </div>
+          </div>
+
+          <div className="w-full h-[50vh] xl:h-screen sticky top-0 flex flex-col justify-center items-center p-8 xl:p-16 bg-white z-10 overflow-hidden">
+            <div className="w-full h-full absolute inset-0 z-0 opacity-40">
+              <video
+                src="/images/marketing/step-video.mp4"
+                className="w-full h-full object-cover"
+                autoPlay
+                muted
+                loop
+                playsInline
+              />
+            </div>
+
+            <div className="relative z-20 pointer-events-none mix-blend-difference flex items-center justify-center h-full w-full">
+              <h2 className="text-8xl xl:text-[10rem] font-maus font-black leading-none tracking-tighter uppercase text-center text-white">
+                BUILT TO BE
+              </h2>
             </div>
           </div>
         </div>

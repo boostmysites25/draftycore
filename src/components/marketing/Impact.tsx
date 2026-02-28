@@ -10,6 +10,9 @@ import {
   FaShieldAlt,
   FaRulerCombined,
   FaUsers,
+  FaFrownOpen,
+  FaFrown,
+  FaGrimace,
 } from "react-icons/fa";
 import gsap from "gsap";
 import { ScrollTrigger } from "gsap/ScrollTrigger";
@@ -27,35 +30,38 @@ gsap.registerPlugin(ScrollTrigger);
 
 const items = [
   {
-    id: "precision",
-    title: "PRECISION ACCURACY",
-    icon: <FaStar />,
+    id: "speed",
+    capsuleText: "Deadline Crunch",
+    title: "Speed vs. Standards",
+    icon: <FaClock />,
     description:
-      "Our drafting teams maintain the highest standards of accuracy, ensuring every line and dimension meets strict Australian engineering protocols.",
+      "Deadlines stay tight, but quality can’t drop and you’re expected to deliver both speed and design integrity. You’re constantly racing the clock without compromising the craft.",
     image:
-      "https://images.unsplash.com/photo-1581094794329-c8112a89af12?q=80&w=2070&auto=format&fit=crop",
+      "https://images.unsplash.com/photo-1504917595217-d4dc5ebe6122?q=80&w=2070&auto=format&fit=crop",
     activeColor: "bg-brandturquoise",
     textColor: "text-brandturquoise",
     cardTextColor: "text-black",
   },
   {
-    id: "turnaround",
-    title: "FAST TURNAROUND",
+    id: "overhead",
+    capsuleText: "Payroll Pressure",
+    title: "Overhead Overload",
     icon: <FaArrowDown />,
     description:
-      "We understand that time is money. Our workflow is optimized to deliver detailed shop drawings significantly faster than traditional methods.",
+      "Hiring full-time staff comes with overhead costs that don’t shrink when your workload does. You carry fixed payroll pressure even when projects fluctuate.",
     image:
-      "https://images.unsplash.com/photo-1504917595217-d4dc5ebe6122?q=80&w=2070&auto=format&fit=crop",
+      "https://images.unsplash.com/photo-1554224155-8d04cb21cd6c?q=80&w=2070&auto=format&fit=crop",
     activeColor: "bg-brandorange",
     textColor: "text-brandorange",
     cardTextColor: "text-white",
   },
   {
-    id: "scalable",
-    title: "SCALABLE TEAMS",
-    icon: <FaGlobe />,
+    id: "capacity",
+    capsuleText: "Payroll Pressure",
+    title: "Capacity Rollercoaster",
+    icon: <FaRulerCombined />,
     description:
-      "Scale your drafting capacity up or down instantly. We provide the resources you need, exactly when you need them.",
+      "Unpredictable workloads make it hard for you to scale confidently. You’re either stretched too thin or sitting on unused capacity.",
     image:
       "https://images.unsplash.com/photo-1522071820081-009f0129c71c?q=80&w=2070&auto=format&fit=crop",
     activeColor: "bg-brandpink",
@@ -63,83 +69,25 @@ const items = [
     cardTextColor: "text-white",
   },
   {
-    id: "cost",
-    title: "COST EFFECTIVE",
-    icon: <FaSmile />,
-    description:
-      "Reduce overheads without compromising quality. Our remote drafting model offers significant cost savings for design firms.",
-    image:
-      "https://images.unsplash.com/photo-1554224155-8d04cb21cd6c?q=80&w=2070&auto=format&fit=crop",
-    activeColor: "bg-brandyellow",
-    textColor: "text-brandyellow",
-    cardTextColor: "text-black",
-  },
-  {
-    id: "technology",
-    title: "LATEST TECH",
+    id: "design",
+    capsuleText: "Creative clog",
+    title: "Design Trap",
     icon: <FaCog />,
     description:
-      "We utilize the latest BIM and CAD software to ensure compatibility and integration with your existing project workflows.",
+      "Your design teams get stuck doing repetitive drafting work instead of real design thinking. You’re paying for creativity, but using it on production.",
     image:
-      "https://images.unsplash.com/photo-1550751827-4bd374c3f58b?q=80&w=2070&auto=format&fit=crop",
-    activeColor: "bg-brandlimegreen",
-    textColor: "text-brandlimegreen",
-    cardTextColor: "text-black",
-  },
-  {
-    id: "dedicated",
-    title: "DEDICATED SUPPORT",
-    icon: <FaHeart />,
-    description:
-      "You get a dedicated project manager who ensures clear communication and timely delivery throughout the project lifecycle.",
-    image:
-      "https://images.unsplash.com/photo-1519389950473-47ba0277781c?q=80&w=2070&auto=format&fit=crop",
-    activeColor: "bg-brandturquoise",
-    textColor: "text-brandturquoise",
-    cardTextColor: "text-black",
-  },
-  {
-    id: "availability",
-    title: "24/7 AVAILABILITY",
-    icon: <FaClock />,
-    description:
-      "Our global team structure allows for round-the-clock progress on your projects, minimizing downtime.",
-    image:
-      "https://images.unsplash.com/photo-1486312338219-ce68d2c6f44d?q=80&w=2070&auto=format&fit=crop",
-    activeColor: "bg-brandorange",
-    textColor: "text-brandorange",
-    cardTextColor: "text-white",
-  },
-  {
-    id: "security",
-    title: "SECURE DATA",
-    icon: <FaShieldAlt />,
-    description:
-      "We employ enterprise-grade security protocols to protect your intellectual property and project data at all times.",
-    image:
-      "https://images.unsplash.com/photo-1563986768609-322da13575f3?q=80&w=1000&auto=format&fit=crop",
-    activeColor: "bg-brandpink",
-    textColor: "text-brandpink",
-    cardTextColor: "text-white",
-  },
-  {
-    id: "custom",
-    title: "CUSTOM WORKFLOWS",
-    icon: <FaRulerCombined />,
-    description:
-      "We adapt our drafting standards and processes to match your firm's specific requirements and templates.",
-    image:
-      "https://images.unsplash.com/photo-1503387762-592deb58ef4e?q=80&w=2070&auto=format&fit=crop",
+      "https://images.unsplash.com/photo-1581094794329-c8112a89af12?q=80&w=2070&auto=format&fit=crop",
     activeColor: "bg-brandyellow",
     textColor: "text-brandyellow",
     cardTextColor: "text-black",
   },
   {
-    id: "experts",
-    title: "INDUSTRY EXPERTS",
+    id: "talent",
+    capsuleText: "Talent Drain",
+    title: "Talent Tug-of-War",
     icon: <FaUsers />,
     description:
-      "Our drafters are not just CAD operators; they are engineering professionals with deep domain knowledge.",
+      "Skilled drafters are hard to find and harder to retain. You invest in training, only to risk losing that expertise.",
     image:
       "https://images.unsplash.com/photo-1600880292203-757bb62b4baf?q=80&w=2070&auto=format&fit=crop",
     activeColor: "bg-brandlimegreen",
@@ -156,7 +104,7 @@ const Impact = () => {
   const activeIndexRef = useRef(0);
 
   // Fixed height for each tab item
-  const ITEM_HEIGHT = 80;
+  const ITEM_HEIGHT = 60;
 
   useEffect(() => {
     const ctx = gsap.context(() => {
@@ -211,20 +159,43 @@ const Impact = () => {
   return (
     <section
       ref={containerRef}
-      className="w-full h-screen bg-white relative overflow-hidden flex items-center z-10"
+      className="w-full h-screen bg-[#F5F5F0] relative overflow-hidden flex items-center z-10"
     >
       <CircleCursor isActive={true} />
       <ConnectiveTech />
 
-      <div className="w-full max-w-[90rem] mx-auto px-4 sm:px-6 xl:px-8 flex h-full items-center gap-8">
+      {/* Background Decoration (Subtle Annoyed Faces) */}
+      <div className="xl:block hidden absolute top-0 left-0 w-full h-full pointer-events-none">
+        <div className="mt-20 flex justify-end">
+          <div className="animate-[spin_4s_linear_infinite] opacity-50"><FaFrown size={80} className="text-brandorange" /></div>
+        </div>
+        <div className="absolute z-[2] top-32 left-72 animate-[spin_6s_linear_infinite] opacity-50">
+          <FaFrownOpen size={100} className="text-brandlimegreen" />
+        </div>
+        <div className="absolute z-[2] bottom-20 left-1/3 animate-[bounce_5s_linear_infinite] opacity-30">
+          <FaGrimace size={120} className="text-brandpink" />
+        </div>
+      </div>
+
+      {/* Header */}
+      {/* <div className="absolute top-12 xl:top-24 left-8 xl:left-16 z-20 pointer-events-none">
+        <h2 className="text-5xl xl:text-7xl font-maus font-black uppercase tracking-tighter text-black/90">
+          Challenges you face
+        </h2>
+      </div> */}
+
+      <div className="w-full max-w-[90rem] mx-auto px-4 sm:px-6 xl:px-8 mt-24 xl:mt-14 flex h-full items-center gap-8">
         {/* Left Side - Scrolling Tabs */}
         <div
           ref={leftContainerRef}
-          className="hidden xl:flex w-1/2 h-[80vh] relative flex-col overflow-hidden"
+          className="hidden xl:flex w-1/2 h-[90vh] relative flex-col gap-7 overflow-hidden"
         >
+          <h2 className="text-5xl xl:text-7xl font-maus font-black uppercase tracking-tighter text-black/90">
+            Challenges you face
+          </h2>
           <div className="relative w-full">
             <div
-              className="absolute left-0 w-full transition-transform duration-500 ease-out flex flex-col items-start top-0"
+              className="absolute left-0 w-full transition-transform duration-500 ease-out flex flex-col items-start top-0 gap-5"
               style={{
                 transform: getListTransform(),
               }}
@@ -237,23 +208,22 @@ const Impact = () => {
                 >
                   <button
                     className={`
-                        group flex items-center gap-6 px-8 py-4 rounded-full transition-all duration-300 w-fit text-left
-                        ${
-                          index === activeIndex
-                            ? `${item.activeColor} shadow-xl scale-110 translate-x-4 z-10`
-                            : "bg-transparent border border-black/10 text-black/60 scale-95 hover:bg-black/5"
-                        }
+                        group flex w-[300px] xl:w-[400px] items-center gap-6 px-6 py-4 rounded-[2rem] transition-all duration-300 text-left
+                        ${index === activeIndex
+                        ? `${item.activeColor} shadow-xl scale-110 translate-x-4 z-10`
+                        : "bg-white border border-black/10 text-black/60 hover:bg-black/5"
+                      }
                     `}
                   >
                     <span
-                      className={`text-2xl ${index === activeIndex ? "text-white" : "text-current"}`}
+                      className={`text-3xl ${index === activeIndex ? "text-white" : "text-current"}`}
                     >
                       {item.icon}
                     </span>
                     <span
-                      className={`font-coolvetica font-bold tracking-wide uppercase text-xl ${index === activeIndex ? "text-white" : "text-current"}`}
+                      className={`font-coolvetica font-bold tracking-wide uppercase text-2xl ${index === activeIndex ? "text-white" : "text-current"}`}
                     >
-                      {item.title}
+                      {item.capsuleText}
                     </span>
                   </button>
                 </div>
@@ -263,7 +233,10 @@ const Impact = () => {
         </div>
 
         {/* Right Side - Creative 3D Slider */}
-        <div className="w-full xl:w-1/2 h-[80vh] flex items-center justify-center relative">
+        <div className="w-full xl:w-1/2 h-[90vh] xl:h-[80vh] flex flex-col gap-5 items-center justify-center relative">
+          <h2 className="xl:hidden flex text-5xl xl:text-7xl font-maus font-black uppercase tracking-tighter text-black/90 text-center">
+            Challenges you face
+          </h2>
           <Swiper
             effect={"creative"}
             grabCursor={false}
@@ -313,7 +286,7 @@ const Impact = () => {
                       <span className={`${item.textColor} text-lg`}>
                         {item.icon}
                       </span>{" "}
-                      {item.title}
+                      {item.capsuleText}
                     </div>
                   </div>
 

@@ -88,11 +88,12 @@ const WhoWeAre = () => {
   });
 
   return (
-    <section className="w-full min-h-screen grid grid-cols-1 xl:grid-cols-[40%,1fr] bg-white relative">
+    // xl:grid-cols-[40%,1fr] 
+    <section className="w-full min-h-screen grid grid-cols-1 bg-white relative mt-10">
       <CircleCursor isActive={true} />
 
       {/* Left Side - Image */}
-      <div className="w-full relative min-h-[50vh] xl:min-h-screen bg-white z-10">
+      {/* <div className="w-full relative min-h-[50vh] xl:min-h-screen bg-white z-10">
         <div className="absolute inset-0 flex items-center justify-center">
           <img
             src="/images/marketing/who-we-are.webp"
@@ -101,19 +102,20 @@ const WhoWeAre = () => {
           />
           <div className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-[80%] h-[80%] bg-brandturquoise/20 blur-[100px] rounded-full pointer-events-none"></div>
         </div>
-      </div>
+      </div> */}
 
       {/* Right Side - Content Container */}
-      <div className="w-full bg-white relative flex flex-col p-8 md:p-12 xl:p-20 rounded-tl-[3rem] xl:rounded-tl-[5rem] -mt-10 xl:mt-0 xl:-ml-[4.5rem] z-20 shadow-[-20px_0_50px_rgba(0,0,0,0.1)] md:pb-40 border-l border-black/5">
+      {/* <div className="w-full bg-white relative flex flex-col p-8 md:p-12 xl:p-20 rounded-tl-[3rem] xl:rounded-tl-[5rem] -mt-10 xl:mt-0 xl:-ml-[4.5rem] z-20 shadow-[-20px_0_50px_rgba(0,0,0,0.1)] md:pb-40 border-l border-black/5"> */}
+      <div className="w-full bg-white relative flex flex-col p-8 md:p-12 xl:p-20 rounded-tl-[3rem] xl:rounded-tl-[5rem] z-20 shadow-[-20px_0_50px_rgba(0,0,0,0.1)] md:pb-40 border-l border-black/5">
         {/* Top Content */}
-        <div className="flex flex-col justify-center w-full">
-          <h3 className="text-4xl xl:text-5xl font-medium mb-12 bg-gradient-to-br from-brandturquoise via-brandpink to-brandorange bg-clip-text text-transparent inline-block font-coolvetica pb-2">
-            DraftyCo
+        <div className="flex flex-col mx-auto text-center justify-center w-full">
+          <h3 className="text-4xl xl:text-7xl font-medium mb-4 bg-gradient-to-br from-brandturquoise via-brandpink to-brandorange bg-clip-text text-transparent inline-block font-maus pb-2">
+            ABOUT DRAFTY 
           </h3>
 
-          <p className="text-black/80 text-xl xl:text-2xl leading-relaxed mb-16 max-w-2xl font-coolvetica tracking-wide">
-            Your behind the scenes drafting powerhouse delivering precision,
-            speed, and scale to elevate design firms across Australia.
+          <p className="text-black/80 text-xl xl:text-2xl leading-relaxed mb-16 max-w-6xl font-coolvetica tracking-wide mx-auto text-center">
+            Your behind the scenes drafting powerhouse delivering precision, speed, and scale to elevate design firms across Australia. We take care of the detailing so your designers can focus on design. Clean, quick, and studio-grade. <br />
+            Our custom-built platform makes it ridiculously easy to brief, review, and deliver drawings, no email chains, no chaos. Just smooth, scalable drafting support that fits right into your workflow while using your existing tools like AutoCA, Revit,  ArchiCAD + Tekla
           </p>
 
           <div className="mb-20 -mx-8 md:-mx-12 xl:-mx-[5.1rem] overflow-hidden">
@@ -148,11 +150,11 @@ const WhoWeAre = () => {
       <div className="absolute bottom-8 right-8 md:bottom-12 md:right-12 xl:bottom-16 xl:right-16 z-[100] flex items-end gap-4 md:gap-8 pointer-events-none">
         <h2 className="text-6xl md:text-7xl xl:text-8xl font-maus font-black tracking-tighter leading-none uppercase flex gap-4 md:gap-8 relative text-black pointer-events-auto">
           <span className="flex">
-            {"WHO".split("").map((char, i) => (
-              <TickerLetter key={`who-${i}`} char={char} />
+            {"DRAFTY".split("").map((char, i) => (
+              <TickerLetter key={`drafty-${i}`} char={char} />
             ))}
           </span>
-          <span className="flex">
+          {/* <span className="flex">
             {"WE".split("").map((char, i) => (
               <TickerLetter key={`we-${i}`} char={char} />
             ))}
@@ -161,7 +163,7 @@ const WhoWeAre = () => {
             {"ARE".split("").map((char, i) => (
               <TickerLetter key={`are-${i}`} char={char} />
             ))}
-          </span>
+          </span> */}
         </h2>
         {/* <div className="animate-bounce h-fit w-fit">
           <FaArrowRight className="w-12 h-12 md:w-20 md:h-20 text-yellow-400 mb-2 md:mb-4 shrink-0 rotate-45 pointer-events-auto" />

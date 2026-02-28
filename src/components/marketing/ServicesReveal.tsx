@@ -66,7 +66,7 @@ const ServicesReveal = () => {
   return (
       <section
         ref={containerRef}
-        className="w-full h-screen bg-[#111111] flex items-center justify-center overflow-hidden relative z-50"
+        className="w-full h-screen bg-brandyellow brightness-[.95] flex items-center justify-center overflow-hidden relative z-50"
       >
         <div className="relative z-10 text-center px-4">
           <h2

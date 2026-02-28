@@ -42,8 +42,8 @@ const Navbar = () => {
                 setIsScrolled(false)
             }
 
-            // Visibility Logic (Hide on scroll down, Show on scroll up)
-            if (currentScrollY > lastScrollY.current && currentScrollY > 100) {
+            // Visibility Logic (Show only at the top)
+            if (currentScrollY > 50) {
                 setShowNavbar(false)
             } else {
                 setShowNavbar(true)
@@ -136,7 +136,10 @@ const Navbar = () => {
 
     return (
         <>
-            <nav className={`fixed w-screen max-w-[100vw] overflow-x-hidden top-0 left-0 right-0 z-50 transition-all duration-300 ${isScrolled ? "backdrop-blur-md bg-white/5" : ""} ${showNavbar ? "translate-y-0" : "-translate-y-full"}`}>
+            <nav className={`w-screen max-w-[100vw] overflow-x-hidden top-0 left-0 right-0 z-50 transition-all duration-300 fixed
+                  ${isScrolled ? "backdrop-blur-md bg-white/5" : ""} ${showNavbar ? "translate-y-0" : "-translate-y-full"}
+                 `}
+            >
                 <div className="wrapper py-1">
                     <div className="grid grid-cols-2 md:grid-cols-3 gap-10 items-center">
                         {/* Logo Section */}

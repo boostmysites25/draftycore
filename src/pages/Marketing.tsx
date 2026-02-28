@@ -1,7 +1,7 @@
 import { lazy } from "react";
 import SmoothScroll from "../components/common/SmoothScroll";
 
-const Hero = lazy(() => import("../components/home/Hero"));
+const Hero = lazy(() => import("../components/marketing/Hero"));
 const WhoWeAre = lazy(() => import("../components/marketing/WhoWeAre"));
 const Steps = lazy(() => import("../components/marketing/Steps"));
 const ServicesReveal = lazy(() => import("../components/marketing/ServicesReveal"));

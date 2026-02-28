@@ -11,6 +11,7 @@ interface FallingTextProps {
     mouseConstraintStiffness?: number;
     fontSize?: string;
     className?: string;
+    emojis?: boolean;
 }
 
 const BRAND_COLORS = [
@@ -30,7 +31,8 @@ const FallingText: React.FC<FallingTextProps> = ({
     gravity = 1,
     mouseConstraintStiffness = 0.2,
     fontSize = '1rem',
-    className = ''
+    className = '',
+    emojis = false
 }) => {
     const containerRef = useRef<HTMLDivElement | null>(null);
     const textRef = useRef<HTMLDivElement | null>(null);
@@ -50,8 +52,8 @@ const FallingText: React.FC<FallingTextProps> = ({
                 const color = BRAND_COLORS[index % BRAND_COLORS.length];
 
                 return `<span
-          class="inline-block mx-2 select-none px-6 py-3 rounded-full text-white font-medium shadow-lg text-nowrap font-coolvetica tracking-wide text-xl md:text-3xl"
-          style="background-color: ${color};"
+          class="inline-block mx-2 select-none rounded-full text-white font-medium text-nowrap font-coolvetica tracking-wide ${emojis ? 'p-2 aspect-square' : 'text-xl md:text-3xl shadow-lg px-6 py-3'}"
+          style="background-color: ${emojis ? 'transparent ' : `${color}`}; ${emojis ? `font-size: ${fontSize}; line-height: 1;` : ''}"
         >
           ${word}
         </span>`;
@@ -200,13 +202,13 @@ const FallingText: React.FC<FallingTextProps> = ({
     return (
         <div
             ref={containerRef}
-            className={`relative z-[1] w-full h-full min-h-[65vh] cursor-pointer text-center pt-8 overflow-hidden touch-pan-y ${className} bg-[#F5F5F0]`}
+            className={`relative z-[1] w-full h-full min-h-[65vh] cursor-pointer text-center pt-8 overflow-hidden touch-pan-y ${className}`}
             onClick={trigger === 'click' ? handleTrigger : undefined}
             onMouseEnter={trigger === 'hover' ? handleTrigger : undefined}
         >
             <div
                 ref={textRef}
-                className="inline-block sm:text-xl !text-base"
+                className="inline-block sm:text-xl"
                 style={{
                     fontSize,
                     lineHeight: 1.4
