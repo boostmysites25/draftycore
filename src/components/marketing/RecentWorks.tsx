@@ -111,7 +111,7 @@ const RecentWorks = () => {
       <div className="absolute inset-0 flex items-center justify-center z-0 pointer-events-none">
         <h2
           ref={titleRef}
-          className="text-[7vw] md:text-[9vw] font-maus font-bold uppercase tracking-tighter text-black leading-none text-center select-none"
+          className="text-[10vw] md:text-[9vw] font-maus font-bold uppercase tracking-tighter text-black leading-none text-center select-none px-8"
         >
           How we cater to different Firm Sizes
         </h2>

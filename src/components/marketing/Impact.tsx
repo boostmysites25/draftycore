@@ -154,7 +154,7 @@ const Impact = () => {
   return (
     <section
       ref={containerRef}
-      className="w-full h-screen bg-[#F5F5F0] relative overflow-hidden flex items-center z-10"
+      className="w-full h-screen bg-[#F5F5F0] relative overflow-hidden flex items-center z-10 pb-28 xl:pb-0"
     >
       <CircleCursor isActive={true} />
       <ConnectiveTech />

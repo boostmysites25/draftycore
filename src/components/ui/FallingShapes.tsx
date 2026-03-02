@@ -162,8 +162,7 @@ export const FallingShapes = ({ triggerDropIn = false }: FallingShapesProps) => 
     return (
         <div
             ref={containerRef}
-            className="absolute inset-0 w-full h-full z-10 overflow-hidden"
-            style={{ touchAction: 'none' }}
+            className="absolute inset-0 w-full h-full z-10 overflow-hidden pointer-events-none"
         >
             {SHAPES.map((shape) => (
                 <div
