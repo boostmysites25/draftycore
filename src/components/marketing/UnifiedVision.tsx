@@ -9,56 +9,56 @@ const cards = [
   {
     id: 1,
     title: "Planning",
-    image: "https://images.unsplash.com/photo-1503387762-592deb58ef4e?q=80&w=2070&auto=format&fit=crop",
+    image: "/images/marketing/unified/1.jpeg",
     position: "top-left",
     start: { x: "-60vw", y: "-60vh" },
     color: "bg-brandturquoise",
-    radius: "rounded-tl-[2rem]"
+    radius: "rounded-[2rem]"
   },
   {
     id: 5,
-    title: "Strategy",
-    image: "https://images.unsplash.com/photo-1552664730-d307ca884978?q=80&w=2070&auto=format&fit=crop",
+    title: "",
+    image: "/images/marketing/unified/2.jpeg",
     position: "top-center",
     start: { x: "0vw", y: "-80vh" },
     color: "bg-brandpurple",
-    radius: "rounded-t-[2rem]"
+    radius: "rounded-[2rem]"
   },
   {
     id: 2,
     title: "Design",
-    image: "https://images.unsplash.com/photo-1581094794329-c8112a89af12?q=80&w=2070&auto=format&fit=crop",
+    image: "/images/marketing/unified/3.jpeg",
     position: "top-right",
     start: { x: "60vw", y: "-60vh" },
     color: "bg-brandpink",
-    radius: "rounded-tr-[2rem]"
+    radius: "rounded-[2rem]"
   },
   {
     id: 3,
-    title: "Engineering",
-    image: "https://images.unsplash.com/photo-1581092160562-40aa08e78837?q=80&w=2070&auto=format&fit=crop",
+    title: "",
+    image: "/images/marketing/unified/4.jpeg",
     position: "bottom-left",
     start: { x: "-60vw", y: "60vh" },
     color: "bg-brandorange",
-    radius: "rounded-bl-[2rem]"
+    radius: "rounded-[2rem]"
   },
   {
     id: 6,
     title: "Launch",
-    image: "https://images.unsplash.com/photo-1460925895917-afdab827c52f?q=80&w=2015&auto=format&fit=crop",
+    image: "/images/marketing/unified/5.jpeg",
     position: "bottom-center",
     start: { x: "0vw", y: "80vh" },
     color: "bg-brandgreen",
-    radius: "rounded-b-[2rem]"
+    radius: "rounded-[2rem]"
   },
   {
     id: 4,
-    title: "Execution",
-    image: "https://images.unsplash.com/photo-1541888946425-d81bb19240f5?q=80&w=2070&auto=format&fit=crop",
+    title: "",
+    image: "/images/marketing/unified/6.jpeg",
     position: "bottom-right",
     start: { x: "60vw", y: "60vh" },
     color: "bg-brandyellow",
-    radius: "rounded-br-[2rem]"
+    radius: "rounded-[2rem]"
   }
 ];
 
@@ -109,15 +109,15 @@ const UnifiedVision = () => {
       });
 
       // Fade in the wrapper shadow/background at the end to unify them
-      tl.fromTo(wrapperRef.current,
-        { boxShadow: "none", backgroundColor: "transparent" },
-        {
-          boxShadow: "0 25px 50px -12px rgba(0, 0, 0, 0.25)",
-          backgroundColor: "white",
-          duration: 0.2
-        },
-        "-=0.2"
-      );
+      // tl.fromTo(wrapperRef.current,
+      //   { boxShadow: "none", backgroundColor: "transparent" },
+      //   {
+      //     boxShadow: "0 25px 50px -12px rgba(0, 0, 0, 0.25)",
+      //     backgroundColor: "white",
+      //     duration: 0.2
+      //   },
+      //   "-=0.2"
+      // );
 
       // Scale up the unified card slightly at the end
       tl.to(wrapperRef.current, {
@@ -159,16 +159,16 @@ const UnifiedVision = () => {
             ref={el => cardRefs.current[index] = el}
             className={`relative w-full h-full overflow-hidden group ${card.radius}`}
           >
-            <div className={`${card.radius} absolute inset-0 bg-black/10 group-hover:bg-transparent transition-colors duration-500 z-10 ${card.color}`}></div>
+            {/* <div className={`${card.radius} absolute inset-0 bg-black/10 group-hover:bg-transparent transition-colors duration-500 z-10 ${card.color}`}></div> */}
             <img
               src={card.image}
               alt={card.title}
-              className="w-full h-full object-cover scale-110 group-hover:scale-100 transition-transform duration-700"
+              className="w-full h-full object-cover scale-110 group-hover:scale-100 transition-all duration-700 group-hover:backdrop-blur-[2px] group-hover:brightness-75"
             />
 
             {/* Overlay Content */}
-            <div className="absolute inset-0 flex items-center justify-center opacity-0 group-hover:opacity-100 transition-opacity duration-300 z-20 bg-black/40 backdrop-blur-[2px]">
-              <h3 className="text-white font-coolvetica font-bold text-2xl md:text-3xl tracking-wide uppercase">
+            <div className={`${card.radius} absolute inset-0 h-full w-full flex items-center justify-center`}>
+              <h3 className="text-white brightness-90 font-coolvetica font-bold text-2xl md:text-3xl tracking-wide uppercase">
                 {card.title}
               </h3>
             </div>

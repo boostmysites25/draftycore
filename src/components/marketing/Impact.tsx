@@ -1,13 +1,8 @@
 import { useEffect, useRef, useState } from "react";
 import {
-  FaStar,
   FaArrowDown,
-  FaGlobe,
-  FaSmile,
   FaCog,
-  FaHeart,
   FaClock,
-  FaShieldAlt,
   FaRulerCombined,
   FaUsers,
   FaFrownOpen,
@@ -37,7 +32,7 @@ const items = [
     description:
       "Deadlines stay tight, but quality can’t drop and you’re expected to deliver both speed and design integrity. You’re constantly racing the clock without compromising the craft.",
     image:
-      "https://images.unsplash.com/photo-1504917595217-d4dc5ebe6122?q=80&w=2070&auto=format&fit=crop",
+      "/images/marketing/challenges/1.jpeg",
     activeColor: "bg-brandturquoise",
     textColor: "text-brandturquoise",
     cardTextColor: "text-black",
@@ -50,33 +45,33 @@ const items = [
     description:
       "Hiring full-time staff comes with overhead costs that don’t shrink when your workload does. You carry fixed payroll pressure even when projects fluctuate.",
     image:
-      "https://images.unsplash.com/photo-1554224155-8d04cb21cd6c?q=80&w=2070&auto=format&fit=crop",
+      "/images/marketing/challenges/2.jpeg",
     activeColor: "bg-brandorange",
     textColor: "text-brandorange",
     cardTextColor: "text-white",
   },
   {
     id: "capacity",
-    capsuleText: "Payroll Pressure",
+    capsuleText: "Workload Wobble",
     title: "Capacity Rollercoaster",
     icon: <FaRulerCombined />,
     description:
       "Unpredictable workloads make it hard for you to scale confidently. You’re either stretched too thin or sitting on unused capacity.",
     image:
-      "https://images.unsplash.com/photo-1522071820081-009f0129c71c?q=80&w=2070&auto=format&fit=crop",
+      "/images/marketing/challenges/3.jpeg",
     activeColor: "bg-brandpink",
     textColor: "text-brandpink",
     cardTextColor: "text-white",
   },
   {
     id: "design",
-    capsuleText: "Creative clog",
+    capsuleText: "Creative Clog",
     title: "Design Trap",
     icon: <FaCog />,
     description:
       "Your design teams get stuck doing repetitive drafting work instead of real design thinking. You’re paying for creativity, but using it on production.",
     image:
-      "https://images.unsplash.com/photo-1581094794329-c8112a89af12?q=80&w=2070&auto=format&fit=crop",
+      "/images/marketing/challenges/4.jpeg",
     activeColor: "bg-brandyellow",
     textColor: "text-brandyellow",
     cardTextColor: "text-black",
@@ -89,7 +84,7 @@ const items = [
     description:
       "Skilled drafters are hard to find and harder to retain. You invest in training, only to risk losing that expertise.",
     image:
-      "https://images.unsplash.com/photo-1600880292203-757bb62b4baf?q=80&w=2070&auto=format&fit=crop",
+      "/images/marketing/challenges/5.jpeg",
     activeColor: "bg-brandlimegreen",
     textColor: "text-brandlimegreen",
     cardTextColor: "text-black",
@@ -210,7 +205,7 @@ const Impact = () => {
                     className={`
                         group flex w-[300px] xl:w-[400px] items-center gap-6 px-6 py-4 rounded-[2rem] transition-all duration-300 text-left
                         ${index === activeIndex
-                        ? `${item.activeColor} shadow-xl scale-110 translate-x-4 z-10`
+                        ? `${item.activeColor} shadow-xl z-10`
                         : "bg-white border border-black/10 text-black/60 hover:bg-black/5"
                       }
                     `}
@@ -276,11 +271,11 @@ const Impact = () => {
                         `}
                 >
                   {/* Card Image */}
-                  <div className="relative flex-1 rounded-[2.5rem] overflow-hidden mb-6 bg-white/10">
+                  <div className="relative flex-1 rounded-[2.5rem] overflow-hidden mb-6 bg-white">
                     <img
                       src={item.image}
                       alt={item.title}
-                      className="w-full h-full object-cover"
+                      className="w-full h-full object-contain"
                     />
                     <div className="absolute top-6 left-6 bg-white/90 backdrop-blur-md px-6 py-3 rounded-full text-sm font-bold tracking-widest uppercase flex items-center gap-3 shadow-lg">
                       <span className={`${item.textColor} text-lg`}>

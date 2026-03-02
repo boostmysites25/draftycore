@@ -1,7 +1,6 @@
 import { useEffect, useRef } from "react";
 import gsap from "gsap";
 import { ScrollTrigger } from "gsap/ScrollTrigger";
-import { FaArrowRight } from "react-icons/fa";
 import { FeaturedCursor } from "../ui/Cursors";
 
 gsap.registerPlugin(ScrollTrigger);
@@ -9,24 +8,24 @@ gsap.registerPlugin(ScrollTrigger);
 const works = [
   {
     id: 1,
-    title: "Sonder goods",
-    year: "/2026",
+    title: "",
+    year: "",
     image:
       "https://images.unsplash.com/photo-1618005182384-a83a8bd57fbe?q=80&w=2560&auto=format&fit=crop",
     textColor: "text-white",
   },
   {
     id: 2,
-    title: "Urban Future",
-    year: "/2026",
+    title: "",
+    year: "",
     image:
       "https://images.unsplash.com/photo-1480714378408-67cf0d13bc1b?q=80&w=2560&auto=format&fit=crop",
     textColor: "text-white",
   },
   {
     id: 3,
-    title: "Abstract Realm",
-    year: "/2025",
+    title: "",
+    year: "",
     image:
       "https://images.unsplash.com/photo-1550684848-fac1c5b4e853?q=80&w=2560&auto=format&fit=crop",
     textColor: "text-white",
@@ -112,9 +111,9 @@ const RecentWorks = () => {
       <div className="absolute inset-0 flex items-center justify-center z-0 pointer-events-none">
         <h2
           ref={titleRef}
-          className="text-[12vw] md:text-[15vw] font-maus font-bold uppercase tracking-tighter text-black leading-none text-center select-none"
+          className="text-[7vw] md:text-[9vw] font-maus font-bold uppercase tracking-tighter text-black leading-none text-center select-none"
         >
-          RECENT WORK
+          How we cater to different Firm Sizes
         </h2>
       </div>
 
@@ -147,9 +146,9 @@ const RecentWorks = () => {
                 {/* <span className="text-white text-xl font-bold tracking-widest uppercase border border-white/30 px-6 py-2 rounded-full backdrop-blur-md">
                   Project 0{index + 1}
                 </span> */}
-                <button className="w-20 h-20 rounded-full bg-white text-black flex items-center justify-center text-3xl hover:scale-110 transition-transform duration-300">
+                {/* <button className="w-20 h-20 rounded-full bg-white text-black flex items-center justify-center text-3xl hover:scale-110 transition-transform duration-300">
                   <FaArrowRight className="-rotate-45" />
-                </button>
+                </button> */}
               </div>
 
               <div className="flex flex-col md:flex-row justify-between items-end gap-4">

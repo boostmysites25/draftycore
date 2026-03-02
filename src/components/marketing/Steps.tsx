@@ -1,5 +1,7 @@
 import SmoothScroll from "../common/SmoothScroll";
 import { CircleCursor } from "../ui/Cursors";
+import { FallingShapes } from "../ui/FallingShapes";
+import { useState, useEffect, useRef } from "react";
 
 const steps = [
   {
@@ -8,8 +10,8 @@ const steps = [
     title: "Upward, On Demand",
     description:
       "Add drafting power without adding payroll, desks, or recruitment cycles. Built to handle peaks, protect margins, and remove bottlenecks.",
-    color: "bg-brandyellow", // Yellow
-    textColor: "text-black",
+    color: "bg-brandyellow brightness-95", // Yellow
+    textColor: "text-white",
     rotation: "-rotate-3",
   },
   {
@@ -19,7 +21,7 @@ const steps = [
     description:
       "High-level production support at a fraction of full in-house operational cost so you can Spend where it matters, ideas, clients and growth.",
     color: "bg-brandorange", // Orange
-    textColor: "text-black",
+    textColor: "text-white",
     rotation: "rotate-2",
   },
   {
@@ -37,15 +39,45 @@ const steps = [
 
 
 const Steps = () => {
+  const [triggerDropIn, setTriggerDropIn] = useState(false);
+  const containerRef = useRef<HTMLDivElement>(null);
+
+  useEffect(() => {
+    if (!containerRef.current) return;
+    const observer = new IntersectionObserver(
+      ([entry]) => {
+        if (entry.isIntersecting) {
+          setTriggerDropIn(true);
+        }
+      },
+      { threshold: 0.1 }
+    );
+    observer.observe(containerRef.current);
+    return () => observer.disconnect();
+  }, []);
+
+
+
   return (
     <SmoothScroll>
-      <div className="relative w-full bg-white">
+      <div ref={containerRef} className="relative w-full bg-white border-b-4 border-brandyellow">
         <CircleCursor isActive={true} />
+        {/* Grid Pattern Background */}
+        <div
+          className="absolute inset-0 pointer-events-none opacity-20"
+          style={{
+            backgroundImage: `
+                  linear-gradient(to right, #EAB308 1px, transparent 1px),
+                  linear-gradient(to bottom, #EAB308 1px, transparent 1px)
+                `,
+            backgroundSize: '4rem 4rem'
+          }}
+        />
 
         <div className="xl:grid flex flex-col-reverse xl:grid-cols-[1fr,60%] w-full">
           {/* Left Side - Scrolling Cards */}
           <div className="w-full relative px-8 xl:px-16 py-12 xl:py-24 z-20">
-            <div className="flex flex-col gap-24 xl:gap-32 items-center xl:items-start">
+            <div className="flex flex-col gap-24 xl:gap-32 items-center xl:items-start relative z-10">
               {steps.map((step, index) => (
                 <div
                   key={step.id}
@@ -80,20 +112,13 @@ const Steps = () => {
             </div>
           </div>
 
-          <div className="w-full h-[50vh] xl:h-screen sticky top-0 flex flex-col justify-center items-center p-8 xl:p-16 bg-white z-10 overflow-hidden">
-            <div className="w-full h-full absolute inset-0 z-0 opacity-40">
-              <video
-                src="/images/marketing/step-video.mp4"
-                className="w-full h-full object-cover"
-                autoPlay
-                muted
-                loop
-                playsInline
-              />
+          <div className="w-full h-screen xl:h-screen sticky top-0 flex flex-col justify-center items-center p-8 xl:p-16 z-10 overflow-hidden">
+            <div className="w-full h-full absolute inset-0 z-0">
+              <FallingShapes triggerDropIn={triggerDropIn} />
             </div>
 
             <div className="relative z-20 pointer-events-none mix-blend-difference flex items-center justify-center h-full w-full">
-              <h2 className="text-8xl xl:text-[10rem] font-maus font-black leading-none tracking-tighter uppercase text-center text-white">
+              <h2 className="text-8xl xl:text-[10rem] font-maus font-black leading-none tracking-tighter uppercase text-center text-black">
                 BUILT TO BE
               </h2>
             </div>

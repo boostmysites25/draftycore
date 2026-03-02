@@ -9,6 +9,7 @@ const UnifiedVision = lazy(() => import("../components/marketing/UnifiedVision")
 const Impact = lazy(() => import("../components/marketing/Impact"));
 const RecentWorks = lazy(() => import("../components/marketing/RecentWorks"));
 const OurProcess = lazy(() => import("../components/marketing/OurProcess"));
+const Pricing = lazy(() => import("../components/marketing/Pricing"));
 const SneakPeek = lazy(() => import("../components/marketing/SneakPeek"));
 const NextStep = lazy(() => import("../components/home/NextStep"));
 
@@ -22,8 +23,9 @@ const Marketing = () => {
       <ServicesReveal />
       <UnifiedVision />
       <RecentWorks />
-      <OurProcess />
       <SneakPeek />
+      <OurProcess />
+      <Pricing />
       <NextStep />
     </SmoothScroll>
   );

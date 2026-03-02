@@ -1,7 +1,6 @@
 import { useRef, useLayoutEffect, useState, useEffect } from 'react'
 import gsap from 'gsap'
 import { ScrollTrigger } from 'gsap/ScrollTrigger'
-import PulseGrid from '../ui/PulseGrid'
 import video from '../../assets/logo-vid.webm'
 import videoMp4 from '../../assets/logo-vid1.mp4'
 import video2 from '../../assets/scroll-down-vid.webm'
@@ -10,7 +9,7 @@ import ConnectiveTech from '../ui/ConnectiveTech'
 
 gsap.registerPlugin(ScrollTrigger)
 
-const Hero = ({delay}: {delay: number}) => {
+const Hero = ({ delay }: { delay: number }) => {
     const containerRef = useRef<HTMLDivElement>(null)
     const lettersRef = useRef<(HTMLSpanElement | null)[]>([])
     const [isAligned, setIsAligned] = useState(false)
@@ -144,7 +143,7 @@ const Hero = ({delay}: {delay: number}) => {
                     gridSize={80}
                     pulseFrequency={0.10}
                 /> */}
-                <ConnectiveTech/>
+                <ConnectiveTech />
             </div>
 
             <CircleCursor ref={cursorRef} isActive={isHovering} />

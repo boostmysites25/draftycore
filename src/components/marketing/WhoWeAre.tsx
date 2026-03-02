@@ -1,9 +1,10 @@
 import { useKeenSlider } from "keen-slider/react";
 import "keen-slider/keen-slider.min.css";
-import { useEffect, useRef } from "react";
+import { useEffect, useRef, useState } from "react";
 import gsap from "gsap";
 // import { FaArrowRight } from "react-icons/fa";
 import { CircleCursor } from "../ui/Cursors";
+import { FallingIcons } from "../ui/FallingIcons";
 
 const animation = { duration: 60000, easing: (t: number) => t };
 
@@ -37,26 +38,43 @@ const TickerLetter = ({ char }: { char: string }) => {
 };
 
 const WhoWeAre = () => {
+  const [triggerDropIn, setTriggerDropIn] = useState(false);
+  const containerRef = useRef<HTMLDivElement>(null);
+
+  useEffect(() => {
+    if (!containerRef.current) return;
+    const observer = new IntersectionObserver(
+      ([entry]) => {
+        if (entry.isIntersecting) {
+          setTriggerDropIn(true);
+        }
+      },
+      { threshold: 0.1 }
+    );
+    observer.observe(containerRef.current);
+    return () => observer.disconnect();
+  }, []);
+
   const services = [
     {
-      title: "Civil Engineering",
+      title: "",
       color: "bg-brandturquoise",
-      img: "https://images.unsplash.com/photo-1541888946425-d81bb19240f5?q=80&w=2070&auto=format&fit=crop",
+      img: "/images/marketing/about/1.jpeg",
     },
     {
-      title: "Shop Detailing",
+      title: "",
       color: "bg-brandorange",
-      img: "https://images.unsplash.com/photo-1504917595217-d4dc5ebe6122?q=80&w=2070&auto=format&fit=crop",
+      img: "/images/marketing/about/2.jpeg",
     },
     {
-      title: "Structural Engineering",
+      title: "",
       color: "bg-brandpink",
-      img: "https://images.unsplash.com/photo-1581094794329-c8112a89af12?q=80&w=2070&auto=format&fit=crop",
+      img: "/images/marketing/about/3.jpeg",
     },
     {
-      title: "Architecture",
+      title: "",
       color: "bg-brandyellow",
-      img: "https://images.unsplash.com/photo-1487958449943-2429e8be8625?q=80&w=2070&auto=format&fit=crop",
+      img: "/images/marketing/about/4.jpeg",
     },
   ];
 
@@ -89,9 +107,8 @@ const WhoWeAre = () => {
 
   return (
     // xl:grid-cols-[40%,1fr] 
-    <section className="w-full min-h-screen grid grid-cols-1 bg-white relative mt-10">
+    <section className="w-full h-fit 2xl:min-h-screen grid grid-cols-1 relative mt-10 border-b-4 border-brandpink">
       <CircleCursor isActive={true} />
-
       {/* Left Side - Image */}
       {/* <div className="w-full relative min-h-[50vh] xl:min-h-screen bg-white z-10">
         <div className="absolute inset-0 flex items-center justify-center">
@@ -106,11 +123,16 @@ const WhoWeAre = () => {
 
       {/* Right Side - Content Container */}
       {/* <div className="w-full bg-white relative flex flex-col p-8 md:p-12 xl:p-20 rounded-tl-[3rem] xl:rounded-tl-[5rem] -mt-10 xl:mt-0 xl:-ml-[4.5rem] z-20 shadow-[-20px_0_50px_rgba(0,0,0,0.1)] md:pb-40 border-l border-black/5"> */}
-      <div className="w-full bg-white relative flex flex-col p-8 md:p-12 xl:p-20 rounded-tl-[3rem] xl:rounded-tl-[5rem] z-20 shadow-[-20px_0_50px_rgba(0,0,0,0.1)] md:pb-40 border-l border-black/5">
+      <div ref={containerRef} className="w-full bg-white overflow-hidden relative flex flex-col p-8 md:p-12 xl:p-20 rounded-tl-[3rem] xl:rounded-tl-[5rem] z-20 shadow-[-20px_0_50px_rgba(0,0,0,0.1)] md:pb-40 border-l border-black/5">
+
+        <div className="absolute h-full inset-0 z-0 pointer-events-none">
+          <FallingIcons triggerDropIn={triggerDropIn} />
+        </div>
+
         {/* Top Content */}
-        <div className="flex flex-col mx-auto text-center justify-center w-full">
+        <div className="flex flex-col mx-auto text-center justify-center w-full relative z-10">
           <h3 className="text-4xl xl:text-7xl font-medium mb-4 bg-gradient-to-br from-brandturquoise via-brandpink to-brandorange bg-clip-text text-transparent inline-block font-maus pb-2">
-            ABOUT DRAFTY 
+            ABOUT DRAFTY
           </h3>
 
           <p className="text-black/80 text-xl xl:text-2xl leading-relaxed mb-16 max-w-6xl font-coolvetica tracking-wide mx-auto text-center">
@@ -131,9 +153,9 @@ const WhoWeAre = () => {
                     alt={service.title}
                     className="absolute inset-0 w-full h-full object-cover transition-transform duration-500 group-hover:scale-110"
                   />
-                  <div
+                  {/* <div
                     className={`absolute inset-0 ${service.color} opacity-60 mix-blend-multiply z-0`}
-                  ></div>
+                  ></div> */}
                   <div className="absolute inset-0 z-20 flex flex-col justify-end p-4">
                     <span className="text-white text-sm md:text-base font-bold leading-tight drop-shadow-md">
                       {service.title}

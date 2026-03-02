@@ -1,11 +1,10 @@
 import { CircleCursor } from '../ui/Cursors';
-import { FaArrowRight } from 'react-icons/fa';
 
 const processes = [
   {
     id: "01",
     title: "Drafting Consultation",
-    description: "We discuss your project needs, timelines, and specific drafting standards to ensure a perfect fit.",
+    description: "We begin with a collaborative consultation to understand your project needs, documentation scope, and studio workflow. This allows us to tailor our service approach from the very beginning.",
     gradient: "from-purple-600 to-blue-600",
     hoverTextColor: "group-hover:text-white",
     image: "https://images.unsplash.com/photo-1503387762-592deb58ef4e?q=80&w=2070&auto=format&fit=crop"
@@ -13,7 +12,7 @@ const processes = [
   {
     id: "02",
     title: "Client Signup/ Platform Access",
-    description: "Seamless onboarding to our dedicated platform where you can manage requests and view progress.",
+    description: "Once you're ready to proceed, we onboard you to our secure DraftyCo platform, your central hub for communication, file sharing task tracking, and team collaboration.",
     gradient: "from-blue-600 to-cyan-500",
     hoverTextColor: "group-hover:text-white",
     image: "https://images.unsplash.com/photo-1581291518633-83b4ebd1d83e?q=80&w=2070&auto=format&fit=crop"
@@ -21,7 +20,7 @@ const processes = [
   {
     id: "03",
     title: "Project Briefing",
-    description: "Detailed briefing session to capture every technical requirement and design nuance.",
+    description: "You provide us with the details including project/reference models, workflow, and standards. Our tram will revue these inputs and will prepare a plan for efficient collaboration.",
     gradient: "from-cyan-500 to-teal-500",
     hoverTextColor: "group-hover:text-black",
     image: "https://images.unsplash.com/photo-1542744173-8e7e53415bb0?q=80&w=2070&auto=format&fit=crop"
@@ -29,7 +28,7 @@ const processes = [
   {
     id: "04",
     title: "Custom Proposal",
-    description: "We prepare a tailored proposal outlining the scope, deliverables, and fixed pricing.",
+    description: "Based on your briefing, we provide a clear and itemized proposal outlining scope, timelines, team structure and pricing, ensuring full transparency before kicking off.",
     gradient: "from-teal-500 to-emerald-400",
     hoverTextColor: "group-hover:text-black",
     image: "https://images.unsplash.com/photo-1554224155-6726b3ff858f?q=80&w=2070&auto=format&fit=crop"
@@ -37,7 +36,7 @@ const processes = [
   {
     id: "05",
     title: "On Board Kickoff",
-    description: "Official project launch with your dedicated drafting team ready to execute.",
+    description: "Once approved, we assign a dedicated team and start with integration. We align with your tools, templates and review processes to ensure a smooth transition and workflow continuity.",
     gradient: "from-emerald-400 to-yellow-400",
     hoverTextColor: "group-hover:text-black",
     image: "https://images.unsplash.com/photo-1552664730-d307ca884978?q=80&w=2070&auto=format&fit=crop"
@@ -45,7 +44,7 @@ const processes = [
   {
     id: "06",
     title: "Review Feedback / Final Delivery",
-    description: "Iterative review process to ensure 100% satisfaction before final drawing handover.",
+    description: "Throughout the project, we remain in sync with your feedback cycles. Revisions are handled promptly and final documentation is delivered as per your specifications.",
     gradient: "from-yellow-400 to-orange-500",
     hoverTextColor: "group-hover:text-black",
     image: "https://images.unsplash.com/photo-1454165804606-c3d57bc86b40?q=80&w=2070&auto=format&fit=crop"
@@ -54,7 +53,7 @@ const processes = [
 
 const OurProcess = () => {
   return (
-    <section className="w-full bg-white relative py-12 md:py-20 text-black overflow-hidden">
+    <section className="w-full bg-white relative py-12 md:py-24 text-black overflow-hidden">
       <CircleCursor isActive={true} />
       
       <div className="w-full max-w-[95rem] mx-auto px-4 md:px-8">
@@ -70,7 +69,7 @@ const OurProcess = () => {
                 group relative flex-1 
                 min-h-[280px] md:min-h-[320px] xl:min-h-0 
                 border-b xl:border-b-0 xl:border-r border-gray-200 last:border-0
-                flex flex-col justify-end p-6 md:p-8 transition-all duration-500 ease-out
+                flex flex-col justify-between p-6 md:p-8 transition-all duration-500 ease-out
                 hover:flex-[2] overflow-hidden
               `}
             >
@@ -89,7 +88,7 @@ const OurProcess = () => {
                 <span className={`text-4xl md:text-6xl xl:text-7xl font-maus font-bold text-gray-400 group-hover:opacity-100 transition-all duration-300 mb-2 md:mb-4 block ${process.hoverTextColor}`}>
                   {process.id}
                 </span>
-                <h3 className={`text-xl md:text-2xl xl:text-3xl font-coolvetica font-bold leading-tight max-w-[90%] md:max-w-[80%] transition-colors duration-300 text-black ${process.hoverTextColor}`}>
+                <h3 className={`text-xl md:text-2xl xl:text-3xl font-coolvetica font-bold leading-tight transition-colors duration-300 text-black ${process.hoverTextColor}`}>
                   {process.title}
                 </h3>
               </div>
@@ -102,9 +101,6 @@ const OurProcess = () => {
                 <p className={`text-base md:text-lg font-medium leading-relaxed ${process.hoverTextColor} opacity-90`}>
                   {process.description}
                 </p>
-                <div className="mt-4 md:mt-6 flex justify-end">
-                    <FaArrowRight className={`text-xl md:text-2xl -rotate-45 ${process.hoverTextColor}`} />
-                </div>
               </div>
 
               {/* Background Gradient Overlay for smooth transition */}
