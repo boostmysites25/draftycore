@@ -142,22 +142,16 @@ const UnifiedVision = () => {
         </h2>
       </div>
 
-      {/* Wrapper - 3-column, 2-row grid for 6 boxes */}
+      {/* Wrapper */}
       <div
         ref={wrapperRef}
-        className="relative grid gap-1.5 rounded-[2rem]"
-        style={{
-          gridTemplateColumns: "1fr 1fr 1fr",
-          gridTemplateRows: "1fr 1fr",
-          width: "min(85vw, 900px)",
-          height: "min(60vw, 600px)"
-        }}
+        className="relative grid grid-cols-2 md:grid-cols-3 gap-4 md:gap-6 lg:gap-8 w-full max-w-[1000px] px-4 md:px-8 z-10"
       >
         {cards.map((card, index) => (
           <div
             key={card.id}
             ref={el => cardRefs.current[index] = el}
-            className={`relative w-full h-full overflow-hidden group ${card.radius}`}
+            className={`relative w-full aspect-[4/5] md:aspect-square overflow-hidden group ${card.radius} shadow-lg`}
           >
             {/* <div className={`${card.radius} absolute inset-0 bg-black/10 group-hover:bg-transparent transition-colors duration-500 z-10 ${card.color}`}></div> */}
             <img
@@ -174,11 +168,6 @@ const UnifiedVision = () => {
             </div>
           </div>
         ))}
-
-        {/* Center Grid dividers */}
-        <div className="absolute top-1/2 left-0 w-full h-[6px] bg-white z-30 pointer-events-none -translate-y-1/2"></div>
-        <div className="absolute top-0 left-1/3 w-[6px] h-full bg-white z-30 pointer-events-none"></div>
-        <div className="absolute top-0 left-2/3 w-[6px] h-full bg-white z-30 pointer-events-none"></div>
       </div>
     </section>
   );

@@ -107,14 +107,14 @@ const SneakPeek = () => {
   };
 
   return (
-    <section ref={containerRef} className="w-full h-screen bg-white relative overflow-hidden flex flex-col justify-center">
+    <section ref={containerRef} className="w-full min-h-screen bg-white xl:h-screen relative overflow-hidden flex flex-col justify-center py-20 xl:py-0">
       <CircleCursor isActive={true} />
 
-      <div className="w-full h-full flex flex-col justify-center">
+      <div className="w-full xl:h-full flex flex-col justify-center">
 
         {/* Centered Heading */}
-        <div className="w-full text-center mb-12 flex-shrink-0 pt-20">
-          <h2 className="text-6xl md:text-8xl font-maus font-black tracking-tighter bg-gradient-to-r from-brandturquoise via-brandpink to-brandorange bg-clip-text text-transparent inline-block">
+        <div className="w-full text-center mb-8 xl:mb-12 flex-shrink-0">
+          <h2 className="text-5xl md:text-8xl font-maus font-black tracking-tighter bg-gradient-to-r from-brandturquoise via-brandpink to-brandorange bg-clip-text text-transparent inline-block px-4">
             Drafty Sneak-Peek
           </h2>
           <p className="mt-4 text-xl text-gray-500 font-coolvetica max-w-2xl mx-auto">
@@ -123,24 +123,24 @@ const SneakPeek = () => {
         </div>
 
         {/* Horizontal Scroll Track */}
-        <div className="w-full flex-1 flex items-center overflow-hidden pl-8 md:pl-16">
-          <div ref={trackRef} className="flex gap-8 md:gap-16 w-fit pr-20">
+        <div className="w-full flex-1 flex items-center overflow-hidden pl-4 md:pl-8 lg:pl-16">
+          <div ref={trackRef} className="flex gap-4 md:gap-8 lg:gap-16 w-fit pr-10 md:pr-20">
             {features.map((feature, index) => (
               <div
                 key={feature.id}
-                className="w-[85vw] md:w-[60vw] xl:w-[50vw] shrink-0 rounded-[2.5rem]"
+                className="w-[90vw] md:w-[75vw] lg:w-[65vw] xl:w-[55vw] shrink-0 rounded-[2rem] md:rounded-[2.5rem]"
               >
-                <div className="relative w-full h-full">
+                <div className="relative w-full aspect-[4/3] md:aspect-[16/10] lg:aspect-[16/9]">
                   <div
                     ref={el => cardsRef.current[index] = el}
                     className={`
-                                group relative w-full h-full bg-gray-50 p-2 overflow-hidden shadow-lg hover:shadow-2xl transition-all duration-500
+                                group relative w-full h-full bg-gray-50 p-2 overflow-hidden shadow-lg hover:shadow-2xl transition-all duration-500 rounded-[2rem] md:rounded-[2.5rem]
                             `}
                     onMouseMove={(e) => handleMouseMove(e, index)}
                     onMouseLeave={() => handleMouseLeave(index)}
                     style={{ transformStyle: "preserve-3d" }}
                   >
-                    <div className="w-full h-full relative rounded-[2rem] overflow-hidden bg-white flex flex-col border border-gray-100">
+                    <div className="w-full h-full relative rounded-2xl md:rounded-[2rem] overflow-hidden bg-white flex flex-col border border-gray-100">
                       {/* Image Container */}
                       <div className="relative flex-1 overflow-hidden">
                         <div className="absolute inset-0 bg-secondary/5 group-hover:bg-transparent transition-colors duration-300 z-10"></div>
@@ -150,19 +150,14 @@ const SneakPeek = () => {
                           className="w-full h-full object-cover transition-transform duration-700 group-hover:scale-105"
                         />
 
-                        {/* Floating Badge (Glassmorphism) */}
-                        <div className="absolute top-8 right-8 z-20 bg-white/10 backdrop-blur-md border border-white/20 px-4 py-1.5 rounded-full opacity-0 group-hover:opacity-100 transform translate-y-4 group-hover:translate-y-0 transition-all duration-300">
-                          <span className="text-sm font-bold text-white tracking-widest uppercase">View</span>
-                        </div>
-
                         {/* Gradient Overlay on Hover */}
                         <div className="absolute inset-0 bg-gradient-to-t from-black/50 to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-300 z-10"></div>
                       </div>
 
                       {/* Content Overlay */}
-                      <div className="absolute bottom-0 left-0 w-full p-4 md:p-8 z-30 transform translate-y-2 group-hover:translate-y-0 transition-transform duration-300">
-                        <div className="bg-white/95 backdrop-blur-md p-4 md:p-6 rounded-2xl md:rounded-3xl border border-white/40 shadow-xl w-fit max-w-[90%]">
-                          <h3 className={`text-xl md:text-3xl xl:text-4xl font-coolvetica font-bold text-black transition-colors duration-300 truncate ${feature.color}`}>
+                      <div className="absolute bottom-0 left-0 w-full p-3 md:p-6 lg:p-8 z-30 transform translate-y-2 group-hover:translate-y-0 transition-transform duration-300">
+                        <div className="bg-white/95 backdrop-blur-md p-3 md:p-5 lg:p-6 rounded-xl md:rounded-2xl lg:rounded-3xl border border-white/40 shadow-xl w-fit max-w-[95%]">
+                          <h3 className={`text-lg md:text-2xl xl:text-4xl font-coolvetica font-bold text-black transition-colors duration-300 truncate ${feature.color}`}>
                             {feature.title}
                           </h3>
                         </div>
