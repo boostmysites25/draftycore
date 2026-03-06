@@ -7,9 +7,9 @@ const steps = [
   {
     id: "01",
     tag: "Scalable",
-    title: "Upward, On Demand",
+    title: "GROW WHEN WORK GROWS",
     description:
-      "Add drafting power without adding payroll, desks, or recruitment cycles. Built to handle peaks, protect margins, and remove bottlenecks.",
+      "Add drafting power the moment projects demand it. No hiring cycles. No extra desks. Just capacity when you need it.",
     color: "bg-brandyellow brightness-95", // Yellow
     textColor: "text-white",
     rotation: "-rotate-3",
@@ -17,9 +17,9 @@ const steps = [
   {
     id: "02",
     tag: "Cost Efficient",
-    title: "Budget-Friendly Brilliance",
+    title: "SPEND WHERE IT MATTERS",
     description:
-      "High-level production support at a fraction of full in-house operational cost so you can Spend where it matters, ideas, clients and growth.",
+      "High-quality production without the weight of in-house overhead, so your resources stay focused on design, clients, and growth.",
     color: "bg-brandorange", // Orange
     textColor: "text-white",
     rotation: "rotate-2",
@@ -27,9 +27,9 @@ const steps = [
   {
     id: "03",
     tag: "Effective",
-    title: "Output That Outperforms",
+    title: "WORK THAT KEEPS MOVING",
     description:
-      "Streamlined production that keeps projects progressing, not stalling while ensuring Smart coordination that eliminates bottlenecks before they grow.",
+      "Structured drafting that turns markups into momentum, keeping projects flowing and bottlenecks out of the way.",
     color: "bg-brandpink", // Pink
     textColor: "text-white",
     rotation: "-rotate-2",
@@ -117,7 +117,7 @@ const Steps = () => {
               <FallingShapes triggerDropIn={triggerDropIn} />
             </div>
 
-            <div className="relative z-20 pointer-events-none mix-blend-difference flex items-center justify-center h-full w-full">
+            <div className="relative z-20 pointer-events-none mix-blend-difference flex justify-center h-full w-full">
               <h2 className="text-8xl xl:text-[10rem] font-maus font-black leading-none tracking-tighter uppercase text-center text-black">
                 BUILT TO BE
               </h2>

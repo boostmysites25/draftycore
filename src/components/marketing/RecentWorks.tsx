@@ -11,7 +11,7 @@ const works = [
     title: "",
     year: "",
     image:
-      "https://images.unsplash.com/photo-1618005182384-a83a8bd57fbe?q=80&w=2560&auto=format&fit=crop",
+      "/images/marketing/recentworks/1.jpeg",
     textColor: "text-white",
   },
   {
@@ -19,7 +19,7 @@ const works = [
     title: "",
     year: "",
     image:
-      "https://images.unsplash.com/photo-1480714378408-67cf0d13bc1b?q=80&w=2560&auto=format&fit=crop",
+      "/images/marketing/recentworks/2.jpeg",
     textColor: "text-white",
   },
   {
@@ -27,7 +27,7 @@ const works = [
     title: "",
     year: "",
     image:
-      "https://images.unsplash.com/photo-1550684848-fac1c5b4e853?q=80&w=2560&auto=format&fit=crop",
+      "/images/marketing/recentworks/3.jpeg",
     textColor: "text-white",
   },
 ];
@@ -137,7 +137,7 @@ const RecentWorks = () => {
                 alt={work.title}
                 className="w-full h-[130%] object-cover object-center"
               />
-              <div className="absolute inset-0 bg-black/20"></div>
+              {/* <div className="absolute inset-0 bg-black/20"></div> */}
             </div>
 
             {/* Content */}

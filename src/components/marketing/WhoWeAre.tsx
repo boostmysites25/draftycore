@@ -57,22 +57,22 @@ const WhoWeAre = () => {
 
   const services = [
     {
-      title: "",
+      title: "A drafting partner working quietly behind your studio.",
       color: "bg-brandturquoise",
       img: "/images/marketing/about/1.jpeg",
     },
     {
-      title: "",
+      title: "Built for precision, speed, and scalable production.",
       color: "bg-brandorange",
       img: "/images/marketing/about/2.jpeg",
     },
     {
-      title: "",
+      title: "We take care of the documentation while your team prioritise design & management.",
       color: "bg-brandpink",
       img: "/images/marketing/about/3.jpeg",
     },
     {
-      title: "",
+      title: "Structured output, clean drawings, studio-grade delivery.",
       color: "bg-brandyellow",
       img: "/images/marketing/about/4.jpeg",
     },
@@ -83,8 +83,8 @@ const WhoWeAre = () => {
     renderMode: "performance",
     drag: false,
     slides: {
-      perView: 1.5,
-      spacing: 16,
+      perView: 1.2,
+      spacing: -1,
     },
     created(s) {
       s.moveToIdx(5, true, animation);
@@ -96,11 +96,11 @@ const WhoWeAre = () => {
       s.moveToIdx(s.track.details.abs + 5, true, animation);
     },
     breakpoints: {
-      "(min-width: 640px)": {
-        slides: { perView: 2.5, spacing: 16 },
+      "(min-width: 768px)": {
+        slides: { perView: 2.2, spacing: -1 },
       },
       "(min-width: 1024px)": {
-        slides: { perView: 3.5, spacing: 16 },
+        slides: { perView: 3.5, spacing: -1 },
       },
     },
   });
@@ -131,8 +131,17 @@ const WhoWeAre = () => {
 
         {/* Top Content */}
         <div className="flex flex-col mx-auto text-center justify-center w-full relative z-10">
-          <h3 className="text-4xl xl:text-7xl font-medium mb-4 bg-gradient-to-br from-brandturquoise via-brandpink to-brandorange bg-clip-text text-transparent inline-block font-maus pb-2">
-            ABOUT DRAFTY
+          <h3 className="text-4xl xl:text-7xl font-medium mb-4 bg-gradient-to-br from-brandturquoise via-brandpink to-brandorange bg-clip-text text-transparent font-maus pb-2 flex sm:flex-row flex-col gap-3 sm:gap-6 justify-center">
+            <span>
+              {"ABOUT".split("").map((char, i) => (
+                <TickerLetter key={`${i}`} char={char} />
+              ))}
+            </span>
+            <span>
+              {"DRAFTY".split("").map((char, i) => (
+                <TickerLetter key={`${i}`} char={char} />
+              ))}
+            </span>
           </h3>
 
           <p className="text-black/80 text-xl xl:text-2xl leading-relaxed mb-16 max-w-6xl font-coolvetica tracking-wide mx-auto text-center">
@@ -145,21 +154,18 @@ const WhoWeAre = () => {
               {[...services, ...services].map((service, index) => (
                 <div
                   key={index}
-                  className="keen-slider__slide aspect-[4/2.5] rounded-2xl overflow-hidden relative group cursor-pointer border border-black/10 hover:border-black/30 shadow-lg hover:shadow-xl hover:-translate-y-1"
+                  className="keen-slider__slide aspect-[4/2.5] overflow-hidden relative group cursor-pointer border border-black/10 hover:border-black/30 shadow-lg hover:shadow-xl hover:-translate-y-1"
                 >
-                  <div className="absolute inset-0 bg-black/20 z-10 group-hover:bg-black/10 transition-colors duration-300"></div>
+                  <div className="absolute inset-0 bg-black/40 z-10 opacity-0 group-hover:opacity-100 transition-opacity duration-300 backdrop-blur-sm shadow-inner"></div>
                   <img
                     src={service.img}
                     alt={service.title}
-                    className="absolute inset-0 w-full h-full object-cover transition-transform duration-500 group-hover:scale-110"
+                    className="absolute inset-0 w-full h-full object-cover transition-transform duration-700 group-hover:scale-110"
                   />
-                  {/* <div
-                    className={`absolute inset-0 ${service.color} opacity-60 mix-blend-multiply z-0`}
-                  ></div> */}
-                  <div className="absolute inset-0 z-20 flex flex-col justify-end p-4">
-                    <span className="text-white text-sm md:text-base font-bold leading-tight drop-shadow-md">
+                  <div className="absolute inset-0 z-20 flex flex-col justify-end p-4 md:p-6 translate-y-4 opacity-0 group-hover:translate-y-0 group-hover:opacity-100 transition-all duration-500 ease-out">
+                    <p className="text-white text-base md:text-lg xl:text-2xl font-coolvetica leading-tight drop-shadow-lg text-pretty">
                       {service.title}
-                    </span>
+                    </p>
                   </div>
                 </div>
               ))}
@@ -169,28 +175,15 @@ const WhoWeAre = () => {
       </div>
 
       {/* Bottom Content - Positioned Absolute to Section */}
-      <div className="absolute bottom-8 right-8 md:bottom-12 md:right-12 xl:bottom-16 xl:right-16 z-[100] flex items-end gap-4 md:gap-8 pointer-events-none">
+      {/* <div className="absolute bottom-8 right-8 md:bottom-12 md:right-12 xl:bottom-16 xl:right-16 z-[100] flex items-end gap-4 md:gap-8 pointer-events-none">
         <h2 className="text-6xl md:text-7xl xl:text-8xl font-maus font-black tracking-tighter leading-none uppercase flex gap-4 md:gap-8 relative text-black pointer-events-auto">
           <span className="flex">
             {"DRAFTY".split("").map((char, i) => (
               <TickerLetter key={`drafty-${i}`} char={char} />
             ))}
           </span>
-          {/* <span className="flex">
-            {"WE".split("").map((char, i) => (
-              <TickerLetter key={`we-${i}`} char={char} />
-            ))}
-          </span>
-          <span className="flex">
-            {"ARE".split("").map((char, i) => (
-              <TickerLetter key={`are-${i}`} char={char} />
-            ))}
-          </span> */}
         </h2>
-        {/* <div className="animate-bounce h-fit w-fit">
-          <FaArrowRight className="w-12 h-12 md:w-20 md:h-20 text-yellow-400 mb-2 md:mb-4 shrink-0 rotate-45 pointer-events-auto" />
-        </div> */}
-      </div>
+      </div> */}
     </section>
   );
 };

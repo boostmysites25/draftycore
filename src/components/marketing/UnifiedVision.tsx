@@ -12,7 +12,7 @@ const cards = [
     image: "/images/marketing/unified/1.jpeg",
     position: "top-left",
     start: { x: "-60vw", y: "-60vh" },
-    color: "bg-brandturquoise",
+    color: "group-hover:bg-brandturquoise",
     radius: "rounded-[2rem]"
   },
   {
@@ -21,7 +21,7 @@ const cards = [
     image: "/images/marketing/unified/2.jpeg",
     position: "top-center",
     start: { x: "0vw", y: "-80vh" },
-    color: "bg-brandpurple",
+    color: "",
     radius: "rounded-[2rem]"
   },
   {
@@ -30,7 +30,7 @@ const cards = [
     image: "/images/marketing/unified/3.jpeg",
     position: "top-right",
     start: { x: "60vw", y: "-60vh" },
-    color: "bg-brandpink",
+    color: "group-hover:bg-brandpink",
     radius: "rounded-[2rem]"
   },
   {
@@ -39,7 +39,7 @@ const cards = [
     image: "/images/marketing/unified/4.jpeg",
     position: "bottom-left",
     start: { x: "-60vw", y: "60vh" },
-    color: "bg-brandorange",
+    color: "",
     radius: "rounded-[2rem]"
   },
   {
@@ -48,7 +48,7 @@ const cards = [
     image: "/images/marketing/unified/5.jpeg",
     position: "bottom-center",
     start: { x: "0vw", y: "80vh" },
-    color: "bg-brandgreen",
+    color: "group-hover:bg-brandorange",
     radius: "rounded-[2rem]"
   },
   {
@@ -57,7 +57,7 @@ const cards = [
     image: "/images/marketing/unified/6.jpeg",
     position: "bottom-right",
     start: { x: "60vw", y: "60vh" },
-    color: "bg-brandyellow",
+    color: "",
     radius: "rounded-[2rem]"
   }
 ];
@@ -153,7 +153,7 @@ const UnifiedVision = () => {
             ref={el => cardRefs.current[index] = el}
             className={`relative w-full aspect-[4/5] md:aspect-square overflow-hidden group ${card.radius} shadow-lg`}
           >
-            {/* <div className={`${card.radius} absolute inset-0 bg-black/10 group-hover:bg-transparent transition-colors duration-500 z-10 ${card.color}`}></div> */}
+            <div className={`${card.radius} absolute inset-0 bg-black/10transition-colors duration-500 z-10 ${card.color}`}></div>
             <img
               src={card.image}
               alt={card.title}
@@ -161,8 +161,8 @@ const UnifiedVision = () => {
             />
 
             {/* Overlay Content */}
-            <div className={`${card.radius} absolute inset-0 h-full w-full flex items-center justify-center`}>
-              <h3 className="text-white brightness-90 font-coolvetica font-bold text-2xl md:text-3xl tracking-wide uppercase">
+            <div className={`${card.radius} absolute z-10 inset-0 h-full w-full flex items-center justify-center`}>
+              <h3 className="text-white brightness-90 font-coolvetica font-bold text-2xl md:text-3xl tracking-wide uppercase group-hover:opacity-100 opacity-0 transition-all duration-500">
                 {card.title}
               </h3>
             </div>

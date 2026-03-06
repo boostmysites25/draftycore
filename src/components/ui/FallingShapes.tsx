@@ -1,4 +1,4 @@
-import { useRef, useEffect } from 'react';
+import { useRef, useEffect, useState } from 'react';
 import Matter from 'matter-js';
 
 // Simple shapes for the physics dropping
@@ -20,23 +20,31 @@ export type ShapeConfig = {
     render: () => JSX.Element;
 };
 
-const SHAPES: ShapeConfig[] = Array.from({ length: 7 }).map((_, i) => {
+const getShapesConfig = (size: number): ShapeConfig[] => Array.from({ length: 3 }).map((_, i) => {
     const imgIndex = i % 3;
+
+    let text = "";
+    if (imgIndex === 0) text = "SCALABLE"; // 1.png (Circle)
+    else if (imgIndex === 1) text = "COST EFFECTIVE"; // 2.png (Rectangle)
+    else if (imgIndex === 2) text = "EFFICIENT"; // 3.png (Triangle)
+
+    const isMobile = size <= 120;
+
     // We make them rectangular cards to host the image
     return {
         id: `image-${i}`,
         type: 'rectangle',
-        width: 120,
-        height: 120,
+        width: size,
+        height: size,
         offsetX: Math.random() * 50 - 25,
         offsetY: -300 - (i * 100) - Math.random() * 100,
         angle: (Math.random() - 0.5) * 0.2,
         render: () => (
-            <div className="w-[120px] h-[120px] overflow-hidden">
+            <div className="relative flex items-center justify-center" style={{ width: size, height: size }}>
                 <img
                     src={images[imgIndex]}
-                    className="w-full h-full object-contain"
-                    alt="Built To Be Reference"
+                    className="absolute inset-0 w-full h-full object-contain"
+                    alt={text}
                 />
             </div>
         )
@@ -52,10 +60,19 @@ export const FallingShapes = ({ triggerDropIn = false }: FallingShapesProps) => 
     const engineRef = useRef<Matter.Engine | null>(null);
     const runnerRef = useRef<Matter.Runner | null>(null);
     const bodiesRef = useRef<{ body: Matter.Body }[]>([]);
+    const [shapes, setShapes] = useState<ShapeConfig[]>([]);
+
+    useEffect(() => {
+        if (typeof window === 'undefined') return;
+        const width = window.innerWidth;
+        const size = width < 640 ? 110 : width < 1024 ? 150 : 220;
+        setShapes(getShapesConfig(size));
+    }, []);
 
     useEffect(() => {
         if (!containerRef.current) return;
         if (!triggerDropIn) return;
+        if (shapes.length === 0) return;
 
         const { Engine, World, Bodies, Runner } = Matter;
 
@@ -85,7 +102,7 @@ export const FallingShapes = ({ triggerDropIn = false }: FallingShapesProps) => 
         World.add(engine.world, [floor, leftWall, rightWall, ceiling]);
 
         // Create bodies mapped to our SHAPES
-        const shapeBodies = SHAPES.map((shape) => {
+        const shapeBodies = shapes.map((shape) => {
             const startX = width / 2 + (shape.offsetX || 0);
             const startY = height / 2 + (shape.offsetY || 0);
 
@@ -164,7 +181,7 @@ export const FallingShapes = ({ triggerDropIn = false }: FallingShapesProps) => 
             ref={containerRef}
             className="absolute inset-0 w-full h-full z-10 overflow-hidden pointer-events-none"
         >
-            {SHAPES.map((shape) => (
+            {shapes.map((shape) => (
                 <div
                     key={shape.id}
                     id={`shape-${shape.id}`}

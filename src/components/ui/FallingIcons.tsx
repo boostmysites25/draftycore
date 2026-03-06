@@ -24,18 +24,18 @@ export type IconConfig = {
     render: () => JSX.Element;
 };
 
-const ICONS: IconConfig[] = Array.from({ length: 15 }).map((_, i) => {
-    const imgIndex = i % images.length;
+const ICONS: IconConfig[] = Array.from({ length: images.length }).map((_, i) => {
+    const imgIndex = i;
     return {
         id: `icon-${i}`,
         type: 'rectangle',
-        width: 80,
-        height: 80,
+        width: 100,
+        height: 100,
         offsetX: Math.random() * 800 - 400, // Spread across the width
         offsetY: -300 - (i * 100) - Math.random() * 200,
         angle: (Math.random() - 0.5) * 0.2,
         render: () => (
-            <div className="w-[60px] h-[60px] overflow-hidden">
+            <div className="w-[80px] h-[80px] overflow-hidden">
                 <img
                     src={images[imgIndex]}
                     className="w-full h-full object-contain drop-shadow-md"

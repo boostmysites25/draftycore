@@ -5,9 +5,6 @@ import {
   FaClock,
   FaRulerCombined,
   FaUsers,
-  FaFrownOpen,
-  FaFrown,
-  FaGrimace,
 } from "react-icons/fa";
 import gsap from "gsap";
 import { ScrollTrigger } from "gsap/ScrollTrigger";
@@ -26,11 +23,11 @@ gsap.registerPlugin(ScrollTrigger);
 const items = [
   {
     id: "speed",
-    capsuleText: "Deadline Crunch",
-    title: "Speed vs. Standards",
+    capsuleText: "DEADLINE CRUNCH",
+    title: "Speed vs Standards",
     icon: <FaClock />,
     description:
-      "Deadlines stay tight, but quality can’t drop and you’re expected to deliver both speed and design integrity. You’re constantly racing the clock without compromising the craft.",
+      "Deadlines stay tight, but quality can’t slip. You’re expected to deliver speed and design integrity, constantly racing the clock without compromising the craft.",
     image:
       "/images/marketing/challenges/1.jpeg",
     activeColor: "bg-brandturquoise",
@@ -39,11 +36,11 @@ const items = [
   },
   {
     id: "overhead",
-    capsuleText: "Payroll Pressure",
+    capsuleText: "PAYROLL PRESSURE",
     title: "Overhead Overload",
     icon: <FaArrowDown />,
     description:
-      "Hiring full-time staff comes with overhead costs that don’t shrink when your workload does. You carry fixed payroll pressure even when projects fluctuate.",
+      "Full-time hires come with fixed costs that don’t shrink when the workload does, leaving you carrying payroll weight even during quieter periods.",
     image:
       "/images/marketing/challenges/2.jpeg",
     activeColor: "bg-brandorange",
@@ -52,11 +49,11 @@ const items = [
   },
   {
     id: "capacity",
-    capsuleText: "Workload Wobble",
+    capsuleText: "WORKLOAD WOBBLE",
     title: "Capacity Rollercoaster",
     icon: <FaRulerCombined />,
     description:
-      "Unpredictable workloads make it hard for you to scale confidently. You’re either stretched too thin or sitting on unused capacity.",
+      "Workloads fluctuate constantly. One moment you’re stretched thin, the next you’re sitting on unused capacity with no easy way to balance it.",
     image:
       "/images/marketing/challenges/3.jpeg",
     activeColor: "bg-brandpink",
@@ -65,11 +62,11 @@ const items = [
   },
   {
     id: "design",
-    capsuleText: "Creative Clog",
+    capsuleText: "CREATIVE CLOG",
     title: "Design Trap",
     icon: <FaCog />,
     description:
-      "Your design teams get stuck doing repetitive drafting work instead of real design thinking. You’re paying for creativity, but using it on production.",
+      "Your designers spend valuable time on repetitive drafting instead of real design thinking, using creativity on production work rather than ideas.",
     image:
       "/images/marketing/challenges/4.jpeg",
     activeColor: "bg-brandyellow",
@@ -78,11 +75,11 @@ const items = [
   },
   {
     id: "talent",
-    capsuleText: "Talent Drain",
+    capsuleText: "TALENT DRAIN",
     title: "Talent Tug-of-War",
     icon: <FaUsers />,
     description:
-      "Skilled drafters are hard to find and harder to retain. You invest in training, only to risk losing that expertise.",
+      "Skilled drafters are difficult to find and even harder to retain, meaning every investment in training risks walking out the door.",
     image:
       "/images/marketing/challenges/5.jpeg",
     activeColor: "bg-brandlimegreen",
@@ -160,16 +157,23 @@ const Impact = () => {
       <ConnectiveTech />
 
       {/* Background Decoration (Subtle Annoyed Faces) */}
-      <div className="xl:block hidden absolute top-0 left-0 w-full h-full pointer-events-none">
-        <div className="mt-20 flex justify-end">
-          <div className="animate-[spin_4s_linear_infinite] opacity-50"><FaFrown size={80} className="text-brandorange" /></div>
+      <div className=" absolute top-0 left-0 w-full h-full pointer-events-none">
+        {/* Top Right */}
+        <div className="absolute z-[2] top-[1%] right-[8%] opacity-50">
+          <img src="/images/marketing/challenges/face4.png" className="w-[80px] object-contain animate-[spin_6s_linear_infinite]" alt="Annoyed face 1" />
         </div>
-        <div className="absolute z-[2] top-32 left-72 animate-[spin_6s_linear_infinite] opacity-50">
-          <FaFrownOpen size={100} className="text-brandlimegreen" />
+        {/* Bottom Left */}
+        <div className="absolute z-[2] bottom-[0%] left-[8%] opacity-50">
+          <img src="/images/marketing/challenges/face2.png" className="w-[80px] object-contain animate-[spin_8s_linear_infinite_reverse]" alt="Annoyed face 2" />
         </div>
-        <div className="absolute z-[2] bottom-20 left-1/3 animate-[bounce_5s_linear_infinite] opacity-30">
-          <FaGrimace size={120} className="text-brandpink" />
+        {/* Top Center Gap */}
+        <div className="absolute z-[2] top-[10%] left-0 xl:left-[40%] opacity-50">
+          <img src="/images/marketing/challenges/face3.png" className="w-[80px] object-contain animate-[bounce_5s_linear_infinite]" alt="Annoyed face 3" />
         </div>
+        {/* Bottom Center Gap */}
+        {/* <div className="absolute z-[2] bottom-[10%] right-[5%] opacity-40">
+          <img src="/images/marketing/challenges/face4.png" className="w-[90px] object-contain animate-[bounce_6s_linear_infinite]" alt="Annoyed face 4" />
+        </div> */}
       </div>
 
       {/* Header */}
@@ -228,7 +232,7 @@ const Impact = () => {
         </div>
 
         {/* Right Side - Creative 3D Slider */}
-        <div className="w-full xl:w-1/2 h-[90vh] xl:h-[80vh] flex flex-col gap-5 items-center justify-center relative">
+        <div className="w-full md:w-[80%] mx-auto xl:mx-0 xl:w-1/2 h-[80vh] xl:h-[80vh] flex flex-col gap-5 items-center justify-center relative">
           <h2 className="xl:hidden flex text-5xl xl:text-7xl font-maus font-black uppercase tracking-tighter text-black/90 text-center">
             Challenges you face
           </h2>

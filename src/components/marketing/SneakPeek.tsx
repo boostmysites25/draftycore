@@ -107,13 +107,13 @@ const SneakPeek = () => {
   };
 
   return (
-    <section ref={containerRef} className="w-full min-h-screen bg-white xl:h-screen relative overflow-hidden flex flex-col justify-center py-20 xl:py-0">
+    <section ref={containerRef} className="w-full min-h-screen bg-white xl:h-screen relative overflow-hidden flex flex-col justify-center py-20 xl:mt-20 xl:py-0">
       <CircleCursor isActive={true} />
 
       <div className="w-full xl:h-full flex flex-col justify-center">
 
         {/* Centered Heading */}
-        <div className="w-full text-center mb-8 xl:mb-12 flex-shrink-0">
+        <div className="w-full text-center mb-8 xl:mb-8 flex-shrink-0">
           <h2 className="text-5xl md:text-8xl font-maus font-black tracking-tighter bg-gradient-to-r from-brandturquoise via-brandpink to-brandorange bg-clip-text text-transparent inline-block px-4">
             Drafty Sneak-Peek
           </h2>
@@ -147,7 +147,7 @@ const SneakPeek = () => {
                         <img
                           src={feature.image}
                           alt={feature.title}
-                          className="w-full h-full object-cover transition-transform duration-700 group-hover:scale-105"
+                          className="w-full h-full object-cover"
                         />
 
                         {/* Gradient Overlay on Hover */}
@@ -155,15 +155,20 @@ const SneakPeek = () => {
                       </div>
 
                       {/* Content Overlay */}
-                      <div className="absolute bottom-0 left-0 w-full p-3 md:p-6 lg:p-8 z-30 transform translate-y-2 group-hover:translate-y-0 transition-transform duration-300">
+                      {/* <div className="absolute bottom-0 left-0 w-full p-3 md:p-6 lg:p-8 z-30 transform translate-y-2 group-hover:translate-y-0 transition-transform duration-300">
                         <div className="bg-white/95 backdrop-blur-md p-3 md:p-5 lg:p-6 rounded-xl md:rounded-2xl lg:rounded-3xl border border-white/40 shadow-xl w-fit max-w-[95%]">
                           <h3 className={`text-lg md:text-2xl xl:text-4xl font-coolvetica font-bold text-black transition-colors duration-300 truncate ${feature.color}`}>
                             {feature.title}
                           </h3>
                         </div>
-                      </div>
+                      </div> */}
                     </div>
                   </div>
+                </div>
+                <div className="p-3 md:p-5 lg:p-6 w-fit max-w-[95%]">
+                  <h3 className={`text-lg md:text-2xl xl:text-4xl font-coolvetica font-bold text-black transition-colors duration-300 truncate ${feature.color}`}>
+                    {feature.title}
+                  </h3>
                 </div>
               </div>
             ))}
