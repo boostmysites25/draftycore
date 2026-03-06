@@ -26,10 +26,6 @@ const getShapesConfig = (size: number): ShapeConfig[] => Array.from({ length: 3 
     let text = "";
     if (imgIndex === 0) text = "SCALABLE"; // 1.png (Circle)
     else if (imgIndex === 1) text = "COST EFFECTIVE"; // 2.png (Rectangle)
-    else if (imgIndex === 2) text = "EFFICIENT"; // 3.png (Triangle)
-
-    const isMobile = size <= 120;
-
     // We make them rectangular cards to host the image
     return {
         id: `image-${i}`,
