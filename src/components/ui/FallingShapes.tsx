@@ -43,7 +43,7 @@ const getShapesConfig = (size: number): ShapeConfig[] => Array.from({ length: 3 
         render: () => (
             <div
                 className="relative"
-                style={{ width: size, height: size}}
+                style={{ width: size, height: size, clipPath: clipPaths[imgIndex] }}
             >
                 <img
                     src={images[imgIndex]}

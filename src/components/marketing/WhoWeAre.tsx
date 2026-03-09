@@ -8,35 +8,6 @@ import { FallingIcons } from "../ui/FallingIcons";
 
 const animation = { duration: 60000, easing: (t: number) => t };
 
-const TickerLetter = ({ char }: { char: string }) => {
-  const wrapperRef = useRef<HTMLDivElement>(null);
-
-  useEffect(() => {
-    const ctx = gsap.context(() => {
-      gsap.to(wrapperRef.current, {
-        yPercent: -50,
-        duration: 2 + Math.random() * 1, // Random speed between 2s and 3s for independent feel
-        ease: "none",
-        repeat: -1,
-      });
-    });
-    return () => ctx.revert();
-  }, []);
-
-  return (
-    <span className="relative overflow-hidden h-[0.85em] inline-block align-bottom leading-none">
-      <span ref={wrapperRef} className="flex flex-col">
-        <span className="bg-gradient-to-br from-brandturquoise via-brandpink to-brandorange bg-clip-text text-transparent pb-1">
-          {char}
-        </span>
-        <span className="bg-gradient-to-br from-brandturquoise via-brandpink to-brandorange bg-clip-text text-transparent pb-1">
-          {char}
-        </span>
-      </span>
-    </span>
-  );
-};
-
 const WhoWeAre = () => {
   const [triggerDropIn, setTriggerDropIn] = useState(false);
   const containerRef = useRef<HTMLDivElement>(null);
