@@ -10,7 +10,7 @@ const steps = [
     title: "GROW WHEN WORK GROWS",
     description:
       "Add drafting power the moment projects demand it. No hiring cycles. No extra desks. Just capacity when you need it.",
-    color: "bg-brandyellow brightness-95", // Yellow
+    color: "bg-brandpink brightness-95",
     textColor: "text-white",
     rotation: "-rotate-3",
   },
@@ -20,7 +20,7 @@ const steps = [
     title: "SPEND WHERE IT MATTERS",
     description:
       "High-quality production without the weight of in-house overhead, so your resources stay focused on design, clients, and growth.",
-    color: "bg-brandorange", // Orange
+    color: "bg-brandorange",
     textColor: "text-white",
     rotation: "rotate-2",
   },
@@ -30,7 +30,7 @@ const steps = [
     title: "WORK THAT KEEPS MOVING",
     description:
       "Structured drafting that turns markups into momentum, keeping projects flowing and bottlenecks out of the way.",
-    color: "bg-brandpink", // Pink
+    color: "bg-[#379BD6]",
     textColor: "text-white",
     rotation: "-rotate-2",
   },
@@ -118,7 +118,7 @@ const Steps = () => {
             </div>
 
             <div className="relative z-20 pointer-events-none mix-blend-difference flex justify-center h-full w-full">
-              <h2 className="text-8xl xl:text-[10rem] font-maus font-black leading-none tracking-tighter uppercase text-center text-black">
+              <h2 className="text-5xl xl:text-7xl font-maus font-black leading-none tracking-tighter uppercase text-center text-black">
                 BUILT TO BE
               </h2>
             </div>

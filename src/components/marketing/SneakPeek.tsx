@@ -8,31 +8,31 @@ gsap.registerPlugin(ScrollTrigger);
 const features = [
   {
     id: 1,
-    title: "Dashboard",
+    title: "Project Management",
     image: "/images/marketing/sneakpeek/1.png",
     color: "group-hover:text-brandturquoise",
   },
   {
     id: 2,
-    title: "Project Management",
+    title: "Schedules",
     image: "/images/marketing/sneakpeek/2.png",
     color: "group-hover:text-brandorange",
   },
   {
     id: 3,
-    title: "Live Chat",
+    title: "Dashboard",
     image: "/images/marketing/sneakpeek/3.png",
     color: "group-hover:text-brandpink",
   },
   {
     id: 4,
-    title: "Screen Share Meeting",
+    title: "Daily Calender",
     image: "/images/marketing/sneakpeek/4.png",
     color: "group-hover:text-brandyellow",
   },
   {
     id: 5,
-    title: "Invoicing",
+    title: "Screen Share Meeting",
     image: "/images/marketing/sneakpeek/5.png",
     color: "group-hover:text-brandlimegreen",
   },
@@ -114,11 +114,11 @@ const SneakPeek = () => {
 
         {/* Centered Heading */}
         <div className="w-full text-center mb-8 xl:mb-8 flex-shrink-0">
-          <h2 className="text-5xl md:text-8xl font-maus font-black tracking-tighter bg-gradient-to-r from-brandturquoise via-brandpink to-brandorange bg-clip-text text-transparent inline-block px-4">
+          <h2 className="text-5xl xl:text-7xl font-maus font-black tracking-tighter bg-gradient-to-r from-brandturquoise via-brandpink to-brandorange bg-clip-text text-transparent inline-block px-4">
             Drafty Sneak-Peek
           </h2>
-          <p className="mt-4 text-xl text-gray-500 font-coolvetica max-w-2xl mx-auto">
-            Scroll to explore the powerful interface.
+          <p className="mt-4 text-2xl text-gray-500 font-coolvetica max-w-2xl mx-auto">
+          AI POWERED DRAFTING POWERHOUSE 
           </p>
         </div>
 
@@ -165,8 +165,8 @@ const SneakPeek = () => {
                     </div>
                   </div>
                 </div>
-                <div className="p-3 md:p-5 lg:p-6 w-fit max-w-[95%]">
-                  <h3 className={`text-lg md:text-2xl xl:text-4xl font-coolvetica font-bold text-black transition-colors duration-300 truncate ${feature.color}`}>
+                <div className="p-3 md:p-5 lg:p-6 w-fit max-w-[95%] mx-auto">
+                  <h3 className={`text-2xl md:text-3xl xl:text-3xl font-coolvetica font-bold text-black transition-colors duration-300 truncate ${feature.color}`}>
                     {feature.title}
                   </h3>
                 </div>

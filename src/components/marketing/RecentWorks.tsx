@@ -64,8 +64,16 @@ const RecentWorks = () => {
           // 3D feel: Starts slightly tilted back and lower
           slideTl.fromTo(
             card,
-            { y: "100%", rotateX: -5, z: -50 },
-            { y: "0%", rotateX: 0, z: 0, duration: 1, ease: "power2.out" },
+            { xPercent: -50, yPercent: -50, y: "120vh", rotateX: -5, z: -50 },
+            {
+              xPercent: -50,
+              yPercent: -50,
+              y: "0",
+              rotateX: 0,
+              z: 0,
+              duration: 1,
+              ease: "power2.out",
+            },
           );
 
           // 2. Parallax Image Effect (Image moves inside mask)
@@ -84,7 +92,7 @@ const RecentWorks = () => {
               {
                 scale: 0.9,
                 y: "-10%", // Moves up slightly to show it's behind
-                boxShadow: "0px 10px 40px rgba(0,0,0,0.2)", // Reduce shadow as it goes back
+                // boxShadow: "0px 10px 40px rgba(0,0,0,0.2)", // Reduce shadow as it goes back
                 duration: 1,
                 ease: "power2.out",
               },
@@ -92,7 +100,8 @@ const RecentWorks = () => {
             );
           }
 
-          tl.add(slideTl, index === 0 ? 0 : "-=0.2"); // Tighter sequencing
+          // Add a pause so the card is fully viewed before the next one enters
+          tl.add(slideTl, index === 0 ? 0 : "+=0.2");
         }
       });
     }, containerRef);
@@ -111,7 +120,7 @@ const RecentWorks = () => {
       <div className="absolute inset-0 flex items-center justify-center z-0 pointer-events-none">
         <h2
           ref={titleRef}
-          className="text-[10vw] md:text-[9vw] font-maus font-bold uppercase tracking-tighter text-black leading-none text-center select-none px-8"
+          className="text-5xl xl:text-7xl font-maus font-bold uppercase tracking-tighter text-black leading-none text-center select-none px-8"
         >
           How we cater to different Firm Sizes
         </h2>
@@ -122,47 +131,23 @@ const RecentWorks = () => {
         <div
           key={work.id}
           ref={(el) => (cardsRef.current[index] = el)}
-          className={`absolute bottom-0 w-full md:w-[90%] lg:w-[88%] h-[88vh] z-[${index + 10}] will-change-transform`}
-          style={{ transform: "translateY(100%)" }}
+          className={`absolute top-1/2 left-1/2 w-full md:w-[90%] lg:w-[88%] h-[88vh] z-[${index + 10}] will-change-transform`}
+          style={{ transform: "translate(-50%, -50%) translateY(120vh)" }}
         >
           <div
             ref={(el) => (innerCardsRef.current[index] = el)}
-            className="w-full h-full relative rounded-[3rem] overflow-hidden shadow-[0_-20px_60px_rgba(0,0,0,0.3)] origin-bottom bg-gray-100"
+            className="w-full h-full relative rounded-[3rem] overflow-hidden origin-bottom"
           >
+            {/*  shadow-[0_-20px_60px_rgba(0,0,0,0.3)] bg-gray-100 */}
             {/* Parallax Image */}
             <div className="absolute inset-0 overflow-hidden">
               <img
                 ref={(el) => (imagesRef.current[index] = el)}
                 src={work.image}
                 alt={work.title}
-                className="w-full h-[130%] object-cover object-center"
+                className="w-full h-[100%] object-contain object-center"
               />
               {/* <div className="absolute inset-0 bg-black/20"></div> */}
-            </div>
-
-            {/* Content */}
-            <div className="relative z-10 flex flex-col h-full justify-between p-8 md:p-16">
-              <div className="flex justify-end items-start">
-                {/* <span className="text-white text-xl font-bold tracking-widest uppercase border border-white/30 px-6 py-2 rounded-full backdrop-blur-md">
-                  Project 0{index + 1}
-                </span> */}
-                {/* <button className="w-20 h-20 rounded-full bg-white text-black flex items-center justify-center text-3xl hover:scale-110 transition-transform duration-300">
-                  <FaArrowRight className="-rotate-45" />
-                </button> */}
-              </div>
-
-              <div className="flex flex-col md:flex-row justify-between items-end gap-4">
-                <h3
-                  className={`text-6xl md:text-[8rem] font-maus font-black uppercase leading-none ${work.textColor} drop-shadow-lg`}
-                >
-                  {work.title}
-                </h3>
-                <span
-                  className={`text-3xl md:text-5xl font-coolvetica ${work.textColor} opacity-90`}
-                >
-                  {work.year}
-                </span>
-              </div>
             </div>
           </div>
         </div>

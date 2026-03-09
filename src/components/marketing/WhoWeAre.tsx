@@ -59,22 +59,22 @@ const WhoWeAre = () => {
     {
       title: "A drafting partner working quietly behind your studio.",
       color: "bg-brandturquoise",
-      img: "/images/marketing/about/1.jpeg",
+      img: "/images/marketing/about/1.png",
     },
     {
       title: "Built for precision, speed, and scalable production.",
       color: "bg-brandorange",
-      img: "/images/marketing/about/2.jpeg",
+      img: "/images/marketing/about/2.png",
     },
     {
       title: "We take care of the documentation while your team prioritise design & management.",
       color: "bg-brandpink",
-      img: "/images/marketing/about/3.jpeg",
+      img: "/images/marketing/about/3.png",
     },
     {
       title: "Structured output, clean drawings, studio-grade delivery.",
       color: "bg-brandyellow",
-      img: "/images/marketing/about/4.jpeg",
+      img: "/images/marketing/about/4.png",
     },
   ];
 
@@ -84,7 +84,7 @@ const WhoWeAre = () => {
     drag: false,
     slides: {
       perView: 1.2,
-      spacing: -1,
+      spacing: 16,
     },
     created(s) {
       s.moveToIdx(5, true, animation);
@@ -97,10 +97,10 @@ const WhoWeAre = () => {
     },
     breakpoints: {
       "(min-width: 768px)": {
-        slides: { perView: 2.2, spacing: -1 },
+        slides: { perView: 2.2, spacing: 16 },
       },
       "(min-width: 1024px)": {
-        slides: { perView: 3.5, spacing: -1 },
+        slides: { perView: 3.5, spacing: 16 },
       },
     },
   });
@@ -131,8 +131,9 @@ const WhoWeAre = () => {
 
         {/* Top Content */}
         <div className="flex flex-col mx-auto text-center justify-center w-full relative z-10">
-          <h3 className="text-4xl xl:text-7xl font-medium mb-4 bg-gradient-to-br from-brandturquoise via-brandpink to-brandorange bg-clip-text text-transparent font-maus pb-2 flex sm:flex-row flex-col gap-3 sm:gap-6 justify-center">
-            <span>
+          <h3 className="text-5xl xl:text-7xl font-maus font-medium mb-4 bg-gradient-to-br from-brandturquoise via-brandpink to-brandorange bg-clip-text text-transparent pb-2 flex sm:flex-row flex-col gap-3 sm:gap-6 justify-center">
+            about drafty
+            {/* <span>
               {"ABOUT".split("").map((char, i) => (
                 <TickerLetter key={`${i}`} char={char} />
               ))}
@@ -141,7 +142,7 @@ const WhoWeAre = () => {
               {"DRAFTY".split("").map((char, i) => (
                 <TickerLetter key={`${i}`} char={char} />
               ))}
-            </span>
+            </span> */}
           </h3>
 
           <p className="text-black/80 text-xl xl:text-2xl leading-relaxed mb-16 max-w-6xl font-coolvetica tracking-wide mx-auto text-center">

@@ -1,5 +1,6 @@
-import { lazy } from "react";
+import { lazy, useState, useEffect, Suspense } from "react";
 import SmoothScroll from "../components/common/SmoothScroll";
+import MarketingLogin from "../components/marketing/MarketingLogin";
 
 const Hero = lazy(() => import("../components/marketing/Hero"));
 const WhoWeAre = lazy(() => import("../components/marketing/WhoWeAre"));
@@ -14,19 +15,40 @@ const SneakPeek = lazy(() => import("../components/marketing/SneakPeek"));
 const NextStep = lazy(() => import("../components/home/NextStep"));
 
 const Marketing = () => {
+  const [isLoggedIn, setIsLoggedIn] = useState(false);
+
+  useEffect(() => {
+    // Check if user is already logged in (e.g., from session storage)
+    const storedLogin = sessionStorage.getItem("isMarketingLoggedIn");
+    if (storedLogin === "true") {
+      setIsLoggedIn(true);
+    }
+  }, []);
+
+  const handleLoginSuccess = () => {
+    setIsLoggedIn(true);
+    sessionStorage.setItem("isMarketingLoggedIn", "true");
+  };
+
+  if (!isLoggedIn) {
+    return <MarketingLogin onLoginSuccess={handleLoginSuccess} />;
+  }
+
   return (
     <SmoothScroll>
-      <Hero delay={0} />
-      <WhoWeAre />
-      <Steps />
-      <Impact />
-      <ServicesReveal />
-      <UnifiedVision />
-      <RecentWorks />
-      <SneakPeek />
-      <OurProcess />
-      <Pricing />
-      <NextStep />
+      <Suspense fallback={<div className="h-screen w-full bg-white flex items-center justify-center">Loading...</div>}>
+        <Hero delay={0} />
+        <WhoWeAre />
+        <Steps />
+        <Impact />
+        <ServicesReveal />
+        <UnifiedVision />
+        <RecentWorks />
+        <SneakPeek />
+        <OurProcess />
+        <Pricing />
+        <NextStep />
+      </Suspense>
     </SmoothScroll>
   );
 };

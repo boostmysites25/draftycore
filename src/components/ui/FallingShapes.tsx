@@ -20,12 +20,17 @@ export type ShapeConfig = {
     render: () => JSX.Element;
 };
 
+// clip-path for each shape so the text stays inside the visible area
+const clipPaths: Record<number, string> = {
+    0: 'circle(50% at 50% 50%)',                                          // Circle
+    1: 'polygon(50% 0%, 100% 100%, 0% 100%)',                             // Triangle
+    2: 'polygon(10% 5%, 95% 0%, 100% 90%, 5% 100%)',                      // Tilted square
+};
+
+
 const getShapesConfig = (size: number): ShapeConfig[] => Array.from({ length: 3 }).map((_, i) => {
     const imgIndex = i % 3;
 
-    let text = "";
-    if (imgIndex === 0) text = "SCALABLE"; // 1.png (Circle)
-    else if (imgIndex === 1) text = "COST EFFECTIVE"; // 2.png (Rectangle)
     // We make them rectangular cards to host the image
     return {
         id: `image-${i}`,
@@ -36,12 +41,20 @@ const getShapesConfig = (size: number): ShapeConfig[] => Array.from({ length: 3 
         offsetY: -300 - (i * 100) - Math.random() * 100,
         angle: (Math.random() - 0.5) * 0.2,
         render: () => (
-            <div className="relative flex items-center justify-center" style={{ width: size, height: size }}>
+            <div
+                className="relative"
+                style={{ width: size, height: size}}
+            >
                 <img
                     src={images[imgIndex]}
-                    className="absolute inset-0 w-full h-full object-contain"
-                    alt={text}
+                    className="w-full h-full object-cover"
+                    alt="Built To Be Reference"
                 />
+                {/* <div className={`absolute inset-0 flex items-center justify-center ${imgIndex === 1 ? 'pt-12 xl:pt-16' : ''}`}>
+                    <span className="whitespace-nowrap px-3 py-1 xl:px-5 xl:py-2 rounded-full bg-white/95 text-[9px] xl:text-[12px] font-semibold tracking-[0.12em] uppercase text-secondary shadow-sm">
+                        {captions[imgIndex]}
+                    </span>
+                </div> */}
             </div>
         )
     };
@@ -59,10 +72,17 @@ export const FallingShapes = ({ triggerDropIn = false }: FallingShapesProps) => 
     const [shapes, setShapes] = useState<ShapeConfig[]>([]);
 
     useEffect(() => {
-        if (typeof window === 'undefined') return;
-        const width = window.innerWidth;
-        const size = width < 640 ? 110 : width < 1024 ? 150 : 220;
-        setShapes(getShapesConfig(size));
+        // Initial setup
+        const updateShapes = () => {
+            if (typeof window === 'undefined') return;
+            const width = window.innerWidth;
+            const size = width < 640 ? 110 : width < 1024 ? 150 : width >= 1280 ? 300 : 220;
+            setShapes(getShapesConfig(size));
+        };
+
+        updateShapes();
+        window.addEventListener('resize', updateShapes);
+        return () => window.removeEventListener('resize', updateShapes);
     }, []);
 
     useEffect(() => {

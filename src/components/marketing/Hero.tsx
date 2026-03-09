@@ -128,13 +128,13 @@ const Hero = ({ delay }: { delay: number }) => {
     return (
         <div
             // ref={containerRef}
-            className='h-screen flex items-center justify-center overflow-hidden relative bg-white cursor-none'
+            className='h-screen flex items-center justify-center overflow-hidden relative bg-white cursor-none w-full'
             onMouseEnter={() => setIsHovering(true)}
             onMouseLeave={() => setIsHovering(false)}
 
         >
             {/* Background Animation: Pulse Grid with lower opacity for subtlety */}
-            <div className="absolute inset-0 z-0 opacity-40">
+            <div className="absolute w-full h-full inset-0 z-0 opacity-40">
                 {/* <PulseGrid
                     gridColor="rgba(0, 0, 0, 0.08)"
                     beamColors={['#FF7A00', '#FFC300', "#FF2D95", '#B8F135', '#2ED9C3']}
@@ -201,13 +201,6 @@ const Hero = ({ delay }: { delay: number }) => {
             {/* Main Text Container */}
             <div className="relative z-10 flex flex-col items-center justify-center">
                 <div className="flex items-baseline gap-1 sm:gap-2 flex-wrap justify-center px-4 relative">
-                    {/* Measurement Line Above Text */}
-                    <div className="absolute -top-12 left-0 w-full hidden md:flex justify-between items-end border-b border-black/20 pb-2 px-10">
-                        <span className="h-2 w-[1px] bg-black/30"></span>
-                        <span className="text-[10px] font-coolvetica text-black/40 tracking-widest">1200mm</span>
-                        <span className="h-2 w-[1px] bg-black/30"></span>
-                    </div>
-
                     <video
                         key={currentVideo.id}
                         ref={videoRef}

@@ -19,7 +19,7 @@ const testimonialsData: Testimonial[] = [
     {
         id: 1,
         quote: "It’s been a game-changer for our team. We can finally focus on the design stuff we love, while the drafting work just gets done. No micromanaging, no late-night fixes. it’s like someone quietly picked up the slack for us.",
-        author: "Rod",
+        author: "Rod Constantindes",
         role: "Mezzebar Constructions",
         bgColor: "bg-brandorange",
         textColor: "text-white",

@@ -82,7 +82,7 @@ const NextStep = () => {
             <div className="wrapper relative z-10">
                 {/* Header */}
                 <div className="text-center mb-20">
-                    <h2 ref={titleRef} className="text-5xl md:text-8xl font-black font-maus text-secondary uppercase tracking-tighter mb-4">
+                    <h2 ref={titleRef} className="text-5xl xl:text-7xl font-black font-maus text-secondary uppercase tracking-tighter mb-4">
                         Next steps
                     </h2>
                     {/* <p ref={subTitleRef} className="text-xl md:text-2xl text-neutral-500 font-medium max-w-3xl mx-auto font-coolvetica tracking-widest">

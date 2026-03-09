@@ -157,18 +157,18 @@ const Impact = () => {
       <ConnectiveTech />
 
       {/* Background Decoration (Subtle Annoyed Faces) */}
-      <div className=" absolute top-0 left-0 w-full h-full pointer-events-none">
+      <div className=" absolute top-0 left-0 w-full h-full pointer-events-none hidden xl:block">
         {/* Top Right */}
         <div className="absolute z-[2] top-[1%] right-[8%] opacity-50">
-          <img src="/images/marketing/challenges/face4.png" className="w-[80px] object-contain animate-[spin_6s_linear_infinite]" alt="Annoyed face 1" />
+          <img src="/images/marketing/challenges/face4.png" className="w-[45px] object-contain animate-[spin_6s_linear_infinite]" alt="Annoyed face 1" />
         </div>
         {/* Bottom Left */}
         <div className="absolute z-[2] bottom-[0%] left-[8%] opacity-50">
-          <img src="/images/marketing/challenges/face2.png" className="w-[80px] object-contain animate-[spin_8s_linear_infinite_reverse]" alt="Annoyed face 2" />
+          <img src="/images/marketing/challenges/face2.png" className="w-[45px] object-contain animate-[spin_8s_linear_infinite_reverse]" alt="Annoyed face 2" />
         </div>
         {/* Top Center Gap */}
-        <div className="absolute z-[2] top-[10%] left-0 xl:left-[40%] opacity-50">
-          <img src="/images/marketing/challenges/face3.png" className="w-[80px] object-contain animate-[bounce_5s_linear_infinite]" alt="Annoyed face 3" />
+        <div className="absolute z-[2] top-[25%] left-0 xl:left-[5%] opacity-50">
+          <img src="/images/marketing/challenges/face3.png" className="w-[45px] object-contain animate-[bounce_5s_linear_infinite]" alt="Annoyed face 3" />
         </div>
         {/* Bottom Center Gap */}
         {/* <div className="absolute z-[2] bottom-[10%] right-[5%] opacity-40">
@@ -189,12 +189,12 @@ const Impact = () => {
           ref={leftContainerRef}
           className="hidden xl:flex w-1/2 h-[90vh] relative flex-col gap-7 overflow-hidden"
         >
-          <h2 className="text-5xl xl:text-7xl font-maus font-black uppercase tracking-tighter text-black/90">
-            Challenges you face
+          <h2 className="text-5xl xl:text-7xl font-maus font-black uppercase tracking-tighter text-black/90 text-center">
+          Studio Struggles
           </h2>
           <div className="relative w-full">
             <div
-              className="absolute left-0 w-full transition-transform duration-500 ease-out flex flex-col items-start top-0 gap-5"
+              className="absolute left-0 w-full transition-transform duration-500 ease-out flex flex-col items-center top-0 gap-5"
               style={{
                 transform: getListTransform(),
               }}
@@ -234,7 +234,7 @@ const Impact = () => {
         {/* Right Side - Creative 3D Slider */}
         <div className="w-full md:w-[80%] mx-auto xl:mx-0 xl:w-1/2 h-[80vh] xl:h-[80vh] flex flex-col gap-5 items-center justify-center relative">
           <h2 className="xl:hidden flex text-5xl xl:text-7xl font-maus font-black uppercase tracking-tighter text-black/90 text-center">
-            Challenges you face
+          Studio Struggles
           </h2>
           <Swiper
             effect={"creative"}

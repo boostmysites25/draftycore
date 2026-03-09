@@ -167,11 +167,12 @@ const Pricing = () => {
             ref={containerRef}
             className="relative w-full min-h-screen bg-slate-50 flex flex-col items-center justify-center py-24 px-4 md:px-8 overflow-hidden border-t-4 border-brandlimegreen"
         >
+            <div className="absolute bottom-0 left-0 w-full h-1 bg-gradient-to-r from-brandlimegreen via-brandturquoise to-brandpink"></div>
             {/* Title */}
             <div className="flex flex-col items-center justify-center mb-16 z-10 w-full max-w-6xl">
                 <h2
                     ref={titleRef}
-                    className="text-4xl md:text-5xl lg:text-[4.5rem] font-maus tracking-wider text-center leading-tight"
+                    className="text-5xl xl:text-7xl font-maus tracking-wider text-center leading-tight"
                 >
                     <span className="bg-gradient-to-br from-brandturquoise via-brandpink to-brandorange bg-clip-text text-transparent">PRICING & ENGAGEMENT MODELS
                     </span>

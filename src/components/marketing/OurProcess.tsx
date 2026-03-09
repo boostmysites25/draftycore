@@ -57,7 +57,7 @@ const OurProcess = () => {
       <CircleCursor isActive={true} />
 
       <div className="w-full max-w-[95rem] mx-auto px-4 md:px-8">
-        <h2 className="text-5xl md:text-6xl xl:text-8xl font-maus font-black text-center mb-10 md:mb-16 tracking-tighter bg-gradient-to-r from-purple-600 via-blue-600 to-teal-600 bg-clip-text text-transparent">
+        <h2 className="text-5xl xl:text-7xl font-maus font-black text-center mb-10 md:mb-16 tracking-tighter bg-gradient-to-r from-purple-600 via-blue-600 to-teal-600 bg-clip-text text-transparent">
           Our Process
         </h2>
 

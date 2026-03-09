@@ -8,34 +8,38 @@ gsap.registerPlugin(ScrollTrigger);
 const cards = [
   {
     id: 1,
-    title: "Planning",
+    title: "Blend",
+    description: "We plug into the tools you already use . Archicad, Revit, Tekla, AutoCAD and more.",
     image: "/images/marketing/unified/1.jpeg",
     position: "top-left",
     start: { x: "-60vw", y: "-60vh" },
-    color: "group-hover:bg-brandturquoise",
+    color: "group-hover:bg-black",
     radius: "rounded-[2rem]"
   },
   {
     id: 5,
-    title: "",
+    title: "Flowstate",
+    description: "",
     image: "/images/marketing/unified/2.jpeg",
     position: "top-center",
     start: { x: "0vw", y: "-80vh" },
-    color: "",
+    color: "group-hover:bg-black",
     radius: "rounded-[2rem]"
   },
   {
     id: 2,
-    title: "Design",
+    title: "Sync",
+    description: "We stay aligned with your documentation style, standards, and revision cycles so updates flow naturally.",
     image: "/images/marketing/unified/3.jpeg",
     position: "top-right",
     start: { x: "60vw", y: "-60vh" },
-    color: "group-hover:bg-brandpink",
+    color: "group-hover:bg-black",
     radius: "rounded-[2rem]"
   },
   {
     id: 3,
-    title: "",
+    title: "Mesh",
+    description: "",
     image: "/images/marketing/unified/4.jpeg",
     position: "bottom-left",
     start: { x: "-60vw", y: "60vh" },
@@ -44,16 +48,18 @@ const cards = [
   },
   {
     id: 6,
-    title: "Launch",
+    title: "Rhythm",
+    description: "We match your studio’s rhythm, accelerating when deadlines tighten while keeping production steady.",
     image: "/images/marketing/unified/5.jpeg",
     position: "bottom-center",
     start: { x: "0vw", y: "80vh" },
-    color: "group-hover:bg-brandorange",
+    color: "group-hover:bg-black",
     radius: "rounded-[2rem]"
   },
   {
     id: 4,
-    title: "",
+    title: "Fusion",
+    description: "",
     image: "/images/marketing/unified/6.jpeg",
     position: "bottom-right",
     start: { x: "60vw", y: "60vh" },
@@ -161,10 +167,15 @@ const UnifiedVision = () => {
             />
 
             {/* Overlay Content */}
-            <div className={`${card.radius} absolute z-10 inset-0 h-full w-full flex items-center justify-center`}>
-              <h3 className="text-white brightness-90 font-coolvetica font-bold text-2xl md:text-3xl tracking-wide uppercase group-hover:opacity-100 opacity-0 transition-all duration-500">
+            <div className={`${card.radius} absolute z-10 inset-0 h-full w-full flex flex-col items-center justify-center p-6 text-center`}>
+              <h3 className="text-white brightness-90 font-coolvetica font-bold text-2xl md:text-3xl tracking-wide uppercase mb-2">
                 {card.title}
               </h3>
+              {card.description && (
+                <p className="text-white/90 text-sm md:text-base font-medium max-w-[80%] hidden group-hover:block opacity-0 group-hover:opacity-100 translate-y-4 group-hover:translate-y-0 transition-all duration-500 ease-out">
+                  {card.description}
+                </p>
+              )}
             </div>
           </div>
         ))}

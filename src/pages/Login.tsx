@@ -1,6 +1,10 @@
 import { useState } from 'react';
 
-const Login = () => {
+interface LoginProps {
+    onLoginSuccess?: () => void;
+}
+
+const Login = ({ onLoginSuccess }: LoginProps) => {
     const [email, setEmail] = useState('');
     const [password, setPassword] = useState('');
 
@@ -8,6 +12,10 @@ const Login = () => {
         e.preventDefault();
         // Handle login logic here
         console.log('Login attempt:', { email, password });
+        // For now, accept any credentials
+        if (onLoginSuccess) {
+            onLoginSuccess();
+        }
     };
 
     return (

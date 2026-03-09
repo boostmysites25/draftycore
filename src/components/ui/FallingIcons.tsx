@@ -29,13 +29,13 @@ const ICONS: IconConfig[] = Array.from({ length: images.length }).map((_, i) => 
     return {
         id: `icon-${i}`,
         type: 'rectangle',
-        width: 100,
-        height: 100,
+        width: 120,
+        height: 120,
         offsetX: Math.random() * 800 - 400, // Spread across the width
         offsetY: -300 - (i * 100) - Math.random() * 200,
         angle: (Math.random() - 0.5) * 0.2,
         render: () => (
-            <div className="w-[80px] h-[80px] overflow-hidden">
+            <div className="w-[80px] h-[80px] lg:w-[120px] lg:h-[120px] overflow-hidden">
                 <img
                     src={images[imgIndex]}
                     className="w-full h-full object-contain drop-shadow-md"
