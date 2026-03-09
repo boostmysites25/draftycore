@@ -1,7 +1,6 @@
 import { useKeenSlider } from "keen-slider/react";
 import "keen-slider/keen-slider.min.css";
 import { useEffect, useRef, useState } from "react";
-import gsap from "gsap";
 // import { FaArrowRight } from "react-icons/fa";
 import { CircleCursor } from "../ui/Cursors";
 import { FallingIcons } from "../ui/FallingIcons";
