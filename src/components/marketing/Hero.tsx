@@ -236,13 +236,6 @@ const Hero = ({ delay }: { delay: number }) => {
                         </video>
                     )}
                 </div>
-
-                {/* Sub-headline */}
-                <div className={isAligned ? "mt-8 md:mt-2 overflow-hidden duration-500" : "mt-8 md:mt-2 overflow-hidden opacity-0 duration-500"}>
-                    <p className="text-sm md:text-lg font-coolvetica text-black/60 tracking-widest uppercase animate-fade-in-up animation-delay-500">
-                        The Drafting Engine
-                    </p>
-                </div>
             </div>
         </div>
     )
