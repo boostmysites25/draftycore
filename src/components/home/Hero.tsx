@@ -8,6 +8,7 @@ import PulseGrid from '../ui/PulseGrid'
 import video from '../../assets/drafty_pre_v13.webm'
 // import videoMp4 from '../../assets/logo-vid1.mp4'
 import video2 from '../../assets/drafty_post_v13.webm'
+import draftyLogo from '../../assets/drafty_logo.png'
 import { CircleCursor } from '../ui/Cursors'
 
 gsap.registerPlugin(ScrollTrigger)
@@ -30,6 +31,7 @@ const Hero = ({delay}: {delay: number}) => {
     });
     const videoRef = useRef<HTMLVideoElement>(null);
     const [hasInitialDelayPassed, setHasInitialDelayPassed] = useState(false);
+    const [isIOSDevice, setIsIOSDevice] = useState(false);
 
     useEffect(() => {
         const timer = setTimeout(() => {
@@ -45,10 +47,18 @@ const Hero = ({delay}: {delay: number}) => {
     }, [currentVideo.id]);
 
     useEffect(() => {
-        if (videoRef.current && hasInitialDelayPassed) {
+        if (typeof navigator !== 'undefined') {
+            const ua = navigator.userAgent || navigator.vendor || (window as any).opera || '';
+            const isIOS = /iPad|iPhone|iPod/.test(ua) && !(window as any).MSStream;
+            setIsIOSDevice(isIOS);
+        }
+    }, []);
+
+    useEffect(() => {
+        if (!isIOSDevice && videoRef.current && hasInitialDelayPassed) {
             videoRef.current.play().catch(e => console.error("Video play failed", e));
         }
-    }, [hasInitialDelayPassed, currentVideo]);
+    }, [hasInitialDelayPassed, currentVideo, isIOSDevice]);
 
 
     // const word = "DRAFTY"
@@ -204,22 +214,30 @@ const Hero = ({delay}: {delay: number}) => {
             <div className="relative z-10 flex flex-col items-center justify-center">
                 <div className="flex items-baseline gap-1 sm:gap-2 flex-wrap justify-center px-4 relative">
 
-                    <video
-                        key={currentVideo.id}
-                        ref={videoRef}
-                        loop={false}
-                        muted
-                        playsInline
-                        disablePictureInPicture
-                        disableRemotePlayback
-                        onContextMenu={(e) => e.preventDefault()}
-                        className={`w-full h-full object-cover ${currentVideo.id === 2 ? "-translate-y-[14rem]" : ""}`}
-                    >
-                        {/* Prefer MP4 (potentially HEVC) for Safari/iOS */}
-                        {currentVideo.sources.mp4 && <source src={currentVideo.sources.mp4} type='video/mp4; codecs="hvc1"' />}
-                        {/* Fallback to WebM for Chrome/FF */}
-                        <source src={currentVideo.sources.webm} type="video/webm" />
-                    </video>
+                    {isIOSDevice ? (
+                        <img
+                            src={draftyLogo}
+                            alt="Drafty logo"
+                            className="w-full h-full object-contain"
+                        />
+                    ) : (
+                        <video
+                            key={currentVideo.id}
+                            ref={videoRef}
+                            loop={false}
+                            muted
+                            playsInline
+                            disablePictureInPicture
+                            disableRemotePlayback
+                            onContextMenu={(e) => e.preventDefault()}
+                            className={`w-full h-full object-cover ${currentVideo.id === 2 ? "-translate-y-[14rem]" : ""}`}
+                        >
+                            {/* Prefer MP4 (potentially HEVC) for Safari/iOS */}
+                            {currentVideo.sources.mp4 && <source src={currentVideo.sources.mp4} type='video/mp4; codecs="hvc1"' />}
+                            {/* Fallback to WebM for Chrome/FF */}
+                            <source src={currentVideo.sources.webm} type="video/webm" />
+                        </video>
+                    )}
                 </div>
 
                 {/* Sub-headline */}
