@@ -96,8 +96,9 @@ const Footer = () => {
                 </div>
 
                 {/* Bottom Bar */}
-                <div className="mt-20 pt-8 border-t border-white/10 flex flex-col md:flex-row justify-between items-center text-gray-500 text-md font-coolvetica tracking-wide">
+                <div className="mt-20 pt-8 border-t border-white/10 flex flex-col md:flex-row justify-between items-center gap-4 text-gray-500 text-md font-coolvetica tracking-wide">
                     <p>&copy; {new Date().getFullYear()} Drafty. All rights reserved.</p>
+                    <p className="text-gray-400 text-sm">Image credits: Juan Lugo, Rina Lu, Mekhak Elizabaryan</p>
                     {/* <div className="flex gap-8 mt-4 md:mt-0">
                         <Link to="/privacy" className="hover:text-white transition-colors">Privacy Policy</Link>
                         <Link to="/terms" className="hover:text-white transition-colors">Terms of Service</Link>

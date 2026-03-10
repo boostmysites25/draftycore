@@ -5,8 +5,12 @@ import MarketingLogin from "../components/marketing/MarketingLogin";
 const Hero = lazy(() => import("../components/marketing/Hero"));
 const WhoWeAre = lazy(() => import("../components/marketing/WhoWeAre"));
 const Steps = lazy(() => import("../components/marketing/Steps"));
-const ServicesReveal = lazy(() => import("../components/marketing/ServicesReveal"));
-const UnifiedVision = lazy(() => import("../components/marketing/UnifiedVision"));
+const ServicesReveal = lazy(
+  () => import("../components/marketing/ServicesReveal"),
+);
+const UnifiedVision = lazy(
+  () => import("../components/marketing/UnifiedVision"),
+);
 const Impact = lazy(() => import("../components/marketing/Impact"));
 const RecentWorks = lazy(() => import("../components/marketing/RecentWorks"));
 const OurProcess = lazy(() => import("../components/marketing/OurProcess"));
@@ -36,7 +40,13 @@ const Marketing = () => {
 
   return (
     <SmoothScroll>
-      <Suspense fallback={<div className="h-screen w-full bg-white flex items-center justify-center">Loading...</div>}>
+      <Suspense
+        fallback={
+          <div className="h-screen w-full bg-white flex items-center justify-center">
+            Loading...
+          </div>
+        }
+      >
         <Hero delay={0} />
         <WhoWeAre />
         <Steps />
@@ -44,7 +54,7 @@ const Marketing = () => {
         <ServicesReveal />
         <UnifiedVision />
         <RecentWorks />
-        <SneakPeek />
+        <SneakPeek heading="Drafty Sneak-Peek" />
         <OurProcess />
         <Pricing />
         <NextStep />

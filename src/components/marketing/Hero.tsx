@@ -1,9 +1,9 @@
 import { useRef, useLayoutEffect, useState, useEffect } from 'react'
 import gsap from 'gsap'
 import { ScrollTrigger } from 'gsap/ScrollTrigger'
-import video from '../../assets/logo-vid.webm'
-import videoMp4 from '../../assets/logo-vid1.mp4'
-import video2 from '../../assets/scroll-down-vid.webm'
+import video from '../../assets/drafty_pre_v13.webm'
+// import videoMp4 from '../../assets/logo-vid1.mp4'
+import video2 from '../../assets/drafty_post_v13.webm'
 import { CircleCursor } from '../ui/Cursors'
 import ConnectiveTech from '../ui/ConnectiveTech'
 
@@ -23,7 +23,7 @@ const Hero = ({ delay }: { delay: number }) => {
         }
     }>({
         id: 1,
-        sources: { webm: video, mp4: videoMp4 }
+        sources: { webm: video, mp4: null }
     });
     const videoRef = useRef<HTMLVideoElement>(null);
     const [hasInitialDelayPassed, setHasInitialDelayPassed] = useState(false);
@@ -106,7 +106,7 @@ const Hero = ({ delay }: { delay: number }) => {
                 onLeaveBack: () => {
                     setCurrentVideo({
                         id: 1,
-                        sources: { webm: video, mp4: videoMp4 }
+                        sources: { webm: video, mp4: null }
                     });
                     setIsAligned(true);
                     // Smooth Return to Alignment (Overwrites the elastic bounce)

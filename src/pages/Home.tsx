@@ -32,7 +32,7 @@ const Home = () => {
       </div>
       {/* <div id="work"><FeaturedWork /></div> */}
       <div className="pt-6 pb-10">
-        <SneakPeek />
+        <SneakPeek heading="The Workflow Engine" />
       </div>
       <div id="services">
         <IndustriesWeFocusUpon />

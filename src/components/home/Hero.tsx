@@ -5,9 +5,9 @@ import { ScrollTrigger } from 'gsap/ScrollTrigger'
 // import Aurora from '../ui/Aurora'
 // import Antigravity from '../ui/Antigravity'
 import PulseGrid from '../ui/PulseGrid'
-import video from '../../assets/logo-vid.webm'
-import videoMp4 from '../../assets/logo-vid1.mp4'
-import video2 from '../../assets/scroll-down-vid.webm'
+import video from '../../assets/drafty_pre_v13.webm'
+// import videoMp4 from '../../assets/logo-vid1.mp4'
+import video2 from '../../assets/drafty_post_v13.webm'
 import { CircleCursor } from '../ui/Cursors'
 
 gsap.registerPlugin(ScrollTrigger)
@@ -26,7 +26,7 @@ const Hero = ({delay}: {delay: number}) => {
         }
     }>({
         id: 1,
-        sources: { webm: video, mp4: videoMp4 }
+        sources: { webm: video, mp4: null }
     });
     const videoRef = useRef<HTMLVideoElement>(null);
     const [hasInitialDelayPassed, setHasInitialDelayPassed] = useState(false);
@@ -109,7 +109,7 @@ const Hero = ({delay}: {delay: number}) => {
                 onLeaveBack: () => {
                     setCurrentVideo({
                         id: 1,
-                        sources: { webm: video, mp4: videoMp4 }
+                        sources: { webm: video, mp4: null }
                     });
                     setIsAligned(true);
                     // Smooth Return to Alignment (Overwrites the elastic bounce)
@@ -203,12 +203,6 @@ const Hero = ({delay}: {delay: number}) => {
             {/* Main Text Container */}
             <div className="relative z-10 flex flex-col items-center justify-center">
                 <div className="flex items-baseline gap-1 sm:gap-2 flex-wrap justify-center px-4 relative">
-                    {/* Measurement Line Above Text */}
-                    <div className="absolute -top-12 left-0 w-full hidden md:flex justify-between items-end border-b border-black/20 pb-2 px-10">
-                        <span className="h-2 w-[1px] bg-black/30"></span>
-                        <span className="text-[10px] font-coolvetica text-black/40 tracking-widest">1200mm</span>
-                        <span className="h-2 w-[1px] bg-black/30"></span>
-                    </div>
 
                     <video
                         key={currentVideo.id}

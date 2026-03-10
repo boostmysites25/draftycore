@@ -38,7 +38,7 @@ const features = [
   },
 ];
 
-const SneakPeek = () => {
+const SneakPeek = ({ heading }: { heading: string }) => {
   const containerRef = useRef<HTMLDivElement>(null);
   const trackRef = useRef<HTMLDivElement>(null);
   const cardsRef = useRef<(HTMLDivElement | null)[]>([]);
@@ -115,7 +115,7 @@ const SneakPeek = () => {
         {/* Centered Heading */}
         <div className="w-full text-center mb-8 xl:mb-8 flex-shrink-0">
           <h2 className="text-5xl xl:text-7xl font-maus font-black tracking-tighter bg-gradient-to-r from-brandturquoise via-brandpink to-brandorange bg-clip-text text-transparent inline-block px-4">
-            Drafty Sneak-Peek
+            {heading}
           </h2>
           <p className="mt-4 text-2xl text-gray-500 font-coolvetica max-w-2xl mx-auto">
           AI POWERED DRAFTING POWERHOUSE 
