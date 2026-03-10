@@ -13,7 +13,6 @@ gsap.registerPlugin(ScrollTrigger)
 const Hero = ({ delay }: { delay: number }) => {
     const containerRef = useRef<HTMLDivElement>(null)
     const lettersRef = useRef<(HTMLSpanElement | null)[]>([])
-    const [isAligned, setIsAligned] = useState(false)
     const cursorRef = useRef<HTMLDivElement>(null);
     const [isHovering, setIsHovering] = useState(false);
     const [currentVideo, setCurrentVideo] = useState<{
@@ -101,7 +100,6 @@ const Hero = ({ delay }: { delay: number }) => {
                     })
                         .to(lettersRef.current, {
                             y: (i) => {
-                                setIsAligned(false);
                                 const yOffsets = [10, -50, 15, -40, 25, 40];
                                 return baseDrop + (yOffsets[i] * (window.innerWidth < 768 ? 0.6 : 1));
                             },
@@ -118,7 +116,6 @@ const Hero = ({ delay }: { delay: number }) => {
                         id: 1,
                         sources: { webm: video, mp4: null }
                     });
-                    setIsAligned(true);
                     // Smooth Return to Alignment (Overwrites the elastic bounce)
                     gsap.to(lettersRef.current, {
                         y: 0,
