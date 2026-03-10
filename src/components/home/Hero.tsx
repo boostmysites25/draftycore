@@ -218,7 +218,7 @@ const Hero = ({delay}: {delay: number}) => {
                         <img
                             src={draftyLogo}
                             alt="Drafty logo"
-                            className="w-full h-full object-contain"
+                            className="w-full h-full object-contain scale-125 xl:scale-100"
                         />
                     ) : (
                         <video
