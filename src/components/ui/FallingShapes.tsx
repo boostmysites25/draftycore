@@ -21,11 +21,11 @@ export type ShapeConfig = {
 };
 
 // clip-path for each shape so the text stays inside the visible area
-const clipPaths: Record<number, string> = {
-    0: 'circle(50% at 50% 50%)',                                          // Circle
-    1: 'polygon(50% 0%, 100% 100%, 0% 100%)',                             // Triangle
-    2: 'polygon(10% 5%, 95% 0%, 100% 90%, 5% 100%)',                      // Tilted square
-};
+// const clipPaths: Record<number, string> = {
+//     0: 'circle(50% at 50% 50%)',                                          // Circle
+//     1: 'polygon(50% 0%, 100% 100%, 0% 100%)',                             // Triangle
+//     2: 'polygon(10% 5%, 95% 0%, 100% 90%, 5% 100%)',                      // Tilted square
+// };
 
 
 const getShapesConfig = (size: number): ShapeConfig[] => Array.from({ length: 3 }).map((_, i) => {
@@ -43,7 +43,7 @@ const getShapesConfig = (size: number): ShapeConfig[] => Array.from({ length: 3 
         render: () => (
             <div
                 className="relative"
-                style={{ width: size, height: size, clipPath: clipPaths[imgIndex] }}
+                style={{ width: size, height: size }}
             >
                 <img
                     src={images[imgIndex]}
