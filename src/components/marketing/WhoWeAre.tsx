@@ -116,8 +116,9 @@ const WhoWeAre = () => {
           </h3>
 
           <p className="text-black/80 text-xl xl:text-2xl leading-relaxed mb-16 max-w-6xl font-coolvetica tracking-wide mx-auto text-center">
-            Your behind the scenes drafting powerhouse delivering precision, speed, and scale to elevate design firms across Australia. We take care of the detailing so your designers can focus on design. Clean, quick, and studio-grade. <br />
-            Our custom-built platform makes it ridiculously easy to brief, review, and deliver drawings, no email chains, no chaos. Just smooth, scalable drafting support that fits right into your workflow while using your existing tools like AutoCA, Revit,  ArchiCAD + Tekla
+          A drafting partner working quietly behind your studio. We’re Built for precision, speed, and scalable production. Helping studios handle growing documentation needs efficiently.
+          <br />
+          We take care of the documentation while your team prioritise design and management. Drafty delivers structured output, clean drawings, and studio-grade documentation that is consistent, organised, and ready for coordination and construction.
           </p>
 
           <div className="mb-20 -mx-8 md:-mx-12 xl:-mx-[5.1rem] overflow-hidden">
