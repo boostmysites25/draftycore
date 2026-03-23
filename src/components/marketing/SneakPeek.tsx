@@ -41,7 +41,7 @@ const features = [
 const SneakPeek = ({ heading }: { heading: string }) => {
   const containerRef = useRef<HTMLDivElement>(null);
   const trackRef = useRef<HTMLDivElement>(null);
-  const cardsRef = useRef<(HTMLDivElement | null)[]>([]);
+  // const cardsRef = useRef<(HTMLDivElement | null)[]>([]);
 
   useEffect(() => {
     const ctx = gsap.context(() => {
@@ -69,42 +69,43 @@ const SneakPeek = ({ heading }: { heading: string }) => {
     return () => ctx.revert();
   }, []);
 
-  const handleMouseMove = (e: React.MouseEvent<HTMLDivElement>, index: number) => {
-    const card = cardsRef.current[index];
-    if (!card) return;
-
-    const rect = card.getBoundingClientRect();
-    const x = e.clientX - rect.left;
-    const y = e.clientY - rect.top;
-
-    const centerX = rect.width / 2;
-    const centerY = rect.height / 2;
-
-    const rotateX = ((y - centerY) / centerY) * -5; // Subtle tilt
-    const rotateY = ((x - centerX) / centerX) * 5;
-
-    gsap.to(card, {
-      rotateX: rotateX,
-      rotateY: rotateY,
-      transformPerspective: 1000,
-      scale: 1.02,
-      duration: 0.4,
-      ease: "power2.out"
-    });
-  };
-
-  const handleMouseLeave = (index: number) => {
-    const card = cardsRef.current[index];
-    if (!card) return;
-
-    gsap.to(card, {
-      rotateX: 0,
-      rotateY: 0,
-      scale: 1,
-      duration: 0.7,
-      ease: "elastic.out(1, 0.5)"
-    });
-  };
+  // hover tilt effect temporarily disabled
+  // const handleMouseMove = (e: React.MouseEvent<HTMLDivElement>, index: number) => {
+  //   const card = cardsRef.current[index];
+  //   if (!card) return;
+  //
+  //   const rect = card.getBoundingClientRect();
+  //   const x = e.clientX - rect.left;
+  //   const y = e.clientY - rect.top;
+  //
+  //   const centerX = rect.width / 2;
+  //   const centerY = rect.height / 2;
+  //
+  //   const rotateX = ((y - centerY) / centerY) * -5;
+  //   const rotateY = ((x - centerX) / centerX) * 5;
+  //
+  //   gsap.to(card, {
+  //     rotateX: rotateX,
+  //     rotateY: rotateY,
+  //     transformPerspective: 1000,
+  //     scale: 1.02,
+  //     duration: 0.4,
+  //     ease: "power2.out"
+  //   });
+  // };
+  //
+  // const handleMouseLeave = (index: number) => {
+  //   const card = cardsRef.current[index];
+  //   if (!card) return;
+  //
+  //   gsap.to(card, {
+  //     rotateX: 0,
+  //     rotateY: 0,
+  //     scale: 1,
+  //     duration: 0.7,
+  //     ease: "elastic.out(1, 0.5)"
+  //   });
+  // };
 
   return (
     <section ref={containerRef} className="w-full min-h-screen bg-white xl:h-screen relative overflow-hidden flex flex-col justify-center py-20 xl:mt-20 xl:py-0">
@@ -125,20 +126,20 @@ const SneakPeek = ({ heading }: { heading: string }) => {
         {/* Horizontal Scroll Track */}
         <div className="w-full flex-1 flex items-center overflow-hidden pl-4 md:pl-8 lg:pl-16">
           <div ref={trackRef} className="flex gap-4 md:gap-8 lg:gap-16 w-fit pr-10 md:pr-20">
-            {features.map((feature, index) => (
+            {features.map((feature) => (
               <div
                 key={feature.id}
                 className="w-[90vw] md:w-[75vw] lg:w-[65vw] xl:w-[55vw] shrink-0 rounded-[2rem] md:rounded-[2.5rem]"
               >
                 <div className="relative w-full aspect-[4/3] md:aspect-[16/10] lg:aspect-[16/9]">
                   <div
-                    ref={el => cardsRef.current[index] = el}
+                    // ref={el => cardsRef.current[index] = el}
                     className={`
                                 group relative w-full h-full bg-gray-50 p-2 overflow-hidden shadow-lg hover:shadow-2xl transition-all duration-500 rounded-[2rem] md:rounded-[2.5rem]
                             `}
-                    onMouseMove={(e) => handleMouseMove(e, index)}
-                    onMouseLeave={() => handleMouseLeave(index)}
-                    style={{ transformStyle: "preserve-3d" }}
+                    // onMouseMove={(e) => handleMouseMove(e, index)}
+                    // onMouseLeave={() => handleMouseLeave(index)}
+                    // style={{ transformStyle: "preserve-3d" }}
                   >
                     <div className="w-full h-full relative rounded-2xl md:rounded-[2rem] overflow-hidden bg-white flex flex-col border border-gray-100">
                       {/* Image Container */}

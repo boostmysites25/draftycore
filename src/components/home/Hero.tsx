@@ -33,11 +33,18 @@ const Hero = ({delay}: {delay: number}) => {
     const [isIOSDevice, setIsIOSDevice] = useState(false);
 
     useEffect(() => {
+        // Keep delay behavior in sync if the prop changes.
+        if (delay <= 0) {
+            setHasInitialDelayPassed(true);
+            return;
+        }
+
+        setHasInitialDelayPassed(false);
         const timer = setTimeout(() => {
             setHasInitialDelayPassed(true);
         }, delay * 1000);
         return () => clearTimeout(timer);
-    }, []);
+    }, [delay]);
 
     useEffect(() => {
         if (currentVideo.id !== 1) {
@@ -133,7 +140,7 @@ const Hero = ({delay}: {delay: number}) => {
         }, containerRef)
 
         return () => ctx.revert()
-    }, [])
+    }, [delay])
 
     return (
         <div

@@ -13,15 +13,16 @@ const Testimonials = lazy(() => import("../components/home/Testimonials"));
 const SneakPeek = lazy(() => import("../components/marketing/SneakPeek"));
 
 const Home = () => {
-  const [showPreloader, setShowPreloader] = useState(false);
+  const [showPreloader] = useState(() => {
+    if (typeof window === "undefined") return false;
+    return !sessionStorage.getItem("hasSeenPreloader");
+  });
 
   useEffect(() => {
-    const hasSeenPreloader = sessionStorage.getItem("hasSeenPreloader");
-    if (!hasSeenPreloader) {
-      setShowPreloader(true);
+    if (showPreloader) {
       sessionStorage.setItem("hasSeenPreloader", "true");
     }
-  }, []);
+  }, [showPreloader]);
 
   return (
     <div className="">
