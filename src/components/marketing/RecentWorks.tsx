@@ -10,24 +10,21 @@ const works = [
     id: 1,
     title: "",
     year: "",
-    image:
-      "/images/marketing/recentworks/1.jpeg",
+    image: "/images/marketing/recentworks/1.png",
     textColor: "text-white",
   },
   {
     id: 2,
     title: "",
     year: "",
-    image:
-      "/images/marketing/recentworks/2.jpeg",
+    image: "/images/marketing/recentworks/2.png",
     textColor: "text-white",
   },
   {
     id: 3,
     title: "",
     year: "",
-    image:
-      "/images/marketing/recentworks/3.jpeg",
+    image: "/images/marketing/recentworks/3.png",
     textColor: "text-white",
   },
 ];
@@ -136,7 +133,7 @@ const RecentWorks = () => {
         >
           <div
             ref={(el) => (innerCardsRef.current[index] = el)}
-            className="w-full h-full relative rounded-[3rem] overflow-hidden origin-bottom"
+            className="w-full h-full relative overflow-hidden origin-bottom"
           >
             {/*  shadow-[0_-20px_60px_rgba(0,0,0,0.3)] bg-gray-100 */}
             {/* Parallax Image */}
@@ -145,7 +142,7 @@ const RecentWorks = () => {
                 ref={(el) => (imagesRef.current[index] = el)}
                 src={work.image}
                 alt={work.title}
-                className="w-full h-[100%] object-contain object-center"
+                className="w-full h-full object-contain object-center"
               />
               {/* <div className="absolute inset-0 bg-black/20"></div> */}
             </div>

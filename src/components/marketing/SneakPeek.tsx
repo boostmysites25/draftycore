@@ -5,12 +5,24 @@ import { ScrollTrigger } from 'gsap/ScrollTrigger';
 
 gsap.registerPlugin(ScrollTrigger);
 
-const features = [
+const features = [  
+  {
+    id: 3,
+    title: "Dashboard",
+    image: "/images/marketing/sneakpeek/3.png",
+    color: "group-hover:text-brandpink",
+  },
   {
     id: 1,
     title: "Project Management",
     image: "/images/marketing/sneakpeek/1.png",
     color: "group-hover:text-brandturquoise",
+  },  
+  {
+    id: 5,
+    title: "Screen Share Meeting",
+    image: "/images/marketing/sneakpeek/5.png",
+    color: "group-hover:text-brandlimegreen",
   },
   {
     id: 2,
@@ -19,22 +31,10 @@ const features = [
     color: "group-hover:text-brandorange",
   },
   {
-    id: 3,
-    title: "Dashboard",
-    image: "/images/marketing/sneakpeek/3.png",
-    color: "group-hover:text-brandpink",
-  },
-  {
     id: 4,
     title: "Daily Calender",
     image: "/images/marketing/sneakpeek/4.png",
     color: "group-hover:text-brandyellow",
-  },
-  {
-    id: 5,
-    title: "Screen Share Meeting",
-    image: "/images/marketing/sneakpeek/5.png",
-    color: "group-hover:text-brandlimegreen",
   },
 ];
 
@@ -129,30 +129,25 @@ const SneakPeek = ({ heading }: { heading: string }) => {
             {features.map((feature) => (
               <div
                 key={feature.id}
-                className="w-[90vw] md:w-[75vw] lg:w-[65vw] xl:w-[55vw] shrink-0 rounded-[2rem] md:rounded-[2.5rem]"
+                className="w-[90vw] md:w-[75vw] lg:w-[65vw] xl:w-[55vw] shrink-0"
               >
                 <div className="relative w-full aspect-[4/3] md:aspect-[16/10] lg:aspect-[16/9]">
                   <div
                     // ref={el => cardsRef.current[index] = el}
                     className={`
-                                group relative w-full h-full bg-gray-50 p-2 overflow-hidden shadow-lg hover:shadow-2xl transition-all duration-500 rounded-[2rem] md:rounded-[2.5rem]
-                            `}
+                                group relative w-full h-full overflow-hidden`}
                     // onMouseMove={(e) => handleMouseMove(e, index)}
                     // onMouseLeave={() => handleMouseLeave(index)}
                     // style={{ transformStyle: "preserve-3d" }}
                   >
-                    <div className="w-full h-full relative rounded-2xl md:rounded-[2rem] overflow-hidden bg-white flex flex-col border border-gray-100">
+                    <div className="w-full h-full relative overflow-hidden flex flex-col">
                       {/* Image Container */}
                       <div className="relative flex-1 overflow-hidden">
-                        <div className="absolute inset-0 bg-secondary/5 group-hover:bg-transparent transition-colors duration-300 z-10"></div>
                         <img
                           src={feature.image}
                           alt={feature.title}
-                          className="w-full h-full object-cover"
+                          className="w-full h-full object-contain"
                         />
-
-                        {/* Gradient Overlay on Hover */}
-                        <div className="absolute inset-0 bg-gradient-to-t from-black/50 to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-300 z-10"></div>
                       </div>
 
                       {/* Content Overlay */}

@@ -44,9 +44,11 @@ const Hero = ({ delay }: { delay: number }) => {
 
     useEffect(() => {
         if (typeof navigator !== 'undefined') {
-            const ua = navigator.userAgent || navigator.vendor || (window as any).opera || '';
-            const isIOS = /iPad|iPhone|iPod/.test(ua) && !(window as any).MSStream;
-            setIsIOSDevice(isIOS);
+            const ua = navigator.userAgent || '';
+            const isIOSUA = /iPad|iPhone|iPod/.test(ua);
+            // iPadOS 13+ can report itself as Mac; touch points distinguish iPad from Mac.
+            const isIPadOS = navigator.platform === 'MacIntel' && navigator.maxTouchPoints > 1;
+            setIsIOSDevice(isIOSUA || isIPadOS);
         }
     }, []);
 

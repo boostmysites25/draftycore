@@ -101,7 +101,7 @@ const WhoWeAre = () => {
 
         {/* Top Content */}
         <div className="flex flex-col mx-auto text-center justify-center w-full relative z-10">
-          <h3 className="text-5xl xl:text-7xl font-maus font-medium mb-4 bg-gradient-to-br from-brandturquoise via-brandpink to-brandorange bg-clip-text text-transparent pb-2 flex sm:flex-row flex-col gap-3 sm:gap-6 justify-center">
+          <h3 className="text-5xl xl:text-7xl font-maus font-medium mb-4 pb-2 flex sm:flex-row flex-col gap-3 sm:gap-6 justify-center">
             about drafty
             {/* <span>
               {"ABOUT".split("").map((char, i) => (
@@ -126,16 +126,17 @@ const WhoWeAre = () => {
               {[...services, ...services].map((service, index) => (
                 <div
                   key={index}
-                  className="keen-slider__slide aspect-[4/2.5] overflow-hidden relative group cursor-pointer border border-black/10 hover:border-black/30 shadow-lg hover:shadow-xl hover:-translate-y-1"
+                  className="keen-slider__slide aspect-[4/2.5] overflow-hidden relative group cursor-pointer border border-black/10 hover:border-black/30 shadow-lg hover:shadow-xl hover:-translate-y-1 bg-cover bg-center"
+                  style={{backgroundImage: `url(${service.img})`}}
                 >
-                  <div className="absolute inset-0 bg-black/40 z-10 opacity-0 group-hover:opacity-100 transition-opacity duration-300 backdrop-blur-sm shadow-inner"></div>
-                  <img
+                  {/* <div className="absolute inset-0 bg-black/40 z-10 opacity-0 group-hover:opacity-100 transition-opacity duration-300 backdrop-blur-sm shadow-inner"></div> */}
+                  {/* <img
                     src={service.img}
                     alt={service.title}
                     className="absolute inset-0 w-full h-full object-cover transition-transform duration-700 group-hover:scale-110"
-                  />
-                  <div className="absolute inset-0 z-20 flex flex-col justify-end p-4 md:p-6 translate-y-4 opacity-0 group-hover:translate-y-0 group-hover:opacity-100 transition-all duration-500 ease-out">
-                    <p className="text-white text-base md:text-lg xl:text-2xl font-coolvetica leading-tight drop-shadow-lg text-pretty">
+                  /> */}
+                  <div className="p-4 md:p-6 absolute inset-0 h-full w-full flex items-center justify-center bg-black/30">
+                    <p className="text-white text-base md:text-lg xl:text-3xl font-coolvetica leading-tight drop-shadow-lg text-pretty opacity-100 group-hover:opacity-100 transition-all duration-500 ease-out">
                       {service.title}
                     </p>
                   </div>
