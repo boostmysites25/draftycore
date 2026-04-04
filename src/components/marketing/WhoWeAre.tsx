@@ -1,30 +1,11 @@
 import { useKeenSlider } from "keen-slider/react";
 import "keen-slider/keen-slider.min.css";
-import { useEffect, useRef, useState } from "react";
 // import { FaArrowRight } from "react-icons/fa";
 import { CircleCursor } from "../ui/Cursors";
-import { FallingIcons } from "../ui/FallingIcons";
 
 const animation = { duration: 60000, easing: (t: number) => t };
 
 const WhoWeAre = () => {
-  const [triggerDropIn, setTriggerDropIn] = useState(false);
-  const containerRef = useRef<HTMLDivElement>(null);
-
-  useEffect(() => {
-    if (!containerRef.current) return;
-    const observer = new IntersectionObserver(
-      ([entry]) => {
-        if (entry.isIntersecting) {
-          setTriggerDropIn(true);
-        }
-      },
-      { threshold: 0.1 }
-    );
-    observer.observe(containerRef.current);
-    return () => observer.disconnect();
-  }, []);
-
   const services = [
     {
       title: "A drafting partner working quietly behind your studio.",
@@ -93,7 +74,7 @@ const WhoWeAre = () => {
 
       {/* Right Side - Content Container */}
       {/* <div className="w-full bg-white relative flex flex-col p-8 md:p-12 xl:p-20 rounded-tl-[3rem] xl:rounded-tl-[5rem] -mt-10 xl:mt-0 xl:-ml-[4.5rem] z-20 shadow-[-20px_0_50px_rgba(0,0,0,0.1)] md:pb-40 border-l border-black/5"> */}
-      <div ref={containerRef} className="w-full bg-white overflow-hidden relative flex flex-col p-8 md:p-12 xl:p-20 rounded-tl-[3rem] xl:rounded-tl-[5rem] z-20 shadow-[-20px_0_50px_rgba(0,0,0,0.1)] md:pb-40 border-l border-black/5">
+      <div className="w-full bg-white overflow-hidden relative flex flex-col p-8 md:p-12 xl:p-20 rounded-tl-[3rem] xl:rounded-tl-[5rem] z-20 shadow-[-20px_0_50px_rgba(0,0,0,0.1)] md:pb-40 border-l border-black/5">
 
         {/* <div className="absolute h-full inset-0 z-0 pointer-events-none">
           <FallingIcons triggerDropIn={triggerDropIn} />
