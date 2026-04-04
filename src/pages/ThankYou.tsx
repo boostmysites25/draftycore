@@ -6,9 +6,9 @@ const ThankYou = () => {
         <div className="min-h-screen flex flex-col font-coolvetica bg-[#F5F5F0] relative overflow-hidden">
             {/* Background */}
             <div className="absolute inset-0 overflow-hidden pointer-events-none z-0">
-                <div className="absolute top-[-10%] right-[-5%] w-[60vw] h-[60vw] bg-brandyellow rounded-full blur-[180px] opacity-15" />
-                <div className="absolute bottom-[-15%] left-[-10%] w-[50vw] h-[50vw] bg-brandturquoise rounded-full blur-[150px] opacity-15" />
-                <div className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-[600px] h-[600px] border border-black/5 rounded-full" />
+                <div className="absolute top-[-10%] right-[-5%] w-[60vw] h-[60vw] bg-brandyellow rounded-full blur-[11.25rem] opacity-15" />
+                <div className="absolute bottom-[-15%] left-[-10%] w-[50vw] h-[50vw] bg-brandturquoise rounded-full blur-[9.375rem] opacity-15" />
+                <div className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-[37.5rem] h-[37.5rem] border border-black/5 rounded-full" />
             </div>
 
             <main className="flex-1 flex items-center justify-center relative z-10 px-4 sm:px-6 py-24">

@@ -59,7 +59,7 @@ const WhoAreWe = () => {
         gsap.to(cursorRef.current, {
             scale: 4,
             backgroundColor: "rgba(0,0,0,0.1)",
-            border: "1px solid rgba(0,0,0,0)",
+            border: "0.0625rem solid rgba(0,0,0,0)",
             duration: 0.3,
             ease: "power2.out"
         });
@@ -70,7 +70,7 @@ const WhoAreWe = () => {
         gsap.to(cursorRef.current, {
             scale: 1,
             backgroundColor: "transparent",
-            border: "1px solid rgba(0,0,0,0.5)",
+            border: "0.0625rem solid rgba(0,0,0,0.5)",
             duration: 0.3,
             ease: "power2.out"
         });
@@ -271,7 +271,7 @@ const WhoAreWe = () => {
                     </svg>
                 </div>
 
-                <div className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-[800px] h-[800px] border border-black/5 rounded-full z-0"></div>
+                <div className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-[50rem] h-[50rem] border border-black/5 rounded-full z-0"></div>
             </div>
 
             {/* Custom Cursor */}

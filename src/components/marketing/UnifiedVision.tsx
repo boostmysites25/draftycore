@@ -23,7 +23,7 @@ const cards = [
     image: "/images/marketing/unified/2.jpeg",
     position: "top-center",
     start: { x: "0vw", y: "-80vh" },
-    color: "group-hover:bg-black",
+    color: "",
     radius: "rounded-[2rem]"
   },
   {
@@ -118,7 +118,7 @@ const UnifiedVision = () => {
       // tl.fromTo(wrapperRef.current,
       //   { boxShadow: "none", backgroundColor: "transparent" },
       //   {
-      //     boxShadow: "0 25px 50px -12px rgba(0, 0, 0, 0.25)",
+      //     boxShadow: "0 1.5625rem 3.125rem -0.75rem rgba(0, 0, 0, 0.25)",
       //     backgroundColor: "white",
       //     duration: 0.2
       //   },
@@ -151,7 +151,7 @@ const UnifiedVision = () => {
       {/* Wrapper */}
       <div
         ref={wrapperRef}
-        className="relative grid grid-cols-2 md:grid-cols-3 gap-4 md:gap-6 lg:gap-8 w-full max-w-[1000px] px-4 md:px-8 z-10"
+        className="relative grid grid-cols-2 md:grid-cols-3 gap-4 md:gap-6 lg:gap-8 w-full max-w-[62.5rem] px-4 md:px-8 z-10"
       >
         {cards.map((card, index) => (
           <div
@@ -163,7 +163,7 @@ const UnifiedVision = () => {
             <img
               src={card.image}
               alt={card.title}
-              className="w-full h-full object-cover scale-110 group-hover:scale-100 transition-all duration-700 group-hover:backdrop-blur-[2px] group-hover:brightness-75"
+              className="w-full h-full object-cover scale-110 group-hover:scale-100 transition-all duration-700 group-hover:backdrop-blur-[0.125rem] group-hover:brightness-75"
             />
 
             {/* Overlay Content */}

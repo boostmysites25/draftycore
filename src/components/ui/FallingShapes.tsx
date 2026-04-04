@@ -1,6 +1,9 @@
 import { useRef, useEffect, useState } from 'react';
 import Matter from 'matter-js';
 
+const REM_IN_PX = 16;
+const remToPx = (rem: number) => rem * REM_IN_PX;
+
 // Simple shapes for the physics dropping
 const images = [
     '/images/marketing/built to be/1.png',
@@ -51,7 +54,7 @@ const getShapesConfig = (size: number): ShapeConfig[] => Array.from({ length: 3 
                     alt="Built To Be Reference"
                 />
                 {/* <div className={`absolute inset-0 flex items-center justify-center ${imgIndex === 1 ? 'pt-12 xl:pt-16' : ''}`}>
-                    <span className="whitespace-nowrap px-3 py-1 xl:px-5 xl:py-2 rounded-full bg-white/95 text-[9px] xl:text-[12px] font-semibold tracking-[0.12em] uppercase text-secondary shadow-sm">
+                    <span className="whitespace-nowrap px-3 py-1 xl:px-5 xl:py-2 rounded-full bg-white/95 text-[0.5625rem] xl:text-[0.75rem] font-semibold tracking-[0.12em] uppercase text-secondary shadow-sm">
                         {captions[imgIndex]}
                     </span>
                 </div> */}
@@ -76,7 +79,12 @@ export const FallingShapes = ({ triggerDropIn = false }: FallingShapesProps) => 
         const updateShapes = () => {
             if (typeof window === 'undefined') return;
             const width = window.innerWidth;
-            const size = width < 640 ? 110 : width < 1024 ? 150 : width >= 1280 ? 300 : 220;
+            let sizeRem = width < 640 ? 6.875 : width < 1024 ? 9.375 : width >= 1280 ? 18.75 : 13.75;
+            // ~27" and larger desktops often use 1920px+ CSS width — double shape size there
+            if (width >= 1920) {
+                sizeRem *= 2.5;
+            }
+            const size = remToPx(sizeRem);
             setShapes(getShapesConfig(size));
         };
 
@@ -201,7 +209,7 @@ export const FallingShapes = ({ triggerDropIn = false }: FallingShapesProps) => 
                 <div
                     key={shape.id}
                     id={`shape-${shape.id}`}
-                    className="absolute top-[-1000px] left-0 pointer-events-none"
+                    className="absolute top-[-62.5rem] left-0 pointer-events-none"
                     style={{
                         width: shape.type === 'circle' ? shape.radius! * 2 : shape.width,
                         height: shape.type === 'circle' ? shape.radius! * 2 : shape.height,

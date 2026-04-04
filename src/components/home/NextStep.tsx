@@ -75,8 +75,8 @@ const NextStep = () => {
         <section ref={sectionRef} className="py-24 bg-[#F5F5F0] relative overflow-hidden">
             {/* Background Decoration (Subtle) */}
             <div className="absolute top-0 left-0 w-full h-full pointer-events-none opacity-30">
-                <div className="absolute top-[-10%] right-[-5%] w-[500px] h-[500px] bg-secondary/10 rounded-full blur-3xl z-[1]"></div>
-                <div className="absolute bottom-[-10%] left-[-5%] w-[500px] h-[500px] bg-primary/5 rounded-full blur-3xl z-[1]"></div>
+                <div className="absolute top-[-10%] right-[-5%] w-[31.25rem] h-[31.25rem] bg-secondary/10 rounded-full blur-3xl z-[1]"></div>
+                <div className="absolute bottom-[-10%] left-[-5%] w-[31.25rem] h-[31.25rem] bg-primary/5 rounded-full blur-3xl z-[1]"></div>
             </div>
 
             <div className="wrapper relative z-10">

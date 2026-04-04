@@ -66,10 +66,10 @@ const WhoWeAre = () => {
       s.moveToIdx(s.track.details.abs + 5, true, animation);
     },
     breakpoints: {
-      "(min-width: 768px)": {
+      "(min-width: 48rem)": {
         slides: { perView: 2.2, spacing: 16 },
       },
-      "(min-width: 1024px)": {
+      "(min-width: 64rem)": {
         slides: { perView: 3.5, spacing: 16 },
       },
     },
@@ -87,7 +87,7 @@ const WhoWeAre = () => {
             alt="Drafting Workspace"
             className="w-full h-full object-cover drop-shadow-2xl relative"
           />
-          <div className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-[80%] h-[80%] bg-brandturquoise/20 blur-[100px] rounded-full pointer-events-none"></div>
+          <div className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-[80%] h-[80%] bg-brandturquoise/20 blur-[6.25rem] rounded-full pointer-events-none"></div>
         </div>
       </div> */}
 
@@ -95,9 +95,9 @@ const WhoWeAre = () => {
       {/* <div className="w-full bg-white relative flex flex-col p-8 md:p-12 xl:p-20 rounded-tl-[3rem] xl:rounded-tl-[5rem] -mt-10 xl:mt-0 xl:-ml-[4.5rem] z-20 shadow-[-20px_0_50px_rgba(0,0,0,0.1)] md:pb-40 border-l border-black/5"> */}
       <div ref={containerRef} className="w-full bg-white overflow-hidden relative flex flex-col p-8 md:p-12 xl:p-20 rounded-tl-[3rem] xl:rounded-tl-[5rem] z-20 shadow-[-20px_0_50px_rgba(0,0,0,0.1)] md:pb-40 border-l border-black/5">
 
-        <div className="absolute h-full inset-0 z-0 pointer-events-none">
+        {/* <div className="absolute h-full inset-0 z-0 pointer-events-none">
           <FallingIcons triggerDropIn={triggerDropIn} />
-        </div>
+        </div> */}
 
         {/* Top Content */}
         <div className="flex flex-col mx-auto text-center justify-center w-full relative z-10">
@@ -121,7 +121,7 @@ const WhoWeAre = () => {
           We take care of the documentation while your team prioritise design and management. Drafty delivers structured output, clean drawings, and studio-grade documentation that is consistent, organised, and ready for coordination and construction.
           </p>
 
-          <div className="mb-20 -mx-8 md:-mx-12 xl:-mx-[5.1rem] overflow-hidden">
+          <div className="mb-0 -mx-8 md:-mx-12 xl:-mx-[5.1rem] overflow-hidden">
             <div ref={sliderRef} className="keen-slider">
               {[...services, ...services].map((service, index) => (
                 <div

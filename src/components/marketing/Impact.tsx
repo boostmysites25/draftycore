@@ -131,12 +131,12 @@ const Impact = () => {
 
   // Calculate transform to scroll the list naturally from top to bottom
   const getListTransform = () => {
-    if (!leftContainerRef.current) return "translateY(0px)";
+    if (!leftContainerRef.current) return "translateY(0rem)";
 
     const containerHeight = leftContainerRef.current.clientHeight;
     const listHeight = items.length * ITEM_HEIGHT;
 
-    if (listHeight <= containerHeight) return "translateY(0px)"; // No scroll needed
+    if (listHeight <= containerHeight) return "translateY(0rem)"; // No scroll needed
 
     const maxScroll = listHeight - containerHeight;
     // Map active index to scroll percentage
@@ -160,19 +160,19 @@ const Impact = () => {
       <div className=" absolute top-0 left-0 w-full h-full pointer-events-none hidden xl:block">
         {/* Top Right */}
         <div className="absolute z-[2] top-[1%] right-[8%] opacity-50">
-          <img src="/images/marketing/challenges/face4.png" className="w-[45px] object-contain animate-[spin_6s_linear_infinite]" alt="Annoyed face 1" />
+          <img src="/images/marketing/challenges/face4.png" className="w-[2.8125rem] object-contain animate-[spin_6s_linear_infinite]" alt="Annoyed face 1" />
         </div>
         {/* Bottom Left */}
         <div className="absolute z-[2] bottom-[0%] left-[8%] opacity-50">
-          <img src="/images/marketing/challenges/face2.png" className="w-[45px] object-contain animate-[spin_8s_linear_infinite_reverse]" alt="Annoyed face 2" />
+          <img src="/images/marketing/challenges/face2.png" className="w-[2.8125rem] object-contain animate-[spin_8s_linear_infinite_reverse]" alt="Annoyed face 2" />
         </div>
         {/* Top Center Gap */}
         <div className="absolute z-[2] top-[25%] left-0 xl:left-[5%] opacity-50">
-          <img src="/images/marketing/challenges/face3.png" className="w-[45px] object-contain animate-[bounce_5s_linear_infinite]" alt="Annoyed face 3" />
+          <img src="/images/marketing/challenges/face3.png" className="w-[2.8125rem] object-contain animate-[bounce_5s_linear_infinite]" alt="Annoyed face 3" />
         </div>
         {/* Bottom Center Gap */}
         {/* <div className="absolute z-[2] bottom-[10%] right-[5%] opacity-40">
-          <img src="/images/marketing/challenges/face4.png" className="w-[90px] object-contain animate-[bounce_6s_linear_infinite]" alt="Annoyed face 4" />
+          <img src="/images/marketing/challenges/face4.png" className="w-[5.625rem] object-contain animate-[bounce_6s_linear_infinite]" alt="Annoyed face 4" />
         </div> */}
       </div>
 
@@ -194,7 +194,7 @@ const Impact = () => {
           </h2>
           <div className="relative w-full">
             <div
-              className="absolute left-0 w-full transition-transform duration-500 ease-out flex flex-col items-center top-0 gap-5"
+              className="absolute left-0 w-full transition-transform duration-500 ease-out flex flex-col items-center top-0 gap-5 impact-list"
               style={{
                 transform: getListTransform(),
               }}
@@ -207,7 +207,7 @@ const Impact = () => {
                 >
                   <button
                     className={`
-                        group flex w-[300px] xl:w-[400px] items-center gap-6 px-6 py-4 rounded-[2rem] transition-all duration-300 text-left
+                        group flex w-[18.75rem] xl:w-[25rem] items-center gap-6 px-6 py-4 rounded-[2rem] transition-all duration-300 text-left
                         ${index === activeIndex
                         ? `${item.activeColor} shadow-xl z-10`
                         : "bg-white border border-black/10 text-black/60 hover:bg-black/5"
@@ -266,7 +266,7 @@ const Impact = () => {
             {items.map((item, index) => (
               <SwiperSlide
                 key={item.id}
-                className="w-[500px] xl:w-[600px] h-[70vh] flex items-center justify-center transition-all duration-500 !overflow-hidden rounded-[3rem]"
+                className="w-[31.25rem] xl:w-[37.5rem] h-[70vh] flex items-center justify-center transition-all duration-500 !overflow-hidden rounded-[3rem]"
               >
                 <div
                   className={`

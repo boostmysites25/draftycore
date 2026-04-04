@@ -124,7 +124,7 @@ const ProjectCard = forwardRef<HTMLDivElement, { project: ProjectProps }>(({ pro
 
             {/* MARQUEES (Note: These might need to be hidden/faded out during expansion if they overlay the split) */}
             {/* 1. TOP MARQUEE (Left) */}
-            {/* <div ref={topMarqueeRef} className="absolute top-0 left-0 w-full h-[30px] sm:h-[40px] 2xl:h-[60px] bg-white text-black z-20 overflow-hidden flex items-center transition-opacity duration-300 opacity-100 border border-white/10">
+            {/* <div ref={topMarqueeRef} className="absolute top-0 left-0 w-full h-[1.875rem] sm:h-[2.5rem] 2xl:h-[3.75rem] bg-white text-black z-20 overflow-hidden flex items-center transition-opacity duration-300 opacity-100 border border-white/10">
                 <div className="marquee-track flex w-max will-change-transform">
                     <HorizontalSet text={project.title} />
                     <HorizontalSet text={project.title} />
@@ -134,7 +134,7 @@ const ProjectCard = forwardRef<HTMLDivElement, { project: ProjectProps }>(({ pro
             </div> */}
 
             {/* 2. RIGHT MARQUEE (Down) */}
-            {/* <div ref={rightMarqueeRef} className="absolute top-0 right-0 w-[30px] sm:w-[40px] 2xl:w-[60px] h-full bg-white text-black z-20 overflow-hidden flex flex-col items-center transition-opacity duration-300 opacity-100 border border-white/10">
+            {/* <div ref={rightMarqueeRef} className="absolute top-0 right-0 w-[1.875rem] sm:w-[2.5rem] 2xl:w-[3.75rem] h-full bg-white text-black z-20 overflow-hidden flex flex-col items-center transition-opacity duration-300 opacity-100 border border-white/10">
                 <div className="marquee-track flex flex-col h-max will-change-transform">
                     <VerticalSet text={project.title} />
                     <VerticalSet text={project.title} />
@@ -144,7 +144,7 @@ const ProjectCard = forwardRef<HTMLDivElement, { project: ProjectProps }>(({ pro
             </div> */}
 
             {/* 3. BOTTOM MARQUEE (Right) */}
-            {/* <div ref={bottomMarqueeRef} className="absolute bottom-0 left-0 w-full h-[30px] sm:h-[40px] 2xl:h-[60px] bg-white text-black z-20 overflow-hidden flex items-center transition-opacity duration-300 opacity-100 border border-white/10">
+            {/* <div ref={bottomMarqueeRef} className="absolute bottom-0 left-0 w-full h-[1.875rem] sm:h-[2.5rem] 2xl:h-[3.75rem] bg-white text-black z-20 overflow-hidden flex items-center transition-opacity duration-300 opacity-100 border border-white/10">
                 <div className="marquee-track flex w-max will-change-transform">
                     <HorizontalSet text={project.title} />
                     <HorizontalSet text={project.title} />
@@ -154,7 +154,7 @@ const ProjectCard = forwardRef<HTMLDivElement, { project: ProjectProps }>(({ pro
             </div> */}
 
             {/* 4. LEFT MARQUEE (Up) */}
-            {/* <div ref={leftMarqueeRef} className="absolute top-0 left-0 w-[30px] sm:w-[40px] 2xl:w-[60px] h-full bg-white text-black z-20 overflow-hidden flex flex-col items-center transition-opacity duration-300 opacity-100 border border-white/10">
+            {/* <div ref={leftMarqueeRef} className="absolute top-0 left-0 w-[1.875rem] sm:w-[2.5rem] 2xl:w-[3.75rem] h-full bg-white text-black z-20 overflow-hidden flex flex-col items-center transition-opacity duration-300 opacity-100 border border-white/10">
                 <div className="marquee-track flex flex-col h-max will-change-transform">
                     <VerticalSet text={project.title} />
                     <VerticalSet text={project.title} />
@@ -232,8 +232,8 @@ const FeaturedWork = () => {
 
         const mm = gsap.matchMedia();
 
-        // DESKTOP ANIMATION (min-width: 1536px)
-        mm.add("(min-width: 1536px)", () => {
+        // DESKTOP ANIMATION (min-width: 96rem)
+        mm.add("(min-width: 96rem)", () => {
             // 1. REVEAL ANIMATION (Initial)
             gsap.set(sectionRef.current, {
                 clipPath: "inset(0% 0% 0% 0%)",
@@ -303,8 +303,8 @@ const FeaturedWork = () => {
                 .set(sectionRef.current, { pointerEvents: "none" });
         });
 
-        // MOBILE ANIMATION (max-width: 767px)
-        mm.add("(max-width: 767px)", () => {
+        // MOBILE ANIMATION (max-width: 47.9375rem)
+        mm.add("(max-width: 47.9375rem)", () => {
             // 1. Ensure visibility (just in case)
             gsap.set(sectionRef.current, {
                 opacity: 1

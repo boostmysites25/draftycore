@@ -108,10 +108,10 @@ const SneakPeek = ({ heading }: { heading: string }) => {
   // };
 
   return (
-    <section ref={containerRef} className="w-full min-h-screen bg-white xl:h-screen relative overflow-hidden flex flex-col justify-center py-20 xl:mt-20 xl:py-0">
+    <section ref={containerRef} className="w-full min-h-screen flex bg-white xl:h-screen relative overflow-hidden flex-col justify-center py-20 xl:mt-20 xl:py-0">
       <CircleCursor isActive={true} />
 
-      <div className="w-full xl:h-full flex flex-col justify-center">
+      <div className="w-full xl:h-full flex flex-col justify-center xl:pt-10">
 
         {/* Centered Heading */}
         <div className="w-full text-center mb-8 xl:mb-8 flex-shrink-0">

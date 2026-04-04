@@ -89,7 +89,7 @@ const RecentWorks = () => {
               {
                 scale: 0.9,
                 y: "-10%", // Moves up slightly to show it's behind
-                // boxShadow: "0px 10px 40px rgba(0,0,0,0.2)", // Reduce shadow as it goes back
+                // boxShadow: "0rem 0.625rem 2.5rem rgba(0,0,0,0.2)", // Reduce shadow as it goes back
                 duration: 1,
                 ease: "power2.out",
               },
@@ -109,7 +109,7 @@ const RecentWorks = () => {
   return (
     <section
       ref={containerRef}
-      className="w-full h-screen bg-white relative overflow-hidden flex flex-col items-center justify-center perspective-[1200px]"
+      className="w-full h-screen bg-white relative overflow-hidden flex flex-col items-center justify-center perspective-[75rem]"
     >
       <FeaturedCursor isActive={true} />
 

@@ -273,7 +273,7 @@ Requirements : ${data.requirements} \n`;
                                     <textarea
                                         {...register("requirements")}
                                         placeholder="Any specific project details or questions..."
-                                        className="p-3 border border-gray-200 rounded-md font-sans focus:outline-none focus:border-brandorange focus:ring-1 focus:ring-brandorange/20 transition-all bg-gray-50 min-h-[100px] resize-y"
+                                        className="p-3 border border-gray-200 rounded-md font-sans focus:outline-none focus:border-brandorange focus:ring-1 focus:ring-brandorange/20 transition-all bg-gray-50 min-h-[6.25rem] resize-y"
                                     />
                                 </div>
 

@@ -67,7 +67,7 @@ const OurProcess = () => {
               key={process.id}
               className={`
                 group relative flex-1 
-                min-h-[280px] md:min-h-[320px] xl:min-h-0 
+                min-h-[17.5rem] md:min-h-[20rem] xl:min-h-0 
                 border-b xl:border-b-0 xl:border-r border-gray-200 last:border-0
                 flex flex-col justify-between p-6 md:p-8 transition-all duration-500 ease-out
                 hover:flex-[2] overflow-hidden
@@ -96,7 +96,7 @@ const OurProcess = () => {
               {/* Hover Content (Description) */}
               <div className={`
                 relative z-20 max-h-0 opacity-0 overflow-hidden transition-all duration-500 ease-out
-                group-hover:max-h-[200px] group-hover:opacity-100 group-hover:mt-4 md:group-hover:mt-6
+                group-hover:max-h-[12.5rem] group-hover:opacity-100 group-hover:mt-4 md:group-hover:mt-6
               `}>
                 <p className={`text-base md:text-lg font-medium leading-relaxed ${process.hoverTextColor} opacity-90`}>
                   {process.description}

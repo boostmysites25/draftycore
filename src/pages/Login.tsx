@@ -24,18 +24,18 @@ const Login = ({ onLoginSuccess }: LoginProps) => {
             <div className="absolute inset-0 bg-gradient-to-br from-[#f8f7f5] via-[#fafaf9] to-[#f5f4f2] pointer-events-none z-0" />
             {/* Subtle gradient orbs — soft and layered */}
             <div className="absolute inset-0 overflow-hidden pointer-events-none z-0">
-                <div className="absolute -top-[20%] -right-[15%] w-[70vmax] h-[70vmax] rounded-full bg-brandturquoise/12 blur-[120px]" />
-                <div className="absolute top-1/2 -left-[10%] w-[50vmax] h-[50vmax] rounded-full bg-brandpink/8 blur-[100px]" />
-                <div className="absolute -bottom-[15%] right-1/4 w-[45vmax] h-[45vmax] rounded-full bg-brandyellow/10 blur-[100px]" />
-                <div className="absolute top-1/3 right-1/3 w-[30vmax] h-[30vmax] rounded-full bg-brandorange/5 blur-[80px]" />
+                <div className="absolute -top-[20%] -right-[15%] w-[70vmax] h-[70vmax] rounded-full bg-brandturquoise/12 blur-[7.5rem]" />
+                <div className="absolute top-1/2 -left-[10%] w-[50vmax] h-[50vmax] rounded-full bg-brandpink/8 blur-[6.25rem]" />
+                <div className="absolute -bottom-[15%] right-1/4 w-[45vmax] h-[45vmax] rounded-full bg-brandyellow/10 blur-[6.25rem]" />
+                <div className="absolute top-1/3 right-1/3 w-[30vmax] h-[30vmax] rounded-full bg-brandorange/5 blur-[5rem]" />
             </div>
             {/* Very subtle grid for depth (optional) */}
             <div
                 className="absolute inset-0 opacity-[0.02] pointer-events-none z-0"
                 style={{
-                    backgroundImage: `linear-gradient(rgba(0,0,0,0.5) 1px, transparent 1px),
-                                     linear-gradient(90deg, rgba(0,0,0,0.5) 1px, transparent 1px)`,
-                    backgroundSize: '48px 48px'
+                    backgroundImage: `linear-gradient(rgba(0,0,0,0.5) 0.0625rem, transparent 0.0625rem),
+                                     linear-gradient(90deg, rgba(0,0,0,0.5) 0.0625rem, transparent 0.0625rem)`,
+                    backgroundSize: '3rem 3rem'
                 }}
             />
 

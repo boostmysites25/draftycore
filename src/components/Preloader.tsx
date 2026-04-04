@@ -69,7 +69,7 @@ const Preloader = () => {
                 <h1
                     ref={textRef}
                     className="text-5xl sm:text-6xl md:text-9xl font-black tracking-widest uppercase mb-8 flex gap-4 sm:gap-6"
-                    style={{ fontFamily: "'Octin College', sans-serif", perspective: '1000px' }}
+                    style={{ fontFamily: "'Octin College', sans-serif", perspective: '62.5rem' }}
                 >
                     {/* Parrot Green - Visible on White */}
                     {/* <span className="text-brandlimegreen" style={{ display: 'inline-block', opacity: 0 }}>LETS</span> */}
@@ -89,14 +89,14 @@ const Preloader = () => {
                     {/* Thin Track Line */}
                     <div
                         ref={progressTrackRef}
-                        className="absolute bottom-0 left-0 w-full h-[1.5px] bg-brandturquoise opacity-30"
+                        className="absolute bottom-0 left-0 w-full h-[0.0938rem] bg-brandturquoise opacity-30"
                     ></div>
 
                     {/* Fill Bar */}
                     <div
                         ref={progressBarRef}
-                        className="h-[5px] bg-brandturquoise rounded-r-full" // 5px height, Parrot Green
-                        style={{ borderRadius: '0 30px 30px 0' }}
+                        className="h-[0.3125rem] bg-brandturquoise rounded-r-full" // 0.3125rem height, Parrot Green
+                        style={{ borderRadius: '0 1.875rem 1.875rem 0' }}
                     ></div>
                 </div>
             </div>

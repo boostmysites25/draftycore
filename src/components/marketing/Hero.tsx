@@ -165,13 +165,13 @@ const Hero = ({ delay }: { delay: number }) => {
                         <div className="w-1.5 h-1.5 rounded-full bg-brandorange animate-pulse"></div>
                         <span className="text-base font-coolvetica font-bold tracking-widest text-black/80 uppercase">System Status</span>
                     </div>
-                    <div className="text-[12px] font-bold tracking-widest text-black/60">ONLINE // READY</div>
+                    <div className="text-[0.75rem] font-bold tracking-widest text-black/60">ONLINE // READY</div>
                 </div>
 
                 {/* Top Right Coordinates */}
                 <div className="absolute top-32 right-8 text-right hidden md:block animate-fade-in-up animation-delay-200">
                     <p className="text-base font-coolvetica text-black/80 mb-1 tracking-widest">GRID REFERENCE</p>
-                    <p className="text-[12px] font-coolvetica font-bold text-black/60 tracking-widest">X: 04.92.11 <br />Y: 08.22.90</p>
+                    <p className="text-[0.75rem] font-coolvetica font-bold text-black/60 tracking-widest">X: 04.92.11 <br />Y: 08.22.90</p>
                 </div>
 
                 {/* Bottom Left Technical Marker */}
@@ -183,7 +183,7 @@ const Hero = ({ delay }: { delay: number }) => {
                     </svg>
                     <div className="flex flex-col">
                         <span className="text-base font-coolvetica tracking-widest font-bold text-black/80">SCALE 1:1</span>
-                        <span className="text-[12px] font-coolvetica text-black/60 tracking-widest">DRAFTING ENGINE</span>
+                        <span className="text-[0.75rem] font-coolvetica text-black/60 tracking-widest">DRAFTING ENGINE</span>
                     </div>
                 </div>
 
@@ -191,11 +191,11 @@ const Hero = ({ delay }: { delay: number }) => {
                 <div className="absolute bottom-12 right-12 hidden md:block border border-black/10 bg-white/50 backdrop-blur-sm p-4">
                     <div className="flex justify-between items-center w-44 border-b border-black/10 pb-2 mb-2">
                         <span className="text-base tracking-widest font-coolvetica text-black/80">CPU</span>
-                        <span className="text-[12px] tracking-widest font-coolvetica font-semibold text-black/60">12%</span>
+                        <span className="text-[0.75rem] tracking-widest font-coolvetica font-semibold text-black/60">12%</span>
                     </div>
                     <div className="flex justify-between items-center w-44">
                         <span className="text-base tracking-widest font-coolvetica text-black/80">MEM</span>
-                        <span className="text-[12px] tracking-widest font-coolvetica font-semibold text-black/60">OPTIMIZED</span>
+                        <span className="text-[0.75rem] tracking-widest font-coolvetica font-semibold text-black/60">OPTIMIZED</span>
                     </div>
                 </div>
 
@@ -226,7 +226,7 @@ const Hero = ({ delay }: { delay: number }) => {
                             disablePictureInPicture
                             disableRemotePlayback
                             onContextMenu={(e) => e.preventDefault()}
-                            className={`w-full h-full object-cover ${currentVideo.id === 2 ? "-translate-y-[14rem]" : ""}`}
+                            className={`w-full h-full hero-video object-cover ${currentVideo.id === 2 ? "-translate-y-[14rem]" : ""}`}
                         >
                             {/* Prefer MP4 (potentially HEVC) for Safari/iOS */}
                             {currentVideo.sources.mp4 && <source src={currentVideo.sources.mp4} type='video/mp4; codecs="hvc1"' />}

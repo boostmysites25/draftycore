@@ -185,9 +185,9 @@ const Navbar = () => {
                         {/* Mobile Menu Toggle */}
                         <div className="flex justify-end md:hidden z-50 relative">
                             <button onClick={toggleMenu} className="group flex flex-col items-end gap-1.5 p-2 cursor-pointer">
-                                <span className={`h-[3px] bg-brandorange transition-all duration-300 ${isMenuOpen ? "w-8 rotate-45 translate-y-2.5" : "w-8"}`}></span>
-                                <span className={`h-[3px] bg-brandorange transition-all duration-300 ${isMenuOpen ? "w-8 opacity-0" : "w-6 group-hover:w-8"}`}></span>
-                                <span className={`h-[3px] bg-brandorange transition-all duration-300 ${isMenuOpen ? "w-8 -rotate-45 -translate-y-2" : "w-4 group-hover:w-8"}`}></span>
+                                <span className={`h-[0.1875rem] bg-brandorange transition-all duration-300 ${isMenuOpen ? "w-8 rotate-45 translate-y-2.5" : "w-8"}`}></span>
+                                <span className={`h-[0.1875rem] bg-brandorange transition-all duration-300 ${isMenuOpen ? "w-8 opacity-0" : "w-6 group-hover:w-8"}`}></span>
+                                <span className={`h-[0.1875rem] bg-brandorange transition-all duration-300 ${isMenuOpen ? "w-8 -rotate-45 -translate-y-2" : "w-4 group-hover:w-8"}`}></span>
                             </button>
                         </div>
 
@@ -206,8 +206,8 @@ const Navbar = () => {
                     {/* Close Button */}
                     <div className="absolute top-6 right-6 z-50">
                         <button onClick={() => setIsMenuOpen(false)} className="group p-2 cursor-pointer">
-                            <span className="block w-8 h-[3px] bg-secondary rotate-45 translate-y-[1.5px] transition-transform duration-300 group-hover:rotate-180"></span>
-                            <span className="block w-8 h-[3px] bg-secondary -rotate-45 -translate-y-[1.5px] transition-transform duration-300 group-hover:-rotate-180"></span>
+                            <span className="block w-8 h-[0.1875rem] bg-secondary rotate-45 translate-y-[0.0938rem] transition-transform duration-300 group-hover:rotate-180"></span>
+                            <span className="block w-8 h-[0.1875rem] bg-secondary -rotate-45 -translate-y-[0.0938rem] transition-transform duration-300 group-hover:-rotate-180"></span>
                         </button>
                     </div>
 
@@ -217,7 +217,7 @@ const Navbar = () => {
                             <div
                                 key={i}
                                 ref={el => bgLineRefs.current[i] = el}
-                                className="w-[1px] h-full bg-secondary"
+                                className="w-[0.0625rem] h-full bg-secondary"
                             ></div>
                         ))}
                     </div>

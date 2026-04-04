@@ -142,7 +142,7 @@ const Pricing = () => {
         if (cardRef) {
             gsap.to(cardRef, {
                 scale: 1.05,
-                boxShadow: "0px 20px 40px rgba(0, 0, 0, 0.5)",
+                boxShadow: "0rem 1.25rem 2.5rem rgba(0, 0, 0, 0.5)",
                 y: -15,
                 duration: 0.5,
                 ease: "power2.out",
@@ -187,7 +187,7 @@ const Pricing = () => {
                         ref={(el) => (cardRefs.current[idx] = el)}
                         onMouseEnter={() => handleCardHover(cardRefs.current[idx])}
                         onMouseLeave={() => handleCardLeave(cardRefs.current[idx])}
-                        className={`group relative w-full rounded-[2rem] border-[3px] ${plan.mainColor} bg-white/80 cursor-pointer shadow-lg hover:shadow-2xl ${plan.hoverColor} transition-shadow duration-300 flex flex-col`}
+                        className={`group relative w-full rounded-[2rem] border-[0.1875rem] ${plan.mainColor} bg-white/80 cursor-pointer shadow-lg hover:shadow-2xl ${plan.hoverColor} transition-shadow duration-300 flex flex-col`}
                     >
                         <div className="w-full h-full p-8 flex flex-col justify-between">
                             <div>
@@ -243,7 +243,7 @@ const Pricing = () => {
                 ref={characterRef}
                 src="/images/marketing/pricing-character.png" // User can replace with the exact image from figma
                 alt="Pricing Character"
-                className="absolute bottom-0 left-0 w-64 md:w-80 lg:w-[450px] object-contain object-bottom pointer-events-none z-20 mix-blend-multiply drop-shadow-2xl"
+                className="absolute bottom-0 left-0 w-64 md:w-80 lg:w-[28.125rem] object-contain object-bottom pointer-events-none z-20 mix-blend-multiply drop-shadow-2xl"
                 onError={(e) => {
                     // Hide instead of showing broken image if file doesn't exist yet
                     e.currentTarget.style.display = 'none';

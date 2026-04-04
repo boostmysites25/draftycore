@@ -1,6 +1,9 @@
 import { useRef, useEffect } from 'react';
 import Matter from 'matter-js';
 
+const REM_IN_PX = 16;
+const remToPx = (rem: number) => rem * REM_IN_PX;
+
 const images = [
     '/images/marketing/about/icons/10.png',
     '/images/marketing/about/icons/4 (2).png',
@@ -26,16 +29,17 @@ export type IconConfig = {
 
 const ICONS: IconConfig[] = Array.from({ length: images.length }).map((_, i) => {
     const imgIndex = i;
+    const iconSizeRem = 7.5;
     return {
         id: `icon-${i}`,
         type: 'rectangle',
-        width: 120,
-        height: 120,
+        width: remToPx(iconSizeRem),
+        height: remToPx(iconSizeRem),
         offsetX: Math.random() * 800 - 400, // Spread across the width
         offsetY: -300 - (i * 100) - Math.random() * 200,
         angle: (Math.random() - 0.5) * 0.2,
         render: () => (
-            <div className="w-[80px] h-[80px] lg:w-[120px] lg:h-[120px] overflow-hidden">
+            <div className="w-[5rem] h-[5rem] lg:w-[7.5rem] lg:h-[7.5rem] overflow-hidden">
                 <img
                     src={images[imgIndex]}
                     className="w-full h-full object-contain drop-shadow-md"
@@ -166,7 +170,7 @@ export const FallingIcons = ({ triggerDropIn = false }: FallingIconsProps) => {
                 <div
                     key={shape.id}
                     id={`icon-shape-${shape.id}`}
-                    className="absolute top-[-1000px] left-0 pointer-events-none"
+                    className="absolute top-[-62.5rem] left-0 pointer-events-none"
                     style={{
                         width: shape.width,
                         height: shape.height,

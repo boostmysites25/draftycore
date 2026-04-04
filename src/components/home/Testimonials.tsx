@@ -111,7 +111,7 @@ const Testimonials = () => {
                             <div ref={(el) => addToRefs(el, index)} className="h-full w-full">
                                 {/* Card Content (Hover Scale + Styling) */}
                                 <div className={`p-8 md:p-10 h-full w-full rounded-sm shadow-xl transition-transform duration-500 hover:scale-[1.02] ${item.bgColor} ${item.textColor}`}>
-                                    <div className="flex flex-col h-full justify-between min-h-[350px]">
+                                    <div className="flex flex-col h-full justify-between min-h-[21.875rem]">
                                         <p className="text-lg md:text-xl font-medium leading-relaxed mb-auto font-coolvetica tracking-wide">
                                             {item.quote}
                                         </p>

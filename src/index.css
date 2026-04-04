@@ -125,3 +125,15 @@ body {
     font-family: "Coolvetica", sans-serif;
   }
 }
+
+@media (min-width:2840px){
+  html{
+    font-size: 1vw;
+  }
+  .hero-video{
+    scale: 2;
+  }
+  .impact-list {
+    @apply gap-14 mt-10;
+  }
+}
